@@ -4,7 +4,6 @@ import { Component } from 'react';
 class Header extends Component {
   constructor (props) {
     super(props);
-    const self = this;
 
     // state model
     this.state = {

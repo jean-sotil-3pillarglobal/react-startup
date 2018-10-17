@@ -1,7 +1,7 @@
-import { CombineReducers } from 'redux';
+const usernameChangeReducer = () => {
+  return '';
+};
 
-const rootReducer = CombineReducers({
-
-});
-
-export default rootReducer;
+export default {
+  username: usernameChangeReducer,
+};
