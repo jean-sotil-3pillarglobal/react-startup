@@ -1,32 +1,35 @@
+import _ from 'lodash';
 import { Component } from 'react';
 
 class Header extends Component {
   constructor (props) {
     super(props);
+    const self = this;
 
     // state model
     this.state = {
       term: '',
     };
-
-    // proxy handle[el][e]
-    this.handleInputChange = this.onInputChange.bind(this);
   }
 
   render() {
+    // todo: add debounce
+    // proxies - proxy[el][e]
+    const proxyInputChange = this.handleInputChange.bind(this);
+
     return (
       <header>
         <input
           value = { this.state.value }
-          onChange={this.handleInputChange} />
+          onChange={proxyInputChange} />
         Value of the input: {this.state.term}
       </header>
     );
   }
 
-  // naming: on[el][e]
-  onInputChange (e) {
-    this.setState({ term: e.target.value });
+  // naming: handle[el][e]
+  handleInputChange (evt) {
+    this.setState({ term: evt.target.value });
   }
 }
 

@@ -3,7 +3,7 @@ module.exports = {
   use: [
     ['@neutrinojs/react', {
       html: {
-        title: '[App-title]'
+        title: 'Startup'
       }
     }],
     ['@neutrinojs/style-loader', {

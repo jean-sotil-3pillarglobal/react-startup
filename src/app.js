@@ -1,21 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-// Commons
-import Async from './components/async-component';
-import Header from './components/modules/header/index';
-import Footer from './components/modules/footer/index';
-import PreLoader from './components/modules/commons/preloader/index';
+// async component
+import Async from './containers/async-component';
 
-// Styles
-import styles from './externals/styles/index.scss';
+// components
+import Header from './components/header/index';
+import Footer from './components/footer/index';
+import PreLoader from './components/commons/preloader/index';
 
-// Pages*
-const HomePage = Async(() => import('./components/home/index').then(module => module.default), { name: 'Home' });
-const SearchPage = Async(() => import('./components/search/index').then(module => module.default), { name: 'Search' });
-const NoMatch = Async(() => import('./components/404/index').then(module => module.default), { name: 'Not Found' });
+// styles
+import styles from './resources/styles/index.scss';
 
-// Main
+// containers
+const HomePage = Async(() => import('./containers/home/index').then(module => module.default), { name: 'Home' });
+const SearchPage = Async(() => import('./containers/search/index').then(module => module.default), { name: 'Search' });
+const NoMatch = Async(() => import('./containers/404/index').then(module => module.default), { name: 'Not Found' });
+
+// main
 const App = () => (
   <Router>
     <div id="app">
@@ -26,7 +28,7 @@ const App = () => (
       <Header />
 
       {/* Main Container */}
-      <div className={styles.global}>
+      <div>
         <div className="row">
           <Route exact path="/" component={HomePage} />
           <Route exact path="/search" component={SearchPage} />
