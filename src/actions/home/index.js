@@ -1,9 +1,9 @@
-function getUsernameAction (evt) {
+function usernameChangeAction (evt) {
   return {
-    type: 'GET_USERNAME',
+    type: 'USERNAME_ACTION',
     payload: evt.target.value,
   };
 }
 
-export default getUsernameAction;
+export default usernameChangeAction;
 
