@@ -4,10 +4,18 @@ import { Component } from 'react';
 import Item from '../item/index';
 
 class ListItems extends Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      selectedItem: null,
+    };
+  }
+
   render() {
     const userItems = this.props.users.map((user) => {
       return (
-        <Item key={user.id} user={user} />
+        <Item onSelectedItem={this.handleSelectItem} key={user.id} user={user} />
       );
     });
 
@@ -16,6 +24,10 @@ class ListItems extends Component {
         {userItems}
       </ul>
     );
+  }
+
+  handleSelectItem (item) {
+    console.log(item);
   }
 }
 

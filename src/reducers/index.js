@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 // home reducers
-import HomeReducers from './home/index';
+import { usernameChangeReducer } from './home/index';
 
 // root combined reducer
 const rootReducer = combineReducers({
   // home: reducers block
-  username: HomeReducers.username,
+  usernameChangeReducer,
 });
 
 export default rootReducer;

@@ -44,8 +44,8 @@ function mapStateToProps (state) {
   };
 }
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ username: usernameChangeAction }, dispatch);
-}
+const mapDispatchToProps = dispatch => ({
+  usernameChangeAction: username => dispatch(usernameChangeAction(username)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

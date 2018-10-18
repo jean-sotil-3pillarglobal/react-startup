@@ -1,13 +1,19 @@
 import { Component } from 'react';
 
 class Item extends Component {
-  render() {
+  constructor (props) {
+    super(props);
+
+    this.proxySelectItem = this.handlerSelectItem.bind(this);
+  }
+
+  render () {
     const {
       name,
     } = this.props.user;
 
     return (
-      <li className="list-group-item">
+      <li className="list-group-item" onClick={this.proxySelectItem}>
         <div className="row">
           <div className="col-md-3">
             <img className="img-fluid img-thumbnail" src="https://via.placeholder.com/350x150" alt={name}/>
@@ -18,6 +24,10 @@ class Item extends Component {
         </div>
       </li>
     );
+  }
+
+  handlerSelectItem () {
+    this.props.onSelectedItem(this.props.user);
   }
 }
 

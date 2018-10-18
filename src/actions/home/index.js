@@ -1,9 +1,8 @@
-function usernameChangeAction (evt) {
+const usernameChangeAction = (username) => {
   return {
     type: 'USERNAME_ACTION',
-    payload: evt.target.value,
+    payload: username,
   };
-}
+};
 
 export default usernameChangeAction;
-
