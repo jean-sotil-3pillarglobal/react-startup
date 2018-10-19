@@ -1,13 +1,12 @@
-import { CombineReducers } from 'redux';
+export const itemSelectedReducer = (state = null, action) => {
+  console.log(action);
+  switch (action.type) {
+  case 'ITEM_SELECTED':
+    return action.payload;
+  default:
+    return '';
+  }
+};
 
-const reducers = {
-	users: function () {
-		return [];
-	}
-}
+export const anotherReducer = (state = null, action) => state;
 
-const rootReducer = CombineReducers({
-	users: reducers.users
-});
-
-export default rootReducer;

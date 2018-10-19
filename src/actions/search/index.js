@@ -1,8 +1,13 @@
-const userSelectedAction = (user) => {
+export const itemSelectedAction = (item) => {
   return {
-    type: 'USER_SELECTED',
-    payload: user,
+    type: 'ITEM_SELECTED',
+    payload: item,
   };
 };
 
-export default userSelectedAction;
+export const anotherItemSelectedAction = (item) => {
+  return {
+    type: 'ANOTHER_ITEM_SELECTED',
+    payload: item,
+  };
+};
