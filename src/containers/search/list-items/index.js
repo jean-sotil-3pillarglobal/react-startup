@@ -6,7 +6,10 @@ import { connect } from 'react-redux';
 import Item from '../item/index';
 
 // actions
-import { itemSelectedAction } from '../../../actions/search/index';
+import { selectedItemAction } from '../../../store/actions/search/index';
+
+// selectors
+import { selectedItemSelector } from '../../../store/selectors/search/index';
 
 class ListItems extends Component {
   constructor (props) {
@@ -41,18 +44,15 @@ class ListItems extends Component {
   }
 }
 
-// selectors
-const selectedItemSelector = state => (state.selectedItem);
-
 // state has props of component
 function mapStateToProps (state) {
   return {
-    item: selectedItemSelector,
+    selectedItem: selectedItemSelector,
   };
 }
 
 const mapDispatchToProps = {
-  handleSelectItem: itemSelectedAction,
+  handleSelectItem: selectedItemAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListItems);

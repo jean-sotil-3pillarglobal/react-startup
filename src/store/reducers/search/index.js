@@ -1,5 +1,4 @@
-export const itemSelectedReducer = (state = null, action) => {
-  console.log(action);
+export const selectedItemReducer = (state = null, action) => {
   switch (action.type) {
   case 'ITEM_SELECTED':
     return action.payload;

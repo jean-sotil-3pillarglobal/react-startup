@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 
 // actions
-import usernameChangeAction from '../../actions/home/index';
+import usernameChangeAction from '../../store/actions/home/index';
 
 // styles
 import styles from './index.scss';

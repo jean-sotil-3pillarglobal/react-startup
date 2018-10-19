@@ -1,4 +1,4 @@
-export const itemSelectedAction = (item) => {
+export const selectedItemAction = (item) => {
   return {
     type: 'ITEM_SELECTED',
     payload: item,
