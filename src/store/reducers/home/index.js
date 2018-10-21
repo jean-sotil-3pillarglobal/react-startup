@@ -7,5 +7,5 @@ export const usernameChangeReducer = (state = null, action) => {
   }
 };
 
-export const anotherReducer = (state = null, action) => state;
+export const defaultReducer = null;
 

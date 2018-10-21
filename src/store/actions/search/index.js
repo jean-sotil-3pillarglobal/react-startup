@@ -1,3 +1,9 @@
+export const itemsAction = (items) => {
+  return {
+    type: 'ITEMS_BIND',
+  };
+};
+
 export const selectedItemAction = (item) => {
   return {
     type: 'ITEM_SELECTED',
@@ -5,9 +11,3 @@ export const selectedItemAction = (item) => {
   };
 };
 
-export const anotherItemSelectedAction = (item) => {
-  return {
-    type: 'ANOTHER_ITEM_SELECTED',
-    payload: item,
-  };
-};

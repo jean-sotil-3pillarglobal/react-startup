@@ -10,7 +10,7 @@ class Item extends Component {
   render () {
     const {
       name,
-    } = this.props.user;
+    } = this.props.item;
 
     return (
       <li className="list-group-item" onClick={this.proxySelectItem}>
@@ -27,7 +27,7 @@ class Item extends Component {
   }
 
   handlerSelectItem () {
-    this.props.onSelectedItem(this.props.user);
+    this.props.onSelectedItem(this.props.item);
   }
 }
 

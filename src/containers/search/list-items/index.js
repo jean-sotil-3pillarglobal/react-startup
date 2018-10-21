@@ -6,16 +6,17 @@ import { connect } from 'react-redux';
 import Item from '../item/index';
 
 // actions
-import { selectedItemAction } from '../../../store/actions/search/index';
-
-// selectors
-import { selectedItemSelector } from '../../../store/selectors/search/index';
+import {
+  itemsAction,
+  selectedItemAction,
+} from '../../../store/actions/search/index';
 
 class ListItems extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
+      items: [],
       selectedItem: null,
     };
 
@@ -23,9 +24,9 @@ class ListItems extends Component {
   }
 
   render() {
-    const userItems = this.props.users.map((user) => {
+    const userItems = this.props.items.map((item) => {
       return (
-        <Item onSelectedItem={this.callbackSelectItem} key={user.id} user={user} />
+        <Item onSelectedItem={this.callbackSelectItem} key={item.id} item={item} />
       );
     });
 
@@ -46,8 +47,10 @@ class ListItems extends Component {
 
 // state has props of component
 function mapStateToProps (state) {
+  console.log(state);
   return {
-    selectedItem: selectedItemSelector,
+    items: state.items,
+    selectedItem: state.selectedItem,
   };
 }
 
@@ -55,5 +58,5 @@ const mapDispatchToProps = {
   handleSelectItem: selectedItemAction,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListItems);
+export default connect(mapStateToProps)(ListItems);
 

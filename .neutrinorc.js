@@ -57,6 +57,7 @@ module.exports = {
           'no-unused-vars': [0, { 'vars': 'local', 'args': 'none' }],
           'object-curly-newline': 0,
           'object-shorthand': 0,
+          'quote-props': 0,
           'space-before-function-paren': 0,
         }
       }
