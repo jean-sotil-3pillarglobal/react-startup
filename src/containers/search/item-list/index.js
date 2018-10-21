@@ -3,15 +3,15 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 
 // components
-import Item from '../item/index';
+import Item from '../item';
 
 // actions
 import {
   itemsAction,
   selectedItemAction,
-} from '../../../store/actions/search/index';
+} from '../../../store/actions/search';
 
-class ListItems extends Component {
+class ItemList extends Component {
   constructor (props) {
     super(props);
 
@@ -45,18 +45,18 @@ class ListItems extends Component {
   }
 }
 
-// state has props of component
+// map state to props
 function mapStateToProps (state) {
-  console.log(state);
   return {
     items: state.items,
     selectedItem: state.selectedItem,
   };
 }
 
-const mapDispatchToProps = {
-  handleSelectItem: selectedItemAction,
-};
+// dispatch actionCreators
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({}, dispatch);
+}
 
-export default connect(mapStateToProps)(ListItems);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemList);
 

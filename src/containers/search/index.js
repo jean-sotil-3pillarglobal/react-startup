@@ -1,10 +1,11 @@
 import { Component } from 'react';
 
 // components
-import ListItems from './list-items/index';
+import ItemList from './item-list';
+import ItemDetail from './item-detail';
 
 // providers
-import DataProvider from '../../providers/data/index';
+import DataProvider from '../../providers/data';
 
 // styles
 import styles from './index.scss';
@@ -30,9 +31,11 @@ class SearchPage extends Component {
     return (
       <div className="">
         <div className="row">
-          <div className="col-md-3"></div>
           <div className="col-md-9">
-            <ListItems users={this.state.users} />
+            <ItemList />
+          </div>
+          <div className="col-md-3">
+            <ItemDetail />
           </div>
         </div>
       </div>

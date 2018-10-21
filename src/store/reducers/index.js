@@ -1,15 +1,10 @@
 import { combineReducers } from 'redux';
 
-// home reducers
-import {
-  usernameChangeReducer,
-} from './home/index';
-
 // search reducers
 import {
   itemsReducer,
   selectedItemReducer,
-} from './search/index';
+} from './search';
 
 // root combined reducer
 const rootReducer = combineReducers({

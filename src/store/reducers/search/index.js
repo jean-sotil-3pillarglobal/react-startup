@@ -1,5 +1,4 @@
 export const itemsReducer = (state, action) => {
-  console.log(state, action);
   return [
     {
       'id': 3,
@@ -74,7 +73,9 @@ export const itemsReducer = (state, action) => {
 };
 
 
-export const selectedItemReducer = (state = null, action) => {
+export const selectedItemReducer = (state = {
+  title: 'Select an item.',
+}, action) => {
   switch (action.type) {
   case 'ITEM_SELECTED':
     return action.payload;

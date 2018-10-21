@@ -49,6 +49,7 @@ module.exports = {
           'babel/new-cap': false,
           'class-methods-use-this': 0,
           'id-length': 0,
+          'import/no-named-as-default-member': 0,
           'indent': [1, 2],
           'linebreak-style': 0,
           'max-len': 0,

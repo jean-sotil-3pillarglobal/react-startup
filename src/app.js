@@ -5,16 +5,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Async from './containers/async-component';
 
 // components
-import Header from './components/header/index';
-import Footer from './components/footer/index';
-import PreLoader from './components/commons/preloader/index';
+import Header from './components/header';
+import Footer from './components/footer';
+import PreLoader from './components/commons/preloader';
 
 // styles
 import styles from './resources/styles/index.scss';
 
 // containers
-import HomePage from './containers/home/index';
-import SearchPage from './containers/search/index';
+import HomePage from './containers/home';
+import SearchPage from './containers/search';
 
 // main
 class App extends Component {
