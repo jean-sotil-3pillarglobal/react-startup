@@ -73,9 +73,7 @@ export const itemsReducer = (state, action) => {
 };
 
 
-export const selectedItemReducer = (state = {
-  title: 'Select an item.',
-}, action) => {
+export const selectedItemReducer = (state = {}, action) => {
   switch (action.type) {
   case 'ITEM_SELECTED':
     return action.payload;

@@ -5,43 +5,30 @@ import { connect } from 'react-redux';
 // components
 import Item from '../item';
 
-// actions
-import {
-  itemsAction,
-  selectedItemAction,
-} from '../../../store/actions/search';
-
 class ItemList extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
       items: [],
-      selectedItem: null,
     };
-
-    this.callbackSelectItem = this.handleSelectItem.bind(this);
   }
 
-  render() {
-    const userItems = this.props.items.map((item) => {
+  render () {
+    const itemList = this.props.items.map((item) => {
       return (
-        <Item onSelectedItem={this.callbackSelectItem} key={item.id} item={item} />
+        <Item key={item.id} item={item} />
       );
     });
 
     return (
       <div className="search-list-group">
-        <h2>{(this.state.selectedItem) ? this.state.selectedItem.name : '' }</h2>
+        <h2>{!this.props.selectedItem.name ? 'Select an item.' : this.props.selectedItem.name}</h2>
         <ul className="list-group">
-          {userItems}
+          {itemList}
         </ul>
       </div>
     );
-  }
-
-  handleSelectItem (item) {
-    this.setState({ selectedItem: item });
   }
 }
 
@@ -53,10 +40,5 @@ function mapStateToProps (state) {
   };
 }
 
-// dispatch actionCreators
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemList);
+export default connect(mapStateToProps)(ItemList);
 

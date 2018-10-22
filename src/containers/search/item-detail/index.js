@@ -5,7 +5,7 @@ class ItemDetail extends Component {
   render () {
     return (
       <div className="item-detail">
-        <p>Detail for: {this.props.item.title}</p>
+        <p>Detail for: {this.props.item.name}</p>
       </div>
     );
   }

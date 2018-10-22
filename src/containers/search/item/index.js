@@ -1,19 +1,21 @@
+import { bindActionCreators } from 'redux';
 import { Component } from 'react';
+import { connect } from 'react-redux';
+
+// action creators
+import {
+  itemsAction,
+  selectItemAction,
+} from '../../../store/actions/search';
 
 class Item extends Component {
-  constructor (props) {
-    super(props);
-
-    this.proxySelectItem = this.handlerSelectItem.bind(this);
-  }
-
   render () {
     const {
       name,
     } = this.props.item;
 
     return (
-      <li className="list-group-item" onClick={this.proxySelectItem}>
+      <li onClick={() => this.props.selectItem(this.props.item) } className="list-group-item">
         <div className="row">
           <div className="col-md-3">
             <img className="img-fluid img-thumbnail" src="https://via.placeholder.com/350x150" alt={name}/>
@@ -25,10 +27,20 @@ class Item extends Component {
       </li>
     );
   }
-
-  handlerSelectItem () {
-    this.props.onSelectedItem(this.props.item);
-  }
 }
 
-export default Item;
+// map state to props
+function mapStateToProps (state) {
+  return {
+    items: state.items,
+  };
+}
+
+// dispatch actionCreators
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    selectItem: selectItemAction,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Item);
