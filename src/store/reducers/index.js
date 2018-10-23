@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux';
 
+// components
+// footer
+import {
+  selectedLanguageReducer,
+} from './components/footer';
+
 // search reducers
 import {
   itemsReducer,
@@ -8,6 +14,9 @@ import {
 
 // root combined reducer
 const rootReducer = combineReducers({
+  // components
+  // footer
+  selectedLanguage: selectedLanguageReducer,
   // home
   // search
   items: itemsReducer,
