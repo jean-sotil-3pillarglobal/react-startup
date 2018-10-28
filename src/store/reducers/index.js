@@ -1,24 +1,37 @@
 import { combineReducers } from 'redux';
 
+/*
 // components
+*/
+
+// header
+import {
+  weatherReducer,
+} from './components/header';
+
 // footer
 import {
   selectedLanguageReducer,
 } from './components/footer';
 
-// search reducers
+/*
+// containers
+*/
+
+// search
 import {
   itemsReducer,
   selectedItemReducer,
 } from './search';
 
-// root combined reducer
+/*
+// combining reducers on rootReducer
+*/
 const rootReducer = combineReducers({
   // components
-  // footer
+  weather: weatherReducer,
   selectedLanguage: selectedLanguageReducer,
-  // home
-  // search
+  // containers
   items: itemsReducer,
   selectedItem: selectedItemReducer,
 });

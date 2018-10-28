@@ -11,4 +11,3 @@ export const selectItemAction = (item) => {
     payload: item,
   };
 };
-

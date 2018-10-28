@@ -22,21 +22,14 @@ class App extends Component {
   render () {
     return (<Router>
       <div id="app">
-        {/* Preloader */}
         <PreLoader/>
-
-        {/* Header */}
         <Header />
-
-        {/* Main Container */}
-        <div>
+        <div className="container">
           <div className="row">
             <Route exact path="/" component={HomePage} />
             <Route exact path="/search" component={SearchPage} />
           </div>
         </div>
-
-        {/* Footer */}
         <Footer />
       </div>
     </Router>);

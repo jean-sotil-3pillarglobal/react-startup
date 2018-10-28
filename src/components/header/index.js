@@ -1,5 +1,9 @@
-import _ from 'lodash';
+import { bindActionCreators } from 'redux';
 import { Component } from 'react';
+import { connect } from 'react-redux';
+
+// fetchWeatherAction
+import { fetchWeatherAction } from '../../store/actions/components/header';
 
 class Header extends Component {
   constructor (props) {
@@ -9,27 +13,48 @@ class Header extends Component {
     this.state = {
       term: '',
     };
+
+    // todo: add debounce
+    // proxies - on[el][e]
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   render() {
-    // todo: add debounce
-    // proxies - proxy[el][e]
-    const proxyInputChange = this.handleInputChange.bind(this);
-
     return (
       <header>
-        <input
-          value = { this.state.value }
-          onChange={proxyInputChange} />
-        Value of the input: {this.state.term}
+        <form
+          className="input-group"
+          onSubmit={this.onFormSubmit}>
+          <input
+            placeholder="Get a five-day forecast in your favorite cities"
+            className="form-control"
+            value = { this.state.term }
+            onChange={this.onInputChange} />
+          <span className="input-group-btn">
+            <button type="submit" className="btn btn-link" >Submit</button>
+          </span>
+        </form>
       </header>
     );
   }
 
-  // naming: handle[el][e]
-  handleInputChange (evt) {
+  onInputChange (evt) {
     this.setState({ term: evt.target.value });
+  }
+
+  onFormSubmit (evt) {
+    evt.preventDefault();
+    this.props.fetchWeather(this.state.term);
+    this.setState({ term: '' });
   }
 }
 
-export default Header;
+// dispatch actionCreators
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    fetchWeather: fetchWeatherAction,
+  }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(Header);
