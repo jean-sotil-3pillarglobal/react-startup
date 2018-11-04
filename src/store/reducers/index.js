@@ -28,12 +28,10 @@ import {
 // combining reducers on rootReducer
 */
 const rootReducer = combineReducers({
-  // components
-  weather: weatherReducer,
-  selectedLanguage: selectedLanguageReducer,
-  // containers
   items: itemsReducer,
   selectedItem: selectedItemReducer,
+  selectedLanguage: selectedLanguageReducer,
+  weather: weatherReducer,
 });
 
 export default rootReducer;

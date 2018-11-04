@@ -1,11 +1,7 @@
 
 module.exports = {
   use: [
-    ['@neutrinojs/react', {
-      html: {
-        title: 'Startup'
-      }
-    }],
+    ['@neutrinojs/react', {}],
     ['@neutrinojs/style-loader', {
       style: {},
       css: {},
@@ -59,9 +55,25 @@ module.exports = {
           'object-curly-newline': 0,
           'object-shorthand': 0,
           'quote-props': 0,
+          'sort-keys': 1,
           'space-before-function-paren': 0,
         }
       }
+    }],
+    ['@neutrinojs/html-template', {
+      title: 'Adify | SEM Solutions',
+      inject: false,
+      appMountId: 'root',
+      xhtml: true,
+      mobile: true,
+      minify: {
+        useShortDoctype: true,
+        keepClosingSlash: true,
+        collapseWhitespace: true,
+        preserveLineBreaks: true
+      },
+      pluginId: 'html',
+      headHtmlSnippet: '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">',
     }],
     // custom config here (undefined)
     (neutrino) => {}

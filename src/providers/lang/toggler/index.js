@@ -12,6 +12,7 @@ class LangToggler extends Component {
       language: null,
     };
   }
+
   render() {
     // default language
     let language = 'es';

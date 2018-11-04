@@ -1,30 +1,38 @@
-import React from 'react';
 import $ from 'jquery';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import PropTypes from 'prop-types';
+import { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 
-import './index.scss';
+const styles = {
+  barColorPrimary: {
+    backgroundColor: '#000',
+  },
+  colorPrimary: {
+    backgroundColor: '#fff',
+  },
+  root: {
+    flexGrow: 1,
+  },
+};
 
-class PreLoader extends React.Component {
+class PreLoader extends Component {
   componentDidMount() {
-    $('#preloader').delay(500).fadeOut('fast');
+    $('#preloader').delay(1000).fadeOut('ease-out');
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div id="preloader">
-        <div className="container">
-          <div className="col-md-12">
-            <div className="sbook">
-              <h2>CODE<span className="color">loading</span></h2>
-              <div className="spinner">
-                <div className="double-bounce1"></div>
-                <div className="double-bounce2"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <LinearProgress />
       </div>
     );
   }
 }
 
-export default PreLoader;
+PreLoader.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(PreLoader);

@@ -1,3 +1,4 @@
+import CssBaseline from '@material-ui/core/CssBaseline';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -7,12 +8,6 @@ import Async from './containers/async-component';
 // styles
 import styles from './resources/styles/index.scss';
 
-// components
-const Header = Async(() => import('./components/header').then(module => module.default), {});
-const Footer = Async(() => import('./components/footer').then(module => module.default), {});
-const PreLoader = Async(() => import('./components/commons/preloader').then(module => module.default), {});
-
-
 // containers
 const HomePage = Async(() => import('./containers/home').then(module => module.default), { name: 'Home' });
 const SearchPage = Async(() => import('./containers/search').then(module => module.default), { name: 'Home' });
@@ -20,19 +15,17 @@ const SearchPage = Async(() => import('./containers/search').then(module => modu
 // main
 class App extends Component {
   render () {
-    return (<Router>
-      <div id="app">
-        <PreLoader/>
-        <Header />
-        <div className="container">
-          <div className="row">
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <Router>
+          <div id="container">
             <Route exact path="/" component={HomePage} />
             <Route exact path="/search" component={SearchPage} />
           </div>
-        </div>
-        <Footer />
-      </div>
-    </Router>);
+        </Router>
+      </React.Fragment>
+    );
   }
 }
 
