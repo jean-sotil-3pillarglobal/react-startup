@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { Component } from 'react';
@@ -10,15 +11,11 @@ import {
   Grid,
   IconButton,
   InputBase,
+  Link,
   Toolbar,
   Typography,
   withStyles,
 } from '@material-ui/core';
-
-import {
-  Menu as MenuIcon,
-  Search as MenuSearch,
-} from '@material-ui/icons';
 
 // fetchWeatherAction
 import { fetchWeatherAction } from '../../store/actions/components/header';
@@ -27,14 +24,17 @@ import { fetchWeatherAction } from '../../store/actions/components/header';
 import LangToggler from '../../providers/lang/toggler';
 
 const styles = theme => ({
-  appBar: {
-    padding: theme.spacing.unit * 2,
+  bar: {
+    backgroundColor: '#ffffff',
   },
   grow: {
     flexGrow: 1,
   },
   label: {
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.contrastText,
+  },
+  logo: {
+    width: '100%',
   },
   menuButton: {},
   paper: {
@@ -72,35 +72,54 @@ class Header extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <AppBar position="static" className={classes.appBar}>
-          <Toolbar>
+      <div className={classNames(classes.root, classes.grow)}>
+        <AppBar position="static" className={classes.bar}>
+          <Toolbar className={classes.toolbar}>
             <Grid container
               spacing={16}
               direction="row"
-              alignItems="center"
-              justify="center">
-
-              <Grid item xs={6} sm={1} md={1} align="center">
-                <IconButton className={classes.menuButton} color="secondary" aria-label="Menu" align="center">
-                  <MenuIcon align="center" />
-                </IconButton>
-              </Grid>
-              <Grid item xs={6} sm={6} md={6}>
-                <Typography variant="h2" color="secondary" noWrap>
-                  Adify
-                  <Typography className={classes.label} component="p" color="primary">
-                    <LangToggler id="components.header.caption"></LangToggler>
-                  </Typography>
-                </Typography>
-              </Grid>
-              <Grid item xs={6} sm={5} md={5} align="right">
-                <Button size="medium" className={classes.label}>
-                  <LangToggler id="components.header.cta-learn"></LangToggler>
-                </Button>
-                <Button size="medium" variant="outlined" color="secondary">
-                  <LangToggler id="components.header.cta-sign"></LangToggler>
-                </Button>
+              justify="center"
+              alignItems="center">
+              <Grid item xs={10} sm={8} md={8} align="center">
+                <Grid container
+                  spacing={16}
+                  direction="row"
+                  justify="center"
+                  alignItems="flex-end">
+                  <Grid item md={3} align="center">
+                    <Button
+                      component='a'
+                      color='primary'
+                      className={classes.button}
+                      fullWidth>
+                      <LangToggler id="components.header.btn-nav-1"></LangToggler>
+                    </Button>
+                  </Grid>
+                  <Grid item md={3} align="center">
+                    <Button
+                      color='primary'
+                      className={classes.button}
+                      fullWidth>
+                      <LangToggler id="components.header.btn-nav-2"></LangToggler>
+                    </Button>
+                  </Grid>
+                  <Grid item md={3} align="center">
+                    <Button
+                      color='primary'
+                      className={classes.button}
+                      fullWidth>
+                      <LangToggler id="components.header.btn-nav-3"></LangToggler>
+                    </Button>
+                  </Grid>
+                  <Grid item md={3} align="center">
+                    <Button
+                      color='primary'
+                      className={classes.button}
+                      fullWidth>
+                      <LangToggler id="components.header.btn-nav-4"></LangToggler>
+                    </Button>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Toolbar>

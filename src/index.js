@@ -37,15 +37,15 @@ const theme = createMuiTheme({
     },
     primary: {
       contrastText: '#ffffff',
-      dark: '#000000',
-      light: '#e8eff4',
-      main: '#212121',
+      dark: '#001064',
+      light: '#5f5fc4',
+      main: '#283593',
     },
     secondary: {
       contrastText: '#000000',
-      dark: '#008ba3',
-      light: '#62efff',
-      main: '#00bcd4',
+      dark: '#75ccb9',
+      light: '#dbffff',
+      main: '#a7ffeb',
     },
   },
   typography: {

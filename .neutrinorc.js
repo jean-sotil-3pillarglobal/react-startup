@@ -61,7 +61,7 @@ module.exports = {
       }
     }],
     ['@neutrinojs/html-template', {
-      title: 'Adify | SEM Solutions',
+      title: 'AllyInsuranceHub',
       inject: false,
       appMountId: 'root',
       xhtml: true,

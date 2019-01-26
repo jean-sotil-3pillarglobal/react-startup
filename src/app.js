@@ -1,12 +1,19 @@
-import CssBaseline from '@material-ui/core/CssBaseline';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import {
+  withStyles,
+} from '@material-ui/core';
 
 // async component
 import Async from './containers/async-component';
 
-// styles
-import styles from './resources/styles/index.scss';
+
+const styles = theme => ({
+  container: {
+    backgroundColor: theme.palette.primary.light,
+  },
+});
 
 // containers
 const HomePage = Async(() => import('./containers/home').then(module => module.default), { name: 'Home' });
@@ -15,9 +22,10 @@ const SearchPage = Async(() => import('./containers/search').then(module => modu
 // main
 class App extends Component {
   render () {
+    const { classes } = this.props;
+
     return (
       <React.Fragment>
-        <CssBaseline />
         <Router>
           <div id="container">
             <Route exact path="/" component={HomePage} />
@@ -29,4 +37,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
