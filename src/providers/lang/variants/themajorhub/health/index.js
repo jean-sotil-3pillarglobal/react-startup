@@ -45,14 +45,6 @@ const Verbiage = {
   },
 };
 
-const VerbiageSchema = {
-  'components.header.nav1': LangProxy(Verbiage, 'components.header.nav1'),
-  'components.header.nav2': LangProxy(Verbiage, 'components.header.nav2'),
-  'components.header.nav3': LangProxy(Verbiage, 'components.header.nav3'),
-  'components.header.nav4': LangProxy(Verbiage, 'components.header.nav4'),
-  'components.hero.cta1': LangProxy(Verbiage, 'components.hero.cta1'),
-  'components.hero.subtitle': LangProxy(Verbiage, 'components.hero.subtitle'),
-  'components.hero.title': LangProxy(Verbiage, 'components.hero.title'),
-};
-
-export default VerbiageSchema;
+export default function VerbiageSchema (id) {
+  return LangProxy(Verbiage, id);
+}

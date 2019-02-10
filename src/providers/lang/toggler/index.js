@@ -31,8 +31,8 @@ class LangToggler extends Component {
     // TODO: dynamic injection
     this.props.selectVariantVerbiage(VariantHealth);
 
-    if (this.props.selectedVariantVerbiage && this.props.selectedVariantVerbiage[this.props.id]) {
-      copy = this.props.selectedVariantVerbiage[this.props.id][this.props.selectedLanguage];
+    if (this.props.selectedVariantVerbiage && this.props.selectedVariantVerbiage(this.props.id)) {
+      copy = this.props.selectedVariantVerbiage(this.props.id)[this.props.selectedLanguage];
     } else {
       // for testing...
       switch (this.props.id) {

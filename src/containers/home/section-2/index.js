@@ -24,50 +24,55 @@ import { BaseButton } from './../../../components/commons/button';
 
 const styles = theme => ({
   card: {
+    background: theme.palette.background.transparent,
+    boxShadow: 'initial',
     maxWidth: '100%',
     textAlign: 'center',
-  },
-  firstRow: {
-    paddingBottom: '4px',
   },
   icon: {
     fontSize: '3.4em',
   },
-  products: {
+  items: {
     background: theme.palette.background.light,
     borderRadius: '0',
     boxShadow: 'none',
     marginTop: '-90px',
-    padding: '74px 0',
+    padding: '64px',
+  },
+  subtitle: {
+    marginBottom: '80px',
+  },
+  title: {
+    marginBottom: '20px',
   },
 });
 
 class Products extends Component {
   render () {
     const { classes } = this.props;
-    const products = [{
-      cta: 'containers.home.products.cta1',
-      description: 'containers.home.products.description1',
+    const items = [{
+      cta: 'containers.features.cta1',
+      description: 'containers.home.items.description1',
       icon: 'auto',
-      title: 'containers.home.products.title1',
+      title: 'containers.home.items.title1',
       type: 'auto',
     }, {
-      cta: 'containers.home.products.cta2',
-      description: 'containers.home.products.description2',
+      cta: 'containers.home.items.cta2',
+      description: 'containers.home.items.description2',
       icon: 'dental',
-      title: 'containers.home.products.title2',
+      title: 'containers.home.items.title2',
       type: 'dental',
     }, {
-      cta: 'containers.home.products.cta3',
-      description: 'containers.home.products.description3',
+      cta: 'containers.home.items.cta3',
+      description: 'containers.home.items.description3',
       icon: 'health',
-      title: 'containers.home.products.title3',
+      title: 'containers.home.items.title3',
       type: 'health',
     }, {
-      cta: 'containers.home.products.cta4',
-      description: 'containers.home.products.description4',
+      cta: 'containers.home.items.cta4',
+      description: 'containers.home.items.description4',
       icon: 'boat',
-      title: 'containers.home.products.title4',
+      title: 'containers.home.items.title4',
       type: 'boat',
     }];
 
@@ -84,15 +89,30 @@ class Products extends Component {
             md={8}
             lg={8}>
             <Paper
-              className={classes.products}
+              className={classes.items}
             >
               <Grid
                 container
                 direction="row"
                 justify="center"
-                alignItems="center"
-                className={classes.firstRow}>
-                {products.map(product => (
+                alignItems="center">
+                <Grid
+                  item
+                  sm={12}
+                  md={12}
+                  lg={12}>
+                  <Typography
+                    variant="h2"
+                    className={classes.title}>
+                    <LangToggler id="tbd"></LangToggler>
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.subtitle}>
+                    <LangToggler id="tbd"></LangToggler>
+                  </Typography>
+                </Grid>
+                {items.map(product => (
                   <Grid
                     item
                     sm={6}

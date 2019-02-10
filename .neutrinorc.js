@@ -44,12 +44,14 @@ module.exports = {
           'arrow-body-style': 0,
           'babel/new-cap': false,
           'class-methods-use-this': 0,
+          'dot-notation': 0,
           'id-length': 0,
           'import/no-named-as-default-member': 0,
           'indent': [1, 2],
           'linebreak-style': 0,
           'max-len': 0,
           'no-console': 0,
+          'no-restricted-syntax': 0,
           'no-undef': 0,
           'no-unused-vars': [0, { 'vars': 'local', 'args': 'none' }],
           'object-curly-newline': 0,
@@ -61,7 +63,7 @@ module.exports = {
       }
     }],
     ['@neutrinojs/html-template', {
-      title: 'Landing',
+      title: 'The MajorHub',
       inject: false,
       appMountId: 'root',
       xhtml: true,

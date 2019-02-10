@@ -17,6 +17,13 @@ import store from './store';
 
 // overrides global styles
 const theme = createMuiTheme({
+  overrides: {
+    MuiCardActionArea: {
+      focusHighlight: {
+        display: 'none',
+      },
+    },
+  },
   palette: {
     background: {
       blackish: 'rgba(46,46,46,1)',
@@ -50,6 +57,57 @@ const theme = createMuiTheme({
     },
   },
   typography: {
+    body1: {
+      fontSize: '0.875rem',
+      fontWeight: 300,
+    },
+    body2: {
+      fontSize: '1rem',
+      fontWeight: 400,
+    },
+    caption: {
+      fontSize: '1rem',
+      fontWeight: 300,
+    },
+    fontWeight: 300,
+    h1: {
+      fontSize: '3.3rem',
+      fontWeight: 400,
+    },
+    h2: {
+      fontSize: '3rem',
+      fontWeight: 400,
+    },
+    h3: {
+      fontSize: '1.375rem',
+      fontWeight: 300,
+      lineHeight: '1.375rem',
+      marginBottom: '10px',
+    },
+    h4: {
+      fontSize: '1.23rem',
+      fontWeight: 300,
+    },
+    h5: {
+      fontSize: '1.125rem',
+      fontWeight: 300,
+    },
+    h6: {
+      fontSize: '1rem',
+      fontWeight: 300,
+    },
+    overline: {
+      fontSize: '1rem',
+      fontWeight: 300,
+    },
+    subtitle1: {
+      fontSize: '1.4rem',
+      fontWeight: 300,
+    },
+    subtitle2: {
+      fontSize: '1.2rem',
+      fontWeight: 300,
+    },
     useNextVariants: true,
   },
 });
