@@ -1,9 +1,15 @@
+import { bindActionCreators } from 'redux';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-// languages
-import LangES from '../es';
-import LangEN from '../en';
+// action creators
+import {
+  selectLanguageAction,
+  selectVariantVerbiageAction,
+} from '../../../store/actions/components/footer';
+
+// TODO: dynamic injection
+import VariantHealth from '../variants/themajorhub/health';
 
 class LangToggler extends Component {
   constructor (props) {
@@ -15,21 +21,39 @@ class LangToggler extends Component {
 
   render() {
     // default language
-    let language = 'es';
-    console.log(this.props.selectedLanguage);
-    if (this.props.selectedLanguage) {
-      language = this.props.selectedLanguage;
+    let copy = '';
+    const defaultLang = 'es';
+
+    if (this.props.selectedLanguage === '') {
+      this.props.selectLanguage(defaultLang);
     }
 
-    switch (language) {
-    case 'en':
-      this.state.language = LangEN;
-      break;
-    default:
-      this.state.language = LangES;
+    // TODO: dynamic injection
+    this.props.selectVariantVerbiage(VariantHealth);
+
+    if (this.props.selectedVariantVerbiage && this.props.selectedVariantVerbiage[this.props.id]) {
+      copy = this.props.selectedVariantVerbiage[this.props.id][this.props.selectedLanguage];
+    } else {
+      // for testing...
+      switch (this.props.id) {
+      case 'dummy.title':
+        copy = 'title';
+        break;
+      case 'dummy.subtitle':
+        copy = 'subtitle subtitle';
+        break;
+      case 'dummy.caption':
+        copy = 'caption caption caption';
+        break;
+      case 'dummy.button':
+        copy = 'button';
+        break;
+      default:
+        copy = 'dummy';
+      }
     }
 
-    return this.state.language[this.props.id];
+    return copy;
   }
 }
 
@@ -37,7 +61,16 @@ class LangToggler extends Component {
 function mapStateToProps (state) {
   return {
     selectedLanguage: state.selectedLanguage,
+    selectedVariantVerbiage: state.selectedVariantVerbiage,
   };
 }
 
-export default connect(mapStateToProps)(LangToggler);
+// dispatch actionCreators
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    selectLanguage: selectLanguageAction,
+    selectVariantVerbiage: selectVariantVerbiageAction,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LangToggler);

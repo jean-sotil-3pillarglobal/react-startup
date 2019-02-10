@@ -61,7 +61,7 @@ module.exports = {
       }
     }],
     ['@neutrinojs/html-template', {
-      title: 'AllyInsuranceHub',
+      title: 'Landing',
       inject: false,
       appMountId: 'root',
       xhtml: true,
@@ -73,7 +73,7 @@ module.exports = {
         preserveLineBreaks: true
       },
       pluginId: 'html',
-      headHtmlSnippet: '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">',
+      headHtmlSnippet: '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">',
     }],
     // custom config here (undefined)
     (neutrino) => {}

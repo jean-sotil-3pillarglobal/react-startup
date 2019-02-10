@@ -1,22 +1,34 @@
+import axios from 'axios';
+
 import ConstantsProvider from '../constants/index';
 
-function get (url, cb) {
-  fetch(url)
-    .then(response => response.json())
-    .then(data => cb(data));
+function makeRequest (url) {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(url)
+      .then(response => {
+        resolve(response);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
 }
 
-function makeUrl (path) {
-  return `${ConstantsProvider.services.endpoint}${path}`;
-}
-
-function getUsers (cb) {
-  return get(makeUrl(ConstantsProvider.services.users), data => cb(data));
+function makeMultipleRequest (promises) {
+  return new Promise((resolve, reject) => 
+    axios.all(promises).then((results) => {
+      resolve(results);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+  });
 }
 
 const DataProvider = {
-  get: get,
-  getUsers: getUsers,
+  makeRequest,
+  makeMultipleRequest,
 };
 
 export default DataProvider;

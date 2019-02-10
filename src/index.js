@@ -28,6 +28,7 @@ const theme = createMuiTheme({
       gradientGray: 'linear-gradient(180deg, rgba(238,238,238,1) 0%, rgba(220,220,220,1) 80%)',
       light: '#fafafa',
       main: '#e9e9e9',
+      transparent: 'rgba(0,0,0,0)',
     },
     error: {
       contrastText: '#fff',

@@ -17,7 +17,6 @@ const styles = theme => ({
 
 // containers
 const HomePage = Async(() => import('./containers/home').then(module => module.default), { name: 'Home' });
-const SearchPage = Async(() => import('./containers/search').then(module => module.default), { name: 'Home' });
 
 // main
 class App extends Component {
@@ -29,7 +28,6 @@ class App extends Component {
         <Router>
           <div id="container">
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/search" component={SearchPage} />
           </div>
         </Router>
       </React.Fragment>

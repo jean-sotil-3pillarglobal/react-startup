@@ -1,20 +1,17 @@
 import $ from 'jquery';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
-  barColorPrimary: {
-    backgroundColor: '#000',
-  },
-  colorPrimary: {
-    backgroundColor: '#fff',
-  },
+import {
+  LinearProgress,
+  withStyles,
+} from '@material-ui/core';
+
+const styles = theme => ({
   root: {
     flexGrow: 1,
+    visibility: 'visible',
   },
-};
+});
 
 class PreLoader extends Component {
   componentDidMount() {
@@ -22,17 +19,16 @@ class PreLoader extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes,
+    } = this.props;
+
     return (
-      <div id="preloader">
-        <LinearProgress />
+      <div id="preloader" className={classes.root}>
+        <LinearProgress color="secondary" />
       </div>
     );
   }
 }
-
-PreLoader.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(PreLoader);
