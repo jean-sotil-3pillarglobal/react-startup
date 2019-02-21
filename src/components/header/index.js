@@ -29,6 +29,7 @@ import {
 
 // provider
 import LangToggler from '../../providers/lang/toggler';
+import LangGenerateId from '../../providers/utils/lang.generate.id';
 
 // components
 import PreLoader from './../commons/preloader';
@@ -76,6 +77,10 @@ const styles = theme => ({
   drawerPaper: {
     width: drawerWidth,
   },
+  h3: {
+    marginBottom: 0,
+    marginLeft: theme.spacing.unit * 5,
+  },
   hide: {
     display: 'none',
   },
@@ -87,6 +92,18 @@ const styles = theme => ({
     display: 'flex',
   },
 });
+
+const NODE_ROOT = 'components';
+const NODE_TYPE = 'header';
+const NODE_TREE = [NODE_ROOT, NODE_TYPE];
+// copy
+const COPY_TREE = [
+  LangGenerateId(NODE_TREE, 'nav1'),
+  LangGenerateId(NODE_TREE, 'nav2'),
+  LangGenerateId(NODE_TREE, 'nav3'),
+  LangGenerateId(NODE_TREE, 'nav4'),
+  LangGenerateId(NODE_TREE, 'label'),
+];
 
 class Header extends Component {
   state = {
@@ -102,8 +119,9 @@ class Header extends Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, device } = this.props;
     const { open } = this.state;
+    const isMobile = device === 'mobile';
 
     return (
       <div className={classes.root}>
@@ -115,54 +133,45 @@ class Header extends Component {
           })}>
           <PreLoader />
           <Toolbar disableGutters={!open}>
-            <IconButton
-              color="primary"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, open && classes.hide)}>
-              <Menu />
-            </IconButton>
-            <Grid container
-              spacing={16}
-              direction="row"
-              justify="flex-start"
-              alignItems="center">
-              <Grid
-                item
-                md={5}>
-                <Typography variant="body1" align="left">LOGO</Typography>
-              </Grid>
-              <Grid
-                item
-                md={7}>
-                <Grid
-                  container
-                  spacing={16}
-                  direction="row"
-                  justify="center"
-                  alignItems="flex-end">
-                  <Grid item md={3} align="center">
-                    <BaseButton
-                      langId='components.header.nav1'
-                      typeButton={TYPES.LINK} />
-                  </Grid>
-                  <Grid item md={3} align="center">
-                    <BaseButton
-                      langId='components.header.nav2'
-                      typeButton={TYPES.LINK} />
-                  </Grid>
-                  <Grid item md={3} align="center">
-                    <BaseButton
-                      langId='components.header.nav3'
-                      typeButton={TYPES.LINK} />
-                  </Grid>
-                  <Grid item md={3} align="center">
-                    <BaseButton
-                      langId='components.header.nav4'/>
-                  </Grid>
+            {isMobile ?
+              <IconButton
+                aria-label="Open drawer"
+                onClick={this.handleDrawerOpen}
+                className={classNames(classes.menuButton, open && classes.hide)}>
+                <Menu />
+              </IconButton> : null
+            }
+
+            <Typography variant="h3" align="left" className={classes.h3}>
+              <LangToggler id={COPY_TREE[4]} />
+            </Typography>
+            {!open && !isMobile ?
+              <Grid container
+                spacing={16}
+                direction="row"
+                justify="flex-end"
+                alignItems="center">
+                <Grid item md={2} align="center">
+                  <BaseButton
+                    langId={COPY_TREE[0]}
+                    typeButton={TYPES.LINK} />
                 </Grid>
-              </Grid>
-            </Grid>
+                <Grid item md={2} align="center">
+                  <BaseButton
+                    langId={COPY_TREE[1]}
+                    typeButton={TYPES.LINK} />
+                </Grid>
+                <Grid item md={2} align="center">
+                  <BaseButton
+                    langId={COPY_TREE[2]}
+                    typeButton={TYPES.LINK} />
+                </Grid>
+                <Grid item md={2} align="center">
+                  <BaseButton
+                    langId={COPY_TREE[3]}/>
+                </Grid>
+              </Grid> : null
+            }
           </Toolbar>
         </AppBar>
         <Drawer
@@ -181,17 +190,9 @@ class Header extends Component {
           </div>
           <Divider />
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
+            {COPY_TREE.slice(0, 4).map(id => (
+              <ListItem button key={id}>
+                <LangToggler id={id}></LangToggler>
               </ListItem>
             ))}
           </List>
@@ -203,7 +204,15 @@ class Header extends Component {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
+  device: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default connect(null, null)(withStyles(styles, { withTheme: true })(Header));
+// map state to props
+function mapStateToProps (state) {
+  return {
+    device: state.getDevice,
+  };
+}
+
+export default connect(mapStateToProps, null)(withStyles(styles, { withTheme: true })(Header));

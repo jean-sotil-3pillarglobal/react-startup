@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { ParallaxBanner } from 'react-scroll-parallax';
 
 import {
   FormControl,
@@ -16,7 +17,6 @@ import {
 // provider
 import LangToggler from './../../../providers/lang/toggler';
 import LangGenerateId from './../../../providers/utils/lang.generate.id';
-import LangYields from './../../../providers/utils/lang.yields';
 
 // components
 import { BaseButton } from './../../../components/commons/button';
@@ -35,13 +35,18 @@ const styles = theme => ({
     width: '100%',
   },
   hero: {
-    background: theme.palette.primary.main,
     color: theme.palette.common.white,
     minHeight: '595px',
     padding: '0 2em 1em 2em',
   },
   quote: {
     padding: `${theme.spacing.unit * 6}px`,
+  },
+  subtitle: {
+    margin: `${theme.spacing.unit * 5}px 0`,
+  },
+  title: {
+    lineHeight: '66px',
   },
 });
 
@@ -55,45 +60,61 @@ const COPY_TREE = [
   LangGenerateId(NODE_TREE, 'cta1'),
 ];
 
+const layers = [
+  {
+    amount: 0.1,
+    image: 'https://foo.com/foo.jpg',
+    slowerScrollRate: false,
+  },
+  {
+    amount: 0.2,
+    image: 'https://foo.com/bar.png',
+    slowerScrollRate: false,
+  },
+];
+
 class Hero extends Component {
   render () {
     const { classes, selectedLanguage } = this.props;
     return (
       <Fragment>
-        <Grid
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="center"
+        <ParallaxBanner
+          layers={layers}
           className={classes.hero}>
           <Grid
-            item
-            md={8}>
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="center">
             <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center">
+              item
+              md={8}>
               <Grid
-                item
-                md={12}
-                className={classes.content}>
-                <Typography variant="h1" gutterBottom align="left">
-                  <LangToggler id={COPY_TREE[0]}></LangToggler>
-                </Typography>
-                <Typography paragraph align="left">
-                  <LangToggler id={COPY_TREE[1]}></LangToggler>
-                </Typography>
-              </Grid>
-              <Grid
-                item
-                md={12}>
-                <BaseButton
-                  langId={COPY_TREE[2]}/>
+                container
+                direction="row"
+                justify="center"
+                alignItems="center">
+                <Grid
+                  item
+                  md={12}
+                  className={classes.content}>
+                  <Typography variant="h1" align="left" className={classes.title}>
+                    <LangToggler id={COPY_TREE[0]}></LangToggler>
+                  </Typography>
+                  <Typography variant="subtitle2" align="left" className={classes.subtitle}>
+                    <LangToggler id={COPY_TREE[1]}></LangToggler>
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  md={12}>
+                  <BaseButton
+                    langId={COPY_TREE[2]}/>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </ParallaxBanner>
       </Fragment>
     );
   }

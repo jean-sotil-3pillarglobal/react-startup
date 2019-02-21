@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import UAParser from 'ua-parser-js';
+import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import {
   withStyles,
@@ -8,10 +12,13 @@ import {
 // async component
 import Async from './containers/async-component';
 
+// action creators
+import { setDeviceAction } from './store/actions/global';
 
 const styles = theme => ({
   container: {
-    backgroundColor: theme.palette.primary.light,
+    margin: '0 auto',
+    maxWidth: '1024px',
   },
 });
 
@@ -20,19 +27,57 @@ const HomePage = Async(() => import('./containers/home').then(module => module.d
 
 // main
 class App extends Component {
-  render () {
-    const { classes } = this.props;
+  updateDimensions () {
+    const { setDevice } = this.props;
+    const ua = new UAParser().getDevice();
+    const { type } = ua;
+    if (type) {
+      setDevice(type);
+    } else {
+      setDevice('desktop');
+    }
+  }
 
-    return (
-      <React.Fragment>
+  componentDidMount () {
+    window.addEventListener('resize', this.updateDimensions.bind(this));
+  }
+
+  componentWillMount () {
+    // check browser
+    this.updateDimensions();
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.updateDimensions.bind(this));
+  }
+
+  render () {
+    const { classes, device } = this.props;
+    return (device ?
+      <Fragment>
         <Router>
-          <div id="container">
-            <Route exact path="/" component={HomePage} />
-          </div>
+          <ParallaxProvider>
+            <div className={classes.container}>
+              <Route exact path="/" component={HomePage} />
+            </div>
+          </ParallaxProvider>
         </Router>
-      </React.Fragment>
-    );
+      </Fragment> : null);
   }
 }
 
-export default withStyles(styles)(App);
+// map state to props
+function mapStateToProps (state) {
+  return {
+    device: state.getDevice,
+  };
+}
+
+// dispatch actionCreators
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    setDevice: setDeviceAction,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App));

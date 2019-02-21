@@ -25,7 +25,7 @@ class PreLoader extends Component {
 
     return (
       <div id="preloader" className={classes.root}>
-        <LinearProgress color="secondary" />
+        <LinearProgress color="primary" />
       </div>
     );
   }

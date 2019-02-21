@@ -5,19 +5,16 @@ import { connect } from 'react-redux';
 import {
   Button,
   Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
   Grid,
   Icon,
-  Paper,
   Typography,
   withStyles,
 } from '@material-ui/core';
 
 // provider
-import LangToggler from '../../../providers/lang/toggler';
+import LangGenerateId from './../../../providers/utils/lang.generate.id';
+import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
+import LangToggler from './../../../providers/lang/toggler';
 
 // components
 import { BaseButton } from './../../../components/commons/button';
@@ -29,52 +26,41 @@ const styles = theme => ({
     maxWidth: '100%',
     textAlign: 'center',
   },
+  cta: {
+    padding: `${theme.spacing.unit * 6}px 0`,
+  },
   icon: {
     fontSize: '3.4em',
   },
   items: {
-    background: theme.palette.background.light,
-    borderRadius: '0',
-    boxShadow: 'none',
-    marginTop: '-90px',
-    padding: '64px',
+    padding: `0 2em ${theme.spacing.unit * 10}px 2em`,
   },
   subtitle: {
-    marginBottom: '80px',
+    marginBottom: `${theme.spacing.unit * 8}px`,
   },
   title: {
-    marginBottom: '20px',
+    marginBottom: `${theme.spacing.unit * 6}px`,
   },
 });
 
+const NODE_ROOT = 'components';
+const NODE_TYPE = 'features';
+// copy:
+// 1 title
+// 4 items
+const copyTree = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
+  'title',
+  'body',
+  'items-4-body',
+  'items-4-cta',
+  'items-4-ico',
+  'items-4-title',
+  'items-4-type',
+]);
+
 class Products extends Component {
   render () {
-    const { classes } = this.props;
-    const items = [{
-      cta: 'containers.features.cta1',
-      description: 'containers.home.items.description1',
-      icon: 'auto',
-      title: 'containers.home.items.title1',
-      type: 'auto',
-    }, {
-      cta: 'containers.home.items.cta2',
-      description: 'containers.home.items.description2',
-      icon: 'dental',
-      title: 'containers.home.items.title2',
-      type: 'dental',
-    }, {
-      cta: 'containers.home.items.cta3',
-      description: 'containers.home.items.description3',
-      icon: 'health',
-      title: 'containers.home.items.title3',
-      type: 'health',
-    }, {
-      cta: 'containers.home.items.cta4',
-      description: 'containers.home.items.description4',
-      icon: 'boat',
-      title: 'containers.home.items.title4',
-      type: 'boat',
-    }];
+    const { classes, selectedVariantVerbiage } = this.props;
 
     return (
       <Fragment>
@@ -82,65 +68,69 @@ class Products extends Component {
           container
           direction="row"
           justify="center"
-          alignItems="center">
+          alignItems="center"
+          className={classes.items}>
           <Grid
-            item
-            sm={10}
-            md={8}
-            lg={8}>
-            <Paper
-              className={classes.items}
-            >
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center">
-                <Grid
-                  item
-                  sm={12}
-                  md={12}
-                  lg={12}>
-                  <Typography
-                    variant="h2"
-                    className={classes.title}>
-                    <LangToggler id="tbd"></LangToggler>
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.subtitle}>
-                    <LangToggler id="tbd"></LangToggler>
-                  </Typography>
+            item>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center">
+              <Grid item
+                sm={12}
+                md={12}>
+                <Typography
+                  variant="h2"
+                  className={classes.title}>
+                  <LangToggler id={copyTree.title}></LangToggler>
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  className={classes.subtitle}>
+                  <LangToggler id={copyTree.body}></LangToggler>
+                </Typography>
+                <Grid container spacing={24}>
+                  {copyTree.items.map(item => (
+                    <Grid
+                      item
+                      sm={12}
+                      md={3}
+                      lg={3}
+                      key={item.type}>
+                      <Card className={classes.card}>
+                        <Grid container>
+                          <Grid item
+                            xs={12}
+                            sm={12}
+                            md={12}>
+                            <Icon
+                              className={classes.icon}
+                            >{selectedVariantVerbiage(item.ico)}</Icon>
+                          </Grid>
+                          <Grid item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            className={classes.cta}>
+                            <BaseButton langId={item.cta}/>
+                          </Grid>
+                          <Grid item
+                            xs={12}
+                            sm={12}
+                            md={12}>
+                            <Typography
+                              variant="body1">
+                              <LangToggler id={item.body}></LangToggler>
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Card>
+                    </Grid>
+                  ))}
                 </Grid>
-                {items.map(product => (
-                  <Grid
-                    item
-                    sm={6}
-                    md={3}
-                    lg={3}
-                    key={product.type}>
-                    <Card className={classes.card}>
-                      <CardActionArea>
-                        <CardContent>
-                          <Icon
-                            className={classes.icon}
-                          >call</Icon>
-                          <Typography gutterBottom variant="h5" component="h2">
-                            <LangToggler id={product.title}></LangToggler>
-                          </Typography>
-                          <Typography component="p">
-                            <LangToggler id={product.description}></LangToggler>
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                      <CardActions>
-                        <BaseButton langId={product.cta}/>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                ))}
               </Grid>
-            </Paper>
+            </Grid>
           </Grid>
         </Grid>
       </Fragment>
@@ -148,4 +138,11 @@ class Products extends Component {
   }
 }
 
-export default connect(null, null)(withStyles(styles)(Products));
+// map state to props
+function mapStateToProps (state) {
+  return {
+    selectedVariantVerbiage: state.selectedVariantVerbiage,
+  };
+}
+
+export default connect(mapStateToProps, null)(withStyles(styles)(Products));

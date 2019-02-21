@@ -1,5 +1,6 @@
+import HTMLParser from 'html-react-parser';
 import { bindActionCreators } from 'redux';
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 // action creators
@@ -34,26 +35,11 @@ class LangToggler extends Component {
     if (this.props.selectedVariantVerbiage && this.props.selectedVariantVerbiage(this.props.id)) {
       copy = this.props.selectedVariantVerbiage(this.props.id)[this.props.selectedLanguage];
     } else {
-      // for testing...
-      switch (this.props.id) {
-      case 'dummy.title':
-        copy = 'title';
-        break;
-      case 'dummy.subtitle':
-        copy = 'subtitle subtitle';
-        break;
-      case 'dummy.caption':
-        copy = 'caption caption caption';
-        break;
-      case 'dummy.button':
-        copy = 'button';
-        break;
-      default:
-        copy = 'dummy';
-      }
+      copy = 'dummy';
     }
 
-    return copy;
+    // will scape All HTML if presented.
+    return HTMLParser(copy);
   }
 }
 

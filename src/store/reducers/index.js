@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
 
 /*
-// components
+// global
 */
+import {
+  getDeviceReducer,
+} from './global';
 
 // footer
 import {
@@ -18,6 +21,7 @@ import {
 // combining reducers on rootReducer
 */
 const rootReducer = combineReducers({
+  getDevice: getDeviceReducer,
   selectedLanguage: selectedLanguageReducer,
   selectedVariantVerbiage: selectedVariantVerbiageReducer,
 });

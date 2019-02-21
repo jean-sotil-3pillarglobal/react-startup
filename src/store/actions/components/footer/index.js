@@ -15,6 +15,3 @@ export const selectVariantVerbiageAction = (verbiage) => {
     type: VARIANT_VERBIAGE_SELECTED,
   };
 };
-
-// default
-export const defaultAction = null;

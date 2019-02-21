@@ -18,6 +18,7 @@ import Footer from '../../components/footer';
 import Header from '../../components/header';
 import Hero from './section-1';
 import Products from './section-2';
+import Content from './section-3';
 
 const styles = theme => ({
   container: {
@@ -33,6 +34,7 @@ class Home extends Component {
         <Header />
         <Hero />
         <Products />
+        <Content />
         <Footer />
       </Fragment>
     );
