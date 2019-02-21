@@ -6,6 +6,8 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import SmartImg from '../../../providers/utils/smart.img';
+
 const styles = theme => ({
   img: {
     width: '100%',
@@ -14,17 +16,10 @@ const styles = theme => ({
 
 class LayoutImg extends Component {
   render() {
-    const { classes, device } = this.props;
-    let { src } = this.props;
-
-    if (device === 'mobile') {
-      src = `m-${src}`;
-    } else {
-      src = `d-${src}`;
-    }
+    const { classes, device, src } = this.props;
 
     return (
-      <img className={classes.img} src={`/resources/images/${src}`} />
+      <img className={classes.img} src={SmartImg(device, src)} />
     );
   }
 }
@@ -36,6 +31,6 @@ function mapStateToProps (state) {
   };
 }
 
-const SmartImg = connect(mapStateToProps, null)(withStyles(styles)(LayoutImg));
+const Img = connect(mapStateToProps, null)(withStyles(styles)(LayoutImg));
 
-export default SmartImg;
+export default Img;

@@ -58,7 +58,7 @@ class Content extends Component {
   colFromLeft (row) {
     const { classes } = this.props;
     return (
-      <Fragment>
+      <Fragment key={row.title}>
         <Grid item
           xs={12}
           sm={12}
@@ -79,8 +79,9 @@ class Content extends Component {
   colFromRight (row) {
     const { classes } = this.props;
     return (
-      <Fragment>
-        <Grid item
+      <Fragment key={row.title}>
+        <Grid
+          item
           xs={12}
           sm={12}
           md={8}>
@@ -88,7 +89,8 @@ class Content extends Component {
             <LangToggler id={row.body}></LangToggler>
           </Typography>
         </Grid>
-        <Grid item
+        <Grid
+          item
           xs={12}
           sm={12}
           md={4}>
@@ -107,22 +109,33 @@ class Content extends Component {
           direction="row"
           justify="center"
           alignItems="center"
-          className={classes.items}
-          spacing={24}>
+          className={classes.items}>
           <Grid
             item
-            sm={12}
-            md={12}
-            lg={12}>
-            <Typography
-              variant="h2"
-              className={classes.title}>
-              <LangToggler id={copyTree.title}></LangToggler>
-            </Typography>
+            sm={11}
+            md={9}
+            lg={9}>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center">
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}>
+                <Typography
+                  variant="h2"
+                  className={classes.title}>
+                  <LangToggler id={copyTree.title}></LangToggler>
+                </Typography>
+              </Grid>
+              {copyTree.items.map((row, index) => {
+                return index % 2 === 0 ? this.colFromLeft(row) : this.colFromRight(row);
+              })}
+            </Grid>
           </Grid>
-          {copyTree.items.map((row, index) => {
-            return index % 2 === 0 ? this.colFromLeft(row) : this.colFromRight(row);
-          })}
         </Grid>
       </Fragment>
     );

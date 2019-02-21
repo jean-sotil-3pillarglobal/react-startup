@@ -76,8 +76,8 @@ const Verbiage = {
         },
       ],
       title: {
-        en: 'learn about',
-        es: '<u><b>nosotros</b></u> te vamos a guiar!',
+        en: 'blog',
+        es: 'blog',
       },
     },
     drawer: {},
@@ -180,10 +180,18 @@ const Verbiage = {
       },
     },
     hero: {
-      cta1: {
+      cta: {
         en: 'LEARN MORE',
         es: 'APRENDÁ MÁS',
       },
+      items: [
+        {
+          image: 'https://freerangestock.com/sample/118881/mountain-adventure-.jpg',
+        },
+        {
+          image: 'https://freerangestock.com/sample/71354/the-urban-network--a-city-and-its-human-and-electronic-connecti.jpg',
+        },
+      ],
       subtitle: {
         en: '<span>mason is a feature-building platform where modern product teams<br/> design, build, and deploy front-end features together.</span>',
         es: '<span>mason is a feature-building platform where modern product teams<br/> design, build, and deploy front-end features together.</span>',

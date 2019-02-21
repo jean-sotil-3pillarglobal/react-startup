@@ -71,7 +71,10 @@ class Products extends Component {
           alignItems="center"
           className={classes.items}>
           <Grid
-            item>
+            item
+            sm={11}
+            md={9}
+            lg={9}>
             <Grid
               container
               direction="row"

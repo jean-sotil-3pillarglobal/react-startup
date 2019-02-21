@@ -3,7 +3,6 @@ import UAParser from 'ua-parser-js';
 import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { ParallaxProvider } from 'react-scroll-parallax';
 
 import {
   withStyles,
@@ -18,7 +17,6 @@ import { setDeviceAction } from './store/actions/global';
 const styles = theme => ({
   container: {
     margin: '0 auto',
-    maxWidth: '1024px',
   },
 });
 
@@ -56,11 +54,9 @@ class App extends Component {
     return (device ?
       <Fragment>
         <Router>
-          <ParallaxProvider>
-            <div className={classes.container}>
-              <Route exact path="/" component={HomePage} />
-            </div>
-          </ParallaxProvider>
+          <div className={classes.container}>
+            <Route exact path="/" component={HomePage} />
+          </div>
         </Router>
       </Fragment> : null);
   }
