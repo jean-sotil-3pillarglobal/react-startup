@@ -46,7 +46,6 @@ const styles = theme => ({
     margin: `${theme.spacing.unit * 5}px 0`,
   },
   title: {
-    lineHeight: '66px',
   },
 });
 
