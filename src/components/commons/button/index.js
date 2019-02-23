@@ -18,7 +18,7 @@ const styles = theme => ({
     boxShadow: 'none',
     display: 'inline-block',
     margin: '0 auto',
-    padding: '14px 0',
+    padding: '18px 0',
     whiteSpace: 'nowrap',
   },
   danger: {

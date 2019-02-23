@@ -153,8 +153,8 @@ const Verbiage = {
         },
       ],
       title: {
-        en: 'who we are?',
-        es: '<u><b>somos</b></u> un equipo <br/>de expertos',
+        en: 'Need Health <br/>Insurance?',
+        es: 'Tenemos Lo <br/>Que Necesitas',
       },
     },
     header: {
@@ -181,8 +181,8 @@ const Verbiage = {
     },
     hero: {
       cta: {
-        en: 'LEARN MORE',
-        es: 'APRENDÁ MÁS',
+        en: 'start your quote',
+        es: 'Consulta a un agente',
       },
       items: [
         {
@@ -192,13 +192,17 @@ const Verbiage = {
           image: 'https://freerangestock.com/sample/71354/the-urban-network--a-city-and-its-human-and-electronic-connecti.jpg',
         },
       ],
+      label: {
+        en: 'Your Zip Code',
+        es: 'Tú Código de Area',
+      },
       subtitle: {
-        en: '<span>mason is a feature-building platform where modern product teams<br/> design, build, and deploy front-end features together.</span>',
-        es: '<span>mason is a feature-building platform where modern product teams<br/> design, build, and deploy front-end features together.</span>',
+        en: '<span>Healthcare Finder. <br/>Best Affordable Health Insurance in Your Area.</span>',
+        es: '<span>Healthcare Finder. <br/>Best Affordable Health Insurance in Your Area.</span>',
       },
       title: {
-        en: '<span>make front-end<br/> features <br/> faster</span>',
-        es: '<span>make front-end<br/> features <br/> faster</span>',
+        en: '<span>Welcome [FIRST NAME]</span>',
+        es: '<span>Bienvenido [FIRST NAME]</span>',
       },
     },
     modal: {},

@@ -24,16 +24,16 @@ class LangToggler extends Component {
     // default language
     let copy = '';
     const defaultLang = 'es';
+    const { selectLanguage, selectVariantVerbiage, language, verbiage, id } = this.props;
 
-    if (this.props.selectedLanguage === '') {
-      this.props.selectLanguage(defaultLang);
+    if (language === '') {
+      selectLanguage(defaultLang);
+      // TODO: dynamic injection
+      selectVariantVerbiage(VariantHealth);
     }
 
-    // TODO: dynamic injection
-    this.props.selectVariantVerbiage(VariantHealth);
-
-    if (this.props.selectedVariantVerbiage && this.props.selectedVariantVerbiage(this.props.id)) {
-      copy = this.props.selectedVariantVerbiage(this.props.id)[this.props.selectedLanguage];
+    if (verbiage && verbiage(id)) {
+      copy = verbiage(id)[language];
     } else {
       copy = 'dummy';
     }
@@ -46,8 +46,8 @@ class LangToggler extends Component {
 // map state to props
 function mapStateToProps (state) {
   return {
-    selectedLanguage: state.selectedLanguage,
-    selectedVariantVerbiage: state.selectedVariantVerbiage,
+    language: state.selectedLanguage,
+    verbiage: state.selectedVariantVerbiage,
   };
 }
 

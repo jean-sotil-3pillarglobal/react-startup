@@ -9,6 +9,7 @@ import {
   MenuItem,
   Paper,
   Select,
+  TextField,
   Typography,
   withStyles,
 } from '@material-ui/core';
@@ -20,6 +21,7 @@ import LangGenerateId from './../../../providers/utils/lang.generate.id';
 
 // components
 import { BaseButton } from './../../../components/commons/button';
+import BaseInput from './../../../components/commons/input';
 
 const styles = theme => ({
   button: {
@@ -59,6 +61,7 @@ const NODE_TYPE = 'hero';
 const copyTree = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
   'cta',
   'items-2-image',
+  'label',
   'subtitle',
   'title',
 ]);
@@ -68,7 +71,10 @@ class Hero extends Component {
     super(props);
     this.state = {
       layers: [],
+      zipcode: '',
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount () {
@@ -79,6 +85,12 @@ class Hero extends Component {
       layers: copyTree.items.map((item, i) => ({
         image: selectedVariantVerbiage(item.image), // id
       })),
+    });
+  }
+
+  handleChange (evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value,
     });
   }
 
@@ -102,7 +114,8 @@ class Hero extends Component {
               container
               direction="row"
               justify="flex-start"
-              alignItems="center">
+              alignItems="center"
+              spacing={8}>
               <Grid
                 item
                 md={12}
@@ -115,8 +128,23 @@ class Hero extends Component {
                 </Typography>
               </Grid>
               <Grid
-                item
-                md={12}>
+                item>
+                <BaseInput
+                  id={'zipcode'}
+                  key={'zipcode'}
+                  name={'zipcode'}
+                  type={'text'}
+                  langid={copyTree.label}
+                  fieldType={'input'}
+                  value={this.state.zipcode}
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  InputLabelProps={{
+                    shrink: true,
+                  }} />
+              </Grid>
+              <Grid
+                item>
                 <BaseButton
                   langId={copyTree.cta}/>
               </Grid>
