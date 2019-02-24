@@ -44,6 +44,9 @@ const styles = theme => ({
   quote: {
     padding: `${theme.spacing.unit * 6}px`,
   },
+  stories: {
+    width: '100%',
+  },
   subtitle: {
     margin: `${theme.spacing.unit * 5}px 0`,
   },
@@ -79,12 +82,9 @@ class Hero extends Component {
 
   componentWillMount () {
     const { selectedVariantVerbiage } = this.props;
-    const amount = [0.1, 0.2];
 
     this.setState({
-      layers: copyTree.items.map((item, i) => ({
-        image: selectedVariantVerbiage(item.image), // id
-      })),
+      layers: copyTree.items.map(item => selectedVariantVerbiage(item.image)),
     });
   }
 
