@@ -17,7 +17,7 @@ const Verbiage = {
           },
           cta: {
             en: 'get a quote 1',
-            es: 'get a quote 1',
+            es: 'aprender más 1',
           },
           ico: 'alarm',
           title: {
@@ -33,7 +33,7 @@ const Verbiage = {
           },
           cta: {
             en: 'get a quote 2',
-            es: 'get a quote 2',
+            es: 'aprender más 2',
           },
           ico: 'restore',
           title: {
@@ -49,7 +49,7 @@ const Verbiage = {
           },
           cta: {
             en: 'get a quote 3',
-            es: 'get a quote 3',
+            es: 'aprender más 3',
           },
           ico: '3d_rotation',
           title: {
@@ -65,7 +65,7 @@ const Verbiage = {
           },
           cta: {
             en: 'get a quote 4',
-            es: 'get a quote 4',
+            es: 'aprender más 4',
           },
           ico: 'delete',
           title: {
@@ -77,7 +77,7 @@ const Verbiage = {
       ],
       title: {
         en: 'blog',
-        es: 'blog',
+        es: 'Conoce Más En Nuestro Blog',
       },
     },
     drawer: {},
@@ -94,7 +94,7 @@ const Verbiage = {
           },
           cta: {
             en: 'get a quote 1',
-            es: 'get a quote 1',
+            es: 'aprender más 1',
           },
           ico: 'alarm',
           title: {
@@ -110,7 +110,7 @@ const Verbiage = {
           },
           cta: {
             en: 'get a quote 2',
-            es: 'get a quote 2',
+            es: 'aprender más 2',
           },
           ico: 'restore',
           title: {
@@ -126,7 +126,7 @@ const Verbiage = {
           },
           cta: {
             en: 'get a quote 3',
-            es: 'get a quote 3',
+            es: 'aprender más 3',
           },
           ico: '3d_rotation',
           title: {
@@ -142,7 +142,7 @@ const Verbiage = {
           },
           cta: {
             en: 'get a quote 4',
-            es: 'get a quote 4',
+            es: 'aprender más 4',
           },
           ico: 'delete',
           title: {

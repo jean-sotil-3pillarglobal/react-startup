@@ -17,6 +17,7 @@ import LangGenerateId from './../../../providers/utils/lang.generate.id';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
 // components
+import { BaseButton } from './../../../components/commons/button';
 import SmartImg from './../../../components/commons/img';
 
 const styles = theme => ({
@@ -55,6 +56,39 @@ const copyTree = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
 ]);
 
 class Content extends Component {
+  blog (row) {
+    return (
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={8}>
+        <Grid container spacing={16}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}>
+            <Typography variant="h3">
+              <LangToggler id={row.title}></LangToggler>
+            </Typography>
+            <Typography variant="subtitle2">
+              <LangToggler id={row.body}></LangToggler>
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}>
+            <BaseButton
+              langId={row.cta} />
+          </Grid>
+        </Grid>
+      </Grid>
+    );
+  }
+
   colFromLeft (row) {
     const { classes } = this.props;
     return (
@@ -65,14 +99,7 @@ class Content extends Component {
           md={4}>
           <SmartImg src={'image-test.jpg'} />
         </Grid>
-        <Grid item
-          xs={12}
-          sm={12}
-          md={8}>
-          <Typography variant="subtitle2">
-            <LangToggler id={row.body}></LangToggler>
-          </Typography>
-        </Grid>
+        {this.blog(row)}
       </Fragment>);
   }
 
@@ -80,15 +107,7 @@ class Content extends Component {
     const { classes } = this.props;
     return (
       <Fragment key={row.title}>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={8}>
-          <Typography variant="subtitle2">
-            <LangToggler id={row.body}></LangToggler>
-          </Typography>
-        </Grid>
+        {this.blog(row)}
         <Grid
           item
           xs={12}
@@ -119,7 +138,8 @@ class Content extends Component {
               container
               direction="row"
               justify="center"
-              alignItems="center">
+              alignItems="center"
+              spacing={24}>
               <Grid
                 item
                 xs={12}

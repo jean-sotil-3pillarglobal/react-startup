@@ -142,7 +142,7 @@ class Header extends Component {
               </IconButton> : null
             }
 
-            <Typography variant="h3" align="left" className={classes.h3}>
+            <Typography variant="h4" align="left" className={classes.h3}>
               <LangToggler id={COPY_TREE[4]} />
             </Typography>
             {!open && !isMobile ?

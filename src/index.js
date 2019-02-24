@@ -96,7 +96,7 @@ const theme = createMuiTheme({
       fontWeight: 300,
     },
     h3: {
-      fontSize: '1.375rem',
+      fontSize: '2.5rem',
       fontWeight: 300,
       lineHeight: '1.375rem',
       marginBottom: '10px',
