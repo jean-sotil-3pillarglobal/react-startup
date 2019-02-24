@@ -75,7 +75,7 @@ module.exports = {
         preserveLineBreaks: true
       },
       pluginId: 'html',
-      headHtmlSnippet: '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">',
+      headHtmlSnippet: '<link rel="stylesheet" href="https://unicons.iconscout.com/release/v0.0.3/css/unicons.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">',
     }],
     // custom config here (undefined)
     (neutrino) => {}

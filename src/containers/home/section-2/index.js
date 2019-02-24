@@ -6,7 +6,6 @@ import {
   Button,
   Card,
   Grid,
-  Icon,
   Typography,
   withStyles,
 } from '@material-ui/core';
@@ -18,6 +17,7 @@ import LangToggler from './../../../providers/lang/toggler';
 
 // components
 import { BaseButton } from './../../../components/commons/button';
+import Icon from './../../../components/commons/icon';
 
 const styles = theme => ({
   card: {
@@ -107,9 +107,7 @@ class Products extends Component {
                             xs={12}
                             sm={12}
                             md={12}>
-                            <Icon
-                              className={classes.icon}
-                            >{selectedVariantVerbiage(item.ico)}</Icon>
+                            <Icon name={selectedVariantVerbiage(item.ico)} className={classes.icon} />
                           </Grid>
                           <Grid item
                             xs={12}

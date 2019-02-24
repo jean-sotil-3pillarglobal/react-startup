@@ -77,7 +77,7 @@ const Verbiage = {
       ],
       title: {
         en: 'blog',
-        es: 'Conoce Más En Nuestro Blog',
+        es: 'Conoce Más <br/>En Nuestro Blog',
       },
     },
     drawer: {},
@@ -96,7 +96,7 @@ const Verbiage = {
             en: 'get a quote 1',
             es: 'aprender más 1',
           },
-          ico: 'alarm',
+          ico: 'cloud-download',
           title: {
             en: 'item 1',
             es: 'item 1',
@@ -112,7 +112,7 @@ const Verbiage = {
             en: 'get a quote 2',
             es: 'aprender más 2',
           },
-          ico: 'restore',
+          ico: 'processor',
           title: {
             en: 'item 2',
             es: 'item 2',
@@ -128,7 +128,7 @@ const Verbiage = {
             en: 'get a quote 3',
             es: 'aprender más 3',
           },
-          ico: '3d_rotation',
+          ico: 'cloud-download',
           title: {
             en: 'item 3',
             es: 'item 3',
@@ -144,7 +144,7 @@ const Verbiage = {
             en: 'get a quote 4',
             es: 'aprender más 4',
           },
-          ico: 'delete',
+          ico: 'print',
           title: {
             en: 'item 4',
             es: 'item 4',
