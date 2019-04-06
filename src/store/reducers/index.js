@@ -1,39 +1,35 @@
 import { combineReducers } from 'redux';
 
-/*
-// components
-*/
-
-// header
+// global
 import {
-  weatherReducer,
-} from './components/header';
+  getDeviceReducer,
+  getLeadTypeReducer,
+} from './global';
 
 // footer
 import {
   selectedLanguageReducer,
+  selectedVariantVerbiageReducer,
 } from './components/footer';
 
-/*
+//
 // containers
-*/
+//
 
-// search
+// home
 import {
-  itemsReducer,
-  selectedItemReducer,
-} from './search';
+  getLeadReducer,
+} from './home';
 
 /*
-// combining reducers on rootReducer
+// combining reducers
 */
 const rootReducer = combineReducers({
-  // components
-  weather: weatherReducer,
-  selectedLanguage: selectedLanguageReducer,
-  // containers
-  items: itemsReducer,
-  selectedItem: selectedItemReducer,
+  device: getDeviceReducer,
+  language: selectedLanguageReducer,
+  lead: getLeadReducer,
+  leadType: getLeadTypeReducer,
+  verbiage: selectedVariantVerbiageReducer,
 });
 
 export default rootReducer;

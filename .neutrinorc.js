@@ -1,11 +1,7 @@
 
 module.exports = {
   use: [
-    ['@neutrinojs/react', {
-      html: {
-        title: 'Startup'
-      }
-    }],
+    ['@neutrinojs/react', {}],
     ['@neutrinojs/style-loader', {
       style: {},
       css: {},
@@ -48,20 +44,39 @@ module.exports = {
           'arrow-body-style': 0,
           'babel/new-cap': false,
           'class-methods-use-this': 0,
+          'dot-notation': 0,
           'id-length': 0,
           'import/no-named-as-default-member': 0,
+          'import/prefer-default-export': 0,
           'indent': [1, 2],
           'linebreak-style': 0,
           'max-len': 0,
           'no-console': 0,
+          'no-restricted-syntax': 0,
           'no-undef': 0,
           'no-unused-vars': [0, { 'vars': 'local', 'args': 'none' }],
           'object-curly-newline': 0,
           'object-shorthand': 0,
           'quote-props': 0,
+          'sort-keys': 1,
           'space-before-function-paren': 0,
         }
       }
+    }],
+    ['@neutrinojs/html-template', {
+      title: 'The MajorHub',
+      inject: false,
+      appMountId: 'root',
+      xhtml: true,
+      mobile: true,
+      minify: {
+        useShortDoctype: true,
+        keepClosingSlash: true,
+        collapseWhitespace: true,
+        preserveLineBreaks: true
+      },
+      pluginId: 'html',
+      headHtmlSnippet: '<link rel="stylesheet" href="https://unicons.iconscout.com/release/v0.0.3/css/unicons.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">',
     }],
     // custom config here (undefined)
     (neutrino) => {}

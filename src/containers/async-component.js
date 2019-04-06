@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from '../components/commons/preloader';
 
 export default (loader, collection) => (
   class AsyncComponent extends React.Component {
@@ -19,13 +20,15 @@ export default (loader, collection) => (
     }
 
     render () {
-      if (this.state.Component) {
+      const { Component } = this.state;
+
+      if (Component) {
         return (
-          <this.state.Component { ...this.props } { ...collection } />
+          <Component { ...this.props } { ...collection } />
         );
       }
 
-      return null;
+      return <Loading />;
     }
   }
 );

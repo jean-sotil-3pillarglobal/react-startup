@@ -1,30 +1,27 @@
+
 import React from 'react';
-import $ from 'jquery';
+import { withStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
-import './index.scss';
+const styles = theme => ({
+  linear: {
+    background: theme.palette.primary.main,
+  },
+  root: {
+    flexGrow: 1,
+    paddingLeft: '10%',
+    paddingRight: '10%',
+    paddingTop: '50vh',
+    visibility: 'visible',
+  },
+});
 
-class PreLoader extends React.Component {
-  componentDidMount() {
-    $('#preloader').delay(500).fadeOut('fast');
-  }
+const Loading = (props: {
+  classes: Object
+}) => (
+  <div className={props.classes.container}>
+    <LinearProgress />
+  </div>
+);
 
-  render() {
-    return (
-      <div id="preloader">
-        <div className="container">
-          <div className="col-md-12">
-            <div className="sbook">
-              <h2>CODE<span className="color">loading</span></h2>
-              <div className="spinner">
-                <div className="double-bounce1"></div>
-                <div className="double-bounce2"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default PreLoader;
+export default withStyles(styles)(Loading);
