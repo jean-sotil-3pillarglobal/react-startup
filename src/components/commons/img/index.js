@@ -6,7 +6,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import SmartImg from '../../../providers/utils/smart.img';
+import GetImage from '../../../providers/utils/smart.img';
 
 const styles = theme => ({
   img: {
@@ -19,18 +19,9 @@ class LayoutImg extends Component {
     const { classes, device, src } = this.props;
 
     return (
-      <img className={classes.img} src={SmartImg(device, src)} />
+      <img className={classes.img} src={GetImage(device, src)} />
     );
   }
 }
 
-// map state to props
-function mapStateToProps (state) {
-  return {
-    device: state.getDevice,
-  };
-}
-
-const Img = connect(mapStateToProps, null)(withStyles(styles)(LayoutImg));
-
-export default Img;
+export const SmartImg = withStyles(styles)(LayoutImg);

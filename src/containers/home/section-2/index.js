@@ -1,6 +1,4 @@
-import { bindActionCreators } from 'redux';
 import { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
 
 import {
   Button,
@@ -16,7 +14,7 @@ import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangToggler from './../../../providers/lang/toggler';
 
 // components
-import { BaseButton } from './../../../components/commons/button';
+import { LangButton } from './../../../components/commons/button';
 import Icon from './../../../components/commons/icon';
 
 const styles = theme => ({
@@ -43,12 +41,13 @@ const styles = theme => ({
   },
 });
 
-const NODE_ROOT = 'components';
-const NODE_TYPE = 'features';
+const NODE = 'home';
+const SLOT = 'section_2';
 // copy:
 // 1 title
+// 1 body
 // 4 items
-const copyTree = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
+const copy = LangGenerateTree([NODE, SLOT], [
   'title',
   'body',
   'items-4-body',
@@ -58,11 +57,13 @@ const copyTree = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
   'items-4-type',
 ]);
 
-class Products extends Component {
+class SectionB extends Component {
   render () {
-    const { classes, selectedVariantVerbiage } = this.props;
+    const { classes, proxy } = this.props;
+    const { verbiage } = proxy;
 
     return (
+      verbiage &&
       <Fragment>
         <Grid
           container
@@ -86,15 +87,15 @@ class Products extends Component {
                 <Typography
                   variant="h2"
                   className={classes.title}>
-                  <LangToggler id={copyTree.title}></LangToggler>
+                  <LangToggler id={copy.title}></LangToggler>
                 </Typography>
                 <Typography
                   variant="subtitle2"
                   className={classes.subtitle}>
-                  <LangToggler id={copyTree.body}></LangToggler>
+                  <LangToggler id={copy.body}></LangToggler>
                 </Typography>
                 <Grid container spacing={24}>
-                  {copyTree.items.map(item => (
+                  {copy.items.map(item => (
                     <Grid
                       item
                       sm={12}
@@ -107,14 +108,14 @@ class Products extends Component {
                             xs={12}
                             sm={12}
                             md={12}>
-                            <Icon name={selectedVariantVerbiage(item.ico)} className={classes.icon} />
+                            <Icon name={verbiage(item.ico)} className={classes.icon} />
                           </Grid>
                           <Grid item
                             xs={12}
                             sm={12}
                             md={12}
                             className={classes.cta}>
-                            <BaseButton langId={item.cta}/>
+                            <LangButton lang={item.cta}/>
                           </Grid>
                           <Grid item
                             xs={12}
@@ -139,11 +140,4 @@ class Products extends Component {
   }
 }
 
-// map state to props
-function mapStateToProps (state) {
-  return {
-    selectedVariantVerbiage: state.selectedVariantVerbiage,
-  };
-}
-
-export default connect(mapStateToProps, null)(withStyles(styles)(Products));
+export default withStyles(styles)(SectionB);

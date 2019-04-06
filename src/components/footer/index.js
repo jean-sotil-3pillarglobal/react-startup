@@ -67,19 +67,42 @@ const styles = theme => ({
 });
 
 class Footer extends Component {
-  render () {
-    let defaultLanguage = 'es';
+  state = {
+    defaultLang: 'es',
+  }
 
-    if (this.props.selectedLanguage) {
-      defaultLanguage = this.props.selectedLanguage;
+  componentDidMount = () => {
+    const { language, selectLanguage } = this.props;
+    const { defaultLang } = this.state;
+
+    if (!language) {
+      selectLanguage(defaultLang);
     }
+  }
+
+  handleChange = (evt) => {
+    const { selectLanguage } = this.props;
+    const { target } = evt;
+    const { value } = target;
+
+    this.setState({
+      defaultLang: value,
+    });
+
+    // set language globally
+    selectLanguage(value);
+  }
+
+  render () {
+    const { selectLanguage } = this.props;
+    const { defaultLang } = this.state;
 
     return (
-      <Grid container spacing={24} className={classNames(this.props.classes.container)}>
+      <Grid container>
         <Grid item xs={12} sm={12} md={12} align="center">
           <select
-            onChange={evt => this.props.selectLanguage(evt) }
-            value={defaultLanguage}>
+            onChange={this.handleChange}
+            value={defaultLang}>
             <option value="es">es</option>
             <option value="en">en</option>
           </select>
@@ -92,7 +115,7 @@ class Footer extends Component {
 // map state to props
 function mapStateToProps (state) {
   return {
-    selectedLanguage: state.selectedLanguage,
+    language: state.selectedLanguage,
   };
 }
 

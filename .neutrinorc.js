@@ -47,6 +47,7 @@ module.exports = {
           'dot-notation': 0,
           'id-length': 0,
           'import/no-named-as-default-member': 0,
+          'import/prefer-default-export': 0,
           'indent': [1, 2],
           'linebreak-style': 0,
           'max-len': 0,

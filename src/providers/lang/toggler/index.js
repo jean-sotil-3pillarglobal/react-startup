@@ -10,7 +10,8 @@ import {
 } from '../../../store/actions/components/footer';
 
 // TODO: dynamic injection
-import VariantHealth from '../variants/themajorhub/health';
+import VerbiageOfAuto from '../verbs/themajorhub/auto';
+import VerbiageOfHealth from '../verbs/themajorhub/health';
 
 class LangToggler extends Component {
   constructor (props) {
@@ -20,16 +21,34 @@ class LangToggler extends Component {
     };
   }
 
+  chooseVerbiage (leadType) {
+    let value;
+    const { selectVariantVerbiage } = this.props;
+
+    switch (leadType) {
+    case 'auto':
+      value = VerbiageOfAuto;
+      break;
+    default:
+      value = VerbiageOfHealth;
+    }
+
+    selectVariantVerbiage(value);
+  }
+
   render() {
     // default language
     let copy = '';
     const defaultLang = 'es';
-    const { selectLanguage, selectVariantVerbiage, language, verbiage, id } = this.props;
+    const { selectLanguage, language, verbiage, id, leadType } = this.props;
+
+    // select verbiage
+    if (leadType && !verbiage) {
+      this.chooseVerbiage(leadType);
+    }
 
     if (language === '') {
       selectLanguage(defaultLang);
-      // TODO: dynamic injection
-      selectVariantVerbiage(VariantHealth);
     }
 
     if (verbiage && verbiage(id)) {
@@ -46,8 +65,10 @@ class LangToggler extends Component {
 // map state to props
 function mapStateToProps (state) {
   return {
-    language: state.selectedLanguage,
-    verbiage: state.selectedVariantVerbiage,
+    language: state.language,
+    lead: state.lead,
+    leadType: state.leadType,
+    verbiage: state.verbiage,
   };
 }
 

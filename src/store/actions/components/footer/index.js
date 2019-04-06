@@ -1,10 +1,9 @@
 export const LANGUAGE_SELECTED = 'LANGUAGE_SELECTED';
-
 export const VARIANT_VERBIAGE_SELECTED = 'VARIANT_VERBIAGE_SELECTED';
 
-export const selectLanguageAction = (evt) => {
+export const selectLanguageAction = (value) => {
   return {
-    payload: evt.target ? evt.target.value : evt,
+    payload: value,
     type: LANGUAGE_SELECTED,
   };
 };

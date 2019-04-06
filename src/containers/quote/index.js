@@ -5,35 +5,15 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import Helmet from '../../components/commons/helmet';
-import Header from '../../components/header';
 import Footer from '../../components/footer';
+import Header from '../../components/header';
 import SectionA from './section-1';
-import SectionB from './section-2';
-import SectionC from './section-3';
-
-// provider
-import LangToggler from './../../providers/lang/toggler';
-import LangGenerateTree from './../../providers/utils/lang.generate.tree';
-import LangGenerateId from './../../providers/utils/lang.generate.id';
 
 const styles = theme => ({
   container: {
     margin: 0,
   },
 });
-
-const NODE = 'headers';
-const SLOT = 'home';
-// copy:
-// 1 description
-// 1 keywords
-// 1 title
-const copy = LangGenerateTree([NODE, SLOT], [
-  'description',
-  'keywords',
-  'title',
-]);
 
 class Home extends Component {
   render () {
@@ -48,11 +28,7 @@ class Home extends Component {
 
     return (
       <Fragment>
-        <Helmet proxy={proxy} copy={copy} />
-        <Header proxy={proxy} />
         <SectionA proxy={proxy} />
-        <SectionB proxy={proxy} />
-        <SectionC proxy={proxy} />
         <Footer />
       </Fragment>
     );

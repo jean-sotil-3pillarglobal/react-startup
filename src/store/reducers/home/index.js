@@ -1,11 +1,12 @@
-export const usernameChangeReducer = (state = null, action) => {
+import {
+  FETCH_LEAD,
+} from '../../actions/home';
+
+export const getLeadReducer = (state = {}, action) => {
   switch (action.type) {
-  case 'USERNAME_ACTION':
+  case FETCH_LEAD:
     return action.payload;
   default:
-    return '';
+    return state;
   }
 };
-
-export const defaultReducer = null;
-

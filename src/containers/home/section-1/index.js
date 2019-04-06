@@ -1,6 +1,5 @@
-import { bindActionCreators } from 'redux';
 import { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import {
   FormControl,
@@ -20,8 +19,8 @@ import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangGenerateId from './../../../providers/utils/lang.generate.id';
 
 // components
-import { BaseButton } from './../../../components/commons/button';
-import BaseInput from './../../../components/commons/input';
+import { LangButton } from './../../../components/commons/button';
+import { LangInput } from './../../../components/commons/input';
 
 const styles = theme => ({
   button: {
@@ -54,51 +53,61 @@ const styles = theme => ({
   },
 });
 
-const NODE_ROOT = 'components';
-const NODE_TYPE = 'hero';
+const NODE = 'home';
+const SLOT = 'section_1';
 // copy:
 // 1 title
 // 1 subtitle
 // 1 cta
 // 2 images
-const copyTree = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
+const copy = LangGenerateTree([NODE, SLOT], [
   'cta',
   'items-2-image',
   'label',
+  'select',
+  'select_items-3-value',
+  'select_items-3-label',
   'subtitle',
   'title',
 ]);
 
-class Hero extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      layers: [],
-      zipcode: '',
-    };
-
-    this.handleChange = this.handleChange.bind(this);
+class SectionA extends Component {
+  state = {
+    layers: [],
+    type: '',
   }
 
-  componentWillMount () {
-    const { selectedVariantVerbiage } = this.props;
-
-    this.setState({
-      layers: copyTree.items.map(item => selectedVariantVerbiage(item.image)),
-    });
+  props: {
+    history: any,
+    classes: Object,
   }
 
-  handleChange (evt) {
+  handleChange = (evt) => {
     this.setState({
       [evt.target.name]: evt.target.value,
     });
   }
 
+  handleClick = (evt) => {
+    const { history } = this.props;
+    const { type } = this.state;
+    history.push('get-a-quote');
+  }
+
   render () {
-    const { classes } = this.props;
+    const { classes, proxy } = this.props;
+    const { type } = this.state;
+    const { verbiage, language } = proxy;
+    let layers = [];
+
+    // example: getting images from verbiage
+    if (verbiage) {
+      layers = copy.items.map(item => verbiage(item.image));
+    }
 
     return (
       <Fragment>
+        (verbiage && language) &&
         <Grid
           container
           direction="row"
@@ -121,32 +130,62 @@ class Hero extends Component {
                 md={12}
                 className={classes.content}>
                 <Typography variant="h1" align="left" className={classes.title}>
-                  <LangToggler id={copyTree.title}></LangToggler>
+                  <LangToggler id={copy.title}></LangToggler>
                 </Typography>
                 <Typography variant="subtitle2" align="left" className={classes.subtitle}>
-                  <LangToggler id={copyTree.subtitle}></LangToggler>
+                  <LangToggler id={copy.subtitle}></LangToggler>
                 </Typography>
               </Grid>
               <Grid
-                item>
-                <BaseInput
+                item
+                sm={12}
+                md={2}
+                lg={2}>
+                <LangInput
                   id={'zipcode'}
                   key={'zipcode'}
                   name={'zipcode'}
                   type={'text'}
-                  langid={copyTree.label}
                   fieldType={'input'}
                   value={this.state.zipcode}
                   onChange={this.handleChange}
-                  variant="outlined"
+                  verbiage={verbiage}
+                  language={language}
+                  lang={copy.label}
                   InputLabelProps={{
                     shrink: true,
                   }} />
               </Grid>
               <Grid
-                item>
-                <BaseButton
-                  langId={copyTree.cta}/>
+                item
+                sm={12}
+                md={3}
+                lg={3}>
+                <LangInput
+                  id={'type'}
+                  key={'type'}
+                  name={'type'}
+                  type={'text'}
+                  fieldType={'select'}
+                  value={this.state.type}
+                  onChange={this.handleChange}
+                  verbiage={verbiage}
+                  language={language}
+                  lang={copy.select}
+                  options={copy.select_items || []}
+                  InputLabelProps={{
+                    shrink: true,
+                  }} />
+              </Grid>
+              <Grid
+                item
+                sm={12}
+                md={3}
+                lg={3}>
+                <LangButton
+                  disabled={type === ''}
+                  lang={copy.cta}
+                  onClick={this.handleClick}/>
               </Grid>
             </Grid>
           </Grid>
@@ -156,12 +195,4 @@ class Hero extends Component {
   }
 }
 
-
-// map state to props
-function mapStateToProps (state) {
-  return {
-    selectedVariantVerbiage: state.selectedVariantVerbiage,
-  };
-}
-
-export default connect(mapStateToProps, null)(withStyles(styles)(Hero));
+export default withStyles(styles)(withRouter(SectionA));

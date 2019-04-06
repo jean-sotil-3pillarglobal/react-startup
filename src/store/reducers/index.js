@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
 
-/*
 // global
-*/
 import {
   getDeviceReducer,
+  getLeadTypeReducer,
 } from './global';
 
 // footer
@@ -13,17 +12,24 @@ import {
   selectedVariantVerbiageReducer,
 } from './components/footer';
 
-/*
+//
 // containers
-*/
+//
+
+// home
+import {
+  getLeadReducer,
+} from './home';
 
 /*
-// combining reducers on rootReducer
+// combining reducers
 */
 const rootReducer = combineReducers({
-  getDevice: getDeviceReducer,
-  selectedLanguage: selectedLanguageReducer,
-  selectedVariantVerbiage: selectedVariantVerbiageReducer,
+  device: getDeviceReducer,
+  language: selectedLanguageReducer,
+  lead: getLeadReducer,
+  leadType: getLeadTypeReducer,
+  verbiage: selectedVariantVerbiageReducer,
 });
 
 export default rootReducer;

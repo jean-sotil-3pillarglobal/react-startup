@@ -2,8 +2,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 
 import {
   AppBar,
@@ -29,17 +27,17 @@ import {
 
 // provider
 import LangToggler from '../../providers/lang/toggler';
+import LangGenerateTree from '../../providers/utils/lang.generate.tree';
 import LangGenerateId from '../../providers/utils/lang.generate.id';
 
 // components
-import PreLoader from './../commons/preloader';
-import { BaseButton, TYPES } from './../commons/button';
+import { LangButton, TYPES, VARIANTS } from './../commons/button';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   appBar: {
-    background: theme.palette.background.light,
+    background: theme.palette.background.main,
     padding: '0',
     transition: theme.transitions.create(['margin', 'width'], {
       duration: theme.transitions.duration.leavingScreen,
@@ -95,15 +93,16 @@ const styles = theme => ({
 
 const NODE_ROOT = 'components';
 const NODE_TYPE = 'header';
-const NODE_TREE = [NODE_ROOT, NODE_TYPE];
-// copy
-const COPY_TREE = [
-  LangGenerateId(NODE_TREE, 'nav1'),
-  LangGenerateId(NODE_TREE, 'nav2'),
-  LangGenerateId(NODE_TREE, 'nav3'),
-  LangGenerateId(NODE_TREE, 'nav4'),
-  LangGenerateId(NODE_TREE, 'label'),
-];
+// copy:
+// 1 title
+// 4 items
+// 1 cta
+const copyTree = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
+  'title',
+  'items-3-name',
+  'items-3-link',
+  'cta-1-name',
+]);
 
 class Header extends Component {
   state = {
@@ -119,7 +118,8 @@ class Header extends Component {
   };
 
   render() {
-    const { classes, theme, device } = this.props;
+    const { classes, proxy, theme } = this.props;
+    const { device } = proxy;
     const { open } = this.state;
     const isMobile = device === 'mobile';
 
@@ -131,7 +131,6 @@ class Header extends Component {
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}>
-          <PreLoader />
           <Toolbar disableGutters={!open}>
             {isMobile ?
               <IconButton
@@ -143,34 +142,35 @@ class Header extends Component {
             }
 
             <Typography variant="h4" align="left" className={classes.h3}>
-              <LangToggler id={COPY_TREE[4]} />
+              <LangToggler id={copyTree.title} />
             </Typography>
-            {!open && !isMobile ?
+
+            {(!open && !isMobile) &&
               <Grid container
                 spacing={16}
                 direction="row"
                 justify="flex-end"
                 alignItems="center">
-                <Grid item md={2} align="center">
-                  <BaseButton
-                    langId={COPY_TREE[0]}
-                    typeButton={TYPES.LINK} />
-                </Grid>
-                <Grid item md={2} align="center">
-                  <BaseButton
-                    langId={COPY_TREE[1]}
-                    typeButton={TYPES.LINK} />
-                </Grid>
-                <Grid item md={2} align="center">
-                  <BaseButton
-                    langId={COPY_TREE[2]}
-                    typeButton={TYPES.LINK} />
-                </Grid>
-                <Grid item md={2} align="center">
-                  <BaseButton
-                    langId={COPY_TREE[3]}/>
-                </Grid>
-              </Grid> : null
+                {copyTree.items.map((item) => {
+                  return (
+                    <Grid item md={2} align="center" key={item.name}>
+                      <LangButton
+                        lang={item.name}
+                        typeButton={TYPES.LINK} />
+                    </Grid>
+                  );
+                })}
+                {copyTree.cta.map((item) => {
+                  return (
+                    <Grid item md={2} align="center" key={item.name}>
+                      <LangButton
+                        variant={VARIANTS.OUTLINED}
+                        typeButton={TYPES.SECONDARY}
+                        lang={item.name}/>
+                    </Grid>
+                  );
+                })}
+              </Grid>
             }
           </Toolbar>
         </AppBar>
@@ -190,9 +190,9 @@ class Header extends Component {
           </div>
           <Divider />
           <List>
-            {COPY_TREE.slice(0, 4).map(id => (
-              <ListItem button key={id}>
-                <LangToggler id={id}></LangToggler>
+            {copyTree.items.map(item => (
+              <ListItem button key={item.name}>
+                <LangToggler id={item.name}></LangToggler>
               </ListItem>
             ))}
           </List>
@@ -204,15 +204,7 @@ class Header extends Component {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  device: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired,
+  proxy: PropTypes.object.isRequired,
 };
 
-// map state to props
-function mapStateToProps (state) {
-  return {
-    device: state.getDevice,
-  };
-}
-
-export default connect(mapStateToProps, null)(withStyles(styles, { withTheme: true })(Header));
+export default withStyles(styles, { withTheme: true })(Header);

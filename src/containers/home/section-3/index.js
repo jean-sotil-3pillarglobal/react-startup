@@ -17,8 +17,8 @@ import LangGenerateId from './../../../providers/utils/lang.generate.id';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
 // components
-import { BaseButton } from './../../../components/commons/button';
-import SmartImg from './../../../components/commons/img';
+import { LangButton } from './../../../components/commons/button';
+import { SmartImg } from './../../../components/commons/img';
 
 const styles = theme => ({
   card: {
@@ -43,19 +43,19 @@ const styles = theme => ({
   },
 });
 
-const NODE_ROOT = 'components';
-const NODE_TYPE = 'content';
+const NODE = 'home';
+const SLOT = 'section_3';
 // copy:
 // 1 title
 // 4 items
-const copyTree = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
+const copy = LangGenerateTree([NODE, SLOT], [
   'title',
   'items-4-body',
   'items-4-cta',
   'items-4-title',
 ]);
 
-class Content extends Component {
+class SectionC extends Component {
   blog (row) {
     return (
       <Grid
@@ -81,8 +81,8 @@ class Content extends Component {
             xs={12}
             sm={12}
             md={12}>
-            <BaseButton
-              langId={row.cta} />
+            <LangButton
+              lang={row.cta} />
           </Grid>
         </Grid>
       </Grid>
@@ -90,21 +90,25 @@ class Content extends Component {
   }
 
   colFromLeft (row) {
-    const { classes } = this.props;
+    const { classes, proxy } = this.props;
+    const { device } = proxy;
+
     return (
       <Fragment key={row.title}>
         <Grid item
           xs={12}
           sm={12}
           md={4}>
-          <SmartImg src={'image-test.jpg'} />
+          <SmartImg device={device} src={'image-test.jpg'} />
         </Grid>
         {this.blog(row)}
       </Fragment>);
   }
 
   colFromRight (row) {
-    const { classes } = this.props;
+    const { classes, proxy } = this.props;
+    const { device } = proxy;
+
     return (
       <Fragment key={row.title}>
         {this.blog(row)}
@@ -113,7 +117,7 @@ class Content extends Component {
           xs={12}
           sm={12}
           md={4}>
-          <SmartImg src={'image-test.jpg'} />
+          <SmartImg device={device} src={'image-test.jpg'} />
         </Grid>
       </Fragment>);
   }
@@ -148,10 +152,10 @@ class Content extends Component {
                 <Typography
                   variant="h2"
                   className={classes.title}>
-                  <LangToggler id={copyTree.title}></LangToggler>
+                  <LangToggler id={copy.title}></LangToggler>
                 </Typography>
               </Grid>
-              {copyTree.items.map((row, index) => {
+              {copy.items.map((row, index) => {
                 return index % 2 === 0 ? this.colFromLeft(row) : this.colFromRight(row);
               })}
             </Grid>
@@ -162,4 +166,4 @@ class Content extends Component {
   }
 }
 
-export default connect(null, null)(withStyles(styles)(Content));
+export default withStyles(styles)(SectionC);

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
 
 import {
   Button,
@@ -46,6 +46,9 @@ const styles = theme => ({
   primary: {
     background: theme.palette.background.main,
   },
+  secondary: {
+    background: theme.palette.secondary.main,
+  },
   small: {
     paddingLeft: '24px',
     paddingRight: '24px',
@@ -62,6 +65,7 @@ export const TYPES = {
   DANGER: 'danger',
   LINK: 'link',
   PRIMARY: 'primary',
+  SECONDARY: 'secondary',
   SUCCESS: 'success',
   WARNING: 'warning',
 };
@@ -84,27 +88,32 @@ class LayoutButton extends Component {
       buttonSize,
       classes,
       disabled,
-      langId,
+      lang,
       onClick,
       type,
       typeButton,
       variant,
     } = this.props;
+
     return (
-      <Button
-        type={type}
-        disabled={disabled}
-        onClick={onClick}
-        variant={variant || VARIANTS.CONTAINED}
-        className={classnames(
-          classes.button,
-          classes[typeButton || TYPES.PRIMARY],
-          classes[buttonSize || SIZES.MEDIUM],
-        )}>
-        <LangToggler id={langId}></LangToggler>
-      </Button>
+      <Fragment>
+        {lang &&
+          <Button
+            type={type}
+            disabled={disabled}
+            onClick={onClick}
+            variant={variant || VARIANTS.CONTAINED}
+            className={classnames(
+              classes.button,
+              classes[typeButton || TYPES.PRIMARY],
+              classes[buttonSize || SIZES.MEDIUM],
+            )}>
+            <LangToggler id={lang}></LangToggler>
+          </Button>
+        }
+      </Fragment>
     );
   }
 }
 
-export const BaseButton = (withStyles(styles)(LayoutButton));
+export const LangButton = withStyles(styles)(LayoutButton);
