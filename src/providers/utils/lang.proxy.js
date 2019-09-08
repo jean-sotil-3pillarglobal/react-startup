@@ -1,7 +1,7 @@
 const LangProxy = (verbiage, id) => {
   let copy = '';
 
-  if (id) {
+  if (id && id.split) {
     const context = id.split('.');
     const root = context[0];
     const type = context[1];
@@ -14,6 +14,9 @@ const LangProxy = (verbiage, id) => {
     } else if (copy === '') {
       copy = (verbiage[root]) ? verbiage[root][type][attr[0]] : '';
     }
+  } else if (id instanceof Object) {
+    // value provided
+    copy = id;
   }
 
   return copy;

@@ -11,6 +11,9 @@ import {
 
 // TODO: dynamic injection
 import VerbiageOfAuto from '../verbs/themajorhub/auto';
+import VerbiageOfDefault from '../verbs/themajorhub/default';
+import VerbiageOfDental from '../verbs/themajorhub/dental';
+import VerbiageOfGroup from '../verbs/themajorhub/group';
 import VerbiageOfHealth from '../verbs/themajorhub/health';
 
 class LangToggler extends Component {
@@ -24,16 +27,7 @@ class LangToggler extends Component {
   chooseVerbiage (leadType) {
     let value;
     const { selectVariantVerbiage } = this.props;
-
-    switch (leadType) {
-    case 'auto':
-      value = VerbiageOfAuto;
-      break;
-    default:
-      value = VerbiageOfHealth;
-    }
-
-    selectVariantVerbiage(value);
+    selectVariantVerbiage(leadType);
   }
 
   render() {
