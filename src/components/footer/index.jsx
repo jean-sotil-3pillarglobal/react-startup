@@ -1,9 +1,8 @@
 import { bindActionCreators } from 'redux';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-  Button,
   Grid,
   withStyles,
 } from '@material-ui/core';
@@ -88,6 +87,11 @@ class Footer extends Component {
     // set language globally
     selectLanguage(value);
   }
+
+  props: {
+    language: string,
+    selectLanguage: Function,
+  };
 
   render () {
     const { defaultLang } = this.state;

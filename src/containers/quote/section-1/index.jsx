@@ -1,19 +1,14 @@
-import { cloneDeep, debounce } from 'lodash';
-import React, { Component, Fragment } from 'react';
+import { cloneDeep } from 'lodash';
 import { withRouter } from 'react-router-dom';
-import Headroom from 'react-headroom';
-import classnames from 'classnames';
+import React, { Component, Fragment } from 'react';
 
 import {
-  AppBar,
   Grid,
-  Paper,
   Step,
   StepButton,
   StepContent,
   StepLabel,
   Stepper,
-  Typography,
   withStyles,
 } from '@material-ui/core';
 
@@ -21,22 +16,17 @@ import {
 import { constants } from './../../../providers/config';
 
 // provider
-import LangToggler from './../../../providers/lang/toggler';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
-import LangGenerateId from './../../../providers/utils/lang.generate.id';
 
 // components
-import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button/index.jsx';
-import { LangInput } from './../../../components/commons/input/index.jsx';
+import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
 import { Validate } from './../../../components/commons/input/validate';
-import Icon from './../../../components/commons/icon/index.jsx';
-import NavbarSimple from './../../../components/commons/navbar/simple/index.jsx';
-import SectionBlock from './../../../components/layouts/section/index.jsx';
-import Sticky from './../../../components/commons/sticky/index.jsx';
-import StickyContainer from './../../../components/commons/sticky/container/index.jsx';
+import Icon from './../../../components/commons/icon';
+import NavbarSimple from './../../../components/commons/navbar/simple';
+import SectionBlock from './../../../components/layouts/section';
 
 // forms
-import QuoteForm from './../forms/index.jsx';
+import QuoteForm from './../forms';
 
 const {
   GENERAL,
@@ -119,31 +109,8 @@ class SectionA extends Component {
 
     // init
     this.myRef = React.createRef();
+    init.forms = this.getForms(props) || [];
     this.state = init;
-  }
-
-  props: {
-    classes: Object,
-    history: any,
-    proxy: Object,
-  }
-
-  reset = () => {
-    this.setState(init);
-  }
-
-  componentDidMount = () => {
-    const { forms } = this.state;
-
-    if (!forms.length) {
-      this.setState({
-        forms: this.getForms(this.props) || [],
-      });
-    }
-  }
-
-  componentWillUnmount = () => {
-    this.reset();
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -171,6 +138,24 @@ class SectionA extends Component {
         document: cloneDeep(lead) || {},
       });
     }
+  }
+
+  componentWillUnmount = () => {
+    this.reset();
+  }
+
+  getSteps = () => {
+    const {
+      proxy: {
+        language,
+      },
+    } = this.props;
+
+    const { forms } = this.state;
+
+    return forms && forms.map((form) => {
+      return form.label[language];
+    });
   }
 
   getForm = (i) => {
@@ -219,18 +204,8 @@ class SectionA extends Component {
       });
   }
 
-  getSteps = () => {
-    const {
-      proxy: {
-        language,
-      },
-    } = this.props;
-
-    const { forms } = this.state;
-
-    return forms && forms.map((form) => {
-      return form.label[language];
-    });
+  reset = () => {
+    this.setState(init);
   }
 
   handleBlur = (event, type) => {
@@ -367,6 +342,12 @@ class SectionA extends Component {
     });
   }
 
+  props: {
+    classes: Object,
+    history: any,
+    proxy: Object,
+  }
+
   render () {
     const {
       document,
@@ -397,7 +378,7 @@ class SectionA extends Component {
     return (
       <Fragment>
         <div ref={this.myRef}>
-          <NavbarSimple back={copy.back} title={(formTip && formTip.tip[language]) || ''} caption={(formTip && formTip.tipSub[language]) || ''} icon={formTip && formTip.icon} history={history}/>
+          <NavbarSimple back={copy.back} title={(formTip && formTip.tip[language]) || ''} caption={(formTip && formTip.tipSub[language]) || ''} icon={formTip && formTip.icon} history={history} />
           <SectionBlock
             variant="light"
             className={classes.section}>
@@ -407,7 +388,8 @@ class SectionA extends Component {
               direction="row"
               justify="center"
               className={classes.form}>
-              <Grid item
+              <Grid
+                item
                 sm={12}
                 md={6}
                 lg={6}
@@ -439,7 +421,7 @@ class SectionA extends Component {
                               onClick={handleStepperPrev}
                               variant={VARIANTS.OUTLINED}
                               typeButton={TYPES.LINK}>
-                              <Icon name={'angle-left-b'} className={classes.icon} />
+                              <Icon name="angle-left-b" className={classes.icon} />
                             </LangButton>
                           }
                           <LangButton
@@ -448,7 +430,7 @@ class SectionA extends Component {
                             variant={VARIANTS.OUTLINED}
                             typeButton={stepForms.length !== (steps + 1) ? TYPES.PRIMARY : TYPES.SECONDARY}
                             className={classes.cta}>
-                            <Icon name={'angle-right-b'} className={classes.icon} />
+                            <Icon name="angle-right-b" className={classes.icon} />
                           </LangButton>
                         </StepContent>
                       </Step>

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 
 // containers
-import App from './app.jsx';
+import App from './app';
 
 // redux store
 import store from './store';

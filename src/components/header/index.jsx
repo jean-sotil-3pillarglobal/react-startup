@@ -1,8 +1,7 @@
 
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { Component } from 'react';
 import Headroom from 'react-headroom';
+import React, { Component } from 'react';
 
 import {
   AppBar,
@@ -13,8 +12,6 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemIcon,
-  ListItemText,
   Toolbar,
   Typography,
   withStyles,
@@ -29,11 +26,10 @@ import {
 // provider
 import LangToggler from '../../providers/lang/toggler';
 import LangGenerateTree from '../../providers/utils/lang.generate.tree';
-import LangGenerateId from '../../providers/utils/lang.generate.id';
 
 // components
-import { LangButton, TYPES, VARIANTS } from './../commons/button/index.jsx';
-import Icon from './../commons/icon/index.jsx';
+import { LangButton, TYPES, VARIANTS } from './../commons/button';
+import Icon from './../commons/icon';
 
 const drawerWidth = 240;
 
@@ -170,6 +166,12 @@ class Header extends Component {
     this.setState({ open: false });
   };
 
+  props: {
+    classes: Object,
+    proxy: Object,
+    theme: Object,
+  };
+
   render() {
     const { classes, proxy, theme } = this.props;
     const { device, verbiage } = proxy;
@@ -204,7 +206,8 @@ class Header extends Component {
               </Typography>
 
               {(!open && !isMobile) &&
-                <Grid container
+                <Grid
+                  container
                   spacing={16}
                   direction="row"
                   justify="flex-end"
@@ -249,7 +252,7 @@ class Header extends Component {
               {copy.publics.map(item => (
                 <ListItem button key={item.label} className={classes.menuItem}>
                   <Typography variant="body1" component="span" className={classes.menuLabel}>
-                    <LangToggler id={item.label}></LangToggler>
+                    <LangToggler id={item.label} />
                   </Typography>
                 </ListItem>
               ))}
@@ -261,10 +264,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-  proxy: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles, { withTheme: true })(Header);

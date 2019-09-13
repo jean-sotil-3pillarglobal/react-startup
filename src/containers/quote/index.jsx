@@ -1,26 +1,24 @@
 import { bindActionCreators } from 'redux';
-import { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 
 import {
   withStyles,
 } from '@material-ui/core';
 
-import Helmet from '../../components/commons/helmet/index.jsx';
-import Footer from '../../components/footer/index.jsx';
-import SectionA from './section-1/index.jsx';
+import Helmet from '../../components/commons/helmet';
+import Footer from '../../components/footer';
+import SectionA from './section-1';
 
 // provider
-import LangToggler from './../../providers/lang/toggler';
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
-import LangGenerateId from './../../providers/utils/lang.generate.id';
 
 import {
   selectVariantVerbiageAction,
 } from './../../store/actions/components/footer';
 
-const styles = theme => ({
+const styles = () => ({
   container: {
     margin: 0,
   },
@@ -39,12 +37,6 @@ const copy = LangGenerateTree([NODE, SLOT], [
 ]);
 
 class Quote extends Component {
-  props: {
-    classes: Object,
-    history: any,
-    verbiage: Function,
-  }
-
   componentDidMount = () => {
     const {
       match: {
@@ -61,8 +53,18 @@ class Quote extends Component {
     }
   }
 
+  props: {
+    device: string,
+    language: string,
+    lead: Object,
+    leadType: string,
+    match: Object,
+    selectVariantVerbiage: Function,
+    verbiage: Function,
+  }
+
   render () {
-    const { classes, lead, leadType, verbiage, language, device } = this.props;
+    const { lead, leadType, verbiage, language, device } = this.props;
     const proxy = {
       device,
       language,

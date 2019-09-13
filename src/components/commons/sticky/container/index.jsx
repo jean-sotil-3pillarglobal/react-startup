@@ -29,48 +29,43 @@ const styles = theme => ({
   },
 });
 
-class StickyContent extends Component {
-  props: {
-    children: Object,
-    classes: Object,
-    modifiers: Object,
-    sides: Object,
-    limits: Object,
-    child: Object,
-    sticky: Boolean,
+function StickyContent (props: {
+  children: Object,
+  classes: Object,
+  modifiers: Object,
+  limits: Object,
+  child: Object,
+  sticky: Boolean,
+}) {
+  const {
+    classes,
+    children,
+    modifiers: { top, left },
+    limits,
+    child,
+    sticky,
+  } = props;
+
+  let style = {};
+
+  if (sticky && limits) {
+    style = {
+      left: left && limits.left,
+      maxWidth: (child && child.width) || 0,
+      top: top && limits.offsetTop,
+    };
   }
 
-  render() {
-    const {
-      classes,
-      children,
-      modifiers: { top, left },
-      limits,
-      child,
-      sticky,
-    } = this.props;
-
-    let style = {};
-
-    if (sticky && limits) {
-      style = {
-        left: left && limits.left,
-        maxWidth: (child && child.width) || 0,
-        top: top && limits.offsetTop,
-      };
-    }
-
-    return (
-      <div
-        style={style}
-        className={classnames(
-          classes.container,
-          sticky > 0 && classes.root,
-        )}>
-        {children}
-      </div>
-    );
-  }
+  return (
+    <div
+      style={style}
+      className={classnames(
+        classes.container,
+        sticky > 0 && classes.root,
+      )}>
+      {children}
+    </div>
+  );
 }
 
 export default withStyles(styles)(StickyContent);

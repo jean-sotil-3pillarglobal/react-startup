@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import {
   CssBaseline,
   createMuiTheme,
-  Fade,
   MuiThemeProvider,
   withStyles,
 } from '@material-ui/core';
@@ -21,7 +20,7 @@ import {
 import SkinProvider from './providers/skins';
 
 // async component
-import Async from './containers/async-component.jsx';
+import Async from './containers/async-component';
 
 // actions
 import { setDeviceAction } from './store/actions/global';
@@ -63,30 +62,15 @@ const styles = theme => ({
 });
 
 // containers
-const Home = Async(() => import('./containers/home/index.jsx').then(module => module.default), { name: 'Home' });
-const Quote = Async(() => import('./containers/quote/index.jsx').then(module => module.default), { name: 'Get A Quote' });
-const Blog = Async(() => import('./containers/blog/index.jsx').then(module => module.default), { name: 'Blog' });
-const Four0Four = Async(() => import('./containers/404/index.jsx').then(module => module.default), { name: '404' });
+const Home = Async(() => import('./containers/home').then(module => module.default), { name: 'Home' });
+const Quote = Async(() => import('./containers/quote').then(module => module.default), { name: 'Get A Quote' });
+const Blog = Async(() => import('./containers/blog').then(module => module.default), { name: 'Blog' });
+const Four0Four = Async(() => import('./containers/404').then(module => module.default), { name: '404' });
 
 // main
 class App extends Component {
-  updateDimensions () {
-    const { setDevice } = this.props;
-    const ua = new UAParser().getDevice();
-    const { type } = ua;
-    if (type) {
-      setDevice(type);
-    } else {
-      setDevice('desktop');
-    }
-  }
-
-  componentDidMount () {
-    window.addEventListener('resize', this.updateDimensions.bind(this));
-  }
-
   componentWillMount () {
-    const { lead, fetchLead, leadType } = this.props;
+    const { lead, fetchLead } = this.props;
     // const uuid = '10707597-098e-4bbc-99a5-60574921877e'; // auto
     // const uuid = 'f61079bf-88a6-4b0e-8f00-3fca1aef9180'; // health
     const uuid = ''; // choose default
@@ -107,8 +91,27 @@ class App extends Component {
     window.removeEventListener('resize', this.updateDimensions.bind(this));
   }
 
+  updateDimensions () {
+    const { setDevice } = this.props;
+    const ua = new UAParser().getDevice();
+    const { type } = ua;
+    if (type) {
+      setDevice(type);
+    } else {
+      setDevice('desktop');
+    }
+  }
+
+  props: {
+    classes: Object,
+    fetchLead: Function,
+    lead: Object,
+    leadType: string,
+    setDevice: Function,
+  }
+
   render () {
-    const { classes, lead, leadType } = this.props;
+    const { classes, leadType } = this.props;
 
     const skin = createMuiTheme(SkinProvider(leadType));
 

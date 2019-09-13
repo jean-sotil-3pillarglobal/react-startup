@@ -1,29 +1,28 @@
 // @flow
 
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import MaskedInput from 'react-text-mask';
 
-class MaskPhone extends Component {
-  props: {
-    inputRef: Function,
-  };
+function MaskPhone (props: {
+  inputRef: Function,
+}) {
+  const {
+    inputRef,
+    ...other
+  } = props;
 
-  render() {
-    const { inputRef, ...other } = this.props;
-    const mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  const mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
-    return (
-      <Fragment>
-        <MaskedInput
-          {...other}
-          mask={mask}
-          showMask
-          keepCharPositions
-          guide={false}
-        />
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <MaskedInput
+        {...other}
+        mask={mask}
+        showMask
+        keepCharPositions
+        guide={false} />
+    </Fragment>
+  );
 }
 
 export default MaskPhone;

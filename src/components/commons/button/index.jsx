@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 import {
   Button,
@@ -18,9 +18,9 @@ const styles = theme => ({
     borderRadius: '0 0 0 0',
     boxShadow: 'none',
     display: 'inline-block',
-    fontWeight: 600,
-    marginBottom: theme.spacing.unit * 1,
-    padding: `${theme.spacing.unit * 1.8}px 0`,
+    fontSize: '1.25rem',
+    fontWeight: 500,
+    padding: `${theme.spacing.unit * 1}px ${theme.spacing.unit * 2}px`,
     whiteSpace: 'nowrap',
   },
   danger: {
@@ -44,7 +44,9 @@ const styles = theme => ({
     background: theme.palette.background.transparent,
     borderWidth: 0,
     color: theme.palette.primary.contrastText,
+    fontWeight: 400,
     padding: '0 0 0 0',
+    textTransform: 'none',
   },
   medium: {
     paddingLeft: '22px',
@@ -112,51 +114,62 @@ export const VARIANTS = {
   RAISED: 'raised',
 };
 
-class LayoutButton extends Component {
-  render() {
-    const {
-      buttonSize,
-      classes,
-      className,
-      disabled,
-      lang,
-      onClick,
-      type,
-      typeButton,
-      variant,
-    } = this.props;
-    const pos = this.props.pos || 'right';
+function LayoutButton (props: {
+  buttonSize: string,
+  children: Object,
+  classes: Object,
+  className: Object,
+  disabled: Boolean,
+  lang: Object,
+  onClick: Function,
+  pos: string,
+  type: string,
+  typeButton: string,
+  variant: string,
+}) {
+  const {
+    buttonSize,
+    classes,
+    className,
+    disabled,
+    lang,
+    onClick,
+    type,
+    typeButton,
+    variant,
+  } = props;
 
-    return (
-      <Fragment>
-        {lang &&
-          <Button
-            type={type}
-            disabled={disabled}
-            onClick={onClick}
-            variant={variant || VARIANTS.CONTAINED}
-            className={classnames(
-              classes.button,
-              classes[buttonSize || SIZES.MEDIUM],
-              classes[typeButton || TYPES.PRIMARY],
-              className,
-            )}>
-            {pos === 'left' &&
-              <Fragment>
-                {this.props.children}
-              </Fragment>
-            }
-            <LangToggler id={lang}></LangToggler>
-            {pos === 'right' &&
-              <Fragment>
-                {this.props.children}
-              </Fragment>
-            }
-          </Button>
-        }
-      </Fragment>
-    );
-  }
+  const pos = props.pos || 'right';
+
+  return (
+    <Fragment>
+      {lang &&
+        <Button
+          type={type}
+          disabled={disabled}
+          onClick={onClick}
+          variant={variant || VARIANTS.CONTAINED}
+          className={classnames(
+            classes.button,
+            classes[buttonSize || SIZES.MEDIUM],
+            classes[typeButton || TYPES.PRIMARY],
+            className,
+          )}>
+          {pos === 'left' &&
+            <Fragment>
+              {props.children}
+            </Fragment>
+          }
+          <LangToggler id={lang} />
+          {pos === 'right' &&
+            <Fragment>
+              {props.children}
+            </Fragment>
+          }
+        </Button>
+      }
+    </Fragment>
+  );
 }
 
 export const LangButton = withStyles(styles)(LayoutButton);

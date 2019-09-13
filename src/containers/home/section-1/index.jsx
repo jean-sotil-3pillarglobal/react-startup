@@ -10,15 +10,14 @@ import {
 // provider
 import LangToggler from './../../../providers/lang/toggler';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
-import LangGenerateId from './../../../providers/utils/lang.generate.id';
 
 // components
-import Icon from './../../../components/commons/icon/index.jsx';
-import SVGComponent from './../../../components/commons/svg/index.jsx';
-import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button/index.jsx';
-import { LangInput } from './../../../components/commons/input/index.jsx';
+import Icon from './../../../components/commons/icon';
+import SVGComponent from './../../../components/commons/svg';
+import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
+import { LangInput } from './../../../components/commons/input';
 
-import SectionBlock from './../../../components/layouts/section/index.jsx';
+import SectionBlock from './../../../components/layouts/section';
 
 const styles = theme => ({
   button: {
@@ -83,13 +82,11 @@ const copy = LangGenerateTree([NODE, SLOT], [
 
 class SectionA extends Component {
   state = {
-    layers: [],
     type: '',
   }
 
-  props: {
-    history: any,
-    classes: Object,
+  componentDidMount = () => {
+    this.myRef = React.createRef();
   }
 
   handleChange = (evt) => {
@@ -98,15 +95,19 @@ class SectionA extends Component {
     });
   }
 
-  componentDidMount = () => {
-    this.myRef = React.createRef();
-  }
-
   handleClick = (evt) => {
+    evt.preventDefault();
+
     const { history } = this.props;
     const { type } = this.state;
 
     history.push(`/get-a-quote/${type}`);
+  }
+
+  props: {
+    history: any,
+    classes: Object,
+    proxy: Object,
   }
 
   render () {
@@ -119,6 +120,7 @@ class SectionA extends Component {
     // example: getting images from verbiage
     if (verbiage) {
       layers = copy.items.map(item => verbiage(item.image));
+      console.log(layers);
     }
 
     return (
@@ -136,10 +138,10 @@ class SectionA extends Component {
               item
               md={12}>
               <Typography variant="h1" align="left" className={classes.title}>
-                <LangToggler id={copy.title}></LangToggler>
+                <LangToggler id={copy.title} />
               </Typography>
               <Typography variant="subtitle1" align="left" className={classes.subtitle}>
-                <LangToggler id={copy.subtitle}></LangToggler>
+                <LangToggler id={copy.subtitle} />
               </Typography>
             </Grid>
             <Grid
@@ -149,12 +151,12 @@ class SectionA extends Component {
               lg={2}>
               <LangInput
                 error={undefined}
-                fieldType={'input'}
-                id={'zipcode'}
-                key={'zipcode'}
+                fieldType="input"
+                id="zipcode"
+                key="zipcode"
                 lang={verbiage(copy.label)}
-                name={'zipcode'}
-                type={'text'}
+                name="zipcode"
+                type="text"
                 placeholder={verbiage(copy.placeholder_zipcode)}
                 value={this.state.zipcode || ''}
                 proxy={{
@@ -170,12 +172,12 @@ class SectionA extends Component {
               lg={3}>
               <LangInput
                 error={undefined}
-                fieldType={'select'}
-                id={'type'}
-                key={'type'}
+                fieldType="select"
+                id="type"
+                key="type"
                 lang={verbiage(copy.select)}
-                name={'type'}
-                type={'text'}
+                name="type"
+                type="text"
                 placeholder={verbiage(copy.placeholder_select)}
                 value={this.state.type || ''}
                 options={copy.select_options || {}}
@@ -196,11 +198,11 @@ class SectionA extends Component {
                 onClick={this.handleClick}
                 variant={VARIANTS.OUTLINED}
                 typeButton={TYPES.PRIMARY}>
-                <Icon name={'angle-right-b'} className={classes.icon} />
+                <Icon name="angle-right-b" className={classes.icon} />
               </LangButton>
             </Grid>
           </Grid>
-          <SVGComponent src="/static/svg/team_work.svg" className={classes.svg}/>
+          <SVGComponent src="/static/svg/team_work.svg" className={classes.svg} />
         </Fragment>
       </SectionBlock>
     );

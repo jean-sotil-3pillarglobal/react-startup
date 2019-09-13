@@ -1,6 +1,6 @@
 import HTMLParser from 'html-react-parser';
 import { bindActionCreators } from 'redux';
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 
 // action creators
@@ -9,25 +9,21 @@ import {
   selectVariantVerbiageAction,
 } from '../../../store/actions/components/footer';
 
-// TODO: dynamic injection
-import VerbiageOfAuto from '../verbs/themajorhub/auto';
-import VerbiageOfDefault from '../verbs/themajorhub/default';
-import VerbiageOfDental from '../verbs/themajorhub/dental';
-import VerbiageOfGroup from '../verbs/themajorhub/group';
-import VerbiageOfHealth from '../verbs/themajorhub/health';
-
 class LangToggler extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      language: null,
-    };
-  }
+  state = {}
 
   chooseVerbiage (leadType) {
-    let value;
     const { selectVariantVerbiage } = this.props;
     selectVariantVerbiage(leadType);
+  }
+
+  props: {
+    id: string,
+    language: string,
+    leadType: string,
+    selectLanguage: Function,
+    selectVariantVerbiage: Function,
+    verbiage: Function,
   }
 
   render() {

@@ -15,12 +15,10 @@ class Sticky extends Component {
     current: false,
     frameId: 0,
     height: 0,
-    innerWidth: '',
     maxBottom: false,
     maxLeft: false,
     maxRight: false,
     maxTop: false,
-    maxWidth: 'auto',
     parentDimensions: null,
     stickyDiv: React.createRef(),
     stickyDivDimensions: null,
@@ -47,14 +45,59 @@ class Sticky extends Component {
     this.removeEvents();
   }
 
-  props: {
-    children: Object,
-    classes: Object,
-    onStickyChange: Function,
-    reRender: Function,
-    scrollTarget: Object,
-    sides: Object,
-    stickyRef: Object,
+  setSticky = (active) => {
+    const { onStickyChange } = this.props;
+    const { current } = this.state;
+
+    if (active !== current) {
+      this.setState({
+        current: active,
+      });
+
+      onStickyChange(active);
+    }
+  }
+
+  addEvents = () => {
+    const { stickyDiv } = this.state;
+    const scrollTarget = this.props.scrollTarget || window;
+
+    if (scrollTarget && stickyDiv.current) {
+      scrollTarget.addEventListener('scroll', this.debouncedScroll);
+      window.addEventListener('resize', this.updateDimensions);
+    }
+  }
+
+  removeEvents() {
+    const { frameId } = this.state;
+    const scrollTarget = this.props.scrollTarget || window;
+
+    if (scrollTarget) {
+      scrollTarget.removeEventListener('scroll', this.debouncedScroll);
+      window.removeEventListener('resize', this.updateDimensions);
+    }
+
+    if (frameId) {
+      cancelAnimationFrame(frameId);
+    }
+  }
+
+  debouncedScroll = () => {
+    const { frameId } = this.state;
+
+    if (!frameId) {
+      this.setState({
+        frameId: requestAnimationFrame(this.handleScroll),
+      });
+    }
+  }
+
+  updateDimensions = () => {
+    // resize handler!
+    window.scrollTo(0, 0);
+    // update force: new ref dimensions.
+    this.handleScroll('reload');
+    this.render();
   }
 
   handleScroll = (handle) => {
@@ -141,64 +184,13 @@ class Sticky extends Component {
     }
   }
 
-  updateDimensions = () => {
-    const { innerWidth } = window;
-
-    this.setState({ innerWidth });
-
-    // resize handler!
-    window.scrollTo(0, 0);
-    // update force: new ref dimensions.
-    this.handleScroll('reload');
-    // render view: top, left
-    this.render();
-  }
-
-  addEvents = () => {
-    const { stickyDiv } = this.state;
-    const scrollTarget = this.props.scrollTarget || window;
-
-    if (scrollTarget && stickyDiv.current) {
-      scrollTarget.addEventListener('scroll', this.debouncedScroll);
-      window.addEventListener('resize', this.updateDimensions);
-    }
-  }
-
-  removeEvents() {
-    const { frameId } = this.state;
-    const scrollTarget = this.props.scrollTarget || window;
-
-    if (scrollTarget) {
-      scrollTarget.removeEventListener('scroll', this.debouncedScroll);
-      window.removeEventListener('resize', this.updateDimensions);
-    }
-
-    if (frameId) {
-      cancelAnimationFrame(frameId);
-    }
-  }
-
-  debouncedScroll = () => {
-    const { frameId } = this.state;
-
-    if (!frameId) {
-      this.setState({
-        frameId: requestAnimationFrame(this.handleScroll),
-      });
-    }
-  }
-
-  setSticky = (active) => {
-    const { onStickyChange } = this.props;
-    const { current } = this.state;
-
-    if (active !== current) {
-      this.setState({
-        current: active,
-      });
-
-      onStickyChange(active);
-    }
+  props: {
+    children: Object,
+    classes: Object,
+    onStickyChange: Function,
+    scrollTarget: Object,
+    sides: Object,
+    stickyRef: Object,
   }
 
   render = () => {
@@ -224,9 +216,7 @@ class Sticky extends Component {
     }
 
     return (
-      <div
-        className={classes.container}
-        ref={stickyDiv}>
+      <div className={classes.container} ref={stickyDiv}>
         {React.Children.map(children, (child) => {
           return React.cloneElement(child, {
             child: stickyDivDimensions,

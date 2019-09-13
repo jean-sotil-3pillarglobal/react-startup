@@ -1,7 +1,7 @@
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import Slider from 'react-slick';
-import { Component, Fragment } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 import {
@@ -10,13 +10,10 @@ import {
 } from '@material-ui/core';
 
 // provider
-import LangGenerateId from './../../../providers/utils/lang.generate.id';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
-import LangToggler from './../../../providers/lang/toggler';
 
 // components
-import Animate from './../../../components/commons/icon/animate/index.jsx';
-import SectionBlock from './../../../components/layouts/section/index.jsx';
+import Animate from './../../../components/commons/icon/animate';
 
 const styles = theme => ({
   button: {
@@ -61,42 +58,48 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'items-9-alt',
 ]);
 
-class BannerA extends Component {
-  render () {
-    const { classes, proxy } = this.props;
-    const { verbiage, language } = proxy;
-    const props = {
-      centerMode: true,
-      centerPadding: '60px',
-      className: 'container',
-      infinite: true,
-      nextArrow: <Animate type="ffwd" customStyle={classnames(classes.nextArrow, classes.button)} />,
-      prevArrow: <Animate type="ffwd" customStyle={classnames(classes.prevArrow, classes.button)} />,
-      slidesToShow: 3,
-      speed: 500,
-    };
+function BannerA (props: {
+  classes: Object,
+  proxy: Object,
+}) {
+  const { classes, proxy } = props;
+  const { verbiage, language } = proxy;
+  const sliderProps = {
+    centerMode: true,
+    centerPadding: '60px',
+    className: 'container',
+    infinite: true,
+    nextArrow: <Animate type="ffwd" customStyle={classnames(classes.nextArrow, classes.button)} />,
+    prevArrow: <Animate type="ffwd" customStyle={classnames(classes.prevArrow, classes.button)} />,
+    slidesToShow: 3,
+    speed: 500,
+  };
 
-    return (
-      (verbiage && language) &&
-      <Grid container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.container}>
-        <Grid item
-          sm={12}
-          md={8}>
-          <Slider {...props}>
-            {copy.items.map((item, i) => (
-              <div className={classes.item} key={`slicker-item-${i}`}>
+  return (
+    (verbiage && language) &&
+    <Grid
+      container
+      direction="row"
+      justify="center"
+      alignItems="center"
+      className={classes.container}>
+      <Grid
+        item
+        sm={12}
+        md={8}>
+        <Slider {...sliderProps}>
+          {copy.items.map((item, i) => {
+            const key = `slicker-item-${i}`;
+            return (
+              <div className={classes.item} key={key}>
                 <img alt={verbiage(item.alt)[language]} src={verbiage(item.logo)} className={classes.image} />
               </div>
-            ))}
-          </Slider>
-        </Grid>
+            );
+          })}
+        </Slider>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 export default withStyles(styles)(BannerA);

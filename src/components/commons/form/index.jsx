@@ -1,5 +1,5 @@
 
-import { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import {
   Card,
@@ -13,7 +13,7 @@ import {
 import LangToggler from './../../../providers/lang/toggler';
 
 // components
-import { LangInput } from './../../../components/commons/input/index.jsx';
+import { LangInput } from './../../../components/commons/input';
 
 const styles = theme => ({
   button: {
@@ -56,7 +56,6 @@ class FormBlock extends Component {
     disabled: Boolean,
     document: Object,
     errors: Object,
-    handleChange: Function,
     proxy: Object,
   }
 
@@ -72,9 +71,6 @@ class FormBlock extends Component {
       disabled,
       document,
       errors,
-      handleChange,
-      handleBlur,
-      language,
       verbiage,
     } = proxy;
 
@@ -85,10 +81,10 @@ class FormBlock extends Component {
             {copy.label &&
               <Fragment>
                 <Typography variant="h3" align="left" className={classes.title}>
-                  <LangToggler id={copy.label}></LangToggler>
+                  <LangToggler id={copy.label} />
                 </Typography>
                 <Typography variant="caption" className={classes.helper}>
-                  <LangToggler id={copy.label_helper}></LangToggler>
+                  <LangToggler id={copy.label_helper} />
                 </Typography>
               </Fragment>
             }

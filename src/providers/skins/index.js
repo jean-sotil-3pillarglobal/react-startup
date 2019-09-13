@@ -24,9 +24,6 @@ const MUIStyles = (palette, cb) => {
       invisible: {},
     },
     MuiButton: {
-      label: {
-        textTransform: 'uppercase',
-      },
       root: {
         '&$disabled': {
           backgroundColor: palette.disabled.main,

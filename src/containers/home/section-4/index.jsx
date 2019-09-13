@@ -1,23 +1,19 @@
-import { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import {
-  Button,
   Grid,
-  Icon,
-  Paper,
   Typography,
   withStyles,
 } from '@material-ui/core';
 
 // provider
 import LangToggler from './../../../providers/lang/toggler';
-import LangGenerateId from './../../../providers/utils/lang.generate.id';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
 // components
-import SectionBlock from './../../../components/layouts/section/index.jsx';
-import { LangButton } from './../../../components/commons/button/index.jsx';
-import { SmartImg } from './../../../components/commons/img/index.jsx';
+import SectionBlock from './../../../components/layouts/section';
+import { LangButton } from './../../../components/commons/button';
+import { SmartImg } from './../../../components/commons/img';
 
 const styles = theme => ({
   card: {
@@ -69,10 +65,10 @@ class SectionC extends Component {
             sm={12}
             md={12}>
             <Typography variant="h3">
-              <LangToggler id={row.title}></LangToggler>
+              <LangToggler id={row.title} />
             </Typography>
             <Typography variant="subtitle2">
-              <LangToggler id={row.body}></LangToggler>
+              <LangToggler id={row.body} />
             </Typography>
           </Grid>
           <Grid
@@ -89,11 +85,12 @@ class SectionC extends Component {
   }
 
   colFromLeft (row) {
-    const { classes, proxy } = this.props;
+    const { proxy } = this.props;
 
     return (
       <Fragment key={row.title}>
-        <Grid item
+        <Grid
+          item
           xs={12}
           sm={12}
           md={4}>
@@ -104,7 +101,7 @@ class SectionC extends Component {
   }
 
   colFromRight (row) {
-    const { classes, proxy } = this.props;
+    const { proxy } = this.props;
 
     return (
       <Fragment key={row.title}>
@@ -117,6 +114,11 @@ class SectionC extends Component {
           <SmartImg proxy={proxy} src={row.image} />
         </Grid>
       </Fragment>);
+  }
+
+  props: {
+    classes: Object,
+    proxy: Object,
   }
 
   render () {
@@ -139,7 +141,7 @@ class SectionC extends Component {
             <Typography
               variant="h2"
               className={classes.title}>
-              <LangToggler id={copy.title}></LangToggler>
+              <LangToggler id={copy.title} />
             </Typography>
           </Grid>
           {copy.items.map((row, index) => {

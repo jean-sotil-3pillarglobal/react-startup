@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import classnames from 'classnames';
 
@@ -47,21 +47,7 @@ const styles = theme => ({
 
 class SVGComponent extends Component {
   state = {
-    intervalId: null,
-    pulse: false,
-  };
-
-  props: {
-    children: Object,
-    src: Object,
-    timer: Int,
-  };
-
-  componentDidMount = () => {
-    const timer = this.props.timer || 3000;
-    const intervalId = setInterval(this.pulse, timer);
-
-    this.setState({ intervalId });
+    intervalId: setInterval(this.pulse, 3000),
   };
 
   componentWillUnmount = () => {
@@ -74,14 +60,19 @@ class SVGComponent extends Component {
     });
   };
 
+  props: {
+    classes: Object,
+    className: Object,
+    src: Object,
+  };
+
   render () {
     const { classes, src } = this.props;
-    const { pulse } = this.state;
 
     return (
       <SvgLoader path={src} className={classnames(classes.root, this.props.className)}>
-        <SvgProxy selector='[fill*="#6c63ff"]' data-color='svg-primary' />
-        <SvgProxy selector='[fill*="#f2f2f2"]' data-color='svg-blink' />
+        <SvgProxy selector="[fill*='#6c63ff']" data-color="svg-primary" />
+        <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-blink" />
       </SvgLoader>
     );
   }

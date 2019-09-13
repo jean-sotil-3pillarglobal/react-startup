@@ -1,20 +1,18 @@
-import { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import React, { Fragment } from 'react';
 
 import {
   Typography,
   withStyles,
 } from '@material-ui/core';
 
-import Footer from '../../components/footer/index.jsx';
+import Footer from '../../components/footer';
 
 // provider
 import LangToggler from './../../providers/lang/toggler';
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
-import LangGenerateId from './../../providers/utils/lang.generate.id';
 
-const styles = theme => ({
+const styles = () => ({
   container: {
     margin: 0,
   },
@@ -28,23 +26,23 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'title',
 ]);
 
-class Page404 extends Component {
-  props: {
-    classes: Object,
-    history: any,
-  }
+function Page404 (props: {
+  classes: Object,
+  location: Object,
+}) {
+  const {
+    classes,
+    location,
+  } = props;
 
-  render () {
-    const { classes, location } = this.props;
-    return (
-      <Fragment>
-        <Typography variant="h1" align="left" className={classes.title}>
-          <LangToggler id={copy.title}></LangToggler> PATH: {location.pathname}
-        </Typography>
-        <Footer />
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <Typography variant="h1" align="left" className={classes.title}>
+        <LangToggler id={copy.title} /> PATH: {location.pathname}
+      </Typography>
+      <Footer />
+    </Fragment>
+  );
 }
 
 export default withStyles(styles)(withRouter(Page404));

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 import {
   withStyles,
@@ -11,11 +11,18 @@ const styles = () => ({
 });
 
 class LayoutImg extends Component {
-  render() {
-    const { classes, proxy, src } = this.props;
+  props: {
+    classes: Object,
+    proxy: Object,
+    src: string,
+    alt: string,
+  };
+
+  render () {
+    const { classes, proxy, src, alt } = this.props;
     const { device, verbiage } = proxy;
     return (
-      verbiage && <img className={classes.img} src={verbiage(src)[device]} />
+      verbiage && <img className={classes.img} src={verbiage(src)[device]} alt={verbiage(alt)} />
     );
   }
 }

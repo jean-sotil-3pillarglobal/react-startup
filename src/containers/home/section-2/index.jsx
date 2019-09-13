@@ -1,22 +1,19 @@
-import { Component, Fragment } from 'react';
+import React from 'react';
 
 import {
-  Card,
   Grid,
   Typography,
   withStyles,
 } from '@material-ui/core';
 
 // provider
-import LangGenerateId from './../../../providers/utils/lang.generate.id';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangToggler from './../../../providers/lang/toggler';
 
 // components
-import Icon from './../../../components/commons/icon/index.jsx';
-import SectionBlock from './../../../components/layouts/section/index.jsx';
-import SVGComponent from './../../../components/commons/svg/index.jsx';
-import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button/index.jsx';
+import SectionBlock from './../../../components/layouts/section';
+import SVGComponent from './../../../components/commons/svg';
+import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
 
 const styles = theme => ({
   body: {
@@ -77,83 +74,94 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'svg',
 ]);
 
-class SectionB extends Component {
-  render () {
-    const { classes, proxy } = this.props;
-    const { verbiage } = proxy;
+function SectionC (props: {
+  classes: Object,
+  proxy: Object,
+}) {
+  const { classes, proxy } = props;
+  const { verbiage } = proxy;
 
-    return (
-      verbiage &&
-      <SectionBlock variant="light">
+  return (
+    verbiage &&
+    <SectionBlock variant="light">
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.container}>
         <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          className={classes.container}>
-          <Grid item
-            sm={12}
-            md={12}>
-            <Typography
-              variant="h2"
-              className={classes.title}>
-              <LangToggler id={copy.title}></LangToggler>
-            </Typography>
-            <Typography
-              variant="h3"
-              className={classes.subtitle}>
-              <LangToggler id={copy.subtitle}></LangToggler>
-            </Typography>
-            <Typography
-              variant="body1"
-              className={classes.body}>
-              <LangToggler id={copy.body}></LangToggler>
-            </Typography>
-          </Grid>
+          item
+          sm={12}
+          md={12}>
+          <Typography
+            variant="h2"
+            className={classes.title}>
+            <LangToggler id={copy.title} />
+          </Typography>
+          <Typography
+            variant="h3"
+            className={classes.subtitle}>
+            <LangToggler id={copy.subtitle} />
+          </Typography>
+          <Typography
+            variant="body1"
+            className={classes.body}>
+            <LangToggler id={copy.body} />
+          </Typography>
         </Grid>
-        <Grid container spacing={24}>
-          {copy.items.map((item, i) => (
+      </Grid>
+      <Grid container spacing={24}>
+        {copy.items.map((item, i) => {
+          const key = `${i}_item_x`;
+
+          return (
             <Grid
               item
               sm={12}
               md={4}
               lg={4}
-              key={`${i}_item_x`}>
-              <Grid container className={classes.items}>
-                <Grid item
+              key={key}>
+              <Grid
+                container
+                className={classes.items}>
+                <Grid
+                  item
                   xs={12}
                   sm={12}
                   md={12}>
-                  <SVGComponent src={verbiage(copy.svg)} className={classes.svg}/>
+                  <SVGComponent src={verbiage(copy.svg)} className={classes.svg} />
                   <Typography
-                    variant="h4" className={classes.subtitle2}>
-                    <LangToggler id={item.title}></LangToggler>
+                    variant="h4"
+                    className={classes.subtitle2}>
+                    <LangToggler id={item.title} />
                   </Typography>
                 </Grid>
-                <Grid item
+                <Grid
+                  item
                   xs={12}
                   sm={12}
                   md={12}>
                   <Typography
-                    variant="body1" className={classes.body2}>
-                    <LangToggler id={item.body}></LangToggler>
+                    variant="body1"
+                    className={classes.body2}>
+                    <LangToggler id={item.body} />
                   </Typography>
                   {verbiage(item.cta) &&
                     <LangButton
                       lang={item.cta}
                       onClick={evt => this.handleClick(evt, copy.cta_link)}
                       variant={VARIANTS.OUTLINED}
-                      typeButton={TYPES.PRIMARY}>
-                    </LangButton>
+                      typeButton={TYPES.PRIMARY} />
                   }
                 </Grid>
               </Grid>
             </Grid>
-          ))}
-        </Grid>
-      </SectionBlock>
-    );
-  }
+          );
+        })}
+      </Grid>
+    </SectionBlock>
+  );
 }
 
-export default withStyles(styles)(SectionB);
+export default withStyles(styles)(SectionC);

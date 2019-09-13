@@ -1,27 +1,25 @@
-import { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import {
   withStyles,
 } from '@material-ui/core';
 
-import Helmet from '../../components/commons/helmet/index.jsx';
-import Header from '../../components/header/index.jsx';
-import Footer from '../../components/footer/index.jsx';
+import Helmet from '../../components/commons/helmet';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
 
-import BannerA from './banner-1/index.jsx';
-import SectionA from './section-1/index.jsx';
-import SectionB from './section-2/index.jsx';
-import SectionC from './section-3/index.jsx';
-import SectionD from './section-4/index.jsx';
+import BannerA from './banner-1';
+import SectionA from './section-1';
+import SectionB from './section-2';
+import SectionC from './section-3';
+import SectionD from './section-4';
 
 
 // provider
-import LangToggler from './../../providers/lang/toggler';
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
-import LangGenerateId from './../../providers/utils/lang.generate.id';
 
-const styles = theme => ({
+const styles = () => ({
   container: {
     margin: 0,
   },
@@ -40,8 +38,19 @@ const copy = LangGenerateTree([NODE, SLOT], [
 ]);
 
 class Home extends Component {
+  state: {}
+
+  props: {
+    device: string,
+    language: string,
+    lead: Object,
+    leadType: string,
+    verbiage: Function,
+  }
+
   render () {
-    const { classes, lead, leadType, verbiage, language, device } = this.props;
+    const { lead, leadType, verbiage, language, device } = this.props;
+
     const proxy = {
       device,
       language,

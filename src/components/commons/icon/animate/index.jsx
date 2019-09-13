@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   MorphIcon,
 } from 'react-svg-buttons';
@@ -7,7 +7,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-const styles = theme => ({});
+const styles = () => ({});
 
 const defaultIcon = 'thunderbolt';
 
@@ -17,9 +17,9 @@ class IconAnimate extends Component {
   };
 
   props: {
-    type: string,
     className: string,
     onClick: Function,
+    type: string,
   }
 
   handleMouseOver = () => {
@@ -35,13 +35,13 @@ class IconAnimate extends Component {
   }
 
   render() {
-    const { onClick, customStyle } = this.props;
+    const { onClick, className } = this.props;
     const { type } = this.state;
 
     return (
       type &&
       <Fragment>
-        <MorphIcon className={customStyle} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} type={type} onClick={onClick} />
+        <MorphIcon className={className} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} type={type} onClick={onClick} />
       </Fragment>
     );
   }

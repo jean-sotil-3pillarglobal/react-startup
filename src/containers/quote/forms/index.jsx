@@ -1,48 +1,26 @@
 
-import { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 // components
-import FormBlock from './../../../components/commons/form/index.jsx';
+import FormBlock from './../../../components/commons/form';
 
-// provider
-import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
-
-const NODE = 'quote';
-const SLOT = 'section_1';
-// copy:
-// forms
-const copy = LangGenerateTree([NODE, SLOT], [
-  'forms',
-]);
-
-class QuoteForm extends Component {
-  state = {}
-
-  props: {
-    proxy: Object,
-  }
-
-  render () {
-    const { proxy } = this.props;
-    const {
-      document,
-      errors,
+function QuoteForm (props: {
+  proxy: Object,
+}) {
+  const {
+    proxy: {
       form,
-      handleBlur,
-      handleChange,
-      language,
-      value,
-      verbiage,
-    } = proxy;
+    },
+  } = props;
 
-    return (
-      <Fragment key={`${form.value}_form`}>
-        {form.rows && form.rows.map((row, y) => {
-          return <FormBlock key={`${form.value}_row_${y}`} proxy={proxy} copy={row} />;
-        })}
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment key={`${form.value}_form`}>
+      {form.rows && form.rows.map((row, y) => {
+        const key = `${form.value}_row_${y}`;
+        return <FormBlock key={key} proxy={proxy} copy={row} />;
+      })}
+    </Fragment>
+  );
 }
 
 export default QuoteForm;

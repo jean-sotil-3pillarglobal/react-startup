@@ -1,5 +1,5 @@
 
-import { Component } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 import {
@@ -38,38 +38,39 @@ const styles = theme => ({
   },
 });
 
-class SectionBlock extends Component {
-  props: {
-    children: Object,
-    classes: Object,
-    variant: string,
-  }
+function SectionBlock (props: {
+  children: Object,
+  classes: Object,
+  className: Object,
+  variant: string,
+}) {
+  const {
+    children,
+    classes,
+    className,
+    variant,
+  } = props;
 
-  render () {
-    const {
-      children,
-      classes,
-      variant,
-    } = this.props;
-
-    return (
-      <Paper
-        className={classes[variant]}>
-        <Grid container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          className={classnames(this.props.className, classes.container)}>
-          <Grid item
-            sm={11}
-            md={9}
-            lg={7} className={classes.item}>
-            {children}
-          </Grid>
+  return (
+    <Paper
+      className={classes[variant]}>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classnames(className, classes.container)}>
+        <Grid
+          item
+          sm={11}
+          md={9}
+          lg={7}
+          className={classes.item}>
+          {children}
         </Grid>
-      </Paper>
-    );
-  }
+      </Grid>
+    </Paper>
+  );
 }
 
 export default withStyles(styles)(SectionBlock);

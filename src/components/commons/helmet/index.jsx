@@ -1,18 +1,18 @@
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
 class HeaderHelmet extends Component {
+  getValues = (value) => {
+    const { proxy } = this.props;
+    const { verbiage, language } = proxy;
+
+    return (verbiage && language) && verbiage(value)[language];
+  }
+
   props: {
     copy: Object,
     proxy: Object,
-  }
-
-  getValues = (value) => {
-    const { proxy } = this.props;
-    const { verbiage, language, leadType } = proxy;
-
-    return (verbiage && language) && verbiage(value)[language];
   }
 
   render() {

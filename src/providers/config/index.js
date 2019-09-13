@@ -27,8 +27,8 @@ export const publics = [
   },
   {
     label: {
-      en: 'Why Choose Us',
-      es: 'Quiénes Somos',
+      en: 'Why Choose Us?',
+      es: '¿Porqué escogernos?',
     },
     route: {
       en: '/why-chooose-us',

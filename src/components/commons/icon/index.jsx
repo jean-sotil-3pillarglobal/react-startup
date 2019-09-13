@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import {
   withStyles,
@@ -19,16 +19,24 @@ const styles = theme => ({
   },
 });
 
-class Icon extends Component {
-  render() {
-    const { name, classes } = this.props;
+function Icon (props: {
+  classes: Object,
+  className: Object,
+  color: string,
+  name: Object,
+}) {
+  const {
+    classes,
+    className,
+    color,
+    name,
+  } = props;
 
-    return (
-      <Fragment>
-        <i className={classnames(`uil uil-${name}`, this.props.className, classes[this.props.color])}></i>
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <i className={classnames(`uil uil-${name}`, className, classes[color])} />
+    </Fragment>
+  );
 }
 
 export default withStyles(styles)(Icon);

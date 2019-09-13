@@ -1,13 +1,11 @@
 import 'react-toggle/style.css';
 import classnames from 'classnames';
-import HTMLParser from 'html-react-parser';
 import React, { Component, Fragment } from 'react';
 import Toggle from 'react-toggle';
 
 import {
   Divider,
   FormControl,
-  Input,
   InputAdornment,
   MenuItem,
   TextField,
@@ -16,17 +14,17 @@ import {
 } from '@material-ui/core';
 
 // components
-import Icon from '../icon/index.jsx';
+import Icon from '../icon';
 
 import Messages from './messages';
 
 // masks
-import MaskCredit from './mask/credit.jsx';
-import MaskCurrency from './mask/currency.jsx';
-import MaskCVV from './mask/cvv.jsx';
-import MaskFloat from './mask/float.jsx';
-import MaskPhone from './mask/phone.jsx';
-import MaskZip from './mask/zipcode.jsx';
+import MaskCredit from './mask/credit';
+import MaskCurrency from './mask/currency';
+import MaskCVV from './mask/cvv';
+import MaskFloat from './mask/float';
+import MaskPhone from './mask/phone';
+import MaskZip from './mask/zipcode';
 
 const styles = theme => ({
   marginDense: {
@@ -74,21 +72,6 @@ class InputLayout extends Component {
     focused: false,
   };
 
-  props: {
-    classes: Object,
-    fieldType: string,
-    id: string,
-    InputLabelProps: any,
-    label: string,
-    lang: string,
-    multiline: Boolean,
-    onChange: Function,
-    options: Array,
-    placeholder: Object,
-    proxy: Function,
-    value: any,
-  };
-
   showOptions (options) {
     const {
       proxy: { verbiage, language },
@@ -105,14 +88,16 @@ class InputLayout extends Component {
       }
 
       if (value !== '') {
+        const key = `${i}_select_input`;
         node = (
-          <MenuItem key={`${i}_select_input`} value={value}>
+          <MenuItem key={key} value={value}>
             {label[language]}
           </MenuItem>
         );
       } else {
+        const key = `no_${i}_value_select_input`;
         node = (
-          <MenuItem key={`no_${i}_value_select_input`} value='' disabled>
+          <MenuItem key={key} value="" disabled>
             {label[language]}
           </MenuItem>
         );
@@ -153,25 +138,38 @@ class InputLayout extends Component {
     } = this.props;
 
     return (
-      errors[id].check && <Typography variant='caption' color='default'>{Messages(errors[id].error, language)}</Typography>
+      errors[id].check && <Typography variant="caption" color="default">{Messages(errors[id].error, language)}</Typography>
     );
   }
+
+  props: {
+    classes: Object,
+    fieldType: string,
+    id: string,
+    InputLabelProps: any,
+    label: string,
+    lang: string,
+    mask: string,
+    multiline: Boolean,
+    onChange: Function,
+    options: Array,
+    placeholder: Object,
+    proxy: Function,
+    value: any,
+  };
 
   render () {
     const {
       classes,
       fieldType,
-      id,
-      InputLabelProps,
-      mask,
       multiline,
       options,
       proxy: {
         language,
-        verbiage,
         handleChange,
       },
       value,
+      mask,
     } = this.props;
     const { focused } = this.state;
 
@@ -206,10 +204,10 @@ class InputLayout extends Component {
         props.error !== undefined &&
         <InputAdornment>
           {!props.error &&
-            <Icon name={'check'} className={classnames(classes.icon)} color={value.length > 0 ? 'success' : 'default'} />
+            <Icon name="check" className={classnames(classes.icon)} color={value.length > 0 ? 'success' : 'default'} />
           }
           {props.error &&
-            <Icon name={'exclamation-triangle'} className={classnames(classes.icon)} color="error" />
+            <Icon name="exclamation-triangle" className={classnames(classes.icon)} color="error" />
           }
         </InputAdornment>
       ),
@@ -245,7 +243,7 @@ class InputLayout extends Component {
             onBlur={this.handleBlur}
             onChange={handleChange}
             {...props} />
-          <Typography className={'toggle'} variant="caption">{label}</Typography>
+          <Typography className="toggle" variant="caption">{label}</Typography>
         </FormControl>
       ),
       divider: <Divider variant="middle" />,
@@ -311,7 +309,7 @@ class InputLayout extends Component {
               shrink: true,
             }}
             {...props}
-            type={'text'} />
+            type="text" />
           {props.error && this.error()}
         </FormControl>
       ),
