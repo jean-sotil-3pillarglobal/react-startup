@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
+
 import { withRouter } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Parallax } from 'react-parallax';
 
 import {
-  Grid,
-  Typography,
+  Paper,
   withStyles,
 } from '@material-ui/core';
 
@@ -11,51 +12,36 @@ import {
 import LangToggler from './../../../providers/lang/toggler';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
-// components
-import Icon from './../../../components/commons/icon';
-import SVGComponent from './../../../components/commons/svg';
-import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
-import { LangInput } from './../../../components/commons/input';
-
-import SectionBlock from './../../../components/layouts/section';
+import Callout from './../../../components/commons/callout/';
 
 const styles = theme => ({
+  background: {},
   button: {
     margin: 0,
   },
-  content: {
-    padding: `${theme.spacing.unit * 0}px 0 ${theme.spacing.unit * 32}px 0`,
-    [theme.breakpoints.up('md')]: {
-      paddingRight: 0,
-    },
+  callout: {
+    bottom: theme.spacing.unit * 4,
+    left: theme.spacing.unit * 4,
+    position: 'absolute',
+    zIndex: 1,
   },
-  formControl: {
+  content: {
+    marginTop: theme.spacing.unit * 14,
     width: '100%',
   },
   hero: {
+    background: 'transparent',
+    height: 600,
+    padding: 0,
     position: 'relative',
     zIndex: 1,
   },
   icon: {
     fontSize: '1rem',
   },
-  quote: {
-    padding: `${theme.spacing.unit * 6}px`,
-  },
-  subtitle: {
-    marginBottom: `${theme.spacing.unit * 9}px`,
-    zIndex: 1,
-  },
-  svg: {
-    left: '45%',
-    position: 'absolute',
-    top: theme.spacing.unit * 20,
-    width: '50%',
+  image: {
+    width: '100%',
     zIndex: -1,
-  },
-  title: {
-    marginBottom: `${theme.spacing.unit * 8}px`,
-    zIndex: 1,
   },
 });
 
@@ -68,143 +54,32 @@ const SLOT = 'section_1';
 // 1 cta
 // 2 images
 const copy = LangGenerateTree([NODE, SLOT], [
-  'cta',
-  'items-2-image',
-  'label',
-  'select',
-  'select_options-4-value',
-  'select_options-4-label',
+  'background',
   'subtitle',
   'title',
-  'placeholder_zipcode',
-  'placeholder_select',
 ]);
 
 class SectionA extends Component {
-  state = {
-    type: '',
-  }
-
-  componentDidMount = () => {
-    this.myRef = React.createRef();
-  }
-
-  handleChange = (evt) => {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-    });
-  }
-
-  handleClick = (evt) => {
-    evt.preventDefault();
-
-    const { history } = this.props;
-    const { type } = this.state;
-
-    history.push(`/get-a-quote/${type}`);
-  }
-
   props: {
-    history: any,
     classes: Object,
     proxy: Object,
   }
 
   render () {
     const { classes, proxy } = this.props;
-    const { type } = this.state;
-    const { verbiage, language } = proxy;
-    const { handleChange } = this;
-    let layers = [];
-
-    // example: getting images from verbiage
-    if (verbiage) {
-      layers = copy.items.map(item => verbiage(item.image));
-      console.log(layers);
-    }
+    const { verbiage } = proxy;
 
     return (
       verbiage &&
-      <SectionBlock ref={this.myRef} className={classes.hero}>
-        <Fragment>
-          <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-end"
-            spacing={8}
-            className={classes.content}>
-            <Grid
-              item
-              md={12}>
-              <Typography variant="h1" align="left" className={classes.title}>
-                <LangToggler id={copy.title} />
-              </Typography>
-              <Typography variant="subtitle1" align="left" className={classes.subtitle}>
-                <LangToggler id={copy.subtitle} />
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              sm={12}
-              md={2}
-              lg={2}>
-              <LangInput
-                error={undefined}
-                fieldType="input"
-                id="zipcode"
-                key="zipcode"
-                lang={verbiage(copy.label)}
-                name="zipcode"
-                type="text"
-                placeholder={verbiage(copy.placeholder_zipcode)}
-                value={this.state.zipcode || ''}
-                proxy={{
-                  handleChange,
-                  language,
-                  verbiage,
-                }} />
-            </Grid>
-            <Grid
-              item
-              sm={12}
-              md={3}
-              lg={3}>
-              <LangInput
-                error={undefined}
-                fieldType="select"
-                id="type"
-                key="type"
-                lang={verbiage(copy.select)}
-                name="type"
-                type="text"
-                placeholder={verbiage(copy.placeholder_select)}
-                value={this.state.type || ''}
-                options={copy.select_options || {}}
-                proxy={{
-                  handleChange,
-                  language,
-                  verbiage,
-                }} />
-            </Grid>
-            <Grid
-              item
-              sm={12}
-              md={3}
-              lg={3}>
-              <LangButton
-                disabled={type === ''}
-                lang={copy.cta}
-                onClick={this.handleClick}
-                variant={VARIANTS.OUTLINED}
-                typeButton={TYPES.PRIMARY}>
-                <Icon name="angle-right-b" className={classes.icon} />
-              </LangButton>
-            </Grid>
-          </Grid>
-          <SVGComponent src="/static/svg/team_work.svg" className={classes.svg} />
-        </Fragment>
-      </SectionBlock>
+      <Parallax bgImage={verbiage(copy.background)} strength={500} className={classes.background}>
+        <Paper className={classes.hero}>
+          <Callout
+            title={<LangToggler id={copy.title} />}
+            subtitle={<LangToggler id={copy.subtitle} />}
+            variant="secondary"
+            className={classes.callout} />
+        </Paper>
+      </Parallax>
     );
   }
 }

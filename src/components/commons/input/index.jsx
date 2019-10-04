@@ -30,6 +30,7 @@ const styles = theme => ({
   marginDense: {
     margin: 0,
     whiteSpace: 'nowrap',
+    width: '100%',
   },
   marginNormal: {
     '& .react-toggle-thumb': {
@@ -62,8 +63,7 @@ const styles = theme => ({
     backgroundColor: '#ffffff!important',
     border: `1px solid ${theme.palette.utils.black}`,
     boxShadow: `0 0 2px ${theme.palette.utils.black} inset`,
-    margin: `${theme.spacing.unit * 1}px 0`,
-    padding: '4px 8px',
+    padding: '2px 8px',
   },
 });
 

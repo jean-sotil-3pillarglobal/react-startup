@@ -17,11 +17,16 @@ const Verbiage = {
           },
         },
       ],
+      logo: {
+        desktop: '/static/images/logo.jpg',
+        mobile: '/static/images/logo.jpg',
+      },
       publics,
       title: {
         en: 'the ◈ majorhub',
         es: 'the ◈ majorhub',
       },
+
     },
   },
   err404: {
@@ -131,18 +136,11 @@ const Verbiage = {
       ],
     },
     section_1: {
+      background: '/static/images/d-bg-1.jpg',
       cta: {
         en: 'start your quote',
         es: 'consulta a un agente',
       },
-      items: [
-        {
-          image: 'https://freerangestock.com/sample/118881/mountain-adventure-.jpg',
-        },
-        {
-          image: 'https://freerangestock.com/sample/71354/the-urban-network--a-city-and-its-human-and-electronic-connecti.jpg',
-        },
-      ],
       label: {
         en: 'your zip code',
         es: 'tú código postal',
@@ -253,6 +251,67 @@ const Verbiage = {
       },
     },
     section_3: {
+      background: '/static/images/d-bg-1.jpg',
+      cta: {
+        en: 'start your quote',
+        es: 'consulta a un agente',
+      },
+      label: {
+        en: 'your zip code',
+        es: 'tú código postal',
+      },
+      placeholder_select: {
+        en: 'health',
+        es: 'salud',
+      },
+      placeholder_zipcode: {
+        en: '00232',
+        es: '00233',
+      },
+      select: {
+        en: 'choose your insurance type',
+        es: 'escoge tu seguro',
+      },
+      select_options: [
+        {
+          label: {
+            en: 'select a product',
+            es: 'selecciona un producto',
+          },
+          value: '',
+        },
+        {
+          label: {
+            en: 'health',
+            es: 'sálud',
+          },
+          value: 'health',
+        },
+        {
+          label: {
+            en: 'auto',
+            es: 'automóvil',
+          },
+          value: 'auto',
+        },
+        {
+          label: {
+            en: 'dental',
+            es: 'dentista',
+          },
+          value: 'dental',
+        },
+      ],
+      subtitle: {
+        en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
+        es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
+      },
+      title: {
+        en: '<span>you are less than 1 minute away </br> from an health insurance quote.</span>',
+        es: '<span>usted esta a menos de 1 minuto de </br>encontar su mejor seguro de salud. </span>',
+      },
+    },
+    section_4: {
       body: {
         en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
@@ -329,7 +388,7 @@ const Verbiage = {
         es: 'ofrecemos asistencia especializada',
       },
     },
-    section_4: {
+    section_5: {
       body: {
         en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',

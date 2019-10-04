@@ -47,7 +47,7 @@ export const publics = [
   },
   {
     featured: true,
-    featured_icon: 'star',
+    featured_icon: 'info',
     label: {
       en: 'reach us now',
       es: 'consulta ahora',

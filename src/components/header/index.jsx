@@ -12,6 +12,7 @@ import {
   IconButton,
   List,
   ListItem,
+  Paper,
   Toolbar,
   Typography,
   withStyles,
@@ -29,6 +30,7 @@ import LangGenerateTree from '../../providers/utils/lang.generate.tree';
 
 // components
 import { LangButton, TYPES, VARIANTS } from './../commons/button';
+import { SmartImg } from './../commons/img';
 import Icon from './../commons/icon';
 
 const drawerWidth = 240;
@@ -36,8 +38,8 @@ const drawerWidth = 240;
 const styles = theme => ({
   appBar: {
     background: theme.palette.primary.main,
-    border: `2px solid ${theme.palette.utils.darker}`,
-    padding: `${theme.spacing.unit * 1}px 0`,
+    border: `2px solid ${theme.palette.secondary.light}`,
+    padding: `0 ${theme.spacing.unit * 4}px`,
     transition: theme.transitions.create(['background-color', 'margin', 'width'], {
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp,
@@ -87,7 +89,6 @@ const styles = theme => ({
   h3: {
     color: theme.palette.primary.contrastText,
     marginBottom: 0,
-    marginLeft: theme.spacing.unit * 5,
   },
   headroom: {
     height: 'auto!important',
@@ -100,6 +101,11 @@ const styles = theme => ({
   icon: {
     fontSize: '1rem',
   },
+  logo: {
+    display: 'block',
+    margin: `${theme.spacing.unit * 1}px auto`,
+    width: '70%',
+  },
   menuButton: {
     marginLeft: 12,
     marginRight: 20,
@@ -110,28 +116,17 @@ const styles = theme => ({
   menuLabel: {
     color: theme.palette.secondary.contrastText,
   },
+  navbar: {
+    background: 'transparent',
+    float: 'right',
+  },
   root: {
     '& div[class*="headroom--pinned"] *': {
       color: theme.palette.secondary.contrastText,
     },
-    '& div[class*="headroom--pinned"] button[class*="MuiButton-outlined"]': {
-      '&:hover': {
-        background: theme.palette.primary.main,
-      },
-      '&:hover span': {
-        color: theme.palette.primary.contrastText,
-      },
-      backgroundColor: theme.palette.secondary.light,
-    },
     '& div[class*="headroom--pinned"] header': {
       backgroundColor: theme.palette.secondary.main,
       borderColor: `${theme.palette.secondary.light}`,
-    },
-    '& div[class*="headroom--unfixed"] button[class*="MuiButton-outlined"]': {
-      '&:hover': {
-        background: theme.palette.secondary.light,
-        color: theme.palette.secondary.contrastText,
-      },
     },
     '& div[class*="headroom-wrapper"] > div': {
       zIndex: '10!important',
@@ -146,11 +141,12 @@ const NODE_TYPE = 'header';
 // 4 items
 // 1 cta
 const copy = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
-  'title',
-  'publics-4-featured',
+  'logo',
   'publics-4-featured_icon',
+  'publics-4-featured',
   'publics-4-label',
   'publics-4-route',
+  'title',
 ]);
 
 class Header extends Component {
@@ -192,44 +188,52 @@ class Header extends Component {
               [classes.appBarShift]: open,
             })}>
             <Toolbar disableGutters={!open}>
-              {isMobile ?
-                <IconButton
-                  aria-label="Open drawer"
-                  onClick={this.handleDrawerOpen}
-                  className={classNames(classes.menuButton, open && classes.hide)}>
-                  <Menu />
-                </IconButton> : null
-              }
-
-              <Typography variant="body2" align="left" className={classes.h3}>
-                <LangToggler id={copy.title} />
-              </Typography>
-
-              {(!open && !isMobile) &&
+              <Grid
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="center">
                 <Grid
-                  container
-                  spacing={16}
-                  direction="row"
-                  justify="flex-end"
-                  alignItems="center">
-                  {copy.publics.map((item) => {
-                    const featured = verbiage(item.featured);
-                    return (
-                      <Grid item md={2} align="center" key={item.label}>
-                        <LangButton
-                          lang={item.label}
-                          variant={featured && VARIANTS.OUTLINED}
-                          typeButton={(featured && TYPES.SECONDARY) || TYPES.LINK}
-                          pos="left">
-                          {featured &&
-                            <Icon name={verbiage(item.featured_icon)} className={classes.icon} />
-                          }
-                        </LangButton>
-                      </Grid>
-                    );
-                  })}
+                  item
+                  sm={12}
+                  md={1}
+                  lg={1}>
+                  {isMobile ?
+                    <IconButton
+                      aria-label="Open drawer"
+                      onClick={this.handleDrawerOpen}
+                      className={classNames(classes.menuButton, open && classes.hide)}>
+                      <Menu />
+                    </IconButton> : null
+                  }
+                  <SmartImg proxy={proxy} src={copy.logo} className={classes.logo} />
                 </Grid>
-              }
+                <Grid
+                  item
+                  sm={12}
+                  md={10}
+                  lg={10}>
+                  {(!open && !isMobile) &&
+                    <Paper className={classes.navbar}>
+                      {copy.publics.map((item) => {
+                        const featured = verbiage(item.featured);
+                        return (
+                          <LangButton
+                            key={item.label}
+                            lang={item.label}
+                            variant={featured && VARIANTS.OUTLINED}
+                            typeButton={(featured && TYPES.SECONDARY) || TYPES.LINK}
+                            pos="right">
+                            {featured &&
+                              <Icon name={verbiage(item.featured_icon)} className={classes.icon} />
+                            }
+                          </LangButton>
+                        );
+                      })}
+                    </Paper>
+                  }
+                </Grid>
+              </Grid>
             </Toolbar>
           </AppBar>
         </Headroom>

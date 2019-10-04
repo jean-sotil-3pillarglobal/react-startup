@@ -8,10 +8,10 @@ function QuoteForm (props: {
   proxy: Object,
 }) {
   const {
-    proxy: {
-      form,
-    },
+    proxy,
   } = props;
+
+  const { form } = proxy;
 
   return (
     <Fragment key={`${form.value}_form`}>

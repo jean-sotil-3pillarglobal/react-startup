@@ -14,6 +14,7 @@ import SectionA from './section-1';
 import SectionB from './section-2';
 import SectionC from './section-3';
 import SectionD from './section-4';
+import SectionE from './section-5';
 
 
 // provider
@@ -66,8 +67,10 @@ class Home extends Component {
         <SectionA proxy={proxy} />
         <BannerA proxy={proxy} />
         <SectionB proxy={proxy} />
+        <BannerA proxy={proxy} />
         <SectionC proxy={proxy} />
         <SectionD proxy={proxy} />
+        <SectionE proxy={proxy} />
         <Footer />
       </Fragment>
     );

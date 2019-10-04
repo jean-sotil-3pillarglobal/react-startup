@@ -87,7 +87,7 @@ module.exports = {
         pluginId: 'html',
         headHtmlSnippet: `
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-          <link rel="stylesheet" href="https://unicons.iconscout.com/release/v0.0.3/css/unicons.css">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
           <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
         `,
       }

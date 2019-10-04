@@ -2,16 +2,16 @@ import Color from 'color';
 
 const PRIMARY = {
   contrastText: '#000000',
-  dark: '#AFB42B',
-  light: '#CDDC39',
-  main: '#AFB42B',
-};
-
-const SECONDARY = {
-  contrastText: '#000000',
   dark: '#222222',
   light: '#f5f5f5',
   main: '#ffffff',
+};
+
+const SECONDARY = {
+  contrastText: '#ffffff',
+  dark: '#0097A7',
+  light: '#B2EBF2',
+  main: 'rgba(65, 188, 212, 0.8)',
 };
 
 const palette = {
@@ -102,15 +102,14 @@ export default {
       fontSize: '0.75rem',
       fontWeight: 300,
     },
-    fontWeight: 300,
     h1: {
       fontSize: '2.6rem',
-      fontWeight: 500,
+      fontWeight: 600,
       textTransform: 'capitalize',
     },
     h2: {
       fontSize: '2.5rem',
-      fontWeight: 400,
+      fontWeight: 600,
       textTransform: 'capitalize',
     },
     h3: {

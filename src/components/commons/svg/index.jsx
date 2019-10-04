@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import classnames from 'classnames';
 
@@ -37,7 +37,10 @@ const styles = theme => ({
       ),
     },
     '& [data-color="svg-primary"]': {
-      fill: theme.palette.primary.main,
+      fill: theme.palette.primary.dark,
+    },
+    '& [data-color="svg-secondary"]': {
+      fill: theme.palette.secondary.dark,
     },
     '& circle[data-color="svg-blink"]': {
       transform: 'scale(1, 1)',
@@ -45,37 +48,25 @@ const styles = theme => ({
   },
 });
 
-class SVGComponent extends Component {
-  state = {
-    intervalId: setInterval(this.pulse, 3000),
-  };
+function SVG (props: {
+  classes: Object,
+  className: Object,
+  src: Object,
+  color: string,
+}) {
+  const {
+    classes,
+    className,
+    color,
+    src,
+  } = props;
 
-  componentWillUnmount = () => {
-    clearInterval(this.state.intervalId);
-  };
-
-  pulse = () => {
-    this.setState({
-      pulse: !this.state.pulse,
-    });
-  };
-
-  props: {
-    classes: Object,
-    className: Object,
-    src: Object,
-  };
-
-  render () {
-    const { classes, src } = this.props;
-
-    return (
-      <SvgLoader path={src} className={classnames(classes.root, this.props.className)}>
-        <SvgProxy selector="[fill*='#6c63ff']" data-color="svg-primary" />
-        <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-blink" />
-      </SvgLoader>
-    );
-  }
+  return (
+    <SvgLoader path={src} className={classnames(classes.root, className)}>
+      <SvgProxy selector="[fill*='#6c63ff']" data-color={`svg-${color || 'primary'}`} />
+      <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-blink" />
+    </SvgLoader>
+  );
 }
 
-export default withStyles(styles)(SVGComponent);
+export default withStyles(styles)(SVG);

@@ -14,14 +14,13 @@ const styles = theme => ({
     '&:hover': {
       boxShadow: `0 0 3px ${theme.palette.utils.lighter}`,
     },
-    border: `2px solid ${theme.palette.utils.darker}`,
+    border: '2px solid transparent',
     borderRadius: '0 0 0 0',
     boxShadow: 'none',
     display: 'inline-block',
     fontSize: '1.25rem',
     fontWeight: 500,
     padding: `${theme.spacing.unit * 1}px ${theme.spacing.unit * 2}px`,
-    whiteSpace: 'nowrap',
   },
   danger: {
     background: theme.palette.background.main,
@@ -53,32 +52,19 @@ const styles = theme => ({
     paddingRight: '22px',
   },
   primary: {
-    '&:active': {
-      background: `${theme.palette.secondary.dark}!important`,
-      color: theme.palette.secondary.contrastText,
-    },
     '&:hover': {
-      '& span': {
-        color: `${theme.palette.secondary.contrastText}!important`,
-      },
-      background: theme.palette.secondary.light,
-      borderColor: theme.palette.secondary.dark,
+      background: `${theme.palette.primary.light}!important`,
     },
     background: theme.palette.primary.main,
+    borderColor: theme.palette.primary.contrastText,
     color: theme.palette.primary.contrastText,
   },
   secondary: {
-    '&:active': {
-      background: `${theme.palette.primary.dark}!important`,
-      color: theme.palette.primary.contrastText,
-    },
     '&:hover': {
-      '& span': {
-        color: `${theme.palette.primary.contrastText}!important`,
-      },
-      background: theme.palette.primary.main,
+      background: theme.palette.secondary.light,
     },
     background: theme.palette.secondary.main,
+    borderColor: theme.palette.secondary.contrastText,
     color: theme.palette.secondary.contrastText,
   },
   small: {

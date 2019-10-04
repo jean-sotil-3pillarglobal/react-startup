@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 import {
   withStyles,
@@ -12,17 +13,32 @@ const styles = () => ({
 
 class LayoutImg extends Component {
   props: {
+    alt: string,
     classes: Object,
+    className: Object,
     proxy: Object,
     src: string,
-    alt: string,
   };
 
   render () {
-    const { classes, proxy, src, alt } = this.props;
-    const { device, verbiage } = proxy;
+    const {
+      alt,
+      classes,
+      className,
+      proxy,
+      src,
+    } = this.props;
+
+    const {
+      device,
+      verbiage,
+    } = proxy;
+
     return (
-      verbiage && <img className={classes.img} src={verbiage(src)[device]} alt={verbiage(alt)} />
+      verbiage && <img
+        className={classnames(classes.img, className)}
+        src={verbiage(src)[device]}
+        alt={verbiage(alt)} />
     );
   }
 }

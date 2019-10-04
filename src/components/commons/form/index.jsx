@@ -30,11 +30,6 @@ const styles = theme => ({
     width: '100%',
   },
   root: {
-    '&:last-child': {
-      '&[class*="FormBlock-root"]': {
-        padding: `${theme.spacing.unit * 0.2}px 0`,
-      },
-    },
     marginTop: theme.spacing.unit * 3,
   },
   row: {

@@ -2,7 +2,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import Slider from 'react-slick';
 import React from 'react';
-import classnames from 'classnames';
 
 import {
   Grid,
@@ -13,7 +12,7 @@ import {
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
 // components
-import Animate from './../../../components/commons/icon/animate';
+import Icon from './../../../components/commons/icon';
 
 const styles = theme => ({
   button: {
@@ -24,16 +23,15 @@ const styles = theme => ({
       fill: theme.palette.secondary.main,
       stroke: theme.palette.secondary.contrastText,
     },
+    fontSize: '1rem',
   },
   container: {
-    border: `0 solid ${theme.palette.secondary.light}`,
-    borderWidth: '1px 0',
-    boxShadow: `0 0 10px ${theme.palette.utils.lighter} inset`,
-    left: '-2%',
-    padding: `${theme.spacing.unit * 2}px 0`,
+    '& .slick-slide *': {
+      outline: 'none!important',
+    },
     position: 'relative',
     textAlign: 'center',
-    width: '104%',
+    width: '100%',
   },
   image: {
     width: '100%',
@@ -42,11 +40,7 @@ const styles = theme => ({
     padding: `0 ${theme.spacing.unit * 2}px`,
   },
   nextArrow: {},
-  prevArrow: {
-    '& svg': {
-      transform: 'rotate(-180deg)',
-    },
-  },
+  prevArrow: {},
 });
 
 const NODE = 'home';
@@ -65,14 +59,15 @@ function BannerA (props: {
   const { classes, proxy } = props;
   const { verbiage, language } = proxy;
   const sliderProps = {
-    centerMode: true,
+    adaptiveHeight: true,
+    autoplaySpeed: 2500,
     centerPadding: '60px',
     className: 'container',
     infinite: true,
-    nextArrow: <Animate type="ffwd" customStyle={classnames(classes.nextArrow, classes.button)} />,
-    prevArrow: <Animate type="ffwd" customStyle={classnames(classes.prevArrow, classes.button)} />,
-    slidesToShow: 3,
-    speed: 500,
+    nextArrow: <Icon name="keyboard_arrow_right" className={classes.nextArrow} color="secondary" />,
+    prevArrow: <Icon name="keyboard_arrow_left" className={classes.prevArrow} color="secondary" />,
+    slidesToShow: 2,
+    swipeToSlide: true,
   };
 
   return (

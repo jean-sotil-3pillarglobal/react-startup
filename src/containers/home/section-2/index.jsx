@@ -13,7 +13,6 @@ import LangToggler from './../../../providers/lang/toggler';
 // components
 import SectionBlock from './../../../components/layouts/section';
 import SVGComponent from './../../../components/commons/svg';
-import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
 
 const styles = theme => ({
   body: {
@@ -147,13 +146,6 @@ function SectionC (props: {
                     className={classes.body2}>
                     <LangToggler id={item.body} />
                   </Typography>
-                  {verbiage(item.cta) &&
-                    <LangButton
-                      lang={item.cta}
-                      onClick={evt => this.handleClick(evt, copy.cta_link)}
-                      variant={VARIANTS.OUTLINED}
-                      typeButton={TYPES.PRIMARY} />
-                  }
                 </Grid>
               </Grid>
             </Grid>
