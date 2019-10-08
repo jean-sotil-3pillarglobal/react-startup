@@ -23,6 +23,7 @@ const styles = theme => ({
   background: {},
   button: {
     margin: 0,
+    width: '100%',
   },
   callout: {
     bottom: theme.spacing.unit * 4,
@@ -30,7 +31,7 @@ const styles = theme => ({
     zIndex: 1,
   },
   content: {
-    marginTop: theme.spacing.unit * 14,
+    marginTop: theme.spacing.unit * 4,
     width: '100%',
   },
   icon: {
@@ -42,10 +43,8 @@ const styles = theme => ({
   },
   svg: {
     bottom: theme.spacing.unit * 20,
-    position: 'absolute',
     right: theme.spacing.unit * 6,
-    width: '30%',
-    zIndex: -1,
+    width: '100%',
   },
 });
 
@@ -111,8 +110,8 @@ class SectionA extends Component {
           <Grid
             item
             sm={10}
-            md={12}
-            lg={12}>
+            md={8}
+            lg={8}>
             <Callout
               title={<LangToggler id={copy.title} />}
               subtitle={<LangToggler id={copy.subtitle} />}
@@ -123,7 +122,7 @@ class SectionA extends Component {
                 direction="row"
                 justify="flex-end"
                 alignItems="flex-end"
-                spacing={8}
+                spacing={24}
                 className={classes.content}>
                 <Grid
                   item
@@ -149,10 +148,11 @@ class SectionA extends Component {
                 </Grid>
                 <Grid
                   item
-                  sm={6}
-                  md={6}
-                  lg={6}>
+                  sm={12}
+                  md={12}
+                  lg={12}>
                   <LangButton
+                    className={classes.button}
                     disabled={type === ''}
                     lang={copy.cta}
                     onClick={this.handleClick}
@@ -160,10 +160,16 @@ class SectionA extends Component {
                     typeButton={TYPES.PRIMARY}>
                     <Icon name="keyboard_arrow_right" className={classes.icon} />
                   </LangButton>
-                  <SVGComponent src="/static/svg/team_work.svg" className={classes.svg} color="secondary" />
                 </Grid>
               </Grid>
             </Callout>
+          </Grid>
+          <Grid
+            item
+            sm={10}
+            md={4}
+            lg={4}>
+            <SVGComponent src="/static/svg/team_work.svg" className={classes.svg} color="secondary" />
           </Grid>
         </Grid>
       </SectionBlock>

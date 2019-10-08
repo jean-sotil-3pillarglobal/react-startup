@@ -142,10 +142,13 @@ const NODE_TYPE = 'header';
 // 1 cta
 const copy = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
   'logo',
+  'phone',
   'publics-4-featured_icon',
   'publics-4-featured',
   'publics-4-label',
   'publics-4-route',
+  'social-3-label',
+  'social-3-link',
   'title',
 ]);
 
@@ -160,6 +163,10 @@ class Header extends Component {
 
   handleDrawerClose = () => {
     this.setState({ open: false });
+  };
+
+  handleFabClick = (link) => {
+    console.log(link);
   };
 
   props: {
@@ -178,6 +185,40 @@ class Header extends Component {
       verbiage &&
       <div className={classes.root}>
         <CssBaseline />
+        <Grid
+          container
+          alignItems="center"
+          direction="row"
+          justify="space-between">
+          <Grid
+            item
+            sm={6}
+            md={6}
+            lg={6}>
+            <LangButton
+              lang={copy.phone}
+              typeButton={TYPES.LINK} />
+          </Grid>
+          <Grid
+            item
+            sm={6}
+            md={6}
+            lg={6}>
+            <List>
+              {copy.social.map(item => (
+                <ListItem key={item.label} className={classes.socialButtons}>
+                  <LangButton
+                    key={item.label}
+                    lang={item.label}
+                    onClick={() => this.handleFabClick(item.link)}
+                    variant={VARIANTS.FAB}>
+                    <Icon name={verbiage(item.label)} className={classes.icon} />
+                  </LangButton>
+                </ListItem>
+              ))}
+            </List>
+          </Grid>
+        </Grid>
         <Headroom
           className={classes.headroom}
           onPin={() => console.log('pinned')}

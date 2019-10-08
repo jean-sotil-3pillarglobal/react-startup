@@ -21,7 +21,25 @@ const Verbiage = {
         desktop: '/static/images/logo.jpg',
         mobile: '/static/images/logo.jpg',
       },
+      phone: {
+        en: '(506) 9999-9999',
+        es: '(506) 9999-9999',
+      },
       publics,
+      social: [
+        {
+          label: 'instagram',
+          link: '',
+        },
+        {
+          label: 'facebook',
+          link: '',
+        },
+        {
+          label: 'email',
+          link: '',
+        },
+      ],
       title: {
         en: 'the ◈ majorhub',
         es: 'the ◈ majorhub',
@@ -48,8 +66,8 @@ const Verbiage = {
         es: 'seguros, otros',
       },
       title: {
-        en: 'the majorhub | health insurances | welcome',
-        es: 'the majorhub | health seguros | bienvenido',
+        en: 'Clinica Aqua | Health Care | Welcome',
+        es: 'Clinica Aqua | Salud | Bienvenido',
       },
     },
     quote: {
@@ -62,8 +80,8 @@ const Verbiage = {
         es: 'seguros, otros',
       },
       title: {
-        en: 'the majorhub | health insurances | find your agent',
-        es: 'the majorhub | health seguros | solicitar tu agente',
+        en: 'Clinica Aqua | Healthcare | Healthcare Help',
+        es: 'Clinica Aqua | Salud | Solicitar Ayuda',
       },
     },
   },
@@ -381,8 +399,72 @@ const Verbiage = {
           },
           type: 'auto',
         },
+        {
+          body: {
+            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+          },
+          cta: {
+            en: 'auto hub',
+            es: 'conóce auto',
+          },
+          ico: 'cloud-download',
+          title: {
+            en: 'auto insurance',
+            es: 'seguro automóvil',
+          },
+          type: 'auto',
+        },
+        {
+          body: {
+            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+          },
+          cta: {
+            en: 'auto hub',
+            es: 'conóce auto',
+          },
+          ico: 'cloud-download',
+          title: {
+            en: 'auto insurance',
+            es: 'seguro automóvil',
+          },
+          type: 'auto',
+        },
+        {
+          body: {
+            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+          },
+          cta: {
+            en: 'auto hub',
+            es: 'conóce auto',
+          },
+          ico: 'cloud-download',
+          title: {
+            en: 'auto insurance',
+            es: 'seguro automóvil',
+          },
+          type: 'auto',
+        },
+        {
+          body: {
+            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+          },
+          cta: {
+            en: 'auto hub',
+            es: 'conóce auto',
+          },
+          ico: 'cloud-download',
+          title: {
+            en: 'auto insurance',
+            es: 'seguro automóvil',
+          },
+          type: 'auto',
+        },
       ],
-      svg: '/static/svg/hub.svg',
+      svg: '/static/svg/medicine.svg',
       title: {
         en: 'we offer special enrollment',
         es: 'ofrecemos asistencia especializada',

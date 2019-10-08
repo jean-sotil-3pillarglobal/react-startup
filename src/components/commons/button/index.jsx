@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 
 import {
   Button,
+  Fab,
   withStyles,
 } from '@material-ui/core';
 
@@ -96,6 +97,7 @@ export const SIZES = {
 
 export const VARIANTS = {
   CONTAINED: 'contained',
+  FAB: 'fab',
   OUTLINED: 'outlined',
   RAISED: 'raised',
 };
@@ -126,36 +128,54 @@ function LayoutButton (props: {
   } = props;
 
   const pos = props.pos || 'right';
+  let btn;
 
-  return (
-    <Fragment>
-      {lang &&
-        <Button
-          type={type}
-          disabled={disabled}
-          onClick={onClick}
-          variant={variant || VARIANTS.CONTAINED}
-          className={classnames(
-            classes.button,
-            classes[buttonSize || SIZES.MEDIUM],
-            classes[typeButton || TYPES.PRIMARY],
-            className,
-          )}>
-          {pos === 'left' &&
-            <Fragment>
-              {props.children}
-            </Fragment>
-          }
-          <LangToggler id={lang} />
-          {pos === 'right' &&
-            <Fragment>
-              {props.children}
-            </Fragment>
-          }
-        </Button>
-      }
-    </Fragment>
-  );
+  if (variant === VARIANTS.FAB) {
+    btn = (
+      <Fab
+        variant={VARIANTS.FAB}
+        className={classnames(
+          classes.fab,
+          classes[typeButton || TYPES.PRIMARY],
+          className,
+        )}
+        onClick={onClick}>
+        {props.children}
+      </Fab>
+    );
+  } else {
+    btn = (
+      <Fragment>
+        {lang &&
+          <Button
+            type={type}
+            disabled={disabled}
+            onClick={onClick}
+            variant={variant || VARIANTS.CONTAINED}
+            className={classnames(
+              classes.button,
+              classes[buttonSize || SIZES.MEDIUM],
+              classes[typeButton || TYPES.PRIMARY],
+              className,
+            )}>
+            {pos === 'left' &&
+              <Fragment>
+                {props.children}
+              </Fragment>
+            }
+            <LangToggler id={lang} />
+            {pos === 'right' &&
+              <Fragment>
+                {props.children}
+              </Fragment>
+            }
+          </Button>
+        }
+      </Fragment>
+    );
+  }
+
+  return btn;
 }
 
 export const LangButton = withStyles(styles)(LayoutButton);

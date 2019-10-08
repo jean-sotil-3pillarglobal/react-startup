@@ -17,22 +17,22 @@ export const constants = {
 export const publics = [
   {
     label: {
-      en: 'Services',
-      es: 'Servicios',
-    },
-    route: {
-      en: '/services',
-      es: '/servicios',
-    },
-  },
-  {
-    label: {
       en: 'Why Choose Us?',
       es: '¿Porqué escogernos?',
     },
     route: {
       en: '/why-chooose-us',
       es: '/quienes-somos',
+    },
+  },
+  {
+    label: {
+      en: 'Services',
+      es: 'Servicios',
+    },
+    route: {
+      en: '/services',
+      es: '/servicios',
     },
   },
   {

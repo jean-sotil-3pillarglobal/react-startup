@@ -73,7 +73,7 @@ module.exports = {
     [
       '@neutrinojs/html-template',
       {
-        title: 'The MajorHub',
+        title: 'Clinica Aqua',
         inject: false,
         appMountId: 'root',
         xhtml: true,

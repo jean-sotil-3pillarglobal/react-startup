@@ -39,6 +39,7 @@ const styles = theme => ({
   },
   svg: {
     marginBottom: `${theme.spacing.unit * 8}px`,
+    width: '80%',
   },
   title: {
     marginBottom: `${theme.spacing.unit * 6}px`,
@@ -54,11 +55,11 @@ const SLOT = 'section_4';
 const copy = LangGenerateTree([NODE, SLOT], [
   'title',
   'body',
-  'items-4-body',
-  'items-4-cta',
-  'items-4-ico',
-  'items-4-title',
-  'items-4-type',
+  'items-8-body',
+  'items-8-cta',
+  'items-8-ico',
+  'items-8-title',
+  'items-8-type',
   'svg',
 ]);
 
@@ -88,13 +89,13 @@ function SectionB (props: {
             color="primary">
             <LangToggler id={copy.title} />
           </Typography>
+          <SVGComponent src={verbiage(copy.svg)} className={classes.svg} />
           <Typography
             variant="subtitle2"
             className={classes.subtitle}
             color="primary">
             <LangToggler id={copy.body} />
           </Typography>
-          <SVGComponent src={verbiage(copy.svg)} className={classes.svg} />
           <Grid container spacing={24}>
             {copy.items.map(item => (
               <Grid

@@ -1,6 +1,7 @@
 
-import React, { Fragment } from 'react';
 import classnames from 'classnames';
+import Fade from 'react-reveal/Fade';
+import React from 'react';
 
 import {
   Card,
@@ -61,15 +62,15 @@ function Callout (props: {
   } = props;
 
   return (
-    <Fragment>
-      <Card className={classnames(classes.card, classes[variant || 'primary'], className)} elevation={0}>
-        <CardContent className={classes.container}>
+    <Card className={classnames(classes.card, classes[variant || 'primary'], className)} elevation={0}>
+      <CardContent className={classes.container}>
+        <Fade left>
           <Typography variant="body2" component="p" className={classnames(classes.title, classes[`${variant}Color`])}>{title}</Typography>
-          <Typography variant="body2" component="p" className={classnames(classes.subtitle, classes[`${variant}Color`])}>{subtitle}</Typography>
-          {children}
-        </CardContent>
-      </Card>
-    </Fragment>
+        </Fade>
+        <Typography variant="body2" component="p" className={classnames(classes.subtitle, classes[`${variant}Color`])}>{subtitle}</Typography>
+        {children}
+      </CardContent>
+    </Card>
   );
 }
 

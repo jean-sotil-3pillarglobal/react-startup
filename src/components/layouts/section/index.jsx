@@ -1,6 +1,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import Zoom from 'react-reveal/Zoom';
 
 import {
   Grid,
@@ -45,24 +46,26 @@ function SectionBlock (props: {
   } = props;
 
   return (
-    <Paper
-      className={classes[variant]}>
-      <Grid
-        container
-        direction="row"
-        justify={!align ? 'center' : align}
-        alignItems="center"
-        className={classnames(className, classes.container)}>
+    <Zoom left>
+      <Paper
+        className={classes[variant]}>
         <Grid
-          item
-          sm={11}
-          md={9}
-          lg={7}
-          className={classes.item}>
-          {children}
+          container
+          direction="row"
+          justify={!align ? 'center' : align}
+          alignItems="center"
+          className={classnames(className, classes.container)}>
+          <Grid
+            item
+            sm={12}
+            md={11}
+            lg={10}
+            className={classes.item}>
+            {children}
+          </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </Zoom>
   );
 }
 

@@ -31,7 +31,7 @@ const styles = theme => ({
   },
   hero: {
     background: 'transparent',
-    height: 600,
+    height: 700,
     padding: 0,
     position: 'relative',
     zIndex: 1,

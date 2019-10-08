@@ -30,10 +30,10 @@ const styles = theme => ({
     width: '100%',
   },
   root: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 2,
   },
   row: {
-    marginBottom: `${theme.spacing.unit * 5}px`,
+    marginBottom: `${theme.spacing.unit * 2}px`,
   },
   title: {
     fontWeight: 600,
