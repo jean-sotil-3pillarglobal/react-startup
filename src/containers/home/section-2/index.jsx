@@ -20,7 +20,7 @@ const styles = theme => ({
     width: '80%',
   },
   body2: {
-    marginBottom: `${theme.spacing.unit * 6}px`,
+    marginBottom: `${theme.spacing(6)}px`,
   },
   card: {
     background: theme.palette.background.transparent,
@@ -33,7 +33,7 @@ const styles = theme => ({
     textAlign: 'center',
   },
   cta: {
-    padding: `${theme.spacing.unit * 6}px 0`,
+    padding: `${theme.spacing(6)}px 0`,
   },
   icon: {
     fontSize: '3.4em',
@@ -42,16 +42,16 @@ const styles = theme => ({
     textAlign: 'center',
   },
   subtitle: {
-    marginBottom: `${theme.spacing.unit * 6}px`,
+    marginBottom: `${theme.spacing(6)}px`,
   },
   subtitle2: {
-    marginBottom: `${theme.spacing.unit * 2}px`,
+    marginBottom: `${theme.spacing(2)}px`,
   },
   svg: {
-    margin: `${theme.spacing.unit * 8}px 0`,
+    margin: `${theme.spacing(8)}px 0`,
   },
   title: {
-    marginBottom: `${theme.spacing.unit * 6}px`,
+    marginBottom: `${theme.spacing(6)}px`,
   },
 });
 
@@ -110,7 +110,7 @@ function SectionC (props: {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={24}>
+      <Grid container spacing={(10)}>
         {copy.items.map((item, i) => {
           const key = `${i}_item_x`;
 

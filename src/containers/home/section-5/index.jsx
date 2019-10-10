@@ -33,7 +33,7 @@ const styles = theme => ({
     marginBottom: '80px',
   },
   title: {
-    marginBottom: `${theme.spacing.unit * 6}px`,
+    marginBottom: `${theme.spacing(6)}px`,
   },
 });
 
@@ -58,7 +58,7 @@ class SectionC extends Component {
         xs={12}
         sm={12}
         md={8}>
-        <Grid container spacing={16}>
+        <Grid container spacing={10}>
           <Grid
             item
             xs={12}
@@ -132,7 +132,7 @@ class SectionC extends Component {
           justify="center"
           alignItems="center"
           className={classes.items}
-          spacing={24}>
+          spacing={(10)}>
           <Grid
             item
             xs={12}

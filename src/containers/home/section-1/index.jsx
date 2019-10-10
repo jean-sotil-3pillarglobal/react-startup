@@ -20,13 +20,13 @@ const styles = theme => ({
     margin: 0,
   },
   callout: {
-    bottom: theme.spacing.unit * 4,
-    left: theme.spacing.unit * 4,
+    bottom: theme.spacing(4),
+    left: theme.spacing(4),
     position: 'absolute',
     zIndex: 1,
   },
   content: {
-    marginTop: theme.spacing.unit * 14,
+    marginTop: theme.spacing(10),
     width: '100%',
   },
   hero: {

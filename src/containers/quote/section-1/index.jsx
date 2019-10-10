@@ -35,18 +35,18 @@ const {
 const styles = theme => ({
   back: {
     backgroundColor: theme.palette.primary.main,
-    padding: `${theme.spacing.unit * 2}px`,
+    padding: `${theme.spacing(2)}px`,
   },
   button: {
     margin: 0,
   },
   column: {
     marginLeft: 2,
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     transform: 'translateZ(0)',
   },
   content: {
-    padding: `${theme.spacing.unit * 6}px 0 0 0`,
+    padding: `${theme.spacing(6)}px 0 0 0`,
     [theme.breakpoints.up('md')]: {
       paddingRight: 0,
     },
@@ -59,12 +59,12 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary.main,
   },
   headroom: {
-    padding: `${theme.spacing.unit * 2}px 0`,
+    padding: `${theme.spacing(2)}px 0`,
     width: '100%',
   },
   pinned: {},
   section: {
-    padding: `${theme.spacing.unit * 4}px 0`,
+    padding: `${theme.spacing(4)}px 0`,
   },
   step: {
     '& *[class*="MuiStepIcon-active"] circle': {

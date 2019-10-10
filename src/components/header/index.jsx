@@ -1,10 +1,11 @@
 
-import classNames from 'classnames';
 import Headroom from 'react-headroom';
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 import {
   AppBar,
+  Box,
   CssBaseline,
   Divider,
   Drawer,
@@ -12,7 +13,6 @@ import {
   IconButton,
   List,
   ListItem,
-  Paper,
   Toolbar,
   Typography,
   withStyles,
@@ -39,7 +39,7 @@ const styles = theme => ({
   appBar: {
     background: theme.palette.primary.main,
     border: `2px solid ${theme.palette.secondary.light}`,
-    padding: `0 ${theme.spacing.unit * 4}px`,
+    padding: `0 ${theme.spacing(4)}px`,
     transition: theme.transitions.create(['background-color', 'margin', 'width'], {
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp,
@@ -59,7 +59,7 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     marginLeft: -drawerWidth,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp,
@@ -68,7 +68,7 @@ const styles = theme => ({
   divider: {
     backgroundColor: theme.palette.secondary.light,
     margin: 0,
-    padding: `${theme.spacing.unit * 1}px 0`,
+    padding: `${theme.spacing(1)}px 0`,
   },
   drawer: {
     flexShrink: 0,
@@ -99,11 +99,12 @@ const styles = theme => ({
     display: 'none',
   },
   icon: {
+    color: theme.palette.secondary.contrastText,
     fontSize: '1rem',
   },
   logo: {
     display: 'block',
-    margin: `${theme.spacing.unit * 1}px auto`,
+    margin: `${theme.spacing(1)}px auto`,
     width: '70%',
   },
   menuButton: {
@@ -120,6 +121,10 @@ const styles = theme => ({
     background: 'transparent',
     float: 'right',
   },
+  phone: {
+    color: theme.palette.primary.main,
+    marginRight: theme.spacing(1),
+  },
   root: {
     '& div[class*="headroom--pinned"] *': {
       color: theme.palette.secondary.contrastText,
@@ -132,6 +137,14 @@ const styles = theme => ({
       zIndex: '10!important',
     },
   },
+  socialButtons: {
+    margin: 0,
+    padding: 0,
+  },
+  topHeader: {
+    background: theme.palette.secondary.main,
+    padding: `0 ${theme.spacing(2)}px`,
+  },
 });
 
 const NODE_ROOT = 'components';
@@ -143,6 +156,7 @@ const NODE_TYPE = 'header';
 const copy = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
   'logo',
   'phone',
+  'phone_icon',
   'publics-4-featured_icon',
   'publics-4-featured',
   'publics-4-label',
@@ -189,7 +203,8 @@ class Header extends Component {
           container
           alignItems="center"
           direction="row"
-          justify="space-between">
+          justify="center"
+          className={classes.topHeader}>
           <Grid
             item
             sm={6}
@@ -197,26 +212,29 @@ class Header extends Component {
             lg={6}>
             <LangButton
               lang={copy.phone}
-              typeButton={TYPES.LINK} />
+              typeButton={TYPES.LINK}
+              className={classes.phone}>
+              <Icon name={verbiage(copy.phone_icon)} className={classnames(classes.icon, classes.phone)} />
+            </LangButton>
           </Grid>
           <Grid
             item
             sm={6}
             md={6}
             lg={6}>
-            <List>
+            <Box display="flex" flexDirection="row-reverse" p={1} m={1} className={classes.socialButtons}>
               {copy.social.map(item => (
-                <ListItem key={item.label} className={classes.socialButtons}>
+                <Box key={item.label} p={1}>
                   <LangButton
+                    href={verbiage(item.link)}
                     key={item.label}
                     lang={item.label}
-                    onClick={() => this.handleFabClick(item.link)}
                     variant={VARIANTS.FAB}>
                     <Icon name={verbiage(item.label)} className={classes.icon} />
                   </LangButton>
-                </ListItem>
+                </Box>
               ))}
-            </List>
+            </Box>
           </Grid>
         </Grid>
         <Headroom
@@ -225,7 +243,7 @@ class Header extends Component {
           onUnpin={() => console.log('unpinned')}>
           <AppBar
             position="relative"
-            className={classNames(classes.appBar, {
+            className={classnames(classes.appBar, {
               [classes.appBarShift]: open,
             })}>
             <Toolbar disableGutters={!open}>
@@ -243,7 +261,7 @@ class Header extends Component {
                     <IconButton
                       aria-label="Open drawer"
                       onClick={this.handleDrawerOpen}
-                      className={classNames(classes.menuButton, open && classes.hide)}>
+                      className={classnames(classes.menuButton, open && classes.hide)}>
                       <Menu />
                     </IconButton> : null
                   }
@@ -255,23 +273,31 @@ class Header extends Component {
                   md={10}
                   lg={10}>
                   {(!open && !isMobile) &&
-                    <Paper className={classes.navbar}>
+                    <Box
+                      display="flex"
+                      flexDirection="row"
+                      p={1}
+                      m={1}
+                      alignItems="center"
+                      className={classes.navbar}>
                       {copy.publics.map((item) => {
                         const featured = verbiage(item.featured);
                         return (
-                          <LangButton
-                            key={item.label}
-                            lang={item.label}
-                            variant={featured && VARIANTS.OUTLINED}
-                            typeButton={(featured && TYPES.SECONDARY) || TYPES.LINK}
-                            pos="right">
-                            {featured &&
-                              <Icon name={verbiage(item.featured_icon)} className={classes.icon} />
-                            }
-                          </LangButton>
+                          <Box key={item.label} p={1}>
+                            <LangButton
+                              key={item.label}
+                              lang={item.label}
+                              variant={featured && VARIANTS.OUTLINED}
+                              typeButton={(featured && TYPES.SECONDARY) || TYPES.LINK}
+                              pos="right">
+                              {featured &&
+                                <Icon name={verbiage(item.featured_icon)} className={classes.icon} />
+                              }
+                            </LangButton>
+                          </Box>
                         );
                       })}
-                    </Paper>
+                    </Box>
                   }
                 </Grid>
               </Grid>

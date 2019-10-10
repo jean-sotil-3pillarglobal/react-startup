@@ -8,10 +8,10 @@ const PRIMARY = {
 };
 
 const SECONDARY = {
-  contrastText: '#ffffff',
-  dark: '#0097A7',
-  light: '#B2EBF2',
-  main: 'rgba(65, 188, 212, 0.8)',
+  contrastText: '#212121',
+  dark: '#616161',
+  light: '#F5F5F5',
+  main: '#9E9E9E',
 };
 
 const palette = {

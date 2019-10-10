@@ -1,7 +1,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import Zoom from 'react-reveal/Zoom';
+import Bounce from 'react-reveal/Bounce';
 
 import {
   Grid,
@@ -11,7 +11,7 @@ import {
 
 const styles = theme => ({
   container: {
-    padding: `${theme.spacing.unit * 8}px ${theme.spacing.unit * 4}px`,
+    padding: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
   },
   dark: {
     backgroundColor: theme.palette.dark.main,
@@ -46,8 +46,9 @@ function SectionBlock (props: {
   } = props;
 
   return (
-    <Zoom left>
+    <Bounce left>
       <Paper
+        elevation={0}
         className={classes[variant]}>
         <Grid
           container
@@ -65,7 +66,7 @@ function SectionBlock (props: {
           </Grid>
         </Grid>
       </Paper>
-    </Zoom>
+    </Bounce>
   );
 }
 

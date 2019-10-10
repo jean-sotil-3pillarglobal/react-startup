@@ -33,13 +33,13 @@ const styles = theme => ({
     color: theme.palette.secondary.contrastText,
   },
   subtitle: {
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
   title: {
     fontSize: '2.0625rem',
     fontWeight: 600,
     lineHeight: '1.2em',
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
     textTransform: 'uppercase',
   },
 });

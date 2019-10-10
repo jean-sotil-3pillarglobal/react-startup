@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import {
   Button,
   Fab,
+  Link,
   withStyles,
 } from '@material-ui/core';
 
@@ -21,7 +22,7 @@ const styles = theme => ({
     display: 'inline-block',
     fontSize: '1.25rem',
     fontWeight: 500,
-    padding: `${theme.spacing.unit * 1}px ${theme.spacing.unit * 2}px`,
+    padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
   },
   danger: {
     background: theme.palette.background.main,
@@ -44,8 +45,9 @@ const styles = theme => ({
     background: theme.palette.background.transparent,
     borderWidth: 0,
     color: theme.palette.primary.contrastText,
+    cursor: 'pointer',
     fontWeight: 400,
-    padding: '0 0 0 0',
+    padding: `0 ${theme.spacing(2)}px`,
     textTransform: 'none',
   },
   medium: {
@@ -97,7 +99,7 @@ export const SIZES = {
 
 export const VARIANTS = {
   CONTAINED: 'contained',
-  FAB: 'fab',
+  FAB: 'extended',
   OUTLINED: 'outlined',
   RAISED: 'raised',
 };
@@ -108,6 +110,7 @@ function LayoutButton (props: {
   classes: Object,
   className: Object,
   disabled: Boolean,
+  href: string,
   lang: Object,
   onClick: Function,
   pos: string,
@@ -120,6 +123,7 @@ function LayoutButton (props: {
     classes,
     className,
     disabled,
+    href,
     lang,
     onClick,
     type,
@@ -133,15 +137,27 @@ function LayoutButton (props: {
   if (variant === VARIANTS.FAB) {
     btn = (
       <Fab
-        variant={VARIANTS.FAB}
         className={classnames(
           classes.fab,
           classes[typeButton || TYPES.PRIMARY],
           className,
         )}
-        onClick={onClick}>
+        href={href}
+        target="_blank"
+        onClick={onClick}
+        variant={VARIANTS.FAB}>
         {props.children}
       </Fab>
+    );
+  } else if (variant === VARIANTS.LINK) {
+    btn = (
+      <Link
+        href={href}
+        className={classes.link}
+        onClick={onClick}>
+        {props.children}
+        <LangToggler id={lang} />
+      </Link>
     );
   } else {
     btn = (

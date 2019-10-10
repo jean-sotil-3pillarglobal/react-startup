@@ -25,19 +25,20 @@ const Verbiage = {
         en: '(506) 9999-9999',
         es: '(506) 9999-9999',
       },
+      phone_icon: 'phone',
       publics,
       social: [
         {
           label: 'instagram',
-          link: '',
+          link: '#instagram',
         },
         {
           label: 'facebook',
-          link: '',
+          link: '#facebook',
         },
         {
           label: 'email',
-          link: '',
+          link: '#email',
         },
       ],
       title: {

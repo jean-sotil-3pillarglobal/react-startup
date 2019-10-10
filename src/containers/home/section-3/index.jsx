@@ -26,12 +26,12 @@ const styles = theme => ({
     width: '100%',
   },
   callout: {
-    bottom: theme.spacing.unit * 4,
+    bottom: theme.spacing(4),
     position: 'relative',
     zIndex: 1,
   },
   content: {
-    marginTop: theme.spacing.unit * 4,
+    marginTop: theme.spacing(4),
     width: '100%',
   },
   icon: {
@@ -42,8 +42,8 @@ const styles = theme => ({
     zIndex: -1,
   },
   svg: {
-    bottom: theme.spacing.unit * 20,
-    right: theme.spacing.unit * 6,
+    bottom: theme.spacing(20),
+    right: theme.spacing(6),
     width: '100%',
   },
 });
@@ -106,7 +106,7 @@ class SectionA extends Component {
           justify="center"
           alignItems="center"
           className={classes.items}
-          spacing={24}>
+          spacing={(10)}>
           <Grid
             item
             sm={10}
@@ -122,7 +122,7 @@ class SectionA extends Component {
                 direction="row"
                 justify="flex-end"
                 alignItems="flex-end"
-                spacing={24}
+                spacing={(10)}
                 className={classes.content}>
                 <Grid
                   item

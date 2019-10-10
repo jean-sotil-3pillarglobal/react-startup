@@ -27,18 +27,13 @@ import MaskPhone from './mask/phone';
 import MaskZip from './mask/zipcode';
 
 const styles = theme => ({
-  marginDense: {
-    margin: 0,
-    whiteSpace: 'nowrap',
-    width: '100%',
-  },
   marginNormal: {
     '& .react-toggle-thumb': {
       boxShadow: 'initial!important',
     },
     '&[class*="react-toggle"]': {
       boxShadow: 'initial',
-      margin: `${theme.spacing.unit * 1}px`,
+      margin: `${theme.spacing(1)}px`,
     },
     '&[class*="toggle--checked"]': {
       '& .react-toggle-thumb': {
@@ -250,7 +245,7 @@ class InputLayout extends Component {
       input: (
         <FormControl fullWidth>
           <TextField
-            className={classnames(classes.marginDense, (focused || filled) && classes.marginNormal, props.error && 'error')}
+            className={classnames((focused || filled) && classes.marginNormal, props.error && 'error')}
             fullWidth
             label={label}
             onBlur={this.handleBlur}
@@ -267,7 +262,7 @@ class InputLayout extends Component {
       multiple: (
         <FormControl fullWidth>
           <TextField
-            className={classnames(classes.marginDense, (focused || filled) && classes.marginNormal)}
+            className={classnames((focused || filled) && classes.marginNormal)}
             fullWidth
             label={label}
             onBlur={this.handleBlur}
@@ -298,7 +293,7 @@ class InputLayout extends Component {
       phone: (
         <FormControl fullWidth>
           <TextField
-            className={classnames(classes.marginDense, (focused || filled) && classes.marginNormal, props.error && 'error')}
+            className={classnames((focused || filled) && classes.marginNormal, props.error && 'error')}
             fullWidth
             label={label}
             onBlur={this.handleBlur}
@@ -316,7 +311,7 @@ class InputLayout extends Component {
       select: (
         <FormControl fullWidth>
           <TextField
-            className={classnames(classes.marginDense, (focused || filled) && classes.marginNormal)}
+            className={classnames((focused || filled) && classes.marginNormal)}
             fullWidth
             label={label}
             onBlur={this.handleBlur}
@@ -346,7 +341,7 @@ class InputLayout extends Component {
       textarea: (
         <FormControl fullWidth>
           <TextField
-            className={classnames(classes.marginDense, (focused || filled) && classes.marginNormal)}
+            className={classnames((focused || filled) && classes.marginNormal)}
             fullWidth
             label={label}
             multiline={multiline}

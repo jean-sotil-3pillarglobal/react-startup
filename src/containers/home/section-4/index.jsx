@@ -25,7 +25,7 @@ const styles = theme => ({
     textAlign: 'center',
   },
   cta: {
-    padding: `${theme.spacing.unit * 6}px 0`,
+    padding: `${theme.spacing(6)}px 0`,
   },
   icon: {
     fontSize: '3.4em',
@@ -35,14 +35,14 @@ const styles = theme => ({
     textAlign: 'center',
   },
   subtitle: {
-    marginBottom: `${theme.spacing.unit * 8}px`,
+    marginBottom: `${theme.spacing(8)}px`,
   },
   svg: {
-    marginBottom: `${theme.spacing.unit * 8}px`,
+    marginBottom: `${theme.spacing(8)}px`,
     width: '80%',
   },
   title: {
-    marginBottom: `${theme.spacing.unit * 6}px`,
+    marginBottom: `${theme.spacing(6)}px`,
   },
 });
 
@@ -96,7 +96,7 @@ function SectionB (props: {
             color="primary">
             <LangToggler id={copy.body} />
           </Typography>
-          <Grid container spacing={24}>
+          <Grid container spacing={(10)}>
             {copy.items.map(item => (
               <Grid
                 item

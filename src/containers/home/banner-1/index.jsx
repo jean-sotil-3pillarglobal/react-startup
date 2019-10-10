@@ -37,7 +37,7 @@ const styles = theme => ({
     width: '100%',
   },
   item: {
-    padding: `0 ${theme.spacing.unit * 2}px`,
+    padding: `0 ${theme.spacing(2)}px`,
   },
   nextArrow: {},
   prevArrow: {},
