@@ -153,7 +153,11 @@ function LayoutButton (props: {
     btn = (
       <Link
         href={href}
-        className={classes.link}
+        className={classnames(
+          classes.link,
+          classes[typeButton || TYPES.PRIMARY],
+          className,
+        )}
         onClick={onClick}>
         {props.children}
         <LangToggler id={lang} />

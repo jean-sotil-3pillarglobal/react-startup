@@ -1,7 +1,9 @@
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import classnames from 'classnames';
 import Headroom from 'react-headroom';
 import React, { Component } from 'react';
-import classnames from 'classnames';
 
 import {
   AppBar,
@@ -33,13 +35,16 @@ import { LangButton, TYPES, VARIANTS } from './../commons/button';
 import { SmartImg } from './../commons/img';
 import Icon from './../commons/icon';
 
+// action creators
+import { setHeaderVisibilityAction } from '../../store/actions/components/header';
+
 const drawerWidth = 240;
 
 const styles = theme => ({
   appBar: {
     background: theme.palette.primary.main,
     border: `2px solid ${theme.palette.secondary.light}`,
-    padding: `0 ${theme.spacing(4)}px`,
+    padding: 0,
     transition: theme.transitions.create(['background-color', 'margin', 'width'], {
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp,
@@ -102,6 +107,10 @@ const styles = theme => ({
     color: theme.palette.secondary.contrastText,
     fontSize: '1rem',
   },
+  iconFab: {
+    color: theme.palette.primary.contrastText,
+    fontSize: '1rem',
+  },
   logo: {
     display: 'block',
     margin: `${theme.spacing(1)}px auto`,
@@ -122,7 +131,7 @@ const styles = theme => ({
     float: 'right',
   },
   phone: {
-    color: theme.palette.primary.main,
+    color: `${theme.palette.secondary.contrastText}!important`,
     marginRight: theme.spacing(1),
   },
   root: {
@@ -133,6 +142,9 @@ const styles = theme => ({
       backgroundColor: theme.palette.secondary.main,
       borderColor: `${theme.palette.secondary.light}`,
     },
+    '& div[class*="headroom--unpinned"]': {
+      transition: 'none !important',
+    },
     '& div[class*="headroom-wrapper"] > div': {
       zIndex: '10!important',
     },
@@ -140,6 +152,13 @@ const styles = theme => ({
   socialButtons: {
     margin: 0,
     padding: 0,
+  },
+  socialButtonsFixed: {
+    display: 'block',
+    position: 'fixed',
+    right: theme.spacing(2),
+    top: '33%',
+    zIndex: 999,
   },
   topHeader: {
     background: theme.palette.secondary.main,
@@ -185,12 +204,21 @@ class Header extends Component {
 
   props: {
     classes: Object,
+    isHeaderVisible: Boolean,
     proxy: Object,
+    setHeaderVisibility: Function,
     theme: Object,
   };
 
   render() {
-    const { classes, proxy, theme } = this.props;
+    const {
+      classes,
+      isHeaderVisible,
+      proxy,
+      setHeaderVisibility,
+      theme,
+    } = this.props;
+
     const { device, verbiage } = proxy;
     const { open } = this.state;
     const isMobile = device === 'mobile';
@@ -222,7 +250,7 @@ class Header extends Component {
             sm={6}
             md={6}
             lg={6}>
-            <Box display="flex" flexDirection="row-reverse" p={1} m={1} className={classes.socialButtons}>
+            <Box display="flex" flexDirection="row-reverse" p={1} m={1} className={classnames(classes.socialButtons, !isHeaderVisible && classes.socialButtonsFixed)}>
               {copy.social.map(item => (
                 <Box key={item.label} p={1}>
                   <LangButton
@@ -230,7 +258,7 @@ class Header extends Component {
                     key={item.label}
                     lang={item.label}
                     variant={VARIANTS.FAB}>
-                    <Icon name={verbiage(item.label)} className={classes.icon} />
+                    <Icon name={verbiage(item.label)} className={classes.iconFab} />
                   </LangButton>
                 </Box>
               ))}
@@ -239,8 +267,8 @@ class Header extends Component {
         </Grid>
         <Headroom
           className={classes.headroom}
-          onPin={() => console.log('pinned')}
-          onUnpin={() => console.log('unpinned')}>
+          onUnpin={() => setHeaderVisibility(false)}
+          onUnfix={() => setHeaderVisibility(true)}>
           <AppBar
             position="relative"
             className={classnames(classes.appBar, {
@@ -336,4 +364,18 @@ class Header extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Header);
+// map state to props
+function mapStateToProps (state) {
+  return {
+    isHeaderVisible: state.isHeaderVisible,
+  };
+}
+
+// dispatch actionCreators
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    setHeaderVisibility: setHeaderVisibilityAction,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(Header));

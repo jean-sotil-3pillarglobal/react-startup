@@ -4,15 +4,16 @@ import React, { Component } from 'react';
 import { Parallax } from 'react-parallax';
 
 import {
-  Paper,
+  Grid,
   withStyles,
 } from '@material-ui/core';
 
 // provider
-import LangToggler from './../../../providers/lang/toggler';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
+import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
 import Callout from './../../../components/commons/callout/';
+import Icon from './../../../components/commons/icon';
 
 const styles = theme => ({
   background: {},
@@ -55,6 +56,7 @@ const SLOT = 'section_1';
 // 2 images
 const copy = LangGenerateTree([NODE, SLOT], [
   'background',
+  'cta',
   'subtitle',
   'title',
 ]);
@@ -72,13 +74,30 @@ class SectionA extends Component {
     return (
       verbiage &&
       <Parallax bgImage={verbiage(copy.background)} strength={500} className={classes.background}>
-        <Paper className={classes.hero}>
-          <Callout
-            title={<LangToggler id={copy.title} />}
-            subtitle={<LangToggler id={copy.subtitle} />}
-            variant="secondary"
-            className={classes.callout} />
-        </Paper>
+        <Grid
+          container
+          className={classes.hero}>
+          <Grid
+            item
+            sm={4}
+            md={4}
+            lg={4}>
+            <Callout
+              title={copy.title}
+              subtitle={copy.subtitle}
+              variant="secondary"
+              className={classes.callout}>
+              <LangButton
+                className={classes.button}
+                lang={copy.cta}
+                onClick={this.handleClick}
+                variant={VARIANTS.OUTLINED}
+                typeButton={TYPES.PRIMARY}>
+                <Icon name="keyboard_arrow_right" className={classes.icon} />
+              </LangButton>
+            </Callout>
+          </Grid>
+        </Grid>
       </Parallax>
     );
   }

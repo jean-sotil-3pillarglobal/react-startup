@@ -6,6 +6,11 @@ import {
   getLeadTypeReducer,
 } from './global';
 
+// header
+import {
+  isHeaderVisibleReducer,
+} from './components/header';
+
 // footer
 import {
   selectedLanguageReducer,
@@ -26,6 +31,7 @@ import {
 */
 const rootReducer = combineReducers({
   device: getDeviceReducer,
+  isHeaderVisible: isHeaderVisibleReducer,
   language: selectedLanguageReducer,
   lead: getLeadReducer,
   leadType: getLeadTypeReducer,

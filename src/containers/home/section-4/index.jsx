@@ -1,149 +1,179 @@
-import React from 'react';
+
+import { withRouter } from 'react-router-dom';
+import React, { Component } from 'react';
 
 import {
-  Card,
   Grid,
-  Typography,
   withStyles,
 } from '@material-ui/core';
 
 // provider
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
-import LangToggler from './../../../providers/lang/toggler';
 
 // components
-import Icon from './../../../components/commons/icon';
-import SectionBlock from './../../../components/layouts/section';
-import SVGComponent from './../../../components/commons/svg';
 import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
+import { LangInput } from './../../../components/commons/input';
+import Callout from './../../../components/commons/callout/';
+import Icon from './../../../components/commons/icon';
+import SVGComponent from './../../../components/commons/svg';
+import SectionBlock from './../../../components/layouts/section';
 
 const styles = theme => ({
-  card: {
-    background: theme.palette.background.transparent,
-    boxShadow: 'initial',
-    maxWidth: '100%',
-    textAlign: 'center',
+  background: {},
+  button: {
+    margin: 0,
+    width: '100%',
   },
-  cta: {
-    padding: `${theme.spacing(6)}px 0`,
+  callout: {
+    bottom: theme.spacing(4),
+    position: 'relative',
+    zIndex: 1,
+  },
+  content: {
+    marginTop: theme.spacing(4),
+    width: '100%',
   },
   icon: {
-    fontSize: '3.4em',
+    fontSize: '1rem',
   },
-  items: {
-    padding: 0,
-    textAlign: 'center',
-  },
-  subtitle: {
-    marginBottom: `${theme.spacing(8)}px`,
+  image: {
+    width: '100%',
+    zIndex: -1,
   },
   svg: {
-    marginBottom: `${theme.spacing(8)}px`,
-    width: '80%',
-  },
-  title: {
-    marginBottom: `${theme.spacing(6)}px`,
+    bottom: theme.spacing(20),
+    right: theme.spacing(6),
+    width: '100%',
   },
 });
 
 const NODE = 'home';
 const SLOT = 'section_4';
-// copy:
-// 1 title
-// 1 body
-// 4 items
+
 const copy = LangGenerateTree([NODE, SLOT], [
+  'cta',
+  'placeholder_select',
+  'select_options-4-label',
+  'select_options-4-value',
+  'select',
+  'subtitle',
   'title',
-  'body',
-  'items-8-body',
-  'items-8-cta',
-  'items-8-ico',
-  'items-8-title',
-  'items-8-type',
-  'svg',
 ]);
 
-function SectionB (props: {
-  classes: Object,
-  proxy: Object,
-}) {
-  const { classes, proxy } = props;
-  const { verbiage } = proxy;
+class SectionA extends Component {
+  state = {
+    type: '',
+  }
 
-  return (
-    verbiage &&
-    <SectionBlock variant="secondary">
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.items}>
+  componentDidMount = () => {
+    this.myRef = React.createRef();
+  }
+
+  handleChange = (evt) => {
+    this.setState({
+      [evt.target.name]: evt.target.value,
+    });
+  }
+
+  handleClick = (evt) => {
+    evt.preventDefault();
+
+    const { history } = this.props;
+    const { type } = this.state;
+
+    history.push(`/get-a-quote/${type}`);
+  }
+
+  props: {
+    history: any,
+    classes: Object,
+    proxy: Object,
+  }
+
+  render () {
+    const { classes, proxy } = this.props;
+    const { type } = this.state;
+    const { verbiage, language } = proxy;
+    const { handleChange } = this;
+
+    return (
+      verbiage &&
+      <SectionBlock variant="dark">
         <Grid
-          item
-          sm={12}
-          md={12}>
-          <Typography
-            variant="h2"
-            className={classes.title}
-            color="primary">
-            <LangToggler id={copy.title} />
-          </Typography>
-          <SVGComponent src={verbiage(copy.svg)} className={classes.svg} />
-          <Typography
-            variant="subtitle2"
-            className={classes.subtitle}
-            color="primary">
-            <LangToggler id={copy.body} />
-          </Typography>
-          <Grid container spacing={(10)}>
-            {copy.items.map(item => (
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.items}
+          spacing={(10)}>
+          <Grid
+            item
+            sm={10}
+            md={8}
+            lg={8}>
+            <Callout
+              title={copy.title}
+              subtitle={copy.subtitle}
+              variant="primary"
+              className={classes.callout}>
               <Grid
-                item
-                sm={12}
-                md={3}
-                lg={3}
-                key={item.type}>
-                <Card className={classes.card}>
-                  <Grid container>
-                    <Grid
-                      item
-                      xs={12}
-                      sm={12}
-                      md={12}>
-                      <Icon name={verbiage(item.ico)} className={classes.icon} color="primary" />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                      sm={12}
-                      md={12}
-                      className={classes.cta}>
-                      <LangButton
-                        lang={item.cta}
-                        onClick={this.handleClick}
-                        variant={VARIANTS.OUTLINED}
-                        typeButton={TYPES.PRIMARY} />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                      sm={12}
-                      md={12}>
-                      <Typography
-                        variant="body1">
-                        <LangToggler id={item.body} />
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Card>
+                container
+                direction="row"
+                justify="flex-end"
+                alignItems="flex-end"
+                spacing={(10)}
+                className={classes.content}>
+                <Grid
+                  item
+                  sm={12}
+                  md={12}
+                  lg={12}>
+                  <LangInput
+                    error={undefined}
+                    fieldType="select"
+                    id="type"
+                    key="type"
+                    lang={verbiage(copy.select)}
+                    name="type"
+                    type="text"
+                    placeholder={verbiage(copy.placeholder_select)}
+                    value={this.state.type || ''}
+                    options={copy.select_options || {}}
+                    proxy={{
+                      handleChange,
+                      language,
+                      verbiage,
+                    }} />
+                </Grid>
+                <Grid
+                  item
+                  sm={12}
+                  md={12}
+                  lg={12}>
+                  <LangButton
+                    className={classes.button}
+                    disabled={type === ''}
+                    lang={copy.cta}
+                    onClick={this.handleClick}
+                    variant={VARIANTS.OUTLINED}
+                    typeButton={TYPES.PRIMARY}>
+                    <Icon name="keyboard_arrow_right" className={classes.icon} />
+                  </LangButton>
+                </Grid>
               </Grid>
-            ))}
+            </Callout>
+          </Grid>
+          <Grid
+            item
+            sm={10}
+            md={4}
+            lg={4}>
+            <SVGComponent src="/static/svg/team_work.svg" className={classes.svg} color="secondary" />
           </Grid>
         </Grid>
-      </Grid>
-    </SectionBlock>
-  );
+      </SectionBlock>
+    );
+  }
 }
 
-export default withStyles(styles)(SectionB);
+export default withStyles(styles)(withRouter(SectionA));

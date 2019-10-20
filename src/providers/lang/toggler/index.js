@@ -18,7 +18,7 @@ class LangToggler extends Component {
   }
 
   props: {
-    id: string,
+    id: Object,
     language: string,
     leadType: string,
     selectLanguage: Function,

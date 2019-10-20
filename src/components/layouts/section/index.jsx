@@ -11,16 +11,19 @@ import {
 
 const styles = theme => ({
   container: {
-    padding: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
+    padding: `${theme.spacing(16)}px ${theme.spacing(4)}px`,
   },
   dark: {
-    backgroundColor: theme.palette.dark.main,
+    backgroundColor: theme.palette.primary.dark,
   },
   item: {
     backgroundColor: theme.palette.background.transparent,
   },
   light: {
     backgroundColor: theme.palette.primary.light,
+  },
+  primary: {
+    backgroundColor: theme.palette.primary.main,
   },
   root: {
     backgroundColor: theme.palette.background.transparent,
@@ -49,7 +52,7 @@ function SectionBlock (props: {
     <Bounce left>
       <Paper
         elevation={0}
-        className={classes[variant]}>
+        className={variant ? classes[variant] : classes.primary}>
         <Grid
           container
           direction="row"

@@ -1,12 +1,11 @@
 import {
-  FETCH_WEATHER,
+  SET_HEADER_VISIBILITY,
 } from '../../../actions/components/header';
 
-export const weatherReducer = (state = [], action) => {
+export const isHeaderVisibleReducer = (state = true, action) => {
   switch (action.type) {
-  case FETCH_WEATHER:
-    // return state.concat([action.payload.data]); // avoid state mutations!
-    return [...state, action.payload.data]; // ES6 concat
+  case SET_HEADER_VISIBILITY:
+    return action.payload;
   default:
     return state;
   }

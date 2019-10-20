@@ -29,6 +29,8 @@ const styles = theme => ({
     '& .slick-slide *': {
       outline: 'none!important',
     },
+    border: `0 solid ${theme.palette.secondary.main}`,
+    borderBottom: theme.spacing(2),
     position: 'relative',
     textAlign: 'center',
     width: '100%',
@@ -37,7 +39,7 @@ const styles = theme => ({
     width: '100%',
   },
   item: {
-    padding: `0 ${theme.spacing(2)}px`,
+    padding: `${theme.spacing(6)}px ${theme.spacing(2)}px`,
   },
   nextArrow: {},
   prevArrow: {},
@@ -60,13 +62,14 @@ function BannerA (props: {
   const { verbiage, language } = proxy;
   const sliderProps = {
     adaptiveHeight: true,
-    autoplaySpeed: 2500,
+    autoplay: true,
+    autoplaySpeed: 2000,
     centerPadding: '60px',
     className: 'container',
     infinite: true,
     nextArrow: <Icon name="keyboard_arrow_right" className={classes.nextArrow} color="secondary" />,
     prevArrow: <Icon name="keyboard_arrow_left" className={classes.prevArrow} color="secondary" />,
-    slidesToShow: 2,
+    slidesToShow: 6,
     swipeToSlide: true,
   };
 

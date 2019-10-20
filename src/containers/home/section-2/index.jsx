@@ -42,15 +42,18 @@ const styles = theme => ({
     textAlign: 'center',
   },
   subtitle: {
+    color: theme.palette.primary.contrastText,
     marginBottom: `${theme.spacing(6)}px`,
   },
   subtitle2: {
+    color: theme.palette.primary.contrastText,
     marginBottom: `${theme.spacing(2)}px`,
   },
   svg: {
     margin: `${theme.spacing(8)}px 0`,
   },
   title: {
+    color: theme.palette.primary.contrastText,
     marginBottom: `${theme.spacing(6)}px`,
   },
 });
@@ -70,7 +73,6 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'items-3-title',
   'subtitle',
   'title',
-  'svg',
 ]);
 
 function SectionC (props: {
@@ -82,7 +84,7 @@ function SectionC (props: {
 
   return (
     verbiage &&
-    <SectionBlock variant="light">
+    <SectionBlock>
       <Grid
         container
         direction="row"
@@ -129,7 +131,7 @@ function SectionC (props: {
                   xs={12}
                   sm={12}
                   md={12}>
-                  <SVGComponent src={verbiage(copy.svg)} className={classes.svg} />
+                  <SVGComponent src={verbiage(item.svg)} className={classes.svg} />
                   <Typography
                     variant="h4"
                     className={classes.subtitle2}>

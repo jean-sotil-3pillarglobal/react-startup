@@ -29,9 +29,6 @@ const styles = () => ({
 const NODE = 'headers';
 const SLOT = 'home';
 // copy:
-// 1 description
-// 1 keywords
-// 1 title
 const copy = LangGenerateTree([NODE, SLOT], [
   'description',
   'keywords',
@@ -43,6 +40,7 @@ class Home extends Component {
 
   props: {
     device: string,
+    isHeaderVisible: Boolean,
     language: string,
     lead: Object,
     leadType: string,
@@ -50,10 +48,18 @@ class Home extends Component {
   }
 
   render () {
-    const { lead, leadType, verbiage, language, device } = this.props;
+    const {
+      device,
+      isHeaderVisible,
+      language,
+      lead,
+      leadType,
+      verbiage,
+    } = this.props;
 
     const proxy = {
       device,
+      isHeaderVisible,
       language,
       lead,
       leadType,
@@ -67,9 +73,9 @@ class Home extends Component {
         <SectionA proxy={proxy} />
         <BannerA proxy={proxy} />
         <SectionB proxy={proxy} />
-        <BannerA proxy={proxy} />
         <SectionC proxy={proxy} />
         <SectionD proxy={proxy} />
+        <BannerA proxy={proxy} />
         <SectionE proxy={proxy} />
         <Footer />
       </Fragment>
@@ -81,6 +87,7 @@ class Home extends Component {
 function mapStateToProps (state) {
   return {
     device: state.device,
+    isHeaderVisible: state.isHeaderVisible,
     language: state.language,
     lead: state.lead,
     leadType: state.leadType,

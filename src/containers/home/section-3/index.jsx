@@ -1,180 +1,232 @@
 
-import { withRouter } from 'react-router-dom';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import classnames from 'classnames';
 
 import {
+  Box,
+  Card,
   Grid,
+  Typography,
   withStyles,
 } from '@material-ui/core';
 
 // provider
-import LangToggler from './../../../providers/lang/toggler';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
+import LangToggler from './../../../providers/lang/toggler';
 
 // components
-import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
-import { LangInput } from './../../../components/commons/input';
-import Callout from './../../../components/commons/callout/';
 import Icon from './../../../components/commons/icon';
-import SVGComponent from './../../../components/commons/svg';
 import SectionBlock from './../../../components/layouts/section';
+import Slider from './../../../components/commons/slider';
+
+import { LangButton, TYPES, VARIANTS } from './../../../components/commons/button';
 
 const styles = theme => ({
-  background: {},
-  button: {
-    margin: 0,
-    width: '100%',
-  },
-  callout: {
-    bottom: theme.spacing(4),
+  card: {
+    background: 'transparent',
+    boxShadow: 'initial',
+    maxWidth: '100%',
+    padding: `${theme.spacing(6)}px 0`,
     position: 'relative',
-    zIndex: 1,
+    textAlign: 'center',
+    width: 300,
   },
-  content: {
-    marginTop: theme.spacing(4),
-    width: '100%',
-  },
-  icon: {
-    fontSize: '1rem',
-  },
-  image: {
+  cardBackground: {
+    backgroundColor: theme.palette.primary.light,
+    content: '',
+    display: 'block',
+    height: '100%',
+    left: 0,
+    opacity: 0.4,
+    position: 'absolute',
+    top: 0,
     width: '100%',
     zIndex: -1,
   },
-  svg: {
-    bottom: theme.spacing(20),
-    right: theme.spacing(6),
-    width: '100%',
+  cardBackgroundHover: {
+    opacity: 0.8,
+  },
+  cardBody: {
+    cursor: 'default',
+  },
+  cardContent: {
+    zIndex: 2,
+  },
+  cardContentHover: {
+    opacity: 0.5,
+  },
+  cardHover: {
+    border: `1px solid ${theme.palette.secondary.main}`,
+  },
+  cardTitle: {
+    cursor: 'default',
+    fontSize: '1.8rem',
+    fontWeight: 800,
+    marginBottom: `${theme.spacing(2)}px`,
+    textTransform: 'capitalize',
+  },
+  cta: {
+    padding: `${theme.spacing(6)}px 0`,
+  },
+  icon: {
+    fontSize: '3.4em',
+  },
+  items: {
+    padding: 0,
+    textAlign: 'center',
+  },
+  slider: {
+    padding: `0 ${theme.spacing(6)}px`,
+  },
+  subtitle: {
+    color: theme.palette.primary.contrastText,
+    marginBottom: `${theme.spacing(8)}px`,
+  },
+  title: {
+    color: theme.palette.primary.contrastText,
+    marginBottom: `${theme.spacing(8)}px`,
   },
 });
 
 const NODE = 'home';
 const SLOT = 'section_3';
-
+// copy:
 const copy = LangGenerateTree([NODE, SLOT], [
-  'cta',
-  'placeholder_select',
-  'select_options-4-label',
-  'select_options-4-value',
-  'select',
-  'subtitle',
   'title',
+  'body',
+  'items-8-body',
+  'items-8-cta',
+  'items-8-ico',
+  'items-8-image',
+  'items-8-title',
+  'items-8-type',
 ]);
 
-class SectionA extends Component {
-  state = {
-    type: '',
-  }
+function SectionB (props: {
+  classes: Object,
+  proxy: Object,
+}) {
+  const { classes, proxy } = props;
+  const { verbiage } = proxy;
 
-  componentDidMount = () => {
-    this.myRef = React.createRef();
-  }
+  const [useHover, setHover] = useState(false);
 
-  handleChange = (evt) => {
-    this.setState({
-      [evt.target.name]: evt.target.value,
+  const handleHover = (payload) => {
+    setHover(payload);
+  };
+
+  const items = verbiage && copy.items.map((item, id) => {
+    const isHover = useHover.id === `item-${id}`;
+
+    return ({
+      id: `item-${id}`,
+      image: verbiage(item.image),
+      render: () => (
+        <Card
+          className={classnames(classes.card, isHover && classes.cardHover)}
+          key={item.type}>
+          <Box
+            className={classnames(classes.cardBackground, isHover && classes.cardBackgroundHover)}
+            component="span"
+          />
+          <Grid
+            container
+            className={classes.cardContent}
+          >
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}>
+              <Icon
+                name={verbiage(item.ico)}
+                className={classes.icon}
+                color="secondary"
+              />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}>
+              <Typography
+                variant="body2"
+                className={classes.cardTitle}
+                color="secondary"
+              >
+                <LangToggler id={item.title} />
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}>
+              <Typography
+                variant="body2"
+                className={classnames(classes.cardBody, !isHover && classes.cardContentHover)}>
+                <LangToggler id={item.body} />
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              className={classes.cta}>
+              <LangButton
+                lang={item.cta}
+                onClick={this.handleClick}
+                variant={VARIANTS.OUTLINED}
+                typeButton={!isHover ? TYPES.SECONDARY : TYPES.PRIMARY} />
+            </Grid>
+          </Grid>
+        </Card>
+      ),
     });
-  }
+  });
 
-  handleClick = (evt) => {
-    evt.preventDefault();
-
-    const { history } = this.props;
-    const { type } = this.state;
-
-    history.push(`/get-a-quote/${type}`);
-  }
-
-  props: {
-    history: any,
-    classes: Object,
-    proxy: Object,
-  }
-
-  render () {
-    const { classes, proxy } = this.props;
-    const { type } = this.state;
-    const { verbiage, language } = proxy;
-    const { handleChange } = this;
-
-    return (
-      verbiage &&
-      <SectionBlock variant="light">
+  return (
+    verbiage &&
+    <SectionBlock
+      variant="light"
+    >
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.items}>
         <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          className={classes.items}
-          spacing={(10)}>
-          <Grid
-            item
-            sm={10}
-            md={8}
-            lg={8}>
-            <Callout
-              title={<LangToggler id={copy.title} />}
-              subtitle={<LangToggler id={copy.subtitle} />}
-              variant="primary"
-              className={classes.callout}>
-              <Grid
-                container
-                direction="row"
-                justify="flex-end"
-                alignItems="flex-end"
-                spacing={(10)}
-                className={classes.content}>
-                <Grid
-                  item
-                  sm={12}
-                  md={12}
-                  lg={12}>
-                  <LangInput
-                    error={undefined}
-                    fieldType="select"
-                    id="type"
-                    key="type"
-                    lang={verbiage(copy.select)}
-                    name="type"
-                    type="text"
-                    placeholder={verbiage(copy.placeholder_select)}
-                    value={this.state.type || ''}
-                    options={copy.select_options || {}}
-                    proxy={{
-                      handleChange,
-                      language,
-                      verbiage,
-                    }} />
-                </Grid>
-                <Grid
-                  item
-                  sm={12}
-                  md={12}
-                  lg={12}>
-                  <LangButton
-                    className={classes.button}
-                    disabled={type === ''}
-                    lang={copy.cta}
-                    onClick={this.handleClick}
-                    variant={VARIANTS.OUTLINED}
-                    typeButton={TYPES.PRIMARY}>
-                    <Icon name="keyboard_arrow_right" className={classes.icon} />
-                  </LangButton>
-                </Grid>
-              </Grid>
-            </Callout>
-          </Grid>
-          <Grid
-            item
-            sm={10}
-            md={4}
-            lg={4}>
-            <SVGComponent src="/static/svg/team_work.svg" className={classes.svg} color="secondary" />
-          </Grid>
+          item
+          sm={12}
+          md={12}>
+          <Typography
+            variant="h2"
+            className={classes.title}
+            color="primary">
+            <LangToggler id={copy.title} />
+          </Typography>
+          <Typography
+            variant="body2"
+            className={classes.subtitle}
+            color="primary">
+            <LangToggler id={copy.body} />
+          </Typography>
         </Grid>
-      </SectionBlock>
-    );
-  }
+        <Grid
+          item
+          sm={12}
+          md={12}
+          className={classes.slider}>
+          <Slider
+            items={items}
+            onHover={handleHover}
+          />
+        </Grid>
+      </Grid>
+    </SectionBlock>
+  );
 }
 
-export default withStyles(styles)(withRouter(SectionA));
+export default withStyles(styles)(SectionB);

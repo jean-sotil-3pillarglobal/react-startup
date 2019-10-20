@@ -114,7 +114,7 @@ class Footer extends Component {
 // map state to props
 function mapStateToProps (state) {
   return {
-    language: state.selectedLanguage,
+    language: state.language,
   };
 }
 
