@@ -113,6 +113,7 @@ class SectionA extends Component {
               service={{
                 id: SERVICE_1,
               }}
+              variant="light2"
             />
           </Grid>
           <Grid

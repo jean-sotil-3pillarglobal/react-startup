@@ -62,7 +62,6 @@ const styles = theme => ({
     },
   },
   stepper: {
-    backgroundColor: theme.palette.secondary.light,
     border: '1px solid #cccccc',
   },
 });

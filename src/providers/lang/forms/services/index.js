@@ -52,64 +52,6 @@ export const SERVICES_INFORMATION_1_1 = [
     type: 'text',
   },
   {
-    input_type: 'select',
-    key: 'state',
-    label: {
-      en: 'state',
-      es: 'estado',
-    },
-    options: [
-      {
-        label: {
-          en: 'state 1',
-          es: 'estado 1',
-        },
-        value: 'state 1',
-      },
-      {
-        label: {
-          en: 'state 2',
-          es: 'estado 2',
-        },
-        value: 'state 2',
-      },
-      {
-        label: {
-          en: 'state 2',
-          es: 'estado 2',
-        },
-        value: 'state 3',
-      },
-    ],
-    placeholder: {
-      en: 'new york city',
-      es: 'nueva york city',
-    },
-    required: true,
-    size_lg: 12,
-    size_md: 12,
-    size_sm: 12,
-    type: 'text',
-  },
-  {
-    input_type: 'input',
-    key: 'zipcode',
-    label: {
-      en: 'zip code',
-      es: 'código postal',
-    },
-    mask: 'zipcode',
-    placeholder: {
-      en: '12345',
-      es: '54321',
-    },
-    required: false,
-    size_lg: 12,
-    size_md: 12,
-    size_sm: 12,
-    type: 'text',
-  },
-  {
     input_type: 'divider',
     key: 'divider_1',
     size_lg: 12,

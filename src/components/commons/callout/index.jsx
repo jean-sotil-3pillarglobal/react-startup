@@ -25,12 +25,13 @@ const styles = theme => ({
   },
   subtitle: props => ({
     color: ThemeColor(props, theme),
+    fontWeight: 400,
     marginBottom: theme.spacing(2),
   }),
   title: props => ({
     color: ThemeColor(props, theme),
     fontSize: '2.3rem',
-    fontWeight: 600,
+    fontWeight: 400,
     lineHeight: '1.2em',
     marginBottom: theme.spacing(2),
     textAlign: 'justify',

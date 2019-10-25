@@ -11,6 +11,7 @@ import {
 
 // provider
 import LangToggler from './../../../providers/lang/toggler';
+import ThemeColor from './../../../providers/utils/theme.color';
 
 // components
 import { LangInput } from './../../../components/commons/input';
@@ -19,26 +20,27 @@ const styles = theme => ({
   button: {
     margin: 0,
   },
-  card: {
-    backgroundColor: theme.palette.background.transparent,
+  card: () => ({
     overflow: 'visible',
-  },
-  helper: {
-    marginBottom: `${theme.spacing(2)}px`,
-  },
+  }),
+  helper: props => ({
+    color: ThemeColor(props, theme),
+    margin: `${theme.spacing(2)}px 0`,
+  }),
   item: {
     width: '100%',
   },
   root: {
-    marginTop: theme.spacing(2),
+    padding: 0,
   },
   row: {
     marginBottom: `${theme.spacing(2)}px`,
   },
-  title: {
+  title: props => ({
+    color: ThemeColor(props, theme),
     fontWeight: 600,
-    margin: `${theme.spacing(2)}px 0`,
-  },
+    margin: 0,
+  }),
 });
 
 class FormBlock extends Component {
@@ -78,14 +80,14 @@ class FormBlock extends Component {
                 <Typography variant="h3" align="left" className={classes.title}>
                   <LangToggler id={copy.label} />
                 </Typography>
-                <Typography variant="caption" className={classes.helper}>
+                <Typography variant="body1" className={classes.helper}>
                   <LangToggler id={copy.label_helper} />
                 </Typography>
               </Fragment>
             }
 
             <CardContent className={classes.root}>
-              <Grid container spacing={8} className={classes.row}>
+              <Grid container className={classes.row}>
                 {copy.fields.map((field) => {
                   const fieldType = field.input_type;
                   const sm = field.size_sm;
