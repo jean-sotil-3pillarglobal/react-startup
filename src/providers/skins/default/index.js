@@ -110,6 +110,7 @@ export default {
     h2: {
       fontSize: '2.8rem',
       fontWeight: 600,
+      textDecoration: 'underline',
       textTransform: 'capitalize',
     },
     h3: {

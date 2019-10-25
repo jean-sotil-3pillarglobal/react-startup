@@ -24,8 +24,6 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: 'cover',
     border: `0 solid ${theme.palette.primary.main}`,
     flexShrink: 0,
-    marginLeft: 10,
-    marginRight: 10,
   },
 }));
 

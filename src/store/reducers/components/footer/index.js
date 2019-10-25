@@ -9,7 +9,7 @@ import VerbiageOfDental from '../../../../providers/lang/verbs/themajorhub/denta
 import VerbiageOfGroup from '../../../../providers/lang/verbs/themajorhub/group';
 import VerbiageOfHealth from '../../../../providers/lang/verbs/themajorhub/health';
 
-export const selectedLanguageReducer = (state = '', action) => {
+export const selectedLanguageReducer = (state = 'es', action) => {
   switch (action.type) {
   case LANGUAGE_SELECTED:
     return action.payload;

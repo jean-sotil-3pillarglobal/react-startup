@@ -24,20 +24,20 @@ const styles = theme => ({
     overflow: 'visible',
   },
   helper: {
-    marginBottom: `${theme.spacing.unit * 3}px`,
+    marginBottom: `${theme.spacing(2)}px`,
   },
   item: {
     width: '100%',
   },
   root: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
   },
   row: {
-    marginBottom: `${theme.spacing.unit * 2}px`,
+    marginBottom: `${theme.spacing(2)}px`,
   },
   title: {
     fontWeight: 600,
-    margin: `${theme.spacing.unit * 2}px 0`,
+    margin: `${theme.spacing(2)}px 0`,
   },
 });
 
@@ -59,12 +59,12 @@ class FormBlock extends Component {
       children,
       classes,
       copy,
+      document,
       proxy,
     } = this.props;
 
     const {
       disabled,
-      document,
       errors,
       verbiage,
     } = proxy;

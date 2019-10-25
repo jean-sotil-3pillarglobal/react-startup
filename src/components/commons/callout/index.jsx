@@ -11,40 +11,31 @@ import {
 } from '@material-ui/core';
 
 import LangToggler from './../../../providers/lang/toggler';
+import ThemeBackground from './../../../providers/utils/theme.background';
+import ThemeColor from './../../../providers/utils/theme.color';
 
 const styles = theme => ({
-  card: {
-    border: '2px groove',
+  card: props => ({
+    background: ThemeBackground(props, theme),
+    border: '16px groove',
     overflow: 'visible',
-  },
+  }),
   container: {
     padding: '3.75rem 2.875rem 3.75rem 2.875rem!important',
   },
-  primary: {
-    background: theme.palette.primary.main,
-    borderColor: theme.palette.primary.light,
-  },
-  primaryColor: {
-    color: theme.palette.primary.contrastText,
-  },
-  secondary: {
-    background: theme.palette.secondary.main,
-    borderColor: theme.palette.secondary.light,
-  },
-  secondaryColor: {
-    color: theme.palette.secondary.contrastText,
-  },
-  subtitle: {
+  subtitle: props => ({
+    color: ThemeColor(props, theme),
     marginBottom: theme.spacing(2),
-  },
-  title: {
+  }),
+  title: props => ({
+    color: ThemeColor(props, theme),
     fontSize: '2.3rem',
     fontWeight: 600,
     lineHeight: '1.2em',
     marginBottom: theme.spacing(2),
     textAlign: 'justify',
     textTransform: 'capitalize',
-  },
+  }),
 });
 
 function Callout (props: {
@@ -53,7 +44,6 @@ function Callout (props: {
   className: Object,
   subtitle: Object,
   title: Object,
-  variant: string,
 }) {
   const {
     children,
@@ -61,18 +51,17 @@ function Callout (props: {
     className,
     subtitle,
     title,
-    variant,
   } = props;
 
   return (
-    <Card className={classnames(classes.card, classes[variant || 'primary'], className)} elevation={0}>
+    <Card className={classnames(classes.card, className)} elevation={0}>
       <CardContent className={classes.container}>
         <Fade left>
-          <Typography variant="body2" component="p" className={classnames(classes.title, classes[`${variant}Color`])}>
+          <Typography variant="body2" component="p" className={classes.title}>
             <LangToggler id={title} />
           </Typography>
         </Fade>
-        <Typography variant="body2" component="p" className={classnames(classes.subtitle, classes[`${variant}Color`])}>
+        <Typography variant="body2" component="p" className={classes.subtitle}>
           <LangToggler id={subtitle} />
         </Typography>
         {children}

@@ -5,8 +5,43 @@ import {
 } from '../../../../config';
 
 import forms from '../shared/forms';
+import services from '../shared/services';
+import promos from '../shared/promos';
 
 const Verbiage = {
+  commons: {
+    contact_1: {
+      back: {
+        en: '< previous',
+        es: '< anterior',
+      },
+      cta: {
+        en: 'start your quote',
+        es: 'consulta a un agente',
+      },
+      forms,
+      services,
+      subtitle: {
+        en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
+        es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
+      },
+      title: {
+        en: '<span>you are less than 1 minute away from an health insurance quote.</span>',
+        es: '<span>usted esta a menos de 1 minuto de encontar su mejor seguro de salud. </span>',
+      },
+    },
+    services_1: {
+      body: {
+        en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
+        es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
+      },
+      services,
+      title: {
+        en: 'we offer special enrollment',
+        es: 'ofrecemos asistencia especializada',
+      },
+    },
+  },
   components: {
     header: {
       cta: [
@@ -71,7 +106,7 @@ const Verbiage = {
         es: 'Clinica Aqua | Salud | Bienvenido',
       },
     },
-    quote: {
+    services: {
       description: {
         en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
@@ -80,6 +115,7 @@ const Verbiage = {
         en: 'insurances, others',
         es: 'seguros, otros',
       },
+      services,
       title: {
         en: 'Clinica Aqua | Healthcare | Healthcare Help',
         es: 'Clinica Aqua | Salud | Solicitar Ayuda',
@@ -372,64 +408,10 @@ const Verbiage = {
       },
     },
     section_4: {
-      background: '/static/images/d-bg-1.jpg',
-      cta: {
-        en: 'start your quote',
-        es: 'consulta a un agente',
-      },
-      label: {
-        en: 'your zip code',
-        es: 'tú código postal',
-      },
-      placeholder_select: {
-        en: 'health',
-        es: 'salud',
-      },
-      placeholder_zipcode: {
-        en: '00232',
-        es: '00233',
-      },
-      select: {
-        en: 'choose your insurance type',
-        es: 'escoge tu seguro',
-      },
-      select_options: [
-        {
-          label: {
-            en: 'select a product',
-            es: 'selecciona un producto',
-          },
-          value: '',
-        },
-        {
-          label: {
-            en: 'health',
-            es: 'sálud',
-          },
-          value: 'health',
-        },
-        {
-          label: {
-            en: 'auto',
-            es: 'automóvil',
-          },
-          value: 'auto',
-        },
-        {
-          label: {
-            en: 'dental',
-            es: 'dentista',
-          },
-          value: 'dental',
-        },
-      ],
-      subtitle: {
-        en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
-        es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
-      },
+      svg: '/static/svg/team_work.svg',
       title: {
-        en: '<span>you are less than 1 minute away from an health insurance quote.</span>',
-        es: '<span>usted esta a menos de 1 minuto de encontar su mejor seguro de salud. </span>',
+        en: 'get your quote now',
+        es: '<span>haz tu consulta<br>ahora mismo!</span>',
       },
     },
     section_5: {
@@ -532,6 +514,16 @@ const Verbiage = {
         es: '< anterior',
       },
       forms,
+    },
+  },
+  services: {
+    section_1: {
+      back: {
+        en: '< previous',
+        es: '< anterior',
+      },
+      promos,
+      services,
     },
   },
 };

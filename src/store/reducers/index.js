@@ -26,6 +26,10 @@ import {
   getLeadReducer,
 } from './home';
 
+// services
+import {
+  getServiceReducer,
+} from './services';
 /*
 // combining reducers
 */
@@ -35,6 +39,7 @@ const rootReducer = combineReducers({
   language: selectedLanguageReducer,
   lead: getLeadReducer,
   leadType: getLeadTypeReducer,
+  service: getServiceReducer,
   verbiage: selectedVariantVerbiageReducer,
 });
 

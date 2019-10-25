@@ -16,12 +16,10 @@ class HeaderHelmet extends Component {
   }
 
   render() {
-    const { copy, proxy } = this.props;
+    const { copy } = this.props;
     const { title, description, keywords } = copy;
-    const { leadType } = proxy;
 
     return (
-      leadType &&
       <Helmet>
         <title>{this.getValues(title)}</title>
         <meta name="description" content={this.getValues(description)} />

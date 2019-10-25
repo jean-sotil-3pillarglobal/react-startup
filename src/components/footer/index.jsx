@@ -38,12 +38,12 @@ const styles = theme => ({
   },
   img: {
     height: '38px',
-    margin: `${theme.spacing.unit * 1}px ${theme.spacing.unit * 2}px`,
+    margin: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
     width: '38px',
   },
   links: {
     color: theme.palette.primary.constrastText,
-    paddingTop: `${theme.spacing.unit * 1}px`,
+    paddingTop: `${theme.spacing(1)}px`,
     [theme.breakpoints.down('xs')]: {
       fontSize: '.7em',
     },

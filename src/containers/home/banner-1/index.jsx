@@ -11,9 +11,6 @@ import {
 // provider
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
-// components
-import Icon from './../../../components/commons/icon';
-
 const styles = theme => ({
   button: {
     '& svg *': {
@@ -67,8 +64,6 @@ function BannerA (props: {
     centerPadding: '60px',
     className: 'container',
     infinite: true,
-    nextArrow: <Icon name="keyboard_arrow_right" className={classes.nextArrow} color="secondary" />,
-    prevArrow: <Icon name="keyboard_arrow_left" className={classes.prevArrow} color="secondary" />,
     slidesToShow: 6,
     swipeToSlide: true,
   };

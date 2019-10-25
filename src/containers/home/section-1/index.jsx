@@ -85,7 +85,7 @@ class SectionA extends Component {
             <Callout
               title={copy.title}
               subtitle={copy.subtitle}
-              variant="secondary"
+              variant="light2"
               className={classes.callout}>
               <LangButton
                 className={classes.button}

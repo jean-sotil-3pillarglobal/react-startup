@@ -1,10 +1,10 @@
-import classnames from 'classnames';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import Slider from 'react-slick';
 import React, { Component } from 'react';
 
 import {
   AppBar,
-  Card,
-  CardContent,
   Grid,
   Icon,
   Toolbar,
@@ -14,57 +14,90 @@ import {
 
 import Headroom from 'react-headroom';
 
-import Animate from './../../icon/animate';
+import {
+  constants,
+} from './../../../../providers/config';
+
+import LangToggler from './../../../../providers/lang/toggler';
+
 import { LangButton, TYPES, VARIANTS } from './../../button';
+import { SmartImg } from './../../img';
+
+const {
+  GENERAL,
+} = constants;
 
 const styles = theme => ({
-  button: {
-    '& svg *': {},
-    display: 'inline',
-  },
-  card: {
-    backgroundColor: 'transparent',
-    textAlign: 'right',
-  },
   root: {
     flexGrow: 1,
     padding: theme.spacing.unit * 1,
     textAlign: 'left',
   },
-  subtitle: {
-    textDecoration: 'underline',
-  },
-  title: {
-    display: 'inline',
-  },
 });
 
 class NavbarSimple extends Component {
+  getPromos () {
+    const {
+      copy: {
+        promos,
+      },
+      id,
+      proxy: {
+        verbiage,
+      },
+    } = this.props;
+
+    return verbiage && verbiage(promos)
+      // filter by type
+      .filter((promo) => {
+        // set general default and selected forms type
+        return promo.type.includes(GENERAL) || promo.type.includes(id);
+      });
+  }
+
   goBack = () => {
-    const { history } = this.props;
+    const {
+      history,
+    } = this.props;
+
     history.goBack();
   }
 
   props: {
-    back: string,
-    caption: string,
     classes: Object,
-    classes: Object,
+    copy: Object,
     history: Object,
-    icon: string,
-    title: string,
+    id: String,
+    onBack: Function,
+    proxy: Object,
+    title: String,
   }
 
-  render() {
+  render () {
     const {
-      back,
-      caption,
       classes,
-      icon,
+      copy: {
+        back,
+      },
+      proxy,
       title,
     } = this.props;
 
+    const sliderProps = {
+      adaptiveHeight: true,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      centerPadding: '60px',
+      className: 'container',
+      infinite: true,
+      slidesToShow: 2,
+      swipeToSlide: true,
+    };
+
+    const filter = this.getPromos() || [];
+
     return (
+      proxy &&
       <Headroom
         className={classes.headroom}
         onPin={() => console.log('pinned')}
@@ -78,7 +111,7 @@ class NavbarSimple extends Component {
               justify="space-between">
               <Grid
                 item
-                sm={4}
+                sm={12}
                 md={2}
                 lg={2}>
                 <LangButton
@@ -92,27 +125,33 @@ class NavbarSimple extends Component {
               </Grid>
               <Grid
                 item
-                sm={7}
-                md={9}
-                lg={9}>
-                <Card className={classes.card} elevation={0}>
-                  <CardContent>
-                    <Typography className={classes.title} gutterBottom variant="h4" component="h2">
-                      {title}
-                    </Typography>
-                    <Typography className={classes.subtitle} variant="h5" color="textSecondary" component="p">
-                      {caption}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                sm={12}
+                md={8}
+                lg={8}>
+                <Typography
+                  variant="body2"
+                  className={classes.title}>
+                  <LangToggler id={title} />
+                </Typography>
               </Grid>
-              <Grid
-                item
-                sm={1}
-                md={1}
-                lg={1}>
-                <Animate type={icon || ''} customStyle={classnames(classes.button)} />
-              </Grid>
+              {filter.length > 0 && (
+                <Grid
+                  item
+                  sm={12}
+                  md={2}
+                  lg={2}>
+                  <Slider {...sliderProps}>
+                    {filter.map((item, i) => {
+                      const key = `slicker-item-${i}`;
+                      return (
+                        <div className={classes.item} key={key}>
+                          <SmartImg proxy={proxy} src={item.image} alt={item.alt} />
+                        </div>
+                      );
+                    })}
+                  </Slider>
+                </Grid>
+              )}
             </Grid>
           </Toolbar>
         </AppBar>

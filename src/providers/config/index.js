@@ -1,16 +1,20 @@
 // constants
 export const constants = {
-  // auto
-  AUTO: 'auto',
-  AUTO_BENEFITS: 'auto_benefits',
-  AUTO_FAMILY: 'auto_family',
-  AUTO_SECURITY: 'auto_security',
-
   // general
-  GENERAL: 'general',
-
-  // health
-  HEALTH: 'health',
+  GENERAL: 'GENERAL',
+  // promos
+  PROMO_1: 'PROMO_1',
+  PROMO_2: 'PROMO_2',
+  PROMO_3: 'PROMO_3',
+  // services types
+  SERVICE_1: 'SERVICE_1',
+  SERVICE_2: 'SERVICE_2',
+  SERVICE_3: 'SERVICE_3',
+  SERVICE_4: 'SERVICE_4',
+  SERVICE_5: 'SERVICE_5',
+  SERVICE_6: 'SERVICE_6',
+  SERVICE_7: 'SERVICE_7',
+  SERVICE_8: 'SERVICE_8',
 };
 
 // public routes
@@ -66,6 +70,10 @@ export const privates = [];
 export const assets = {
   icons: {
     general: 'home',
+    service1: 'home',
+    service2: 'home',
+    service3: 'home',
+    service4: 'home',
   },
 };
 

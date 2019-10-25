@@ -16,20 +16,20 @@ const styles = theme => ({
   dark: {
     backgroundColor: theme.palette.primary.dark,
   },
-  item: {
-    backgroundColor: theme.palette.background.transparent,
+  dark2: {
+    backgroundColor: theme.palette.secondary.dark,
   },
   light: {
     backgroundColor: theme.palette.primary.light,
   },
+  light2: {
+    backgroundColor: theme.palette.secondary.light,
+  },
   primary: {
     backgroundColor: theme.palette.primary.main,
   },
-  root: {
-    backgroundColor: theme.palette.background.transparent,
-  },
   secondary: {
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.main,
   },
 });
 
@@ -63,8 +63,7 @@ function SectionBlock (props: {
             item
             sm={12}
             md={11}
-            lg={10}
-            className={classes.item}>
+            lg={10}>
             {children}
           </Grid>
         </Grid>

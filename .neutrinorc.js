@@ -54,6 +54,7 @@ module.exports = {
             'max-len': 0,
             'no-console': 0,
             'no-multi-assign': 0,
+            'no-nested-ternary': 0,
             'no-restricted-syntax': 0,
             'no-undef': 0,
             'object-curly-newline': 0,

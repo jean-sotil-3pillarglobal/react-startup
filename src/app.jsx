@@ -62,10 +62,10 @@ const styles = theme => ({
 });
 
 // containers
-const Home = Async(() => import('./containers/home').then(module => module.default), { name: 'Home' });
-const Quote = Async(() => import('./containers/quote').then(module => module.default), { name: 'Get A Quote' });
-const Blog = Async(() => import('./containers/blog').then(module => module.default), { name: 'Blog' });
-const Four0Four = Async(() => import('./containers/404').then(module => module.default), { name: '404' });
+const Home = Async(() => import('./containers/home').then(module => module.default));
+const Services = Async(() => import('./containers/services').then(module => module.default));
+const Blog = Async(() => import('./containers/blog').then(module => module.default));
+const Four0Four = Async(() => import('./containers/404').then(module => module.default));
 
 // main
 class App extends Component {
@@ -135,7 +135,8 @@ class App extends Component {
                   <div className={classes.switch}>
                     <Switch location={location} >
                       <Route exact path="/" component={Home} />
-                      <Route path="/get-a-quote/:type" component={Quote} />
+                      <Route path="/services/:type" component={Services} />
+                      <Route path="/servicios/:type" component={Services} />
                       <Route exact path="/blog" component={Blog} />
                       <Route component={Four0Four} />
                     </Switch>

@@ -160,8 +160,9 @@ class InputLayout extends Component {
       multiline,
       options,
       proxy: {
-        language,
         handleChange,
+        language,
+        verbiage,
       },
       value,
       mask,
@@ -177,9 +178,9 @@ class InputLayout extends Component {
     const filled = value && value.length > 0;
 
 
-    if (language) {
-      label = props.lang && props.lang[language];
-      placeholder = props.placeholder && props.placeholder[language];
+    if (language && verbiage) {
+      label = props.lang && verbiage(props.lang)[language];
+      placeholder = props.placeholder && verbiage(props.placeholder)[language];
 
       delete props.lang;
       delete props.placeholder;
