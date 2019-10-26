@@ -64,6 +64,7 @@ module.exports = {
             'react/jsx-filename-extension': [1, { "extensions": [".js", ".jsx"] }],
             'react/jsx-no-undef': 1,
             'react/jsx-uses-react': 1,
+            'react/no-find-dom-node': 0,
             'react/prop-types': [1, {'ignore': ['children']} ],
             'sort-keys': 1,
             'space-before-function-paren': 0,

@@ -86,7 +86,7 @@ class SectionA extends Component {
           direction="row"
           justify="center"
           alignItems="center"
-          spacing={10}>
+          spacing={6}>
           <Grid
             item
             sm={12}
@@ -102,8 +102,8 @@ class SectionA extends Component {
           <Grid
             item
             sm={10}
-            md={7}
-            lg={7}>
+            md={6}
+            lg={6}>
             <ContactFormLayout
               document={document}
               onBlur={onBlur}
@@ -113,14 +113,14 @@ class SectionA extends Component {
               service={{
                 id: SERVICE_1,
               }}
-              variant="light2"
+              variant="primary"
             />
           </Grid>
           <Grid
             item
             sm={10}
-            md={5}
-            lg={5}>
+            md={6}
+            lg={6}>
             <SVGComponent src={verbiage(copy.svg)} className={classes.svg} color="secondary" />
           </Grid>
         </Grid>

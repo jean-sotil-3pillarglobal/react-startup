@@ -11,6 +11,8 @@ import {
 
 const styles = theme => ({
   container: {
+    margin: '0 auto',
+    maxWidth: 1200,
     padding: `${theme.spacing(16)}px ${theme.spacing(4)}px`,
   },
   dark: {

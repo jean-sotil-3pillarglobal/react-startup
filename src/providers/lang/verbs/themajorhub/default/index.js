@@ -15,16 +15,8 @@ const Verbiage = {
         en: '< previous',
         es: '< anterior',
       },
-      cta: {
-        en: 'start your quote',
-        es: 'consulta a un agente',
-      },
       forms,
       services,
-      subtitle: {
-        en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
-        es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
-      },
       title: {
         en: '<span>you are less than 1 minute away from an health insurance quote.</span>',
         es: '<span>usted esta a menos de 1 minuto de encontar su mejor seguro de salud. </span>',

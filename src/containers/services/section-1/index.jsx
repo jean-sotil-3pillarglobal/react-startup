@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import { Parallax } from 'react-parallax';
 
 import {
+  Grid,
   Paper,
   withStyles,
 } from '@material-ui/core';
@@ -11,6 +12,7 @@ import {
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
 // components
+import SectionBlock from './../../../components/layouts/section';
 import NavbarSimple from './../../../components/commons/navbar/simple';
 
 const styles = theme => ({
@@ -63,7 +65,28 @@ function SectionA (props: {
       <Parallax bgImage={service.background} strength={500} className={classes.background}>
         <Paper className={classes.image} />
       </Parallax>
-      {children}
+      <SectionBlock variant="light2">
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center">
+          <Grid
+            item
+            sm={12}
+            md={7}
+            lg={6}>
+            <Paper className={classes.image} />
+          </Grid>
+          <Grid
+            item
+            sm={12}
+            md={5}
+            lg={6}>
+            {children}
+          </Grid>
+        </Grid>
+      </SectionBlock>
     </Fragment>
   );
 }
