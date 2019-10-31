@@ -1,7 +1,8 @@
 
+import { Section } from 'react-scroll-section';
 import { withRouter } from 'react-router-dom';
-import React, { Fragment } from 'react';
 import Fade from 'react-reveal/Fade';
+import React from 'react';
 
 import {
   Typography,
@@ -9,8 +10,8 @@ import {
 } from '@material-ui/core';
 
 // provider
-import LangToggler from './../../../../providers/lang/toggler';
 import LangGenerateTree from './../../../../providers/utils/lang.generate.tree';
+import LangToggler from './../../../../providers/lang/toggler';
 import ThemeBackground from './../../../../providers/utils/theme.background';
 import ThemeColor from './../../../../providers/utils/theme.color';
 
@@ -43,6 +44,7 @@ const SLOT = 'contact_1';
 const copy = LangGenerateTree([NODE, SLOT], [
   'back',
   'forms',
+  'id',
   'services',
   'title',
 ]);
@@ -70,7 +72,7 @@ function ContactFormLayout (props: {
 
   return (
     verbiage &&
-    <Fragment>
+    <Section id={verbiage(copy.id)}>
       <Fade left>
         <Typography variant="body2" component="p" className={classes.title}>
           <LangToggler id={copy.title} />
@@ -86,7 +88,7 @@ function ContactFormLayout (props: {
         service={service}
         variant={variant}
       />
-    </Fragment>
+    </Section>
   );
 }
 

@@ -70,7 +70,7 @@ class Services extends Component {
       setService,
       verbiage,
     } = nextProps;
-    console.log(language);
+
     if (!verbiage) {
       selectVariantVerbiage('default');
     }
@@ -164,7 +164,7 @@ class Services extends Component {
               variant="primary"
             />
           </SectionA>
-          <ServicesLayout setService={this.handleSetService} proxy={proxy} />
+          <ServicesLayout setService={this.handleSetService} proxy={proxy} variant="light2" />
           <Footer />
         </Fragment>
         }

@@ -50,6 +50,7 @@ const NODE = 'home';
 const SLOT = 'section_4';
 
 const copy = LangGenerateTree([NODE, SLOT], [
+  'id',
   'svg',
   'title',
 ]);
@@ -80,7 +81,7 @@ class SectionA extends Component {
 
     return (
       verbiage &&
-      <SectionBlock variant={variant}>
+      <SectionBlock variant={variant} id={verbiage(copy.id)}>
         <Grid
           container
           direction="row"

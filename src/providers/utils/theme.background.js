@@ -1,31 +1,42 @@
-export default function ThemeBackground (props, theme) {
+export default function ThemeBackground (props, theme, variation) {
   const {
     variant,
   } = props;
 
-  const secondary = {
-    dark: 'dark2',
-    light: 'light2',
-    main: 'secondary',
+  const refs = {
+    dark: {
+      dark: theme.palette.primary.light,
+      light: theme.palette.primary.light,
+      main: theme.palette.primary.dark,
+    },
+    dark2: {
+      dark: theme.palette.secondary.light,
+      light: theme.palette.secondary.light,
+      main: theme.palette.secondary.dark,
+    },
+    light: {
+      dark: theme.palette.primary.dark,
+      light: theme.palette.primary.main,
+      main: theme.palette.primary.light,
+    },
+    light2: {
+      dark: theme.palette.secondary.dark,
+      light: theme.palette.secondary.main,
+      main: theme.palette.secondary.light,
+    },
+    primary: {
+      dark: theme.palette.primary.dark,
+      light: theme.palette.primary.light,
+      main: theme.palette.primary.main,
+    },
+    secondary: {
+      dark: theme.palette.secondary.dark,
+      light: theme.palette.secondary.light,
+      main: theme.palette.secondary.main,
+    },
   };
 
-  let color = null;
-
-  if (variant === 'primary') {
-    color = theme.palette.primary.main;
-  } else if (variant === 'secondary') {
-    color = theme.palette.secondary.main;
-  } else if (variant === 'light') {
-    color = theme.palette.primary.light;
-  } else if (variant === 'dark') {
-    color = theme.palette.primary.dark;
-  } else if (variant === secondary.main) {
-    color = theme.palette.secondary.main;
-  } else if (variant === secondary.light) {
-    color = theme.palette.secondary.light;
-  } else {
-    color = theme.palette.secondary.dark;
-  }
-
-  return color;
+  return (((variant && variation) && refs[variant] && refs[variant][variation]) && refs[variant][variation]) ||
+    (variant && refs[variant].main) ||
+    refs.primary.main;
 }

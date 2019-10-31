@@ -2,7 +2,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import Bounce from 'react-reveal/Bounce';
-
+import { Section } from 'react-scroll-section';
 import {
   Grid,
   Paper,
@@ -40,6 +40,7 @@ function SectionBlock (props: {
   children: Object,
   classes: Object,
   className: Object,
+  id: string,
   variant: string,
 }) {
   const {
@@ -47,6 +48,7 @@ function SectionBlock (props: {
     children,
     classes,
     className,
+    id,
     variant,
   } = props;
 
@@ -55,20 +57,22 @@ function SectionBlock (props: {
       <Paper
         elevation={0}
         className={variant ? classes[variant] : classes.primary}>
-        <Grid
-          container
-          direction="row"
-          justify={!align ? 'center' : align}
-          alignItems="center"
-          className={classnames(className, classes.container)}>
+        <Section id={id || ''}>
           <Grid
-            item
-            sm={12}
-            md={11}
-            lg={10}>
-            {children}
+            container
+            direction="row"
+            justify={!align ? 'center' : align}
+            alignItems="center"
+            className={classnames(className, classes.container)}>
+            <Grid
+              item
+              sm={12}
+              md={11}
+              lg={10}>
+              {children}
+            </Grid>
           </Grid>
-        </Grid>
+        </Section>
       </Paper>
     </Bounce>
   );

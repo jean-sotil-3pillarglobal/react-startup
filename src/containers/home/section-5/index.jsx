@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 
 import {
   Grid,
@@ -7,13 +7,14 @@ import {
 } from '@material-ui/core';
 
 // provider
-import LangToggler from './../../../providers/lang/toggler';
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
+import LangToggler from './../../../providers/lang/toggler';
+import ThemeColor from './../../../providers/utils/theme.color';
 
 // components
 import SectionBlock from './../../../components/layouts/section';
-import { LangButton } from './../../../components/commons/button';
-import { SmartImg } from './../../../components/commons/img';
+
+const variant = 'dark2';
 
 const styles = theme => ({
   card: {
@@ -32,9 +33,10 @@ const styles = theme => ({
   subtitle: {
     marginBottom: '80px',
   },
-  title: {
-    marginBottom: `${theme.spacing(6)}px`,
-  },
+  title: () => ({
+    color: ThemeColor({ variant }, theme),
+    marginBottom: `${theme.spacing(50)}px`,
+  }),
 });
 
 const NODE = 'home';
@@ -43,114 +45,45 @@ const SLOT = 'section_5';
 // 1 title
 // 4 items
 const copy = LangGenerateTree([NODE, SLOT], [
+  'id',
   'title',
-  'items-4-body',
-  'items-4-cta',
-  'items-4-title',
-  'items-4-image',
 ]);
 
-class SectionC extends Component {
-  blog (row) {
-    return (
+function SectionE (props: {
+  classes: Object,
+  proxy: Object,
+}) {
+  const {
+    classes,
+    proxy: {
+      verbiage,
+    },
+  } = props;
+
+  return (
+    verbiage &&
+    <SectionBlock id={verbiage(copy.id)} variant={variant}>
       <Grid
-        item
-        xs={12}
-        sm={12}
-        md={8}>
-        <Grid container spacing={10}>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={12}>
-            <Typography variant="h3">
-              <LangToggler id={row.title} />
-            </Typography>
-            <Typography variant="subtitle2">
-              <LangToggler id={row.body} />
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={12}>
-            <LangButton
-              lang={row.cta} />
-          </Grid>
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.items}
+        spacing={(10)}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}>
+          <Typography
+            variant="h2"
+            className={classes.title}>
+            <LangToggler id={copy.title} />
+          </Typography>
         </Grid>
       </Grid>
-    );
-  }
-
-  colFromLeft (row) {
-    const { proxy } = this.props;
-
-    return (
-      <Fragment key={row.title}>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={4}>
-          <SmartImg proxy={proxy} src={row.image} />
-        </Grid>
-        {this.blog(row)}
-      </Fragment>);
-  }
-
-  colFromRight (row) {
-    const { proxy } = this.props;
-
-    return (
-      <Fragment key={row.title}>
-        {this.blog(row)}
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={4}>
-          <SmartImg proxy={proxy} src={row.image} />
-        </Grid>
-      </Fragment>);
-  }
-
-  props: {
-    classes: Object,
-    proxy: Object,
-  }
-
-  render () {
-    const { classes } = this.props;
-
-    return (
-      <SectionBlock>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          className={classes.items}
-          spacing={(10)}>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={12}>
-            <Typography
-              variant="h2"
-              className={classes.title}>
-              <LangToggler id={copy.title} />
-            </Typography>
-          </Grid>
-          {copy.items.map((row, index) => {
-            return index % 2 === 0 ? this.colFromLeft(row) : this.colFromRight(row);
-          })}
-        </Grid>
-      </SectionBlock>
-    );
-  }
+    </SectionBlock>
+  );
 }
 
-export default withStyles(styles)(SectionC);
+export default withStyles(styles)(SectionE);

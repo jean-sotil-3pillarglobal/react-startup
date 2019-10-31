@@ -12,15 +12,13 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import Headroom from 'react-headroom';
-
 import {
   constants,
 } from './../../../../providers/config';
 
 import LangToggler from './../../../../providers/lang/toggler';
 
-import { LangButton, TYPES, VARIANTS } from './../../button';
+import { LangButton, TYPES } from './../../button';
 import { SmartImg } from './../../img';
 
 const {
@@ -98,64 +96,59 @@ class NavbarSimple extends Component {
 
     return (
       proxy &&
-      <Headroom
-        className={classes.headroom}
-        onPin={() => console.log('pinned')}
-        onUnpin={() => console.log('unpinned')}>
-        <AppBar position="static" color="primary" className={classes.root}>
-          <Toolbar>
+      <AppBar position="static" color="primary" className={classes.root}>
+        <Toolbar>
+          <Grid
+            container
+            alignItems="center"
+            direction="row"
+            justify="space-between">
             <Grid
-              container
-              alignItems="center"
-              direction="row"
-              justify="space-between">
+              item
+              sm={12}
+              md={2}
+              lg={2}>
+              <LangButton
+                lang={back}
+                onClick={this.goBack}
+                variant="dark2"
+                typeButton={TYPES.CONTAINED}
+                pos="left">
+                <Icon name="angle-left-b" className={classes.icon} />
+              </LangButton>
+            </Grid>
+            <Grid
+              item
+              sm={12}
+              md={8}
+              lg={8}>
+              <Typography
+                variant="body2"
+                className={classes.title}>
+                <LangToggler id={title} />
+              </Typography>
+            </Grid>
+            {filter.length > 0 && (
               <Grid
                 item
                 sm={12}
                 md={2}
                 lg={2}>
-                <LangButton
-                  lang={back}
-                  onClick={this.goBack}
-                  variant={VARIANTS.OUTLINED}
-                  typeButton={TYPES.SECONDARY}
-                  pos="left">
-                  <Icon name="angle-left-b" className={classes.icon} />
-                </LangButton>
+                <Slider {...sliderProps}>
+                  {filter.map((item, i) => {
+                    const key = `slicker-item-${i}`;
+                    return (
+                      <div className={classes.item} key={key}>
+                        <SmartImg proxy={proxy} src={item.image} alt={item.alt} />
+                      </div>
+                    );
+                  })}
+                </Slider>
               </Grid>
-              <Grid
-                item
-                sm={12}
-                md={8}
-                lg={8}>
-                <Typography
-                  variant="body2"
-                  className={classes.title}>
-                  <LangToggler id={title} />
-                </Typography>
-              </Grid>
-              {filter.length > 0 && (
-                <Grid
-                  item
-                  sm={12}
-                  md={2}
-                  lg={2}>
-                  <Slider {...sliderProps}>
-                    {filter.map((item, i) => {
-                      const key = `slicker-item-${i}`;
-                      return (
-                        <div className={classes.item} key={key}>
-                          <SmartImg proxy={proxy} src={item.image} alt={item.alt} />
-                        </div>
-                      );
-                    })}
-                  </Slider>
-                </Grid>
-              )}
-            </Grid>
-          </Toolbar>
-        </AppBar>
-      </Headroom>
+            )}
+          </Grid>
+        </Toolbar>
+      </AppBar>
     );
   }
 }

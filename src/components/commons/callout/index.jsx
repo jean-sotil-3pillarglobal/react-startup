@@ -17,7 +17,7 @@ import ThemeColor from './../../../providers/utils/theme.color';
 const styles = theme => ({
   card: props => ({
     background: ThemeBackground(props, theme),
-    border: '16px groove',
+    border: `3px solid ${ThemeColor(props, theme)}`,
     overflow: 'visible',
   }),
   container: {
@@ -25,7 +25,7 @@ const styles = theme => ({
   },
   subtitle: props => ({
     color: ThemeColor(props, theme),
-    fontWeight: 400,
+    fontWeight: 300,
     marginBottom: theme.spacing(2),
   }),
   title: props => ({

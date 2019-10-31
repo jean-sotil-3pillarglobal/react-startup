@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import Headroom from 'react-headroom';
 import React, { Component } from 'react';
+import { SectionLink } from 'react-scroll-section';
 
 import {
   AppBar,
@@ -29,9 +30,11 @@ import {
 // provider
 import LangToggler from '../../providers/lang/toggler';
 import LangGenerateTree from '../../providers/utils/lang.generate.tree';
+import ThemeBackground from './../../providers/utils/theme.background';
+import ThemeColor from './../../providers/utils/theme.color';
 
 // components
-import { LangButton, TYPES, VARIANTS } from './../commons/button';
+import { LangButton, TYPES } from './../commons/button';
 import { SmartImg } from './../commons/img';
 import Icon from './../commons/icon';
 
@@ -41,15 +44,15 @@ import { setHeaderVisibilityAction } from '../../store/actions/components/header
 const drawerWidth = 240;
 
 const styles = theme => ({
-  appBar: {
-    background: theme.palette.primary.main,
+  appBar: props => ({
+    background: ThemeBackground(!props.isHeaderVisible ? { variant: 'secondary' } : { variant: 'primary' }, theme),
     border: `2px solid ${theme.palette.secondary.light}`,
     padding: 0,
     transition: theme.transitions.create(['background-color', 'margin', 'width'], {
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp,
     }),
-  },
+  }),
   appBarShift: {
     marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
@@ -107,14 +110,14 @@ const styles = theme => ({
     color: theme.palette.secondary.contrastText,
     fontSize: '1rem',
   },
-  iconFab: {
-    color: theme.palette.primary.contrastText,
+  iconFab: props => ({
+    color: ThemeColor(props.isHeaderVisible ? { variant: 'primary' } : { variant: 'dark2' }, theme),
     fontSize: '1rem',
-  },
+  }),
   logo: {
     display: 'block',
-    margin: `${theme.spacing(1)}px auto`,
-    width: '70%',
+    margin: 0,
+    width: '50%',
   },
   menuButton: {
     marginLeft: 12,
@@ -129,34 +132,26 @@ const styles = theme => ({
   navbar: {
     background: 'transparent',
     float: 'right',
+    margin: 0,
+    padding: 0,
   },
-  phone: {
-    color: `${theme.palette.secondary.contrastText}!important`,
+  phone: () => ({
+    color: ThemeColor({ variant: 'secondary' }, theme),
     marginRight: theme.spacing(1),
-  },
-  root: {
-    '& div[class*="headroom--pinned"] *': {
-      color: theme.palette.secondary.contrastText,
-    },
-    '& div[class*="headroom--pinned"] header': {
-      backgroundColor: theme.palette.secondary.main,
-      borderColor: `${theme.palette.secondary.light}`,
-    },
-    '& div[class*="headroom--unpinned"]': {
-      transition: 'none !important',
-    },
+  }),
+  root: () => ({
     '& div[class*="headroom-wrapper"] > div': {
       zIndex: '10!important',
     },
-  },
+  }),
   socialButtons: {
-    margin: 0,
+    marginLeft: theme.spacing(3),
     padding: 0,
   },
   socialButtonsFixed: {
     display: 'block',
     position: 'fixed',
-    right: theme.spacing(2),
+    right: theme.spacing(1),
     top: '33%',
     zIndex: 999,
   },
@@ -164,22 +159,24 @@ const styles = theme => ({
     background: theme.palette.secondary.main,
     padding: `0 ${theme.spacing(2)}px`,
   },
+  topHeaderSocial: {
+    margin: 0,
+    padding: 0,
+  },
 });
 
 const NODE_ROOT = 'components';
 const NODE_TYPE = 'header';
 // copy:
-// 1 title
-// 4 items
-// 1 cta
 const copy = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
   'logo',
-  'phone',
   'phone_icon',
-  'publics-4-featured_icon',
-  'publics-4-featured',
-  'publics-4-label',
-  'publics-4-route',
+  'phone',
+  'publics-5-featured_icon',
+  'publics-5-featured',
+  'publics-5-id',
+  'publics-5-label',
+  'publics-5-route',
   'social-3-label',
   'social-3-link',
   'title',
@@ -231,13 +228,13 @@ class Header extends Component {
           container
           alignItems="center"
           direction="row"
-          justify="center"
+          justify="flex-start"
           className={classes.topHeader}>
           <Grid
             item
             sm={6}
-            md={6}
-            lg={6}>
+            md={3}
+            lg={3}>
             <LangButton
               lang={copy.phone}
               typeButton={TYPES.LINK}
@@ -248,16 +245,19 @@ class Header extends Component {
           <Grid
             item
             sm={6}
-            md={6}
-            lg={6}>
-            <Box display="flex" flexDirection="row-reverse" p={1} m={1} className={classnames(classes.socialButtons, !isHeaderVisible && classes.socialButtonsFixed)}>
+            md={2}
+            lg={2}
+            className={classes.socialButtons}
+          >
+            <Box display="flex" flexDirection="row-reverse" p={1} m={1} className={classnames(classes.topHeaderSocial, !isHeaderVisible && classes.socialButtonsFixed)}>
               {copy.social.map(item => (
                 <Box key={item.label} p={1}>
                   <LangButton
                     href={verbiage(item.link)}
                     key={item.label}
-                    lang={item.label}
-                    variant={VARIANTS.FAB}>
+                    typeButton={TYPES.FAB}
+                    variant={(isHeaderVisible && 'light') || 'dark2'}
+                  >
                     <Icon name={verbiage(item.label)} className={classes.iconFab} />
                   </LangButton>
                 </Box>
@@ -278,11 +278,11 @@ class Header extends Component {
               <Grid
                 container
                 direction="row"
-                justify="space-between"
+                justify="center"
                 alignItems="center">
                 <Grid
                   item
-                  sm={12}
+                  sm={2}
                   md={1}
                   lg={1}>
                   {isMobile ?
@@ -310,19 +310,22 @@ class Header extends Component {
                       className={classes.navbar}>
                       {copy.publics.map((item) => {
                         const featured = verbiage(item.featured);
+
                         return (
-                          <Box key={item.label} p={1}>
-                            <LangButton
-                              key={item.label}
-                              lang={item.label}
-                              variant={featured && VARIANTS.OUTLINED}
-                              typeButton={(featured && TYPES.SECONDARY) || TYPES.LINK}
-                              pos="right">
-                              {featured &&
-                                <Icon name={verbiage(item.featured_icon)} className={classes.icon} />
-                              }
-                            </LangButton>
-                          </Box>
+                          <SectionLink section={verbiage(item.id)} key={item.id}>
+                            {link => (
+                              <Box p={1} onClick={link.onClick} className={classes.navbarItem}>
+                                <LangButton
+                                  key={item.label}
+                                  lang={item.label}
+                                  pos="right"
+                                  selected={link.isSelected}
+                                  typeButton={(featured && TYPES.CONTAINED) || TYPES.LINK}
+                                  variant={(isHeaderVisible && 'light') || 'light2'}
+                                />
+                              </Box>
+                            )}
+                          </SectionLink>
                         );
                       })}
                     </Box>

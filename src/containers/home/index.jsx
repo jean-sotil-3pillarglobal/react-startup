@@ -10,6 +10,10 @@ import {
   setServiceAction,
 } from './../../store/actions/services';
 
+import {
+  selectVariantVerbiageAction,
+} from './../../store/actions/components/footer';
+
 import Helmet from '../../components/commons/helmet';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
@@ -22,7 +26,6 @@ import SectionA from './section-1';
 import SectionB from './section-2';
 import SectionD from './section-4';
 import SectionE from './section-5';
-
 
 // provider
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
@@ -44,12 +47,32 @@ const copy = LangGenerateTree([NODE, SLOT], [
 
 const init = {
   document: {},
+  verbiage: null,
 };
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = init;
+  }
+
+  static getDerivedStateFromProps = (nextProps) => {
+    const {
+      selectVariantVerbiage,
+      verbiage,
+    } = nextProps;
+
+    if (!verbiage) {
+      selectVariantVerbiage('default');
+    }
+
+    if (verbiage) {
+      return {
+        verbiage,
+      };
+    }
+
+    return init;
   }
 
   props: {
@@ -59,7 +82,6 @@ class Home extends Component {
     lead: Object,
     leadType: string,
     setService: Function,
-    verbiage: Function,
   }
 
   handleBlur = () => {}
@@ -84,8 +106,12 @@ class Home extends Component {
       language,
       lead,
       leadType,
-      verbiage,
     } = this.props;
+
+    const {
+      document,
+      verbiage,
+    } = this.state;
 
     const proxy = {
       device,
@@ -96,10 +122,6 @@ class Home extends Component {
       verbiage,
     };
 
-    const {
-      document,
-    } = this.state;
-
     return (
       <Fragment>
         <Helmet proxy={proxy} copy={copy} />
@@ -108,7 +130,7 @@ class Home extends Component {
         <BannerA proxy={proxy} />
         <SectionB proxy={proxy} />
 
-        <ServicesLayout setService={this.handleSetService} proxy={proxy} variant="light2" />
+        <ServicesLayout setService={this.handleSetService} proxy={proxy} variant="light" />
 
         <SectionD
           document={document}
@@ -140,6 +162,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
+    selectVariantVerbiage: selectVariantVerbiageAction,
     setService: setServiceAction,
   }, dispatch);
 }

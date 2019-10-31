@@ -2,10 +2,21 @@
 export const constants = {
   // general
   GENERAL: 'GENERAL',
+
+  // links
+  LINK_CONTACT_FORM_1: 'link_contact_form_1',
+  LINK_SECTION_1: 'link_section_1',
+  LINK_SECTION_2: 'link_section_2',
+  LINK_SECTION_3: 'link_section_3',
+  LINK_SECTION_4: 'link_section_4',
+  LINK_SECTION_5: 'link_section_5',
+  LINK_SERVICES_1: 'link_services_1',
+
   // promos
   PROMO_1: 'PROMO_1',
   PROMO_2: 'PROMO_2',
   PROMO_3: 'PROMO_3',
+
   // services types
   SERVICE_1: 'SERVICE_1',
   SERVICE_2: 'SERVICE_2',
@@ -20,9 +31,10 @@ export const constants = {
 // public routes
 export const publics = [
   {
+    id: constants.LINK_SECTION_2,
     label: {
-      en: 'Why Choose Us?',
-      es: '¿Porqué escogernos?',
+      en: 'why choose us?',
+      es: '¿porqué escogernos?',
     },
     route: {
       en: '/why-chooose-us',
@@ -30,9 +42,10 @@ export const publics = [
     },
   },
   {
+    id: constants.LINK_SERVICES_1,
     label: {
-      en: 'Services',
-      es: 'Servicios',
+      en: 'services',
+      es: 'servicios',
     },
     route: {
       en: '/services',
@@ -40,9 +53,21 @@ export const publics = [
     },
   },
   {
+    id: constants.LINK_SECTION_3,
     label: {
-      en: 'Blog',
-      es: 'Blog',
+      en: 'our team',
+      es: 'nuestro equipo',
+    },
+    route: {
+      en: '/our-team',
+      es: '/nuestro-equipo',
+    },
+  },
+  {
+    id: constants.LINK_SECTION_5,
+    label: {
+      en: 'blog',
+      es: 'blog',
     },
     route: {
       en: '/blog',
@@ -52,6 +77,7 @@ export const publics = [
   {
     featured: true,
     featured_icon: 'info',
+    id: constants.LINK_SECTION_4,
     label: {
       en: 'reach us now',
       es: 'consulta ahora',

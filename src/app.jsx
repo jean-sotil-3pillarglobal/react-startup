@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import UAParser from 'ua-parser-js';
 import { bindActionCreators } from 'redux';
-import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import { ScrollingProvider } from 'react-scroll-section';
+import React, { Component } from 'react';
+import UAParser from 'ua-parser-js';
 
 import {
   CssBaseline,
@@ -118,7 +119,7 @@ class App extends Component {
     return (
       leadType &&
       <MuiThemeProvider theme={skin}>
-        <Fragment>
+        <ScrollingProvider>
           <CssBaseline />
           <div className={classes.container}>
             <Route render={({ location }) => (
@@ -145,7 +146,7 @@ class App extends Component {
               </TransitionGroup>
             )} />
           </div>
-        </Fragment>
+        </ScrollingProvider>
       </MuiThemeProvider>
     );
   }

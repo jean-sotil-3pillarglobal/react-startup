@@ -22,7 +22,7 @@ import Icon from './../../../commons/icon';
 import SectionBlock from './../../section';
 import Slider from './../../../commons/slider';
 
-import { LangButton, TYPES, VARIANTS } from './../../../commons/button';
+import { LangButton, TYPES } from './../../../commons/button';
 
 const styles = theme => ({
   card: {
@@ -98,9 +98,10 @@ const NODE = 'commons';
 const SLOT = 'services_1';
 // copy:
 const copy = LangGenerateTree([NODE, SLOT], [
-  'title',
   'body',
+  'id',
   'services',
+  'title',
 ]);
 
 function ServicesLayout (props: {
@@ -197,11 +198,8 @@ function ServicesLayout (props: {
               <LangButton
                 lang={item.cta}
                 onClick={evt => handleClick(evt, item)}
-                variant={VARIANTS.OUTLINED}
-                typeButton={!isHover ?
-                  (variant === 'dark2' ? TYPES.PRIMARY : TYPES.SECONDARY) :
-                  (variant === 'dark2' ? TYPES.SECONDARY : TYPES.PRIMARY)
-                }
+                variant={!isHover ? 'dark' : 'dark2'}
+                typeButton={TYPES.CONTAINED}
               />
             </Grid>
           </Grid>
@@ -214,6 +212,7 @@ function ServicesLayout (props: {
     verbiage &&
     <SectionBlock
       variant={!variant ? 'light' : variant}
+      id={verbiage(copy.id)}
     >
       <Grid
         container

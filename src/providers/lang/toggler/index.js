@@ -18,7 +18,7 @@ class LangToggler extends Component {
   }
 
   props: {
-    id: Object,
+    id: any,
     language: string,
     leadType: string,
     selectLanguage: Function,
@@ -28,7 +28,7 @@ class LangToggler extends Component {
 
   render() {
     // default language
-    let copy = '';
+    let copy = null;
     const defaultLang = 'es';
     const { selectLanguage, language, verbiage, id, leadType } = this.props;
 
@@ -41,10 +41,18 @@ class LangToggler extends Component {
       selectLanguage(defaultLang);
     }
 
-    if (verbiage && verbiage(id)) {
-      copy = verbiage(id)[language];
+    if (verbiage) {
+      copy = verbiage(id);
+
+      if (typeof id === 'string' && copy) {
+        copy = copy[language] || 'dummy-verbiage';
+      } else if (id[language]) {
+        copy = id[language] || 'dummy-language';
+      } else {
+        copy = 'dummy-not-found';
+      }
     } else {
-      copy = 'dummy';
+      copy = 'dummy-undefined';
     }
 
     // will scape All HTML if presented.

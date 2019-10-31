@@ -1,5 +1,6 @@
 import { cloneDeep } from 'lodash';
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 import {
   Step,
@@ -10,8 +11,11 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import ThemeBackground from './../../../providers/utils/theme.background';
+import ThemeColor from './../../../providers/utils/theme.color';
+
 // components
-import { LangButton, TYPES, VARIANTS } from './../button';
+import { LangButton, TYPES } from './../button';
 import { Validate } from './../input/validate';
 import FormBlock from './../form';
 import Icon from './../icon';
@@ -29,19 +33,12 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary.main,
     padding: `${theme.spacing(2)}px`,
   },
-  button: {
+  button: () => ({
     margin: 0,
-  },
-  column: {
-    marginLeft: 2,
-    padding: theme.spacing(2),
-    transform: 'translateZ(0)',
-  },
+  }),
   content: {
-    padding: `${theme.spacing(6)}px 0 0 0`,
-    [theme.breakpoints.up('md')]: {
-      paddingRight: 0,
-    },
+    padding: `0 ${theme.spacing(3)}px`,
+    [theme.breakpoints.up('sm')]: {},
   },
   cta: {
     width: '100%',
@@ -53,17 +50,28 @@ const styles = theme => ({
   section: {
     padding: `${theme.spacing(4)}px 0`,
   },
-  step: {
-    '& *[class*="MuiStepIcon-active"] circle': {
-      color: theme.palette.primary.main,
+  step: props => ({
+    background: ThemeBackground(props, theme),
+    color: ThemeColor(props, theme),
+  }),
+  stepButton: props => ({
+    background: 'transparent',
+    color: ThemeColor(props, theme),
+  }),
+  stepper: props => ({
+    '& .MuiFormLabel-root:not(.Mui-error), .MuiTypography-caption': {
+      color: `${ThemeColor(props, theme)}`,
     },
-    '& circle': {
-      color: `${theme.palette.disabled.main}`,
+    '& .MuiStepIcon-text': {
+      color: `${ThemeColor(props, theme)}!important`,
     },
-  },
-  stepper: {
-    border: '1px solid #cccccc',
-  },
+    '& .MuiStepLabel-label': {
+      color: `${ThemeColor(props, theme)}!important`,
+    },
+    backgroundColor: ThemeBackground(props, theme),
+    border: `2px solid ${ThemeColor(props, theme)}`,
+  }),
+  submit: {},
 });
 
 const init = {
@@ -274,6 +282,7 @@ class StepperLayout extends Component {
     document: Object,
     onChange: Function,
     proxy: Object,
+    variant: String,
   }
 
   render () {
@@ -285,11 +294,12 @@ class StepperLayout extends Component {
     const {
       classes,
       copy,
+      document,
       proxy: {
         language,
         verbiage,
       },
-      document,
+      variant,
     } = this.props;
 
     const {
@@ -311,10 +321,11 @@ class StepperLayout extends Component {
             <Step key={`step_label_${label}`}>
               <StepButton
                 onClick={() => handleStepperIndex(i)}
+                className={classes.stepButton}
               >
                 <StepLabel className={classes.step}>{label}</StepLabel>
               </StepButton>
-              <StepContent>
+              <StepContent className={classes.content}>
                 {form.rows && form.rows.map((row, y) => {
                   const key = `${form.value}_row_${y}`;
                   return (
@@ -329,6 +340,7 @@ class StepperLayout extends Component {
                         language,
                         verbiage,
                       }}
+                      variant={variant}
                       key={key}
                     />
                   );
@@ -337,7 +349,7 @@ class StepperLayout extends Component {
                   <LangButton
                     lang={copy.back}
                     onClick={handleStepperPrev}
-                    variant={VARIANTS.OUTLINED}
+                    variant={variant}
                     typeButton={TYPES.LINK}>
                     <Icon name="angle-left-b" className={classes.icon} />
                   </LangButton>
@@ -345,9 +357,9 @@ class StepperLayout extends Component {
                 <LangButton
                   lang={form.cta}
                   onClick={handleStepperNext}
-                  variant={VARIANTS.OUTLINED}
-                  typeButton={stepForms.length !== (steps + 1) ? TYPES.PRIMARY : TYPES.SECONDARY}
-                  className={classes.cta}>
+                  variant={variant}
+                  typeButton={TYPES.CONTAINED}
+                  className={classnames(classes.cta, stepForms.length !== (steps + 1) && classes.submit)}>
                   <Icon name="angle-right-b" className={classes.icon} />
                 </LangButton>
               </StepContent>

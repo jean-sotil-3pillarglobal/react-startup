@@ -1,12 +1,22 @@
 import LangProxy from '../../../../utils/lang.proxy';
 
 import {
+  constants,
   publics,
 } from '../../../../config';
 
 import forms from '../shared/forms';
 import services from '../shared/services';
 import promos from '../shared/promos';
+
+const {
+  LINK_CONTACT_FORM_1,
+  LINK_SECTION_1,
+  LINK_SECTION_2,
+  LINK_SECTION_4,
+  LINK_SECTION_5,
+  LINK_SERVICES_1,
+} = constants;
 
 const Verbiage = {
   commons: {
@@ -16,6 +26,7 @@ const Verbiage = {
         es: '< anterior',
       },
       forms,
+      id: LINK_CONTACT_FORM_1,
       services,
       title: {
         en: '<span>you are less than 1 minute away from an health insurance quote.</span>',
@@ -27,6 +38,7 @@ const Verbiage = {
         en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
       },
+      id: LINK_SERVICES_1,
       services,
       title: {
         en: 'we offer special enrollment',
@@ -56,14 +68,17 @@ const Verbiage = {
       publics,
       social: [
         {
+          icon: 'instagram',
           label: 'instagram',
           link: '#instagram',
         },
         {
+          icon: 'facebook',
           label: 'facebook',
           link: '#facebook',
         },
         {
+          icon: 'email',
           label: 'email',
           link: '#email',
         },
@@ -188,6 +203,7 @@ const Verbiage = {
         en: 'learn more',
         es: 'inicia ahora',
       },
+      id: LINK_SECTION_1,
       subtitle: {
         en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
         es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
@@ -202,6 +218,7 @@ const Verbiage = {
         en: 'with over 30 years of experience, we have helped tens of thousands of people get the right coverage to meet their needs. simply click the below button to get a no obligation quote.',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
       },
+      id: LINK_SECTION_2,
       items: [
         {
           body: {
@@ -251,155 +268,8 @@ const Verbiage = {
         es: 'Trabajamos con los mejores!',
       },
     },
-    section_3: {
-      body: {
-        en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
-        es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
-      },
-      items: [
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'learn more',
-            es: 'conoce más',
-          },
-          ico: 'cloud-download',
-          image: '/static/images/d-bg-1.jpg',
-          title: {
-            en: 'auto insurance',
-            es: 'seguro automóvil',
-          },
-          type: 'auto',
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'learn more',
-            es: 'conoce más',
-          },
-          ico: 'cloud-download',
-          image: '/static/images/d-bg-1.jpg',
-          title: {
-            en: 'auto insurance',
-            es: 'seguro automóvil',
-          },
-          type: 'auto',
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'learn more',
-            es: 'conoce más',
-          },
-          ico: 'cloud-download',
-          image: '/static/images/d-bg-1.jpg',
-          title: {
-            en: 'auto insurance',
-            es: 'seguro automóvil',
-          },
-          type: 'auto',
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'learn more',
-            es: 'conoce más',
-          },
-          ico: 'cloud-download',
-          image: '/static/images/d-bg-1.jpg',
-          title: {
-            en: 'auto insurance',
-            es: 'seguro automóvil',
-          },
-          type: 'auto',
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'learn more',
-            es: 'conoce más',
-          },
-          ico: 'cloud-download',
-          image: '/static/images/d-bg-1.jpg',
-          title: {
-            en: 'auto insurance',
-            es: 'seguro automóvil',
-          },
-          type: 'auto',
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'learn more',
-            es: 'conoce más',
-          },
-          ico: 'cloud-download',
-          image: '/static/images/d-bg-1.jpg',
-          title: {
-            en: 'auto insurance',
-            es: 'seguro automóvil',
-          },
-          type: 'auto',
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'learn more',
-            es: 'conoce más',
-          },
-          ico: 'cloud-download',
-          image: '/static/images/d-bg-1.jpg',
-          title: {
-            en: 'auto insurance',
-            es: 'seguro automóvil',
-          },
-          type: 'auto',
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'learn more',
-            es: 'conoce más',
-          },
-          ico: 'cloud-download',
-          image: '/static/images/d-bg-1.jpg',
-          title: {
-            en: 'auto insurance',
-            es: 'seguro automóvil',
-          },
-          type: 'auto',
-        },
-      ],
-      title: {
-        en: 'we offer special enrollment',
-        es: 'ofrecemos asistencia especializada',
-      },
-    },
     section_4: {
+      id: LINK_SECTION_4,
       svg: '/static/svg/team_work.svg',
       title: {
         en: 'get your quote now',
@@ -411,6 +281,7 @@ const Verbiage = {
         en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
       },
+      id: LINK_SECTION_5,
       items: [
         {
           body: {

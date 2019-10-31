@@ -55,6 +55,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.contrastText,
     marginBottom: `${theme.spacing(6)}px`,
+    marginTop: `${theme.spacing(6)}px`,
   },
 });
 
@@ -66,6 +67,7 @@ const SLOT = 'section_2';
 // 4 items
 const copy = LangGenerateTree([NODE, SLOT], [
   'body',
+  'id',
   'items-3-body',
   'items-3-cta',
   'items-3-cta_link',
@@ -84,7 +86,7 @@ function SectionC (props: {
 
   return (
     verbiage &&
-    <SectionBlock>
+    <SectionBlock id={verbiage(copy.id)}>
       <Grid
         container
         direction="row"

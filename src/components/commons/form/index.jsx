@@ -21,6 +21,7 @@ const styles = theme => ({
     margin: 0,
   },
   card: () => ({
+    background: 'transparent',
     overflow: 'visible',
   }),
   helper: props => ({
@@ -31,6 +32,7 @@ const styles = theme => ({
     width: '100%',
   },
   root: {
+    backgroundColor: 'transparent',
     padding: 0,
   },
   row: {
@@ -38,8 +40,8 @@ const styles = theme => ({
   },
   title: props => ({
     color: ThemeColor(props, theme),
-    fontWeight: 600,
-    margin: 0,
+    fontWeight: 400,
+    margin: `${theme.spacing(2)}px 0 0 0`,
   }),
 });
 

@@ -2,6 +2,8 @@ import {
   constants,
 } from './../../../../../config';
 
+import CONTENT_SERVICE_1 from './service-1';
+
 // constants
 const {
   SERVICE_1,
@@ -17,6 +19,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
+    content: CONTENT_SERVICE_1,
     cta: {
       en: 'learn more',
       es: 'conoce más',
@@ -27,6 +30,7 @@ const Services = [
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
+    svg: '/static/svg/hub.svg',
     title: {
       en: 'auto insurance 1',
       es: 'seguro automóvil 1',

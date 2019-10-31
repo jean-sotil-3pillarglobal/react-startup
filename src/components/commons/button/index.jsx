@@ -10,102 +10,70 @@ import {
 
 // provider
 import LangToggler from '../../../providers/lang/toggler';
+import ThemeBackground from './../../../providers/utils/theme.background';
+import ThemeColor from './../../../providers/utils/theme.color';
 
 const styles = theme => ({
-  button: {
+  button: props => ({
     '&:hover': {
-      boxShadow: `0 0 3px ${theme.palette.utils.lighter}`,
+      background: ThemeBackground(props, theme, 'dark'),
+      boxShadow: `0 0 3px ${ThemeColor(props, theme)} inset`,
     },
-    border: '2px solid transparent',
+    background: ThemeBackground(props, theme),
+    border: `2px solid ${ThemeColor(props, theme)}`,
     borderRadius: '0 0 0 0',
     boxShadow: 'none',
+    color: ThemeColor(props, theme),
     display: 'inline-block',
     fontSize: '1.25rem',
     fontWeight: 500,
     padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
-  },
-  danger: {
-    background: theme.palette.background.main,
-  },
-  large: {
-    paddingLeft: '36px',
-    paddingRight: '36px',
-  },
-  link: {
+  }),
+  fab: props => ({
+    '&:hover': {
+      background: ThemeBackground(props, theme, 'dark'),
+    },
+    background: ThemeBackground(props, theme),
+    border: `2px solid ${ThemeColor(props, theme)}`,
+    boxShadow: 'initial',
+    color: ThemeColor(props, theme),
+  }),
+  link: props => ({
     '&:active': {
       boxShadow: 'none',
-    },
-    '&:hover': {
-      background: theme.palette.background.transparent,
-      boxShadow: 'initial',
     },
     '&:hover span': {
       textDecoration: 'underline',
     },
     background: theme.palette.background.transparent,
     borderWidth: 0,
-    color: theme.palette.primary.contrastText,
+    color: ThemeColor(props, theme),
     cursor: 'pointer',
-    fontWeight: 400,
+    fontWeight: 500,
     padding: `0 ${theme.spacing(2)}px`,
     textTransform: 'none',
-  },
-  medium: {
-    paddingLeft: '22px',
-    paddingRight: '22px',
-  },
+  }),
   primary: {
     '&:hover': {
       background: `${theme.palette.primary.light}!important`,
     },
-    background: theme.palette.primary.main,
-    borderColor: theme.palette.primary.contrastText,
-    color: theme.palette.primary.contrastText,
   },
   secondary: {
     '&:hover': {
       background: theme.palette.secondary.light,
     },
-    background: theme.palette.secondary.main,
-    borderColor: theme.palette.secondary.contrastText,
-    color: theme.palette.secondary.contrastText,
-  },
-  small: {
-    paddingLeft: '16px',
-    paddingRight: '16px',
-  },
-  success: {
-    background: theme.palette.background.main,
-  },
-  warning: {
-    background: theme.palette.background.main,
   },
 });
 
 export const TYPES = {
-  DANGER: 'danger',
-  LINK: 'link',
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  SUCCESS: 'success',
-  WARNING: 'warning',
-};
-
-export const SIZES = {
-  LARGE: 'large',
-  MEDIUM: 'medium',
-  SMALL: 'small',
-};
-
-export const VARIANTS = {
   CONTAINED: 'contained',
   FAB: 'extended',
+  LINK: 'link',
   OUTLINED: 'outlined',
   RAISED: 'raised',
 };
 
 function LayoutButton (props: {
-  buttonSize: string,
   children: Object,
   classes: Object,
   className: Object,
@@ -116,10 +84,8 @@ function LayoutButton (props: {
   pos: string,
   type: string,
   typeButton: string,
-  variant: string,
 }) {
   const {
-    buttonSize,
     classes,
     className,
     disabled,
@@ -128,34 +94,31 @@ function LayoutButton (props: {
     onClick,
     type,
     typeButton,
-    variant,
   } = props;
 
   const pos = props.pos || 'right';
   let btn;
 
-  if (variant === VARIANTS.FAB) {
+  if (typeButton === TYPES.FAB) {
     btn = (
       <Fab
         className={classnames(
           classes.fab,
-          classes[typeButton || TYPES.PRIMARY],
           className,
         )}
         href={href}
         target="_blank"
         onClick={onClick}
-        variant={VARIANTS.FAB}>
+        variant={TYPES.FAB}>
         {props.children}
       </Fab>
     );
-  } else if (variant === VARIANTS.LINK) {
+  } else if (typeButton === TYPES.LINK) {
     btn = (
       <Link
         href={href}
         className={classnames(
           classes.link,
-          classes[typeButton || TYPES.PRIMARY],
           className,
         )}
         onClick={onClick}>
@@ -171,11 +134,8 @@ function LayoutButton (props: {
             type={type}
             disabled={disabled}
             onClick={onClick}
-            variant={variant || VARIANTS.CONTAINED}
             className={classnames(
               classes.button,
-              classes[buttonSize || SIZES.MEDIUM],
-              classes[typeButton || TYPES.PRIMARY],
               className,
             )}>
             {pos === 'left' &&
