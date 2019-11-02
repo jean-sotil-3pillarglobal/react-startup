@@ -16,8 +16,8 @@ import ThemeColor from './../../../providers/utils/theme.color';
 const styles = theme => ({
   button: props => ({
     '&:hover': {
-      background: ThemeBackground(props, theme, 'dark'),
-      boxShadow: `0 0 3px ${ThemeColor(props, theme)} inset`,
+      background: ThemeBackground(props, theme, 'light'),
+      borderColor: ThemeBackground(props, theme, 'dark'),
     },
     background: ThemeBackground(props, theme),
     border: `2px solid ${ThemeColor(props, theme)}`,

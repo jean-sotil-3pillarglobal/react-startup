@@ -1,7 +1,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import Bounce from 'react-reveal/Bounce';
+import Fade from 'react-reveal/Fade';
 import { Section } from 'react-scroll-section';
 import {
   Grid,
@@ -53,7 +53,7 @@ function SectionBlock (props: {
   } = props;
 
   return (
-    <Bounce left>
+    <Fade>
       <Paper
         elevation={0}
         className={variant ? classes[variant] : classes.primary}>
@@ -74,7 +74,7 @@ function SectionBlock (props: {
           </Grid>
         </Section>
       </Paper>
-    </Bounce>
+    </Fade>
   );
 }
 
