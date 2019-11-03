@@ -12,7 +12,7 @@ import {
 } from './../../store/actions/components/footer';
 
 import {
-  setServiceAction,
+  setServiceCategoryAction,
 } from './../../store/actions/services';
 
 import Helmet from '../../components/commons/helmet';
@@ -27,7 +27,7 @@ import ServicesLayout from '../../components/layouts/commons/services_1';
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
 
 import {
-  FindServiceByPath,
+  FindServiceCategoryByPath,
 } from './../../providers/utils/filter.services';
 
 const styles = () => ({
@@ -42,13 +42,13 @@ const SLOT = 'services';
 const copy = LangGenerateTree([NODE, SLOT], [
   'description',
   'keywords',
-  'services',
+  'categories',
   'title',
 ]);
 
 const init = {
+  category: null,
   document: {},
-  service: {},
 };
 
 class Services extends Component {
@@ -66,8 +66,8 @@ class Services extends Component {
         url,
       },
       selectVariantVerbiage,
-      service,
-      setService,
+      category,
+      setServiceCategory,
       verbiage,
     } = nextProps;
 
@@ -75,17 +75,21 @@ class Services extends Component {
       selectVariantVerbiage('default');
     }
 
-    if (verbiage && !service.id) {
-      setService(FindServiceByPath(url, verbiage(copy.services), language));
+    if (verbiage && !category.id) {
+      setServiceCategory(FindServiceCategoryByPath(url, verbiage(copy.categories), language));
     }
 
-    if (service.id) {
+    if (category.id) {
       return {
-        service,
+        category,
       };
     }
 
     return init;
+  }
+
+  shouldComponentUpdate = (nextProps, nextState) => {
+    return this.state.category !== nextState.category;
   }
 
   componentWillUnmount = () => {
@@ -94,17 +98,17 @@ class Services extends Component {
 
   reset = () => {
     const {
-      setService,
+      setServiceCategory,
     } = this.props;
 
-    setService({});
+    setServiceCategory({});
     this.setState(init);
   }
 
   props: {
     device: string,
     language: string,
-    setService: Function,
+    setServiceCategory: Function,
     verbiage: Function,
   }
 
@@ -121,12 +125,12 @@ class Services extends Component {
     });
   }
 
-  handleSetService = (item, cb) => {
+  handleServiceCategory = (item, cb) => {
     const {
-      setService,
+      setServiceCategory,
     } = this.props;
 
-    setService(item);
+    setServiceCategory(item);
     cb(true);
   }
 
@@ -139,7 +143,7 @@ class Services extends Component {
 
     const {
       document,
-      service,
+      category,
     } = this.state;
 
     const proxy = {
@@ -150,21 +154,23 @@ class Services extends Component {
 
     return (
       <Fragment>
-        {service.id &&
+        {category && category.id &&
         <Fragment>
           <Helmet proxy={proxy} copy={copy} />
-          <SectionA service={service} document={document} proxy={proxy} >
+          <SectionA
+            category={category}
+            proxy={proxy}
+          >
             <ContactFormLayout
               document={document}
               onBlur={this.handleBlur}
               onChange={this.handleChange}
               onSubmit={this.handleSubmit}
               proxy={proxy}
-              service={service}
               variant="primary"
             />
           </SectionA>
-          <ServicesLayout setService={this.handleSetService} proxy={proxy} variant="light2" />
+          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light2" />
           <Footer />
         </Fragment>
         }
@@ -175,9 +181,9 @@ class Services extends Component {
 
 function mapStateToProps (state) {
   return {
+    category: state.category,
     device: state.device,
     language: state.language,
-    service: state.service,
     verbiage: state.verbiage,
   };
 }
@@ -185,7 +191,7 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     selectVariantVerbiage: selectVariantVerbiageAction,
-    setService: setServiceAction,
+    setServiceCategory: setServiceCategoryAction,
   }, dispatch);
 }
 

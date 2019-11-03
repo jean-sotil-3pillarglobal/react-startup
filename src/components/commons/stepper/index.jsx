@@ -20,14 +20,6 @@ import { Validate } from './../input/validate';
 import FormBlock from './../form';
 import Icon from './../icon';
 
-import {
-  constants,
-} from '../../../providers/config/';
-
-const {
-  GENERAL,
-} = constants;
-
 const styles = theme => ({
   back: {
     backgroundColor: theme.palette.primary.main,
@@ -88,25 +80,6 @@ class StepperLayout extends Component {
     this.state = stateClone;
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    const {
-      proxy: {
-        verbiage,
-      },
-    } = nextProps;
-
-    const {
-      proxy,
-    } = this.props;
-
-    // get forms
-    if (verbiage !== proxy.verbiage) {
-      this.setState({
-        forms: this.getForms(nextProps) || [],
-      });
-    }
-  }
-
   componentWillUnmount = () => {
     this.reset();
   }
@@ -135,21 +108,10 @@ class StepperLayout extends Component {
 
   getForms = (props) => {
     const {
-      copy,
-      proxy: {
-        verbiage,
-      },
-      service,
+      forms,
     } = props;
 
-    return verbiage && verbiage(copy.forms)
-
-      // filter by type
-      .filter((form) => {
-        // set general default and selected forms type
-        return form.value.includes(GENERAL) || form.value.includes(service.id);
-      })
-
+    return forms
       // forms stack
       .map((form, i) => {
         const obj = form;

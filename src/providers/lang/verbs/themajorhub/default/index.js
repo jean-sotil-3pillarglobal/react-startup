@@ -5,9 +5,10 @@ import {
   publics,
 } from '../../../../config';
 
+import categories from '../shared/categories';
 import forms from '../shared/forms';
-import services from '../shared/services';
 import promos from '../shared/promos';
+import services from '../shared/services';
 
 const {
   LINK_CONTACT_FORM_1,
@@ -25,6 +26,7 @@ const Verbiage = {
         en: '< previous',
         es: '< anterior',
       },
+      categories,
       forms,
       id: LINK_CONTACT_FORM_1,
       services,
@@ -38,6 +40,7 @@ const Verbiage = {
         en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
       },
+      categories,
       id: LINK_SERVICES_1,
       services,
       title: {
@@ -114,6 +117,7 @@ const Verbiage = {
       },
     },
     services: {
+      categories,
       description: {
         en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
@@ -122,7 +126,6 @@ const Verbiage = {
         en: 'insurances, others',
         es: 'seguros, otros',
       },
-      services,
       title: {
         en: 'Clinica Aqua | Healthcare | Healthcare Help',
         es: 'Clinica Aqua | Salud | Solicitar Ayuda',
@@ -385,6 +388,7 @@ const Verbiage = {
         en: '< previous',
         es: '< anterior',
       },
+      categories,
       promos,
       services,
     },

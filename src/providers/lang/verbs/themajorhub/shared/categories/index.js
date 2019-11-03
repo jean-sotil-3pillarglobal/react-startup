@@ -2,18 +2,12 @@ import {
   constants,
 } from './../../../../../config';
 
-import CONTENT_SERVICE_1 from './service-1';
-
 // constants
 const {
-  // categories
   CATEGORY_1,
-
-  // services
-  SERVICE_1,
-  SERVICE_2,
-  SERVICE_3,
-  SERVICE_4,
+  CATEGORY_2,
+  CATEGORY_3,
+  CATEGORY_4,
 } = constants;
 
 const Services = [
@@ -23,28 +17,24 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    categories: [
-      CATEGORY_1,
-    ],
-    content: CONTENT_SERVICE_1,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: SERVICE_1,
+    id: CATEGORY_1,
     image: {
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
     svg: '/static/svg/hub.svg',
     title: {
-      en: 'auto insurance 1',
-      es: 'seguro automóvil 1',
+      en: 'category 1',
+      es: 'categoria 1',
     },
     url: {
-      en: '/services/service-1',
-      es: '/servicios/servicio-1',
+      en: '/services/category-1',
+      es: '/servicios/categoria-1',
     },
   },
   {
@@ -53,26 +43,23 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    categories: [
-      CATEGORY_1,
-    ],
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: SERVICE_2,
+    id: CATEGORY_2,
     image: {
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
     title: {
-      en: 'auto insurance 2',
-      es: 'seguro automóvil 2',
+      en: 'category 2',
+      es: 'categoria 2',
     },
     url: {
-      en: '/services/service-2',
-      es: '/servicios/servicio-2',
+      en: '/services/category-2',
+      es: '/servicios/categoria-2',
     },
   },
   {
@@ -81,26 +68,23 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    categories: [
-      CATEGORY_1,
-    ],
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: SERVICE_3,
+    id: CATEGORY_3,
     image: {
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
     title: {
-      en: 'auto insurance 3',
-      es: 'seguro automóvil 3',
+      en: 'category 3',
+      es: 'categoria 3',
     },
     url: {
-      en: '/services/service-3',
-      es: '/servicios/servicio-3',
+      en: '/services/category-3',
+      es: '/servicios/categoria-3',
     },
   },
   {
@@ -109,26 +93,23 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    categories: [
-      CATEGORY_1,
-    ],
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: SERVICE_4,
+    id: CATEGORY_4,
     image: {
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
     title: {
-      en: 'auto insurance 4',
-      es: 'seguro automóvil 4',
+      en: 'category 4',
+      es: 'categoria 4',
     },
     url: {
-      en: '/services/service-4',
-      es: '/servicios/servicio-4',
+      en: '/services/category-4',
+      es: '/servicios/categoria-4',
     },
   },
 ];

@@ -99,6 +99,7 @@ const SLOT = 'services_1';
 // copy:
 const copy = LangGenerateTree([NODE, SLOT], [
   'body',
+  'categories',
   'id',
   'services',
   'title',
@@ -107,7 +108,7 @@ const copy = LangGenerateTree([NODE, SLOT], [
 function ServicesLayout (props: {
   classes: Object,
   proxy: Object,
-  setService: Function,
+  setServiceCategory: Function,
   variant: String,
 }) {
   const {
@@ -115,7 +116,7 @@ function ServicesLayout (props: {
     history,
     proxy,
     variant,
-    setService,
+    setServiceCategory,
   } = props;
 
   const {
@@ -129,14 +130,14 @@ function ServicesLayout (props: {
     setHover(payload);
   };
 
-  const handleClick = (evt, item) => {
+  const handleServiceCategoryClick = (evt, item) => {
     evt.preventDefault();
-    setService(item, (done) => {
+    setServiceCategory(item, (done) => {
       if (done) history.push(item.url[language]);
     });
   };
 
-  const items = verbiage && verbiage(copy.services).map((item, id) => {
+  const items = verbiage && verbiage(copy.categories).map((item, id) => {
     const isHover = useHover.id === `item-${id}`;
 
     return ({
@@ -197,7 +198,7 @@ function ServicesLayout (props: {
               className={classes.cta}>
               <LangButton
                 lang={item.cta}
-                onClick={evt => handleClick(evt, item)}
+                onClick={evt => handleServiceCategoryClick(evt, item)}
                 variant={!isHover ? 'dark' : 'dark2'}
                 typeButton={TYPES.CONTAINED}
               />

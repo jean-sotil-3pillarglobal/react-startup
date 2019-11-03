@@ -8,10 +8,6 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import {
-  constants,
-} from './../../../providers/config';
-
 // provider
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangToggler from './../../../providers/lang/toggler';
@@ -25,10 +21,6 @@ import SectionBlock from './../../../components/layouts/section';
 import SVGComponent from './../../../components/commons/svg';
 
 const variant = 'dark';
-
-const {
-  SERVICE_1,
-} = constants;
 
 const styles = theme => ({
   background: {},
@@ -111,9 +103,6 @@ class SectionA extends Component {
               onChange={onChange}
               onSubmit={onSubmit}
               proxy={proxy}
-              service={{
-                id: SERVICE_1,
-              }}
               variant="primary"
             />
           </Grid>

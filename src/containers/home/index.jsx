@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 
 import {
-  setServiceAction,
+  setServiceCategoryAction,
 } from './../../store/actions/services';
 
 import {
@@ -81,19 +81,19 @@ class Home extends Component {
     language: string,
     lead: Object,
     leadType: string,
-    setService: Function,
+    setServiceCategory: Function,
   }
 
   handleBlur = () => {}
 
   handleChange = () => {}
 
-  handleSetService = (item, cb) => {
+  handleServiceCategory = (item, cb) => {
     const {
-      setService,
+      setServiceCategory,
     } = this.props;
 
-    setService(item);
+    setServiceCategory(item);
     cb(true);
   }
 
@@ -130,7 +130,7 @@ class Home extends Component {
         <BannerA proxy={proxy} />
         <SectionB proxy={proxy} />
 
-        <ServicesLayout setService={this.handleSetService} proxy={proxy} variant="light" />
+        <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light" />
 
         <SectionD
           document={document}
@@ -163,7 +163,7 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     selectVariantVerbiage: selectVariantVerbiageAction,
-    setService: setServiceAction,
+    setServiceCategory: setServiceCategoryAction,
   }, dispatch);
 }
 

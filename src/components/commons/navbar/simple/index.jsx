@@ -1,6 +1,4 @@
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
-import Slider from 'react-slick';
+
 import React, { Component } from 'react';
 
 import {
@@ -12,18 +10,9 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import {
-  constants,
-} from './../../../../providers/config';
-
 import LangToggler from './../../../../providers/lang/toggler';
 
 import { LangButton, TYPES } from './../../button';
-import { SmartImg } from './../../img';
-
-const {
-  GENERAL,
-} = constants;
 
 const styles = theme => ({
   root: {
@@ -34,25 +23,6 @@ const styles = theme => ({
 });
 
 class NavbarSimple extends Component {
-  getPromos () {
-    const {
-      copy: {
-        promos,
-      },
-      id,
-      proxy: {
-        verbiage,
-      },
-    } = this.props;
-
-    return verbiage && verbiage(promos)
-      // filter by type
-      .filter((promo) => {
-        // set general default and selected forms type
-        return promo.type.includes(GENERAL) || promo.type.includes(id);
-      });
-  }
-
   goBack = () => {
     const {
       history,
@@ -65,8 +35,6 @@ class NavbarSimple extends Component {
     classes: Object,
     copy: Object,
     history: Object,
-    id: String,
-    onBack: Function,
     proxy: Object,
     title: String,
   }
@@ -80,19 +48,6 @@ class NavbarSimple extends Component {
       proxy,
       title,
     } = this.props;
-
-    const sliderProps = {
-      adaptiveHeight: true,
-      autoplay: true,
-      autoplaySpeed: 5000,
-      centerPadding: '60px',
-      className: 'container',
-      infinite: true,
-      slidesToShow: 2,
-      swipeToSlide: true,
-    };
-
-    const filter = this.getPromos() || [];
 
     return (
       proxy &&
@@ -128,24 +83,6 @@ class NavbarSimple extends Component {
                 <LangToggler id={title} />
               </Typography>
             </Grid>
-            {filter.length > 0 && (
-              <Grid
-                item
-                sm={12}
-                md={2}
-                lg={2}>
-                <Slider {...sliderProps}>
-                  {filter.map((item, i) => {
-                    const key = `slicker-item-${i}`;
-                    return (
-                      <div className={classes.item} key={key}>
-                        <SmartImg proxy={proxy} src={item.image} alt={item.alt} />
-                      </div>
-                    );
-                  })}
-                </Slider>
-              </Grid>
-            )}
           </Grid>
         </Toolbar>
       </AppBar>

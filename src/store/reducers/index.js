@@ -28,12 +28,15 @@ import {
 
 // services
 import {
+  getCategoryReducer,
   getServiceReducer,
 } from './services';
+
 /*
 // combining reducers
 */
 const rootReducer = combineReducers({
+  category: getCategoryReducer,
   device: getDeviceReducer,
   isHeaderVisible: isHeaderVisibleReducer,
   language: selectedLanguageReducer,

@@ -43,6 +43,7 @@ const SLOT = 'contact_1';
 // copy:
 const copy = LangGenerateTree([NODE, SLOT], [
   'back',
+  'categories',
   'forms',
   'id',
   'services',
@@ -62,7 +63,6 @@ function ContactFormLayout (props: {
     onChange,
     onSubmit,
     proxy,
-    service,
     variant,
   } = props;
 
@@ -81,11 +81,11 @@ function ContactFormLayout (props: {
       <Stepper
         copy={copy}
         document={document}
+        forms={verbiage(copy.forms)}
         onBlur={onBlur}
         onChange={onChange}
         onSubmit={onSubmit}
         proxy={proxy}
-        service={service}
         variant={variant}
       />
     </Section>

@@ -1,5 +1,11 @@
 // constants
 export const constants = {
+  // categories
+  CATEGORY_1: 'CATEGORY_1',
+  CATEGORY_2: 'CATEGORY_2',
+  CATEGORY_3: 'CATEGORY_3',
+  CATEGORY_4: 'CATEGORY_4',
+
   // general
   GENERAL: 'GENERAL',
 
