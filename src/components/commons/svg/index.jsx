@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {
+  Component,
+  Fragment,
+} from 'react';
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import classnames from 'classnames';
+import { cloneDeep } from 'lodash';
 
 import {
   withStyles,
@@ -48,25 +52,55 @@ const styles = theme => ({
   },
 });
 
-function SVG (props: {
-  classes: Object,
-  className: Object,
-  src: Object,
-  color: string,
-}) {
-  const {
-    classes,
-    className,
-    color,
-    src,
-  } = props;
+const init = {
+  src: null,
+};
 
-  return (
-    <SvgLoader path={src} className={classnames(classes.root, className)}>
-      <SvgProxy selector="[fill*='#6c63ff']" data-color={`svg-${color || 'primary'}`} />
-      <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-blink" />
-    </SvgLoader>
-  );
+class SVGLayout extends Component {
+  constructor(props) {
+    super(props);
+    const stateClone = cloneDeep(init);
+    this.state = stateClone;
+  }
+
+  static getDerivedStateFromProps = (nextProps) => {
+    const {
+      src,
+    } = nextProps;
+
+    return {
+      src,
+    };
+  }
+
+  shouldComponentUpdate = (nextProps, nextState) => {
+    return this.state.src !== nextState.src;
+  }
+
+  props: {
+    classes: Object,
+    className: Object,
+    color: String,
+  }
+
+  render () {
+    const {
+      classes,
+      className,
+      color,
+    } = this.props;
+
+    const {
+      src,
+    } = this.state;
+
+    return (src && (
+      <SvgLoader path={src} className={classnames(classes.root, className)}>
+        <SvgProxy selector="[fill*='#6c63ff']" data-color={`svg-${color || 'primary'}`} />
+        <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-blink" />
+      </SvgLoader>
+    )) || <Fragment />;
+  }
 }
 
-export default withStyles(styles)(SVG);
+export default withStyles(styles)(SVGLayout);

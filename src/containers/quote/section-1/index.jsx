@@ -66,20 +66,6 @@ const styles = theme => ({
   section: {
     padding: `${theme.spacing(4)}px 0`,
   },
-  step: {
-    '& *[class*="MuiStepIcon-active"] circle': {
-      color: theme.palette.primary.main,
-    },
-    '& circle': {
-      color: `${theme.palette.disabled.main}`,
-    },
-  },
-  stepper: {
-    backgroundColor: theme.palette.secondary.light,
-    border: '1px solid #cccccc',
-  },
-  stickyAds: {},
-  unpinned: {},
 });
 
 const NODE = 'quote';

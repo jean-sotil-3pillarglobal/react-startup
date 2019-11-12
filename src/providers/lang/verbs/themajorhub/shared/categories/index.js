@@ -21,13 +21,31 @@ const Services = [
       en: 'learn more',
       es: 'conoce más',
     },
-    ico: 'cloud-download',
+    description: {
+      en: `
+        lorem ipsum dolor sit amet, consectetuer adipiscing elit. lorem ipsum dolor sit amet, consectetuer adipiscing elit. lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br/><br/>
+      `,
+      es: `
+        lorem ipsum dolor sit amet, <strong>consectetuer adipiscing elit.</strong> lorem ipsum dolor sit amet, consectetuer adipiscing elit. lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br/><br/>
+      `,
+    },
+    ico: 'home',
     id: CATEGORY_1,
     image: {
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
-    svg: '/static/svg/hub.svg',
+    images: [
+      {
+        desktop: '/static/images/d-image-test.jpg',
+        mobile: '/static/images/m-image-test.jpg',
+      },
+      {
+        desktop: '/static/images/d-image-test.jpg',
+        mobile: '/static/images/m-image-test.jpg',
+      },
+    ],
+    svg: '/static/svg/team_work.svg',
     title: {
       en: 'category 1',
       es: 'categoria 1',
@@ -47,12 +65,27 @@ const Services = [
       en: 'learn more',
       es: 'conoce más',
     },
+    description: {
+      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+    },
     ico: 'cloud-download',
     id: CATEGORY_2,
     image: {
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
+    images: [
+      {
+        desktop: '/static/images/d-image-test.jpg',
+        mobile: '/static/images/m-image-test.jpg',
+      },
+      {
+        desktop: '/static/images/d-image-test.jpg',
+        mobile: '/static/images/m-image-test.jpg',
+      },
+    ],
+    svg: '/static/svg/team_work.svg',
     title: {
       en: 'category 2',
       es: 'categoria 2',

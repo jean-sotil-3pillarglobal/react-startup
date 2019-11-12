@@ -90,11 +90,11 @@ export default {
   palette,
   typography: {
     body1: {
-      fontSize: '1.2rem',
+      fontSize: '1.5rem',
       fontWeight: 300,
     },
     body2: {
-      fontSize: '1.3rem',
+      fontSize: '1.6rem',
       fontWeight: 400,
     },
     caption: {
@@ -114,8 +114,8 @@ export default {
       textTransform: 'capitalize',
     },
     h3: {
-      fontSize: '1.9rem',
-      fontWeight: 400,
+      fontSize: '1.8rem',
+      fontWeight: 500,
       textTransform: 'capitalize',
     },
     h4: {

@@ -52,13 +52,13 @@ const styles = theme => ({
   }),
   stepper: props => ({
     '& .MuiFormLabel-root:not(.Mui-error), .MuiTypography-caption': {
-      color: `${ThemeColor(props, theme)}`,
+      color: ThemeColor(props, theme),
     },
-    '& .MuiStepIcon-text': {
-      color: `${ThemeColor(props, theme)}!important`,
+    '& .MuiStepIcon-root.MuiStepIcon-active': {
+      color: ThemeBackground(props, theme, 'dark'),
     },
-    '& .MuiStepLabel-label': {
-      color: `${ThemeColor(props, theme)}!important`,
+    '& .MuiStepIcon-root.MuiStepIcon-completed': {
+      color: ThemeColor(props, theme),
     },
     backgroundColor: ThemeBackground(props, theme),
     border: `2px solid ${ThemeColor(props, theme)}`,

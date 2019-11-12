@@ -35,7 +35,7 @@ import ThemeColor from './../../providers/utils/theme.color';
 
 // components
 import { LangButton, TYPES } from './../commons/button';
-import { SmartImg } from './../commons/img';
+import SmartImg from './../commons/img';
 import Icon from './../commons/icon';
 
 // action creators
@@ -293,7 +293,7 @@ class Header extends Component {
                       <Menu />
                     </IconButton> : null
                   }
-                  <SmartImg proxy={proxy} src={copy.logo} className={classes.logo} />
+                  <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
                 </Grid>
                 <Grid
                   item

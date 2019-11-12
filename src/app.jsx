@@ -1,7 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import { ScrollingProvider } from 'react-scroll-section';
 import React, { Component } from 'react';
 import UAParser from 'ua-parser-js';
 
@@ -68,85 +67,74 @@ const Services = Async(() => import('./containers/services').then(module => modu
 const Blog = Async(() => import('./containers/blog').then(module => module.default));
 const Four0Four = Async(() => import('./containers/404').then(module => module.default));
 
+const init = {
+  device: null,
+};
+
 // main
 class App extends Component {
-  componentWillMount () {
-    const { lead, fetchLead } = this.props;
-    // const uuid = '10707597-098e-4bbc-99a5-60574921877e'; // auto
-    // const uuid = 'f61079bf-88a6-4b0e-8f00-3fca1aef9180'; // health
-    const uuid = ''; // choose default
+  constructor(props) {
+    super(props);
+    this.state = init;
+  }
 
-    // fetch lead information once
-    if (!lead.type && uuid !== '') {
-      fetchLead(uuid); // auto
-    } else if (uuid === '') {
-      // set default values
-      fetchLead('');
-    }
-
+  static getDerivedStateFromProps = (nextProps) => {
     // check browser
-    this.updateDimensions();
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('resize', this.updateDimensions.bind(this));
-  }
-
-  updateDimensions () {
-    const { setDevice } = this.props;
+    const { setDevice, device } = nextProps;
     const ua = new UAParser().getDevice();
     const { type } = ua;
+
     if (type) {
       setDevice(type);
     } else {
       setDevice('desktop');
     }
+
+    return {
+      device,
+    };
   }
 
+  componentDidMount = () => {
+    console.log(this.props);
+  }
   props: {
     classes: Object,
-    fetchLead: Function,
-    lead: Object,
-    leadType: string,
-    setDevice: Function,
   }
 
   render () {
-    const { classes, leadType } = this.props;
+    const { classes } = this.props;
 
-    const skin = createMuiTheme(SkinProvider(leadType));
+    const skin = createMuiTheme(SkinProvider('default'));
 
     return (
-      leadType &&
       <MuiThemeProvider theme={skin}>
-        <ScrollingProvider>
-          <CssBaseline />
-          <div className={classes.container}>
-            <Route render={({ location }) => (
-              <TransitionGroup className={classes.transitions}>
-                <CSSTransition
-                  key={location.key}
-                  timeout={{ enter: 300, exit: 300 }}
-                  classNames={{
-                    enter: classes.appear,
-                    enterActive: classes.appearActive,
-                    exit: classes.exit,
-                    exitActive: classes.exitActive,
-                  }}>
-                  <div className={classes.switch}>
-                    <Switch location={location} >
-                      <Route exact path="/" component={Home} />
-                      <Route path="/services/:type" component={Services} />
-                      <Route path="/servicios/:type" component={Services} />
-                      <Route exact path="/blog" component={Blog} />
-                      <Route component={Four0Four} />
-                    </Switch>
-                  </div>
-                </CSSTransition>
-              </TransitionGroup>
-            )} />
-          </div>
-        </ScrollingProvider>
+        <CssBaseline />
+        <div className={classes.container}>
+          <Route render={({ location }) => (
+            <TransitionGroup className={classes.transitions}>
+              <CSSTransition
+                key={location.key}
+                timeout={{ enter: 300, exit: 300 }}
+                classNames={{
+                  enter: classes.appear,
+                  enterActive: classes.appearActive,
+                  exit: classes.exit,
+                  exitActive: classes.exitActive,
+                }}>
+                <div className={classes.switch}>
+                  <Switch location={location} >
+                    <Route exact path="/" component={Home} />
+                    <Route path="/services/:type/:serviceUrl?" component={Services} />
+                    <Route path="/servicios/:type/:serviceUrl?" component={Services} />
+                    <Route exact path="/blog" component={Blog} />
+                    <Route component={Four0Four} />
+                  </Switch>
+                </div>
+              </CSSTransition>
+            </TransitionGroup>
+          )} />
+        </div>
       </MuiThemeProvider>
     );
   }

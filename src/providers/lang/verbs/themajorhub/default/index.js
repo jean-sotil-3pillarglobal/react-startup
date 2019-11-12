@@ -126,6 +126,7 @@ const Verbiage = {
         en: 'insurances, others',
         es: 'seguros, otros',
       },
+      services,
       title: {
         en: 'Clinica Aqua | Healthcare | Healthcare Help',
         es: 'Clinica Aqua | Salud | Solicitar Ayuda',
@@ -228,7 +229,7 @@ const Verbiage = {
             en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
             es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
           },
-          svg: '/static/svg/hub.svg',
+          svg: '/static/svg/team_work.svg',
           title: {
             en: '1. your insurance type.',
             es: '1. elige seguro',
@@ -239,7 +240,7 @@ const Verbiage = {
             en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
             es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
           },
-          svg: '/static/svg/hub.svg',
+          svg: '/static/svg/team_work.svg',
           title: {
             en: '2. set your contact information.',
             es: '2. proveé tu información',
@@ -254,7 +255,7 @@ const Verbiage = {
             en: 'get a free quote now',
             es: 'obtener asistencia ahora',
           },
-          svg: '/static/svg/hub.svg',
+          svg: '/static/svg/team_work.svg',
           title: {
             en: '3. get quick and free assistance',
             es: '3. obtén asistencia rápida y gratuita',
@@ -265,7 +266,7 @@ const Verbiage = {
         en: '<span>Get our health services</br> information, quick and free.</span>',
         es: '<span>Obtén información sobre nuestros servicios</br> de salud, de manera fácil y gratuita.</span>',
       },
-      svg: '/static/svg/hub.svg',
+      svg: '/static/svg/team_work.svg',
       title: {
         en: 'We work with the best!',
         es: 'Trabajamos con los mejores!',

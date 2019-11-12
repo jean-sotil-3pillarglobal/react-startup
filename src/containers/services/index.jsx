@@ -2,6 +2,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import React, { Component, Fragment } from 'react';
+import {
+  cloneDeep,
+} from 'lodash';
 
 import {
   withStyles,
@@ -13,6 +16,7 @@ import {
 
 import {
   setServiceCategoryAction,
+  setServiceAction,
 } from './../../store/actions/services';
 
 import Helmet from '../../components/commons/helmet';
@@ -27,6 +31,7 @@ import ServicesLayout from '../../components/layouts/commons/services_1';
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
 
 import {
+  FindServiceByPath,
   FindServiceCategoryByPath,
 } from './../../providers/utils/filter.services';
 
@@ -40,15 +45,18 @@ const NODE = 'headers';
 const SLOT = 'services';
 // copy:
 const copy = LangGenerateTree([NODE, SLOT], [
+  'categories',
   'description',
   'keywords',
-  'categories',
+  'services',
   'title',
 ]);
 
 const init = {
   category: null,
   document: {},
+  service: null,
+  services: null,
 };
 
 class Services extends Component {
@@ -63,33 +71,46 @@ class Services extends Component {
     const {
       language,
       match: {
-        url,
+        params: {
+          serviceUrl,
+          type,
+        },
       },
-      selectVariantVerbiage,
       category,
+      selectVariantVerbiage,
+      service,
+      setService,
       setServiceCategory,
       verbiage,
     } = nextProps;
+
+    const data = cloneDeep(init);
 
     if (!verbiage) {
       selectVariantVerbiage('default');
     }
 
     if (verbiage && !category.id) {
-      setServiceCategory(FindServiceCategoryByPath(url, verbiage(copy.categories), language));
+      setServiceCategory(FindServiceCategoryByPath(type, verbiage(copy.categories), language));
+    } else if (category.id) {
+      data.category = category;
+      data.services = verbiage(copy.services).filter(item => item.categories.includes(category.id));
     }
 
-    if (category.id) {
-      return {
-        category,
-      };
+    if (!service.id && serviceUrl && data.services) {
+      setService(FindServiceByPath(serviceUrl, data.services, language));
     }
 
-    return init;
+    if (service.id) {
+      data.service = service;
+    }
+
+    return data;
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
-    return this.state.category !== nextState.category;
+    return this.state.category !== nextState.category ||
+      this.state.service !== nextState.service;
   }
 
   componentWillUnmount = () => {
@@ -98,16 +119,19 @@ class Services extends Component {
 
   reset = () => {
     const {
+      setService,
       setServiceCategory,
     } = this.props;
 
     setServiceCategory({});
+    setService({});
     this.setState(init);
   }
 
   props: {
     device: string,
     language: string,
+    setService: Function,
     setServiceCategory: Function,
     verbiage: Function,
   }
@@ -134,6 +158,11 @@ class Services extends Component {
     cb(true);
   }
 
+  handleServiceListClick = (item) => {
+    const { setService } = this.props;
+    setService(item);
+  }
+
   render () {
     const {
       device,
@@ -144,6 +173,8 @@ class Services extends Component {
     const {
       document,
       category,
+      service,
+      services,
     } = this.state;
 
     const proxy = {
@@ -158,7 +189,12 @@ class Services extends Component {
         <Fragment>
           <Helmet proxy={proxy} copy={copy} />
           <SectionA
-            category={category}
+            data={{
+              category,
+              service,
+              services,
+            }}
+            onServiceListClick={this.handleServiceListClick}
             proxy={proxy}
           >
             <ContactFormLayout
@@ -167,7 +203,7 @@ class Services extends Component {
               onChange={this.handleChange}
               onSubmit={this.handleSubmit}
               proxy={proxy}
-              variant="primary"
+              variant="light"
             />
           </SectionA>
           <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light2" />
@@ -184,6 +220,7 @@ function mapStateToProps (state) {
     category: state.category,
     device: state.device,
     language: state.language,
+    service: state.service,
     verbiage: state.verbiage,
   };
 }
@@ -191,6 +228,7 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     selectVariantVerbiage: selectVariantVerbiageAction,
+    setService: setServiceAction,
     setServiceCategory: setServiceCategoryAction,
   }, dispatch);
 }

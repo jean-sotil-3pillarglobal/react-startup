@@ -28,8 +28,8 @@ const Services = [
     ],
     content: CONTENT_SERVICE_1,
     cta: {
-      en: 'learn more',
-      es: 'conoce más',
+      en: 'get quote now',
+      es: 'consultar ahora',
     },
     ico: 'cloud-download',
     id: SERVICE_1,
@@ -43,8 +43,8 @@ const Services = [
       es: 'seguro automóvil 1',
     },
     url: {
-      en: '/services/service-1',
-      es: '/servicios/servicio-1',
+      en: 'service-1',
+      es: 'servicio-1',
     },
   },
   {
@@ -71,8 +71,8 @@ const Services = [
       es: 'seguro automóvil 2',
     },
     url: {
-      en: '/services/service-2',
-      es: '/servicios/servicio-2',
+      en: 'service-2',
+      es: 'servicio-2',
     },
   },
   {
@@ -99,8 +99,8 @@ const Services = [
       es: 'seguro automóvil 3',
     },
     url: {
-      en: '/services/service-3',
-      es: '/servicios/servicio-3',
+      en: 'service-3',
+      es: 'servicio-3',
     },
   },
   {
@@ -127,8 +127,8 @@ const Services = [
       es: 'seguro automóvil 4',
     },
     url: {
-      en: '/services/service-4',
-      es: '/servicios/servicio-4',
+      en: 'service-4',
+      es: 'servicio-4',
     },
   },
 ];

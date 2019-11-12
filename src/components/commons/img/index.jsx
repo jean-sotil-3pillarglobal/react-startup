@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 import {
@@ -11,36 +11,32 @@ const styles = () => ({
   },
 });
 
-class LayoutImg extends Component {
-  props: {
-    alt: string,
-    classes: Object,
-    className: Object,
-    proxy: Object,
-    src: string,
-  };
+function SmartImg (props: {
+  alt: string,
+  classes: Object,
+  className: Object,
+  proxy: Object,
+  src: string,
+}) {
+  const {
+    alt,
+    classes,
+    className,
+    proxy,
+    src,
+  } = props;
 
-  render () {
-    const {
-      alt,
-      classes,
-      className,
-      proxy,
-      src,
-    } = this.props;
+  const {
+    device,
+    language,
+  } = proxy;
 
-    const {
-      device,
-      verbiage,
-    } = proxy;
-
-    return (
-      verbiage && <img
-        className={classnames(classes.img, className)}
-        src={verbiage(src)[device]}
-        alt={verbiage(alt)} />
-    );
-  }
+  return (
+    <img
+      className={classnames(classes.img, className)}
+      src={src[device]}
+      alt={alt && alt[language]} />
+  );
 }
 
-export const SmartImg = withStyles(styles)(LayoutImg);
+export default withStyles(styles)(SmartImg);

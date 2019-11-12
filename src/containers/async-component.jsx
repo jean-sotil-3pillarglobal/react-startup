@@ -1,19 +1,18 @@
 import React from 'react';
+import { ScrollingProvider } from 'react-scroll-section';
+
 import Loading from '../components/commons/preloader';
 
 export default (loader, collection) => (
   class AsyncComponent extends React.Component {
     constructor (props) {
       super(props);
-
-      this.Component = null;
-      this.state = { Component: AsyncComponent.Component };
+      this.state = { Component: null };
     }
 
     componentDidMount () {
       if (!this.state.Component) {
         loader().then((Component) => {
-          AsyncComponent.Component = Component;
           this.setState({ Component });
         });
       }
@@ -24,7 +23,9 @@ export default (loader, collection) => (
 
       if (Component) {
         return (
-          <Component {...this.props} {...collection} />
+          <ScrollingProvider>
+            <Component {...this.props} {...collection} />
+          </ScrollingProvider>
         );
       }
 
