@@ -84,10 +84,6 @@ class Home extends Component {
     setServiceCategory: Function,
   }
 
-  handleBlur = () => {}
-
-  handleChange = () => {}
-
   handleServiceCategory = (item, cb) => {
     const {
       setServiceCategory,
@@ -96,8 +92,6 @@ class Home extends Component {
     setServiceCategory(item);
     cb(true);
   }
-
-  handleSubmit = () => {}
 
   render () {
     const {
@@ -109,7 +103,6 @@ class Home extends Component {
     } = this.props;
 
     const {
-      document,
       verbiage,
     } = this.state;
 
@@ -132,13 +125,7 @@ class Home extends Component {
 
         <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light" />
 
-        <SectionD
-          document={document}
-          onChange={this.handleChange}
-          onBlur={this.handleBlur}
-          onSubmit={this.handleSubmit}
-          proxy={proxy}
-        />
+        <SectionD proxy={proxy} />
 
         <BannerA proxy={proxy} />
         <SectionE proxy={proxy} />

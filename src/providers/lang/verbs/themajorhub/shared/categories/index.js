@@ -17,6 +17,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
+    color: '#ef1e83',
     cta: {
       en: 'learn more',
       es: 'conoce más',
@@ -61,6 +62,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
+    color: '#6496c8',
     cta: {
       en: 'learn more',
       es: 'conoce más',
@@ -101,6 +103,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
+    color: '#6496c8',
     cta: {
       en: 'learn more',
       es: 'conoce más',
@@ -126,6 +129,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
+    color: '#6496c8',
     cta: {
       en: 'learn more',
       es: 'conoce más',

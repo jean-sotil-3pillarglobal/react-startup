@@ -34,7 +34,7 @@ export const SERVICES_INFORMATION_1_1 = [
     type: 'email',
   },
   {
-    input_type: 'input',
+    input_type: 'phone',
     key: 'phone',
     label: {
       en: 'phone',

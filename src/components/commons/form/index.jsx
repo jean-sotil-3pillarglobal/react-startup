@@ -26,14 +26,14 @@ const styles = theme => ({
   }),
   helper: props => ({
     color: ThemeColor(props, theme),
-    margin: `${theme.spacing(2)}px 0`,
+    margin: `${theme.spacing(3)}px 0`,
   }),
   item: {
     width: '100%',
   },
   root: {
     backgroundColor: 'transparent',
-    padding: 0,
+    padding: `${theme.spacing(3)}px ${theme.spacing(1)}px ${theme.spacing(3)}px`,
   },
   row: {
     marginBottom: `${theme.spacing(2)}px`,
@@ -41,7 +41,7 @@ const styles = theme => ({
   title: props => ({
     color: ThemeColor(props, theme),
     fontWeight: 400,
-    margin: `${theme.spacing(2)}px 0 0 0`,
+    margin: `${theme.spacing()}px 0 0 0`,
   }),
 });
 
@@ -79,10 +79,10 @@ class FormBlock extends Component {
           <Card className={classes.card} elevation={0}>
             {copy.label &&
               <Fragment>
-                <Typography variant="h3" align="left" className={classes.title}>
+                <Typography variant="h4" align="left" className={classes.title}>
                   <LangToggler id={copy.label} />
                 </Typography>
-                <Typography variant="body1" className={classes.helper}>
+                <Typography variant="caption" className={classes.helper}>
                   <LangToggler id={copy.label_helper} />
                 </Typography>
               </Fragment>

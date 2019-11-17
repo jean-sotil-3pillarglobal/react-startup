@@ -39,7 +39,7 @@ const Services = [
     },
     svg: '/static/svg/hub.svg',
     title: {
-      en: 'auto insurance 1',
+      en: 'service 1',
       es: 'seguro automóvil 1',
     },
     url: {
@@ -67,7 +67,7 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     title: {
-      en: 'auto insurance 2',
+      en: 'service 2',
       es: 'seguro automóvil 2',
     },
     url: {
@@ -95,7 +95,7 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     title: {
-      en: 'auto insurance 3',
+      en: 'service 3',
       es: 'seguro automóvil 3',
     },
     url: {
@@ -123,8 +123,8 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     title: {
-      en: 'auto insurance 4',
-      es: 'seguro automóvil 4',
+      en: 'service 4',
+      es: 'servicio 4',
     },
     url: {
       en: 'service-4',

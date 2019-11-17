@@ -86,65 +86,108 @@ const palette = {
   },
 };
 
-export default {
-  palette,
-  typography: {
-    body1: {
-      fontSize: '1.5rem',
-      fontWeight: 300,
+const overrides = {
+  MuiFormControl: {
+    root: {
+      marginBottom: '24px',
+      width: '100%',
     },
-    body2: {
-      fontSize: '1.6rem',
-      fontWeight: 400,
-    },
-    caption: {
-      display: 'inline-block',
-      fontSize: '0.75rem',
-      fontWeight: 300,
-    },
-    h1: {
-      fontSize: '3rem',
-      fontWeight: 600,
-      textTransform: 'capitalize',
-    },
-    h2: {
-      fontSize: '2.8rem',
-      fontWeight: 600,
-      textDecoration: 'underline',
-      textTransform: 'capitalize',
-    },
-    h3: {
-      fontSize: '1.8rem',
-      fontWeight: 500,
-      textTransform: 'capitalize',
-    },
-    h4: {
-      fontSize: '1.4em',
-      fontWeight: 400,
-      textTransform: 'capitalize',
-    },
-    h5: {
-      fontSize: '1rem',
-      fontWeight: 300,
-      textTransform: 'capitalize',
-    },
-    h6: {
-      fontSize: '0.6rem',
-      fontWeight: 300,
-    },
-    overline: {
-      fontSize: '1rem',
-      fontWeight: 300,
-    },
-    subtitle1: {
-      fontSize: '1.4rem',
-      fontWeight: 300,
-      textTransform: 'capitalize',
-    },
-    subtitle2: {
-      fontSize: '1.2rem',
-      fontWeight: 300,
-    },
-    useNextVariants: true,
   },
+  MuiFormLabel: {
+    root: {
+      fontSize: '.8em',
+      fontWeight: 400,
+      marginBottom: '4px',
+    },
+  },
+  MuiInputBase: {
+    input: {
+      color: palette.primary.contrastText,
+      height: '2.4em',
+      padding: '.6em',
+    },
+    root: {
+      backgroundColor: palette.primary.light,
+    },
+  },
+  MuiInputLabel: {
+    formControl: {
+      top: '-4px',
+    },
+    root: {
+      textTransform: 'capitalize',
+    },
+  },
+  MuiStepLabel: {
+    label: {
+      fontSize: '1.1em',
+      fontWeight: 700,
+      textTransform: 'capitalize',
+    },
+  },
+};
+
+const typography = {
+  body1: {
+    fontSize: '1.5rem',
+    fontWeight: 300,
+  },
+  body2: {
+    fontSize: '1.6rem',
+    fontWeight: 400,
+  },
+  caption: {
+    display: 'inline-block',
+    fontSize: '1rem',
+    fontWeight: 300,
+  },
+  h1: {
+    fontSize: '3rem',
+    fontWeight: 500,
+    textTransform: 'capitalize',
+  },
+  h2: {
+    fontSize: '2.8rem',
+    fontWeight: 500,
+    textTransform: 'capitalize',
+  },
+  h3: {
+    fontSize: '2.2rem',
+    fontWeight: 400,
+    textTransform: 'capitalize',
+  },
+  h4: {
+    fontSize: '1.8rem',
+    fontWeight: 400,
+    textTransform: 'capitalize',
+  },
+  h5: {
+    fontSize: '1rem',
+    fontWeight: 300,
+    textTransform: 'capitalize',
+  },
+  h6: {
+    fontSize: '0.6rem',
+    fontWeight: 300,
+  },
+  overline: {
+    fontSize: '1rem',
+    fontWeight: 300,
+  },
+  subtitle1: {
+    fontSize: '1.4rem',
+    fontWeight: 300,
+    textTransform: 'capitalize',
+  },
+  subtitle2: {
+    fontSize: '1.2rem',
+    fontWeight: 300,
+  },
+  useNextVariants: true,
+};
+
+export default {
+  overrides,
+  palette,
+  typography,
 };

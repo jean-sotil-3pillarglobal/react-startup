@@ -95,9 +95,6 @@ class App extends Component {
     };
   }
 
-  componentDidMount = () => {
-    console.log(this.props);
-  }
   props: {
     classes: Object,
   }

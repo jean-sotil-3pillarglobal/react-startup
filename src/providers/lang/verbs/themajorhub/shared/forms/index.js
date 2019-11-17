@@ -27,15 +27,15 @@ export default [
     },
     icon: icons.service1,
     label: {
-      en: 'step 1: personal information',
-      es: 'paso 1: información personal',
+      en: 'personal information',
+      es: 'información personal',
     },
     rows: [
       {
         fields: SERVICES_INFORMATION_1_1,
         label: {
           en: 'About you',
-          es: 'Acerca de usted',
+          es: 'Datos Personales',
         },
         label_helper: {
           en: 'Let&#39;s begin your quote. Take a minute to fill with your information.',
@@ -63,8 +63,8 @@ export default [
     },
     icon: icons.general,
     label: {
-      en: 'step 2: how we can help?',
-      es: 'paso 2: en qué podemos ayudar?',
+      en: 'how we can help?',
+      es: 'en qué podemos ayudar?',
     },
     rows: [
       {

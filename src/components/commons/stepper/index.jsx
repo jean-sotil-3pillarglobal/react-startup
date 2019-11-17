@@ -16,7 +16,6 @@ import ThemeColor from './../../../providers/utils/theme.color';
 
 // components
 import { LangButton, TYPES } from './../button';
-import { Validate } from './../input/validate';
 import FormBlock from './../form';
 import Icon from './../icon';
 
@@ -134,27 +133,12 @@ class StepperLayout extends Component {
     this.setState(init);
   }
 
-  handleBlur = (event, type) => {
+  handleBlur = (event, error) => {
     const {
-      target: {
-        name,
-      },
-    } = event;
-
-    const {
-      errors,
       onBlur,
-    } = this.state;
-
-    const {
-      document,
     } = this.props;
 
-    // validating value && type
-    errors[name] = Validate(event, document[name] || '', type);
-    this.checkListener(name);
-
-    onBlur(errors);
+    onBlur(event, error);
   }
 
   handleChange = (event) => {
@@ -242,6 +226,7 @@ class StepperLayout extends Component {
     classes: Object,
     copy: Object,
     document: Object,
+    onBlur: Function,
     onChange: Function,
     proxy: Object,
     variant: String,
@@ -267,6 +252,7 @@ class StepperLayout extends Component {
     const {
       handleBlur,
       handleChange,
+      handleFocus,
       handleStepperIndex,
       handleStepperNext,
       handleStepperPrev,
@@ -299,6 +285,7 @@ class StepperLayout extends Component {
                         errors,
                         handleBlur,
                         handleChange,
+                        handleFocus,
                         language,
                         verbiage,
                       }}

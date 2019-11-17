@@ -50,20 +50,12 @@ const copy = LangGenerateTree([NODE, SLOT], [
 class SectionA extends Component {
   props: {
     classes: Object,
-    document: Object,
-    onBlur: Function,
-    onChange: Function,
-    onSubmit: Function,
     proxy: Object,
   }
 
   render () {
     const {
       classes,
-      document,
-      onBlur,
-      onChange,
-      onSubmit,
       proxy,
     } = this.props;
 
@@ -98,10 +90,6 @@ class SectionA extends Component {
             md={6}
             lg={6}>
             <ContactFormLayout
-              document={document}
-              onBlur={onBlur}
-              onChange={onChange}
-              onSubmit={onSubmit}
               proxy={proxy}
               variant="primary"
             />

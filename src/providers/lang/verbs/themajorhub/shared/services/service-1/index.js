@@ -28,7 +28,7 @@ export default [
     },
   },
   {
-    component: 'h3',
+    component: 'h4',
     copy: {
       en: 'Benefits',
       es: 'Beneficios',

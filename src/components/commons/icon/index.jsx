@@ -6,33 +6,26 @@ import {
 } from '@material-ui/core';
 
 const styles = theme => ({
-  error: {
-    color: theme.palette.error.main,
-  },
-  root: {},
-  success: {
-    color: theme.palette.success.main,
-  },
-  warning: {
-    color: theme.palette.warning.main,
-  },
+  root: props => ({
+    color: (props.color === 'error') ?
+      theme.palette.error.main :
+      ((props.color === 'success') ? (theme.palette.success.main) : (props.color || theme.palette.primary.main)),
+  }),
 });
 
 function IconLayout (props: {
   classes: Object,
   className: Object,
-  color: string,
   name: Object,
 }) {
   const {
     classes,
     className,
-    color,
     name,
   } = props;
 
   return (
-    <Icon className={classnames(classes.root, className)} color={color}>
+    <Icon className={classnames(classes.root, className)}>
       {name}
     </Icon>
   );

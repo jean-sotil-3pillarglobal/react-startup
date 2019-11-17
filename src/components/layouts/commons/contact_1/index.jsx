@@ -2,7 +2,8 @@
 import { Section } from 'react-scroll-section';
 import { withRouter } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
-import React from 'react';
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
 
 import {
   Typography,
@@ -50,46 +51,83 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'title',
 ]);
 
-function ContactFormLayout (props: {
-  classes: Object,
-  proxy: Object,
-  variant: String,
-  onChange: Function,
-}) {
-  const {
-    classes,
-    document,
-    onBlur,
-    onChange,
-    onSubmit,
-    proxy,
-    variant,
-  } = props;
+const init = {
+  document: {},
+};
 
-  const {
-    verbiage,
-  } = proxy;
+class ContactFormLayout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = init;
+  }
 
-  return (
-    verbiage &&
-    <Section id={verbiage(copy.id)}>
-      <Fade left>
-        <Typography variant="body2" component="p" className={classes.title}>
-          <LangToggler id={copy.title} />
-        </Typography>
-      </Fade>
-      <Stepper
-        copy={copy}
-        document={document}
-        forms={verbiage(copy.forms)}
-        onBlur={onBlur}
-        onChange={onChange}
-        onSubmit={onSubmit}
-        proxy={proxy}
-        variant={variant}
-      />
-    </Section>
-  );
+  props: {
+    classes: Object,
+    proxy: Object,
+    variant: String,
+  }
+
+  handleBlur = (event, error) => {
+    console.log(error);
+  }
+
+  handleChange = (event) => {
+    const { document } = this.state;
+    const cloneDocu = cloneDeep(document);
+
+    const {
+      target: {
+        value,
+        name,
+      },
+    } = event;
+
+    cloneDocu[name] = value;
+
+    this.setState({
+      ...this.state,
+      document: cloneDocu,
+    });
+  }
+
+  handleSubmit = () => {}
+
+  render () {
+    const {
+      classes,
+      proxy,
+      variant,
+    } = this.props;
+
+    const {
+      verbiage,
+    } = proxy;
+
+    const {
+      document,
+    } = this.state;
+
+    return (
+      verbiage &&
+      <Section id={verbiage(copy.id)}>
+        <Fade left>
+          <Typography variant="body2" component="p" className={classes.title}>
+            <LangToggler id={copy.title} />
+          </Typography>
+        </Fade>
+        <Stepper
+          copy={copy}
+          document={document}
+          forms={verbiage(copy.forms)}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+          proxy={proxy}
+          variant={variant}
+        />
+      </Section>
+    );
+  }
 }
 
 export default withStyles(styles)(withRouter(ContactFormLayout));

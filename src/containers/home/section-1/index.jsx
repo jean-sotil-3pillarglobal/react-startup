@@ -74,7 +74,7 @@ class SectionA extends Component {
       <Section id={verbiage(copy.id)}>
         <Parallax bgImage={verbiage(copy.background)} strength={500} className={classes.background}>
           <Paper
-            container
+            container="true"
             className={classes.hero}>
             <Callout
               title={copy.title}

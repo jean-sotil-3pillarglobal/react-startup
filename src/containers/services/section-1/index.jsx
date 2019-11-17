@@ -47,14 +47,25 @@ const styles = theme => ({
   },
   col2: {
     background: theme.palette.utils.transparent,
+    border: `${theme.spacing(1)}px solid ${ThemeColor({ variant: 'secondary' }, theme)}`,
+    borderRadius: 0,
+    margin: `0 ${theme.spacing(4)}px`,
   },
   copy: {
-    fontSize: '.7em',
-    margin: `0 0 ${theme.spacing(2)}px 0`,
+    fontSize: '.8em',
+    margin: `0 0 ${theme.spacing(3)}px 0`,
+    textAlign: 'justify',
+  },
+  description: {
     textAlign: 'justify',
   },
   h3: {
     fontSize: '1em',
+  },
+  h4: {
+    fontSize: '1em',
+    fontWeight: 300,
+    textDecoration: 'underline',
   },
   headroom: {
     padding: `${theme.spacing(2)}px 0`,
@@ -96,7 +107,9 @@ const styles = theme => ({
     padding: theme.spacing(2),
     position: 'absolute',
   },
-  itemContent: {},
+  itemContent: {
+    padding: `${theme.spacing(8)}px ${theme.spacing(6)}px`,
+  },
   itemHeader: {
     paddingBottom: 0,
     paddingTop: theme.spacing(1),
@@ -104,6 +117,7 @@ const styles = theme => ({
   itemList: {
     background: theme.palette.utils.transparent,
     marginTop: theme.spacing(2),
+    paddingRight: theme.spacing(2),
   },
   itemMedia: {
     filter: 'grayscale(100%)',
@@ -111,13 +125,15 @@ const styles = theme => ({
   },
   itemMedia2: {
     height: 200,
-    marginTop: theme.spacing(2),
   },
   itemSelected: {
     '& .MuiCardMedia-root': {
       filter: 'grayscale(0%)',
     },
     borderColor: ThemeColor({ variant }, theme),
+  },
+  itemTitle: {
+    fontSize: '.8em',
   },
   svg: {
     marginBottom: theme.spacing(2),
@@ -181,13 +197,14 @@ function SectionA (props: {
       }
     } else if (service.id) {
       view = (
-        <Paper className={classes.col2} elevation={1}>
-          <Card key={service.id} dense="true">
+        <Paper className={classes.col2} elevation={0}>
+          <Card key={service.id} dense="true" elevation={0}>
             <CardMedia
               className={classes.itemMedia2}
               image={service.background}
             />
-            <CardContent>
+            <CardContent
+              className={classes.itemContent}>
               <Typography
                 variant="h3"
                 className={classes.title}
@@ -237,97 +254,98 @@ function SectionA (props: {
         <Paper className={classes.image} />
       </Parallax>
       <SectionBlock>
-        <Grid
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="flex-start"
-          spacing={1}>
+        <Section id="service-details">
           <Grid
-            item
-            sm={12}
-            md={12}
-            lg={12}
-          >
-            <Paper className={classes.col1} elevation={0}>
-              <Typography
-                variant="h2"
-                className={classes.title}
-              >
-                <LangToggler id={category.title} />
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid
-            item
-            sm={12}
-            md={6}
-            lg={6}>
-            <Paper className={classes.itemList} elevation={0}>
-              <Typography
-                variant="body1"
-                className={classes.description}
-              >
-                <LangToggler id={category.description} />
-              </Typography>
-              {services && services.map(item => (
-                <Card key={item.id} dense="true" className={classnames(classes.item, (service && service.id === item.id) && classes.itemSelected)}>
-                  <CardHeader
-                    avatar={
-                      <Icon name={category.ico} className={classes.icon} />
-                    }
-                    className={classes.itemHeader}
-                    title={
-                      <Typography
-                        variant="h3"
-
-                      >
-                        <LangToggler id={item.title} />
-                      </Typography>
-                    }
-                  />
-                  <CardMedia
-                    className={classes.itemMedia}
-                    image={item.background}
-                  />
-                  <CardActions
-                    className={classes.itemActions}
-                    disableSpacing
-                  >
-                    <SectionLink section="service-details" key={item.id}>
-                      {link => (
-                        <Box p={1} onClick={link.onClick}>
-                          <LangButton
-                            className={classes.button}
-                            lang={category.cta}
-                            onClick={() => {
-                              setShowForm(false);
-                              onServiceListClick(item);
-                            }}
-                            variant="light"
-                            pos="right">
-                            <Icon name="keyboard_arrow_right" />
-                          </LangButton>
-                        </Box>
-                      )}
-                    </SectionLink>
-                  </CardActions>
-                </Card>
-              ))}
-            </Paper>
-          </Grid>
-          <Grid
-            item
-            sm={12}
-            md={6}
-            lg={6}>
-            <Section id="service-details">
+            container="true"
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start"
+            spacing={1}>
+            <Grid
+              item
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <Paper className={classes.col1} elevation={0}>
+                <Typography
+                  variant="h2"
+                  className={classes.title}
+                >
+                  <LangToggler id={category.title} />
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid
+              item
+              sm={12}
+              md={5}
+              lg={5}>
+              <Paper className={classes.itemList} elevation={0}>
+                <Typography
+                  variant="body1"
+                  className={classes.description}
+                >
+                  <LangToggler id={category.description} />
+                </Typography>
+                {services && services.map(item => (
+                  <Card key={item.id} dense="true" className={classnames(classes.item, (service && service.id === item.id) && classes.itemSelected)}>
+                    <CardHeader
+                      avatar={
+                        <Icon name={category.ico} color={category.color} className={classes.icon} />
+                      }
+                      className={classes.itemHeader}
+                      title={
+                        <Typography
+                          variant="h4"
+                          className={classes.itemTitle}
+                        >
+                          <LangToggler id={item.title} />
+                        </Typography>
+                      }
+                    />
+                    <CardMedia
+                      className={classes.itemMedia}
+                      image={item.background}
+                    />
+                    <CardActions
+                      className={classes.itemActions}
+                      disableSpacing
+                    >
+                      <SectionLink section="service-details" key={item.id}>
+                        {link => (
+                          <Box p={1} onClick={link.onClick}>
+                            <LangButton
+                              className={classes.button}
+                              lang={category.cta}
+                              onClick={() => {
+                                setShowForm(false);
+                                onServiceListClick(item);
+                              }}
+                              variant="light"
+                              pos="right">
+                              <Icon name="keyboard_arrow_right" />
+                            </LangButton>
+                          </Box>
+                        )}
+                      </SectionLink>
+                    </CardActions>
+                  </Card>
+                ))}
+              </Paper>
+            </Grid>
+            <Grid
+              item
+              sm={12}
+              md={7}
+              lg={7}
+            >
               <Fade>
                 {view}
               </Fade>
-            </Section>
+            </Grid>
           </Grid>
-        </Grid>
+        </Section>
       </SectionBlock>
     </Fragment>
   );

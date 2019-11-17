@@ -5,8 +5,12 @@ const Messages = (type, language) => {
       en: ' — optional',
       es: ' — opcional',
     },
+    phone: {
+      en: 'invalid phone.',
+      es: 'telefono invalido.',
+    },
     required: {
-      en: 'required field',
+      en: 'required field.',
       es: 'campo requerido.',
     },
   };

@@ -1,5 +1,4 @@
 import 'react-toggle/style.css';
-import classnames from 'classnames';
 import React, { Component, Fragment } from 'react';
 import Toggle from 'react-toggle';
 
@@ -8,7 +7,6 @@ import {
   FormControl,
   InputAdornment,
   MenuItem,
-  TextField,
   Typography,
   withStyles,
 } from '@material-ui/core';
@@ -17,53 +15,16 @@ import {
 import Icon from '../icon';
 
 import Messages from './messages';
+import Validate from './validate';
 
-// masks
-import MaskCredit from './mask/credit';
-import MaskCurrency from './mask/currency';
-import MaskCVV from './mask/cvv';
-import MaskFloat from './mask/float';
-import MaskPhone from './mask/phone';
-import MaskZip from './mask/zipcode';
+import TextField from './inputs/text';
+import PhoneField from './inputs/phone';
 
-const styles = theme => ({
-  marginNormal: {
-    '& .react-toggle-thumb': {
-      boxShadow: 'initial!important',
-    },
-    '&[class*="react-toggle"]': {
-      boxShadow: 'initial',
-      margin: `${theme.spacing(1)}px`,
-    },
-    '&[class*="toggle--checked"]': {
-      '& .react-toggle-thumb': {
-        backgroundColor: `${theme.palette.primary.main}!important`,
-        borderColor: 'initial',
-      },
-      '& .react-toggle-track': {
-        backgroundColor: `${theme.palette.primary.contrastText}!important`,
-      },
-    },
-    outline: `2px dotted ${theme.palette.utils.highlight}`,
-  },
-  root: {
-    '& svg[class*="uiSvgIcon"]': {
-      position: 'absolute',
-      right: 0,
-      top: 0,
-    },
-    '*[class*="MuiMenuItem-selected"]': {
-      backgroundColor: `${theme.palette.primary.dark}!important`,
-    },
-    backgroundColor: '#ffffff!important',
-    border: `1px solid ${theme.palette.utils.black}`,
-    boxShadow: `0 0 2px ${theme.palette.utils.black} inset`,
-    padding: '2px 8px',
-  },
-});
+const styles = () => ({});
 
 class InputLayout extends Component {
   state = {
+    error: {},
     focused: false,
   };
 
@@ -110,46 +71,56 @@ class InputLayout extends Component {
 
   handleBlur = (event) => {
     const {
-      fieldType,
       proxy: {
         handleBlur,
       },
+      fieldType,
+      name,
+      required,
+      value,
     } = this.props;
 
-    this.setState({ focused: false });
+    const check = Validate(required, value, fieldType) || null;
+
+    this.setState({
+      error: check,
+      focused: false,
+    });
 
     if (handleBlur) {
-      handleBlur(event, fieldType);
+      handleBlur(event, {
+        [name]: check,
+      });
     }
   }
 
   error = () => {
     const {
-      id,
       proxy: {
-        errors,
         language,
       },
     } = this.props;
 
-    return (
-      errors[id].check && <Typography variant="caption" color="default">{Messages(errors[id].error, language)}</Typography>
-    );
+    const {
+      error,
+    } = this.state;
+
+    return (error.check && Messages(error.error, language)) || '';
   }
 
   props: {
     classes: Object,
     fieldType: string,
-    id: string,
-    InputLabelProps: any,
     label: string,
     lang: string,
-    mask: string,
     multiline: Boolean,
+    name: String,
     onChange: Function,
     options: Array,
     placeholder: Object,
     proxy: Function,
+    required: Boolean,
+    type: String,
     value: any,
   };
 
@@ -157,78 +128,68 @@ class InputLayout extends Component {
     const {
       classes,
       fieldType,
-      multiline,
       options,
       proxy: {
         handleChange,
+        handleFocus,
         language,
         verbiage,
       },
       value,
-      mask,
     } = this.props;
-    const { focused } = this.state;
 
-    const props = JSON.parse(JSON.stringify(this.props));
+    const {
+      focused,
+      error,
+    } = this.state;
+
+    let placeholder = '';
+
+    const props = {
+      ...this.props,
+      error: error.check,
+      errorMsg: this.error(),
+      filled: value && value.length > 0,
+      focused,
+      onBlur: this.handleBlur,
+      onChange: handleChange,
+      onFocus: handleFocus,
+    };
+
     delete props.options;
     delete props.fieldType;
 
-    let label = '';
-    let placeholder = '';
-    const filled = value && value.length > 0;
-
-
     if (language && verbiage) {
-      label = props.lang && verbiage(props.lang)[language];
+      props.label = props.lang && verbiage(props.lang)[language];
       placeholder = props.placeholder && verbiage(props.placeholder)[language];
 
       delete props.lang;
       delete props.placeholder;
 
       if (props.required === false) {
-        label = (
+        props.label = (
           <Fragment>
-            {label}
+            {props.label}
             <Typography variant="caption" component="span">{Messages('optional', language)}</Typography>
           </Fragment>
         );
       }
     }
 
-    const inputProps = {
+    props.inputProps = {
       endAdornment: (
-        props.error !== undefined &&
+        error.check !== undefined &&
         <InputAdornment>
-          {!props.error &&
-            <Icon name="check" className={classnames(classes.icon)} color={value.length > 0 ? 'success' : 'default'} />
+          {!error.check &&
+            <Icon name="check" color="success" />
           }
-          {props.error &&
-            <Icon name="exclamation-triangle" className={classnames(classes.icon)} color="error" />
+          {error.check &&
+            <Icon name="error" color="error" />
           }
         </InputAdornment>
       ),
       placeholder,
     };
-
-    if (mask === 'credit') {
-      inputProps.inputComponent = MaskCredit;
-      inputProps.value = value;
-    } else if (mask === 'currency') {
-      inputProps.inputComponent = MaskCurrency;
-      inputProps.value = value;
-    } else if (mask === 'cvv') {
-      inputProps.inputComponent = MaskCVV;
-      inputProps.value = value;
-    } else if (mask === 'float') {
-      inputProps.inputComponent = MaskFloat;
-      inputProps.value = value;
-    } else if (mask === 'phone') {
-      inputProps.inputComponent = MaskPhone;
-      inputProps.value = value;
-    } else if (mask === 'zipcode') {
-      inputProps.inputComponent = MaskZip;
-      inputProps.value = value;
-    }
 
     const field = {
       checkbox: (
@@ -239,82 +200,18 @@ class InputLayout extends Component {
             onBlur={this.handleBlur}
             onChange={handleChange}
             {...props} />
-          <Typography className="toggle" variant="caption">{label}</Typography>
+          <Typography className="toggle" variant="caption">{props.label}</Typography>
         </FormControl>
       ),
       divider: <Divider variant="middle" />,
-      input: (
-        <FormControl fullWidth>
-          <TextField
-            className={classnames((focused || filled) && classes.marginNormal, props.error && 'error')}
-            fullWidth
-            label={label}
-            onBlur={this.handleBlur}
-            onChange={handleChange}
-            onFocus={this.handleFocus}
-            InputProps={inputProps}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            {...props} />
-          {props.error && this.error()}
-        </FormControl>
-      ),
-      multiple: (
-        <FormControl fullWidth>
-          <TextField
-            className={classnames((focused || filled) && classes.marginNormal)}
-            fullWidth
-            label={label}
-            onBlur={this.handleBlur}
-            onChange={handleChange}
-            onFocus={this.handleFocus}
-            select
-            SelectProps={{
-              displayEmpty: true,
-              MenuProps: {
-                anchorOrigin: {
-                  horizontal: 'left',
-                  vertical: 'bottom',
-                },
-                getContentAnchorEl: null,
-              },
-              multiple: true,
-            }}
-            InputProps={inputProps}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            {...props} >
-            {options && this.showOptions(options)}
-          </TextField>
-          {props.error && this.error()}
-        </FormControl>
-      ),
-      phone: (
-        <FormControl fullWidth>
-          <TextField
-            className={classnames((focused || filled) && classes.marginNormal, props.error && 'error')}
-            fullWidth
-            label={label}
-            onBlur={this.handleBlur}
-            onChange={handleChange}
-            onFocus={this.handleFocus}
-            InputProps={inputProps}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            {...props}
-            type="text" />
-          {props.error && this.error()}
-        </FormControl>
-      ),
+      input: <TextField {...props} />,
+      multiple: null,
+      phone: <PhoneField {...props} />,
       select: (
         <FormControl fullWidth>
           <TextField
-            className={classnames((focused || filled) && classes.marginNormal)}
             fullWidth
-            label={label}
+            label={props.label}
             onBlur={this.handleBlur}
             onChange={handleChange}
             onFocus={this.handleFocus}
@@ -333,27 +230,9 @@ class InputLayout extends Component {
               shrink: true,
             }}
             {...props}
-            InputProps={inputProps}>
+            InputProps={props.inputProps}>
             {options && this.showOptions(options)}
           </TextField>
-          {props.error && this.error()}
-        </FormControl>
-      ),
-      textarea: (
-        <FormControl fullWidth>
-          <TextField
-            className={classnames((focused || filled) && classes.marginNormal)}
-            fullWidth
-            label={label}
-            multiline={multiline}
-            onBlur={this.handleBlur}
-            onChange={handleChange}
-            onFocus={this.handleFocus}
-            InputProps={inputProps}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            {...props} />
           {props.error && this.error()}
         </FormControl>
       ),

@@ -1,10 +1,14 @@
 
-export const Validate = (event, value, type) => {
+export default function (required, value, fieldType) {
   let check = false;
   let error = false;
 
-  if (event.target.required) {
-    switch (type) {
+  const checkPhone = () => {
+    return value.length !== 10;
+  };
+
+  if (required) {
+    switch (fieldType) {
     case 'input':
       // required and empty
       check = value.length <= 0;
@@ -17,8 +21,13 @@ export const Validate = (event, value, type) => {
     }
   }
 
+  if (fieldType === 'phone' && value.length > 0) {
+    check = checkPhone();
+    error = check ? 'phone' : false;
+  }
+
   return {
     check,
     error,
   };
-};
+}
