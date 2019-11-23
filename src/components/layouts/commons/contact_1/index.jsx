@@ -53,11 +53,41 @@ const copy = LangGenerateTree([NODE, SLOT], [
 
 const init = {
   document: {},
+  errors: {},
+  forms: [],
 };
 
 class ContactFormLayout extends Component {
   constructor(props) {
     super(props);
+    const {
+      proxy: {
+        verbiage,
+      },
+    } = this.props;
+
+    init.forms = verbiage(copy.forms).map((form) => {
+      const cloneForm = form;
+
+      cloneForm.rows = form.rows && form.rows.map((row) => {
+        const cloneRow = row;
+
+        cloneRow.fields = cloneRow.fields.map((f) => {
+          const cloneField = f;
+          // add services
+          if (f.key.includes('services')) {
+            cloneField.options = copy.services;
+          }
+
+          return cloneField;
+        });
+
+        return cloneRow;
+      });
+
+      return cloneForm;
+    });
+
     this.state = init;
   }
 
@@ -68,7 +98,15 @@ class ContactFormLayout extends Component {
   }
 
   handleBlur = (event, error) => {
-    console.log(error);
+    const { errors } = this.state;
+
+    this.setState({
+      ...this.state,
+      errors: {
+        ...errors,
+        ...error,
+      },
+    });
   }
 
   handleChange = (event) => {
@@ -105,6 +143,7 @@ class ContactFormLayout extends Component {
 
     const {
       document,
+      forms,
     } = this.state;
 
     return (
@@ -118,7 +157,7 @@ class ContactFormLayout extends Component {
         <Stepper
           copy={copy}
           document={document}
-          forms={verbiage(copy.forms)}
+          forms={forms}
           onBlur={this.handleBlur}
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}

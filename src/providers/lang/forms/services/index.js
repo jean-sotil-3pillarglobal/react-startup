@@ -62,8 +62,8 @@ export const SERVICES_INFORMATION_1_1 = [
 
 export const SERVICES_INFORMATION_1_2 = [
   {
-    input_type: 'select',
-    key: 'type',
+    input_type: 'multiselect',
+    key: 'services',
     label: {
       en: 'available services',
       es: 'servicios disponibles',

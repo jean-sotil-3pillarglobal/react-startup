@@ -37,15 +37,20 @@ const Services = [
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
+    label: {
+      en: 'service 1',
+      es: 'servicio 1',
+    },
     svg: '/static/svg/hub.svg',
     title: {
       en: 'service 1',
-      es: 'seguro automóvil 1',
+      es: 'servicio 1',
     },
     url: {
       en: 'service-1',
       es: 'servicio-1',
     },
+    value: SERVICE_1,
   },
   {
     background: '/static/images/m-image-test.jpg',
@@ -66,14 +71,19 @@ const Services = [
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
+    label: {
+      en: 'service 2',
+      es: 'servicio 2',
+    },
     title: {
       en: 'service 2',
-      es: 'seguro automóvil 2',
+      es: 'servicio 2',
     },
     url: {
       en: 'service-2',
       es: 'servicio-2',
     },
+    value: SERVICE_2,
   },
   {
     background: '/static/images/m-image-test.jpg',
@@ -94,14 +104,19 @@ const Services = [
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
+    label: {
+      en: 'service 3',
+      es: 'servicio 3',
+    },
     title: {
       en: 'service 3',
-      es: 'seguro automóvil 3',
+      es: 'servicio 3',
     },
     url: {
       en: 'service-3',
       es: 'servicio-3',
     },
+    value: SERVICE_3,
   },
   {
     background: '/static/images/m-image-test.jpg',
@@ -122,6 +137,10 @@ const Services = [
       desktop: '/static/images/d-image-test.jpg',
       mobile: '/static/images/m-image-test.jpg',
     },
+    label: {
+      en: 'service 4',
+      es: 'servicio 4',
+    },
     title: {
       en: 'service 4',
       es: 'servicio 4',
@@ -130,6 +149,7 @@ const Services = [
       en: 'service-4',
       es: 'servicio-4',
     },
+    value: SERVICE_4,
   },
 ];
 

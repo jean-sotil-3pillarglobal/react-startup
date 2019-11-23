@@ -31,8 +31,8 @@ const Verbiage = {
       id: LINK_CONTACT_FORM_1,
       services,
       title: {
-        en: '<span>you are less than 1 minute away from an health insurance quote.</span>',
-        es: '<span>usted esta a menos de 1 minuto de encontar su mejor seguro de salud. </span>',
+        en: '<span>get assistance quick and free now</span>',
+        es: '<span>obtenga asistencia gratis e inmediata</span>',
       },
     },
     services_1: {
@@ -44,8 +44,8 @@ const Verbiage = {
       id: LINK_SERVICES_1,
       services,
       title: {
-        en: 'we offer special enrollment',
-        es: 'ofrecemos asistencia especializada',
+        en: 'explore our specialities',
+        es: 'explora nuestras especialidades',
       },
     },
   },
@@ -87,8 +87,8 @@ const Verbiage = {
         },
       ],
       title: {
-        en: 'the ◈ majorhub',
-        es: 'the ◈ majorhub',
+        en: 'clinica aqua',
+        es: 'clinica aqua',
       },
 
     },
@@ -213,8 +213,8 @@ const Verbiage = {
         es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
       },
       title: {
-        en: '<span>you are less than 1 minute away from an health insurance quote.</span>',
-        es: '<span>usted esta a menos de 1 minuto de encontar su mejor seguro de salud. </span>',
+        en: '<span>get assistance quick and free now.</span>',
+        es: '<span>obtenga asistencia gratis e inmediata.</span>',
       },
     },
     section_2: {

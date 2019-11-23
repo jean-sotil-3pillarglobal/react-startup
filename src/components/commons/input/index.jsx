@@ -6,7 +6,6 @@ import {
   Divider,
   FormControl,
   InputAdornment,
-  MenuItem,
   Typography,
   withStyles,
 } from '@material-ui/core';
@@ -17,8 +16,9 @@ import Icon from '../icon';
 import Messages from './messages';
 import Validate from './validate';
 
-import TextField from './inputs/text';
 import PhoneField from './inputs/phone';
+import SelectField from './inputs/select';
+import TextField from './inputs/text';
 
 const styles = () => ({});
 
@@ -28,38 +28,28 @@ class InputLayout extends Component {
     focused: false,
   };
 
-  showOptions (options) {
+  formatList (options) {
     const {
       proxy: { verbiage, language },
     } = this.props;
 
-    return verbiage && options.map((option, i) => {
+    return verbiage && verbiage(options).map((option) => {
       let { label, value } = option;
-      let node;
 
       // label as lang id, not as object (*forms)
       if (typeof label === 'string') {
-        label = verbiage(label);
+        label = verbiage(label)[language];
         value = verbiage(value);
       }
 
-      if (value !== '') {
-        const key = `${i}_select_input`;
-        node = (
-          <MenuItem key={key} value={value}>
-            {label[language]}
-          </MenuItem>
-        );
-      } else {
-        const key = `no_${i}_value_select_input`;
-        node = (
-          <MenuItem key={key} value="" disabled>
-            {label[language]}
-          </MenuItem>
-        );
+      if (typeof label === 'object') {
+        label = label[language];
       }
 
-      return node;
+      return {
+        label,
+        value,
+      };
     });
   }
 
@@ -162,9 +152,9 @@ class InputLayout extends Component {
     if (language && verbiage) {
       props.label = props.lang && verbiage(props.lang)[language];
       placeholder = props.placeholder && verbiage(props.placeholder)[language];
+      props.placeholder = placeholder;
 
       delete props.lang;
-      delete props.placeholder;
 
       if (props.required === false) {
         props.label = (
@@ -198,44 +188,16 @@ class InputLayout extends Component {
             defaultChecked={Boolean(value)}
             className={classes.marginNormal}
             onBlur={this.handleBlur}
-            onChange={handleChange}
-            {...props} />
+            onChange={handleChange} />
           <Typography className="toggle" variant="caption">{props.label}</Typography>
         </FormControl>
       ),
       divider: <Divider variant="middle" />,
       input: <TextField {...props} />,
-      multiple: null,
+      multiselect: <SelectField isMulti options={this.formatList(options || [])} {...props} />,
       phone: <PhoneField {...props} />,
-      select: (
-        <FormControl fullWidth>
-          <TextField
-            fullWidth
-            label={props.label}
-            onBlur={this.handleBlur}
-            onChange={handleChange}
-            onFocus={this.handleFocus}
-            select
-            SelectProps={{
-              displayEmpty: true,
-              MenuProps: {
-                anchorOrigin: {
-                  horizontal: 'left',
-                  vertical: 'bottom',
-                },
-                getContentAnchorEl: null,
-              },
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            {...props}
-            InputProps={props.inputProps}>
-            {options && this.showOptions(options)}
-          </TextField>
-          {props.error && this.error()}
-        </FormControl>
-      ),
+      select: <SelectField options={this.formatList(options || [])} {...props} />,
+      textarea: <TextField multiline rows={6} {...props} />,
     };
 
     return (

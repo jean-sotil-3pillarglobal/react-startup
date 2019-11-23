@@ -123,7 +123,7 @@ class Home extends Component {
         <BannerA proxy={proxy} />
         <SectionB proxy={proxy} />
 
-        <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light" />
+        <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="primary" />
 
         <SectionD proxy={proxy} />
 

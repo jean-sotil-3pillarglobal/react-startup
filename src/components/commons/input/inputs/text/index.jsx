@@ -35,17 +35,17 @@ class InputBase extends Component {
     disabled: Boolean,
     error: any,
     errorMsg: any,
-    filled: Boolean,
-    focused: Boolean,
     inputProps: children,
     inputRef: node,
     label: string,
+    multiline: Boolean,
     name: string,
     onBlur: Function,
     onChange: Function,
     onFocus: Function,
     options: Array,
     required: Boolean,
+    rows: Int,
     type: string,
     value: any,
   };
@@ -55,27 +55,27 @@ class InputBase extends Component {
       classes,
       error,
       errorMsg,
-      filled,
-      focused,
       inputProps,
       inputRef,
       label,
+      multiline,
       name,
       onBlur,
       onChange,
       onFocus,
       options,
       required,
+      rows,
       type,
       value,
     } = this.props;
 
-    console.log(focused, filled);
     return (
       <ForwardTextField
         error={error || false}
         helperText={errorMsg}
         label={label}
+        multiline={multiline}
         name={name}
         onBlur={onBlur}
         onChange={onChange}
@@ -83,6 +83,7 @@ class InputBase extends Component {
         options={options}
         ref={inputRef}
         required={required}
+        rows={rows}
         type={type}
         value={value}
         InputLabelProps={{

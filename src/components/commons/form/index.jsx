@@ -11,10 +11,13 @@ import {
 
 // provider
 import LangToggler from './../../../providers/lang/toggler';
+import ThemeBackground from './../../../providers/utils/theme.background';
 import ThemeColor from './../../../providers/utils/theme.color';
 
 // components
 import { LangInput } from './../../../components/commons/input';
+
+import Icon from './../icon';
 
 const styles = theme => ({
   button: {
@@ -25,23 +28,27 @@ const styles = theme => ({
     overflow: 'visible',
   }),
   helper: props => ({
+    background: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
-    margin: `${theme.spacing(3)}px 0`,
+    margin: `${theme.spacing(1)}px 0 ${theme.spacing(4)}px`,
+    padding: theme.spacing(2),
+  }),
+  icon: props => ({
+    color: ThemeColor(props, theme),
   }),
   item: {
     width: '100%',
   },
   root: {
     backgroundColor: 'transparent',
-    padding: `${theme.spacing(3)}px ${theme.spacing(1)}px ${theme.spacing(3)}px`,
+    padding: `${theme.spacing(3)}px 0 ${theme.spacing(3)}px`,
   },
   row: {
     marginBottom: `${theme.spacing(2)}px`,
   },
   title: props => ({
     color: ThemeColor(props, theme),
-    fontWeight: 400,
-    margin: `${theme.spacing()}px 0 0 0`,
+    margin: `${theme.spacing(4)}px 0 0 0`,
   }),
 });
 
@@ -82,9 +89,28 @@ class FormBlock extends Component {
                 <Typography variant="h4" align="left" className={classes.title}>
                   <LangToggler id={copy.label} />
                 </Typography>
-                <Typography variant="caption" className={classes.helper}>
-                  <LangToggler id={copy.label_helper} />
-                </Typography>
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.helper}
+                >
+                  <Grid
+                    item
+                    md={1}
+                  >
+                    <Icon name="keyboard_arrow_right" className={classes.icon} />
+                  </Grid>
+                  <Grid
+                    item
+                    md={11}
+                  >
+                    <Typography variant="caption">
+                      <LangToggler id={copy.label_helper} />
+                    </Typography>
+                  </Grid>
+                </Grid>
               </Fragment>
             }
 

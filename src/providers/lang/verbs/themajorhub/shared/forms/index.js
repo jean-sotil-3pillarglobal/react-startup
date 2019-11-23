@@ -27,8 +27,8 @@ export default [
     },
     icon: icons.service1,
     label: {
-      en: 'personal information',
-      es: 'información personal',
+      en: 'your information',
+      es: 'tú información',
     },
     rows: [
       {
@@ -38,8 +38,8 @@ export default [
           es: 'Datos Personales',
         },
         label_helper: {
-          en: 'Let&#39;s begin your quote. Take a minute to fill with your information.',
-          es: 'Iniciemos tu solicitud. Ingresa ahora tu información personal.',
+          en: 'Let&#39;s begin your quote. Take a <br/>minute to fill with your information.',
+          es: 'Iniciemos tu solicitud. Ingresa ahora <br/>tu información personal.',
         },
       },
     ],
@@ -63,15 +63,15 @@ export default [
     },
     icon: icons.general,
     label: {
-      en: 'how we can help?',
-      es: 'en qué podemos ayudar?',
+      en: 'your question',
+      es: 'tú consulta',
     },
     rows: [
       {
         fields: SERVICES_INFORMATION_1_2,
         label: {
-          en: 'We are here to help you!',
-          es: 'Te vamos a ayudar!',
+          en: 'Free quote in minutes',
+          es: 'Consulta gratuita en minutos',
         },
         label_helper: {
           en: 'Let&#39; us know which service you feel instered and we will contact you inmediatly with more information.',

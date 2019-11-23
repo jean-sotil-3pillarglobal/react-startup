@@ -2,9 +2,9 @@ import Color from 'color';
 
 const PRIMARY = {
   contrastText: '#000000',
-  dark: '#e0e0e0',
-  light: '#fafafa',
-  main: '#eeeeee',
+  dark: '#818a95',
+  light: '#f8f8f8',
+  main: '#e9e9e9',
 };
 
 const SECONDARY = {
@@ -71,12 +71,14 @@ const palette = {
   },
   utils: {
     black: 'rgb(45,46,47)',
+    blur: 'rgba(255,255,255,0.6)',
     darker: Color(PRIMARY.dark).fade(0.5).string(),
     grey: '#e1e2e1',
     highlight: '#4c9aff',
     light: Color(PRIMARY.main).fade(0.2).string(),
     lighter: Color(PRIMARY.main).fade(0.35).toString(),
     transparent: Color(PRIMARY.main).fade(0.8).string(),
+    white: '#ffffff',
   },
   warning: {
     contrastText: '#fff',
@@ -87,42 +89,109 @@ const palette = {
 };
 
 const overrides = {
+  MuiButton: {
+    root: {
+      border: '2px solid',
+      borderRadius: '0 0 0 0',
+      boxShadow: 'none',
+      fontSize: '.6em',
+      fontWeight: 500,
+    },
+    text: {
+      padding: '12px 16px',
+    },
+  },
   MuiFormControl: {
     root: {
-      marginBottom: '24px',
+      '& .basic-single': {
+        marginTop: '16px',
+      },
+      marginBottom: '40px',
       width: '100%',
+    },
+  },
+  MuiFormHelperText: {
+    root: {
+      '&.Mui-error': {
+        color: palette.primary.contrastText,
+      },
+      bottom: '-1.6em',
+      fontSize: '.8em',
+      fontWeight: 300,
+      position: 'absolute',
+      textTransform: 'capitalize',
     },
   },
   MuiFormLabel: {
     root: {
       fontSize: '.8em',
       fontWeight: 400,
-      marginBottom: '4px',
+    },
+  },
+  MuiInputAdornment: {
+    root: {
+      position: 'relative',
+      right: '6px',
     },
   },
   MuiInputBase: {
     input: {
       color: palette.primary.contrastText,
-      height: '2.4em',
+      height: '1.8em',
+      padding: '.6em',
+    },
+    multiline: {
       padding: '.6em',
     },
     root: {
-      backgroundColor: palette.primary.light,
+      '&.Mui-error.Mui-focused.MuiInput-root': {
+        border: `1px solid ${palette.error.main}`,
+      },
+      '&.Mui-error.MuiInput-root': {
+        border: `1px solid ${palette.error.main}`,
+      },
+      '&.Mui-focused.MuiInput-root': {
+        border: `1px solid ${palette.primary.contrastText}`,
+      },
+      '&:hover': {
+        border: `1px solid ${palette.primary.dark}`,
+      },
+      backgroundColor: palette.utils.white,
+      border: '1px solid transparent',
     },
   },
   MuiInputLabel: {
     formControl: {
-      top: '-4px',
+      top: '-6px',
     },
     root: {
       textTransform: 'capitalize',
     },
   },
+  MuiStepConnector: {
+    vertical: {
+      marginLeft: 20,
+    },
+  },
+  MuiStepContent: {
+    root: {
+      marginLeft: 20,
+    },
+  },
+  MuiStepIcon: {
+    root: {
+      fontSize: '3.4em',
+    },
+  },
   MuiStepLabel: {
     label: {
-      fontSize: '1.1em',
+      fontSize: '1.3em',
       fontWeight: 700,
+      textDecoration: 'underline',
       textTransform: 'capitalize',
+    },
+    root: {
+      padding: '7px 28px 7px 6px',
     },
   },
 };
@@ -138,8 +207,9 @@ const typography = {
   },
   caption: {
     display: 'inline-block',
-    fontSize: '1rem',
-    fontWeight: 300,
+    fontSize: '.7rem',
+    fontWeight: 500,
+    textTransform: 'uppercase',
   },
   h1: {
     fontSize: '3rem',
@@ -157,9 +227,10 @@ const typography = {
     textTransform: 'capitalize',
   },
   h4: {
-    fontSize: '1.8rem',
+    fontSize: '1.6rem',
     fontWeight: 400,
     textTransform: 'capitalize',
+
   },
   h5: {
     fontSize: '1rem',

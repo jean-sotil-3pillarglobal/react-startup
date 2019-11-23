@@ -86,7 +86,7 @@ function SectionC (props: {
 
   return (
     verbiage &&
-    <SectionBlock id={verbiage(copy.id)}>
+    <SectionBlock id={verbiage(copy.id)} variant="primary">
       <Grid
         container
         direction="row"

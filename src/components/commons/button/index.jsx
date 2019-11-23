@@ -16,17 +16,12 @@ import ThemeColor from './../../../providers/utils/theme.color';
 const styles = theme => ({
   button: props => ({
     '&:hover': {
-      background: ThemeBackground(props, theme, 'dark'),
-      borderColor: ThemeBackground(props, theme, 'light'),
+      background: ThemeBackground(props, theme, 'light'),
+      borderColor: ThemeColor(props, theme),
     },
     background: ThemeBackground(props, theme),
-    border: `2px solid ${ThemeBackground(props, theme, 'dark')}`,
-    borderRadius: '0 0 0 0',
-    boxShadow: 'none',
+    borderColor: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
-    fontSize: '1.25rem',
-    fontWeight: 500,
-    padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
   }),
   fab: props => ({
     '&:hover': {
@@ -48,7 +43,8 @@ const styles = theme => ({
     borderWidth: 0,
     color: ThemeColor(props, theme),
     cursor: 'pointer',
-    fontWeight: 500,
+    fontSize: '.8em',
+    fontWeight: 400,
     padding: `0 ${theme.spacing(2)}px`,
     textTransform: 'none',
   }),

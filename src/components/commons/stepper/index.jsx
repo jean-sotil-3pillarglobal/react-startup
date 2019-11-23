@@ -59,10 +59,13 @@ const styles = theme => ({
     '& .MuiStepIcon-root.MuiStepIcon-completed': {
       color: ThemeColor(props, theme),
     },
-    backgroundColor: ThemeBackground(props, theme),
-    border: `2px solid ${ThemeColor(props, theme)}`,
+    background: ThemeBackground(props, theme, 'main'),
+    border: `2px solid ${ThemeBackground(props, theme, 'light')}`,
+    padding: '8px',
   }),
-  submit: {},
+  submit: props => ({
+    backgroundColor: ThemeBackground(props, theme, 'dark'),
+  }),
 });
 
 const init = {
@@ -308,7 +311,7 @@ class StepperLayout extends Component {
                   onClick={handleStepperNext}
                   variant={variant}
                   typeButton={TYPES.CONTAINED}
-                  className={classnames(classes.cta, stepForms.length !== (steps + 1) && classes.submit)}>
+                  className={classnames(classes.cta, stepForms.length === (steps + 1) && classes.submit)}>
                   <Icon name="angle-right-b" className={classes.icon} />
                 </LangButton>
               </StepContent>

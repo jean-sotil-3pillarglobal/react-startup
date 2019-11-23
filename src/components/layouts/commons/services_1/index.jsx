@@ -20,19 +20,17 @@ import ThemeColor from './../../../../providers/utils/theme.color';
 // components
 import Icon from './../../../commons/icon';
 import SectionBlock from './../../section';
-import Slider from './../../../commons/slider';
 
 import { LangButton, TYPES } from './../../../commons/button';
 
 const styles = theme => ({
   card: {
-    background: 'transparent',
+    background: theme.palette.utils.blur,
     boxShadow: 'initial',
     maxWidth: '100%',
-    padding: `${theme.spacing(6)}px 0`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(6)}px`,
     position: 'relative',
     textAlign: 'center',
-    width: 300,
   },
   cardBackground: props => ({
     backgroundColor: ThemeBackground(props, theme),
@@ -50,32 +48,40 @@ const styles = theme => ({
     opacity: 0.8,
   },
   cardBody: props => ({
+    background: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
     cursor: 'default',
+    padding: theme.spacing(2),
   }),
   cardContent: {
     zIndex: 2,
   },
-  cardContentHover: {
-    opacity: 0.5,
-  },
   cardHover: props => ({
-    boxShadow: `0 0 ${theme.spacing(2)}px ${ThemeColor(props, theme)} inset`,
+    background: ThemeBackground(props, theme, 'light'),
   }),
   cardTitle: {
     color: theme.palette.primary.contrastText,
     cursor: 'default',
-    fontSize: '1.8rem',
-    fontWeight: 800,
     marginBottom: `${theme.spacing(2)}px`,
-    textTransform: 'capitalize',
   },
+  cardTitleHover: props => ({
+    color: ThemeColor(props, theme),
+  }),
   cta: {
     padding: `${theme.spacing(6)}px 0`,
   },
-  icon: props => ({
-    color: ThemeColor(props, theme),
+  icon: () => ({
     fontSize: '3.4em',
+  }),
+  item: props => ({
+    '&.MuiGrid-item:hover': {
+      filter: 'grayscale(100%)',
+    },
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover',
+    border: `2px solid ${ThemeColor(props, theme)}`,
+    flexShrink: 0,
+    overflow: 'hidden',
   }),
   items: {
     padding: 0,
@@ -163,7 +169,7 @@ function ServicesLayout (props: {
               <Icon
                 name={item.ico}
                 className={classes.icon}
-                color="secondary"
+                color={item.color}
               />
             </Grid>
             <Grid
@@ -172,9 +178,8 @@ function ServicesLayout (props: {
               sm={12}
               md={12}>
               <Typography
-                variant="body2"
-                className={classes.cardTitle}
-                color="secondary"
+                variant="h4"
+                className={classnames(classes.cardTitle, isHover && classes.cardTitleHover)}
               >
                 <LangToggler id={item.title} />
               </Typography>
@@ -185,8 +190,8 @@ function ServicesLayout (props: {
               sm={12}
               md={12}>
               <Typography
-                variant="body2"
-                className={classnames(classes.cardBody, !isHover && classes.cardContentHover)}>
+                variant="caption"
+                className={classes.cardBody}>
                 <LangToggler id={item.body} />
               </Typography>
             </Grid>
@@ -199,7 +204,7 @@ function ServicesLayout (props: {
               <LangButton
                 lang={item.cta}
                 onClick={evt => handleServiceCategoryClick(evt, item)}
-                variant={!isHover ? 'dark' : 'dark2'}
+                variant={!isHover ? 'primary' : 'dark2'}
                 typeButton={TYPES.CONTAINED}
               />
             </Grid>
@@ -220,7 +225,8 @@ function ServicesLayout (props: {
         direction="row"
         justify="center"
         alignItems="center"
-        className={classes.items}>
+        className={classes.items}
+        spacing={8}>
         <Grid
           item
           sm={12}
@@ -238,16 +244,28 @@ function ServicesLayout (props: {
             <LangToggler id={copy.body} />
           </Typography>
         </Grid>
-        <Grid
-          item
-          sm={12}
-          md={12}
-          className={classes.slider}>
-          <Slider
-            items={items}
-            onHover={handleHover}
-          />
-        </Grid>
+        {items.map(item => (
+          <Grid
+            item
+            key={item.id}
+            className={classes.item}
+            style={{
+              backgroundImage: `url(${item.image})`,
+            }}
+            onMouseEnter={() => handleHover({
+              hover: true,
+              id: item.id,
+            })}
+            onMouseLeave={() => handleHover({
+              hover: false,
+            })}
+            sm={12}
+            md={4}
+            lg={4}
+          >
+            {item.render()}
+          </Grid>
+        ))}
       </Grid>
     </SectionBlock>
   );
