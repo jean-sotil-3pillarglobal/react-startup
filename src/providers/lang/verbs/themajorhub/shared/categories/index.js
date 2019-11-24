@@ -8,6 +8,7 @@ const {
   CATEGORY_2,
   CATEGORY_3,
   CATEGORY_4,
+  CATEGORY_5,
 } = constants;
 
 const Services = [
@@ -48,12 +49,12 @@ const Services = [
     ],
     svg: '/static/svg/team_work.svg',
     title: {
-      en: 'category 1',
-      es: 'categoria 1',
+      en: 'dermatología estética',
+      es: 'dermatología estética',
     },
     url: {
-      en: '/services/category-1',
-      es: '/servicios/categoria-1',
+      en: '/services/dermatologia-estetica',
+      es: '/servicios/dermatologia-estetica',
     },
   },
   {
@@ -89,12 +90,12 @@ const Services = [
     ],
     svg: '/static/svg/team_work.svg',
     title: {
-      en: 'category 2',
-      es: 'categoria 2',
+      en: 'dermatología clinica',
+      es: 'dermatología clinica',
     },
     url: {
-      en: '/services/category-2',
-      es: '/servicios/categoria-2',
+      en: '/services/dermatologia-clinica',
+      es: '/servicios/dermatologia-clinica',
     },
   },
   {
@@ -115,12 +116,12 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     title: {
-      en: 'category 3',
-      es: 'categoria 3',
+      en: 'estética y spa clínico',
+      es: 'estética y spa clínico',
     },
     url: {
-      en: '/services/category-3',
-      es: '/servicios/categoria-3',
+      en: '/services/estetica-y-spa-clinico',
+      es: '/servicios/estetica-y-spa-clinico',
     },
   },
   {
@@ -141,12 +142,38 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     title: {
-      en: 'category 4',
-      es: 'categoria 4',
+      en: 'nutricion',
+      es: 'nutricion',
     },
     url: {
-      en: '/services/category-4',
-      es: '/servicios/categoria-4',
+      en: '/services/nutricion',
+      es: '/servicios/nutricion',
+    },
+  },
+  {
+    background: '/static/images/m-image-test.jpg',
+    body: {
+      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+    },
+    color: '#ef1e83',
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: CATEGORY_5,
+    image: {
+      desktop: '/static/images/d-image-test.jpg',
+      mobile: '/static/images/m-image-test.jpg',
+    },
+    title: {
+      en: 'terapia fisica',
+      es: 'terapia fisica',
+    },
+    url: {
+      en: '/services/terapia-fisica',
+      es: '/servicios/terapia-fisica',
     },
   },
 ];

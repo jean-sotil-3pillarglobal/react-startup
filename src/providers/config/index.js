@@ -5,6 +5,7 @@ export const constants = {
   CATEGORY_2: 'category_2',
   CATEGORY_3: 'category_3',
   CATEGORY_4: 'category_4',
+  CATEGORY_5: 'category_5',
 
   // general
   GENERAL: 'general',

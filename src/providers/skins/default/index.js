@@ -71,7 +71,7 @@ const palette = {
   },
   utils: {
     black: 'rgb(45,46,47)',
-    blur: 'rgba(255,255,255,0.6)',
+    blur: 'rgba(255,255,255,0.3)',
     darker: Color(PRIMARY.dark).fade(0.5).string(),
     grey: '#e1e2e1',
     highlight: '#4c9aff',
@@ -227,10 +227,9 @@ const typography = {
     textTransform: 'capitalize',
   },
   h4: {
-    fontSize: '1.6rem',
+    fontSize: '2.1rem',
     fontWeight: 400,
     textTransform: 'capitalize',
-
   },
   h5: {
     fontSize: '1rem',

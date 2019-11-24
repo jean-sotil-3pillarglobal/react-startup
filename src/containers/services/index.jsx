@@ -206,7 +206,7 @@ class Services extends Component {
               variant="light"
             />
           </SectionA>
-          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light2" />
+          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
           <Footer />
         </Fragment>
         }

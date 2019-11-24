@@ -4,9 +4,16 @@ import classnames from 'classnames';
 import React, { useState } from 'react';
 
 import {
-  Box,
   Card,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Fab,
   Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   Typography,
   withStyles,
 } from '@material-ui/core';
@@ -24,71 +31,67 @@ import SectionBlock from './../../section';
 import { LangButton, TYPES } from './../../../commons/button';
 
 const styles = theme => ({
-  card: {
-    background: theme.palette.utils.blur,
+  card: props => ({
+    background: ThemeBackground(props, theme, 'main'),
+    border: `1px solid ${ThemeColor(props, theme)}`,
     boxShadow: 'initial',
-    maxWidth: '100%',
-    padding: `${theme.spacing(2)}px ${theme.spacing(6)}px`,
+    flexShrink: 0,
+    maxWidth: '120%',
     position: 'relative',
     textAlign: 'center',
-  },
-  cardBackground: props => ({
-    backgroundColor: ThemeBackground(props, theme),
-    content: '',
-    display: 'block',
-    height: '100%',
-    left: 0,
-    opacity: 0.4,
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-    zIndex: -1,
-  }),
-  cardBackgroundHover: {
-    opacity: 0.8,
-  },
-  cardBody: props => ({
-    background: ThemeBackground(props, theme, 'light'),
-    color: ThemeColor(props, theme),
-    cursor: 'default',
-    padding: theme.spacing(2),
   }),
   cardContent: {
     zIndex: 2,
   },
-  cardHover: props => ({
+  cardHover: {},
+  cardList: props => ({
     background: ThemeBackground(props, theme, 'light'),
-  }),
-  cardTitle: {
-    color: theme.palette.primary.contrastText,
+    color: ThemeColor(props, theme),
     cursor: 'default',
-    marginBottom: `${theme.spacing(2)}px`,
+    padding: theme.spacing(2),
+    textAlign: 'right',
+  }),
+  cardMedia: {
+    height: 60,
   },
+  cardTitle: props => ({
+    color: ThemeColor(props, theme),
+    cursor: 'default',
+  }),
   cardTitleHover: props => ({
     color: ThemeColor(props, theme),
+    textDecoration: 'underline',
   }),
   cta: {
-    padding: `${theme.spacing(6)}px 0`,
+    padding: `${theme.spacing(2)}px 0`,
   },
+  featuredText: props => ({
+    background: ThemeBackground(props, theme, 'main'),
+    display: 'inline-block',
+    fontSize: '.8em',
+    marginLeft: theme.spacing(2),
+    padding: '2px',
+    textTransform: 'uppercase',
+  }),
   icon: () => ({
-    fontSize: '3.4em',
+    fontSize: '1.4em',
   }),
   item: props => ({
-    '&.MuiGrid-item:hover': {
-      filter: 'grayscale(100%)',
-    },
-    backgroundPosition: 'center center',
-    backgroundSize: 'cover',
-    border: `2px solid ${ThemeColor(props, theme)}`,
-    flexShrink: 0,
+    border: `0 solid ${ThemeColor(props, theme)}`,
+    marginBottom: theme.spacing(10),
     overflow: 'hidden',
   }),
   items: {
     padding: 0,
     textAlign: 'center',
   },
-  slider: {
-    padding: `0 ${theme.spacing(2)}px`,
+  serviceIcon: {
+    fontSize: '.5em',
+  },
+  serviceTitle: {
+    lineHeight: '0!important',
+    marginBottom: 0,
+    marginTop: 0,
   },
   subtitle: props => ({
     color: ThemeColor(props, theme),
@@ -143,72 +146,99 @@ function ServicesLayout (props: {
     });
   };
 
-  const items = verbiage && verbiage(copy.categories).map((item, id) => {
+  const services = verbiage && verbiage(copy.services);
+
+  const categories = verbiage && verbiage(copy.categories).map((item, id) => {
     const isHover = useHover.id === `item-${id}`;
+
+    const filteredServices = services.filter(service => service.categories && service.categories.includes(item.id)) || [];
 
     return ({
       id: `item-${id}`,
-      image: item.background,
       render: () => (
         <Card
           className={classnames(classes.card, isHover && classes.cardHover)}
           key={item.id}>
-          <Box
-            className={classnames(classes.cardBackground, isHover && classes.cardBackgroundHover)}
-            component="span"
+          <CardHeader
+            avatar={
+              <Fab onClick={evt => handleServiceCategoryClick(evt, item)}>
+                <Icon
+                  name={item.ico}
+                  className={classes.icon}
+                  color={item.color}
+                />
+              </Fab>
+            }
+            title={<LangToggler id={item.title} />}
+            className={classnames(classes.cardTitle, isHover && classes.cardTitleHover)}
           />
-          <Grid
-            container
-            className={classes.cardContent}
-          >
+          <CardMedia
+            image={item.background}
+            title={item.title[language] || ''}
+            className={classes.cardMedia}
+          />
+          <CardContent>
             <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}>
-              <Icon
-                name={item.ico}
-                className={classes.icon}
-                color={item.color}
-              />
+              container
+              className={classes.cardContent}
+            >
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}>
+                <List
+                  className={classes.cardList}>
+                  {filteredServices.map((service, i) => {
+                    const key = `service-title-${id}-${i}`;
+                    return (
+                      <ListItem
+                        button
+                        key={key}
+                      >
+                        <ListItemIcon>
+                          <Icon
+                            name={item.ico}
+                            className={classes.serviceIcon}
+                            color={item.color}
+                          />
+                        </ListItemIcon>
+                        <ListItemText
+                          className={classes.serviceTitle}
+                          primary={(
+                            <Typography
+                              variant="caption"
+                            >
+                              <LangToggler id={service.label} />
+                              {service.featured &&
+                                <Typography
+                                  variant="caption"
+                                  className={classes.featuredText}>
+                                  <LangToggler id={service.featuredText} />
+                                </Typography>
+                              }
+                            </Typography>
+                          )} />
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                className={classes.cta}>
+                <LangButton
+                  lang={item.cta}
+                  onClick={evt => handleServiceCategoryClick(evt, item)}
+                  variant={!isHover ? 'primary' : 'dark2'}
+                  typeButton={TYPES.CONTAINED}
+                />
+              </Grid>
             </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}>
-              <Typography
-                variant="h4"
-                className={classnames(classes.cardTitle, isHover && classes.cardTitleHover)}
-              >
-                <LangToggler id={item.title} />
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}>
-              <Typography
-                variant="caption"
-                className={classes.cardBody}>
-                <LangToggler id={item.body} />
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              className={classes.cta}>
-              <LangButton
-                lang={item.cta}
-                onClick={evt => handleServiceCategoryClick(evt, item)}
-                variant={!isHover ? 'primary' : 'dark2'}
-                typeButton={TYPES.CONTAINED}
-              />
-            </Grid>
-          </Grid>
+          </CardContent>
         </Card>
       ),
     });
@@ -226,7 +256,7 @@ function ServicesLayout (props: {
         justify="center"
         alignItems="center"
         className={classes.items}
-        spacing={8}>
+        spacing={4}>
         <Grid
           item
           sm={12}
@@ -244,14 +274,11 @@ function ServicesLayout (props: {
             <LangToggler id={copy.body} />
           </Typography>
         </Grid>
-        {items.map(item => (
+        {categories.map(item => (
           <Grid
             item
             key={item.id}
             className={classes.item}
-            style={{
-              backgroundImage: `url(${item.image})`,
-            }}
             onMouseEnter={() => handleHover({
               hover: true,
               id: item.id,

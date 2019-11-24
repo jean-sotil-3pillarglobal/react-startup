@@ -44,9 +44,9 @@ class LangToggler extends Component {
     if (verbiage) {
       copy = verbiage(id);
 
-      if (typeof id === 'string' && copy) {
+      if (id && typeof id === 'string' && copy) {
         copy = copy[language] || 'dummy-verbiage';
-      } else if (id[language]) {
+      } else if (id && id[language]) {
         copy = id[language] || 'dummy-language';
       } else {
         copy = 'dummy-not-found';
