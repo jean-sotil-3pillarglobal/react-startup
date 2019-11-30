@@ -52,6 +52,10 @@ const Services = [
       en: 'dermatología estética',
       es: 'dermatología estética',
     },
+    unknown: {
+      en: 'sorry, we could not find that service.',
+      es: 'disculpa, no pudimos encontrar ese servicio.',
+    },
     url: {
       en: '/services/dermatologia-estetica',
       es: '/servicios/dermatologia-estetica',
@@ -93,6 +97,10 @@ const Services = [
       en: 'dermatología clinica',
       es: 'dermatología clinica',
     },
+    unknown: {
+      en: 'sorry, we could not find that service.',
+      es: 'disculpa, no pudimos encontrar ese servicio.',
+    },
     url: {
       en: '/services/dermatologia-clinica',
       es: '/servicios/dermatologia-clinica',
@@ -118,6 +126,10 @@ const Services = [
     title: {
       en: 'estética y spa clínico',
       es: 'estética y spa clínico',
+    },
+    unknown: {
+      en: 'sorry, we could not find that service.',
+      es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
       en: '/services/estetica-y-spa-clinico',
@@ -145,6 +157,10 @@ const Services = [
       en: 'nutricion',
       es: 'nutricion',
     },
+    unknown: {
+      en: 'sorry, we could not find that service.',
+      es: 'disculpa, no pudimos encontrar ese servicio.',
+    },
     url: {
       en: '/services/nutricion',
       es: '/servicios/nutricion',
@@ -170,6 +186,10 @@ const Services = [
     title: {
       en: 'terapia fisica',
       es: 'terapia fisica',
+    },
+    unknown: {
+      en: 'sorry, we could not find that service.',
+      es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
       en: '/services/terapia-fisica',

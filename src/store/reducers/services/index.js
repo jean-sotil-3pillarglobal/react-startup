@@ -3,7 +3,7 @@ import {
   SET_SERVICE,
 } from '../../actions/services';
 
-export const getCategoryReducer = (state = {}, action) => {
+export const getCategoryReducer = (state = null, action) => {
   switch (action.type) {
   case SET_CATEGORY:
     return action.payload;
@@ -12,7 +12,7 @@ export const getCategoryReducer = (state = {}, action) => {
   }
 };
 
-export const getServiceReducer = (state = {}, action) => {
+export const getServiceReducer = (state = null, action) => {
   switch (action.type) {
   case SET_SERVICE:
     return action.payload;

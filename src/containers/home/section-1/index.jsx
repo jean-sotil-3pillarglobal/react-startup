@@ -14,16 +14,16 @@ import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import { LangButton } from './../../../components/commons/button';
 import Callout from './../../../components/commons/callout/';
 import Icon from './../../../components/commons/icon';
+import SmartImg from './../../../components/commons/img';
 
 const styles = theme => ({
   background: {},
   button: {
-    margin: 0,
+    margin: '0 auto',
   },
   callout: {
-    bottom: theme.spacing(4),
-    left: theme.spacing(4),
-    position: 'absolute',
+    margin: '0 auto 2%',
+    textAlign: 'center',
     width: '60%',
     zIndex: 1,
   },
@@ -33,7 +33,6 @@ const styles = theme => ({
   },
   hero: {
     background: 'transparent',
-    height: 600,
     padding: 0,
     position: 'relative',
     zIndex: 1,
@@ -45,6 +44,11 @@ const styles = theme => ({
     width: '100%',
     zIndex: -1,
   },
+  logo: {
+    display: 'block',
+    margin: '100px auto 4px',
+    width: 140,
+  },
 });
 
 
@@ -55,6 +59,7 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'background',
   'cta',
   'id',
+  'logo',
   'subtitle',
   'title',
 ]);
@@ -75,11 +80,14 @@ class SectionA extends Component {
         <Parallax bgImage={verbiage(copy.background)} strength={500} className={classes.background}>
           <Paper
             container="true"
-            className={classes.hero}>
+            className={classes.hero}
+            elevation={0}>
+            <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
             <Callout
+              align="center"
               title={copy.title}
               subtitle={copy.subtitle}
-              variant="light"
+              variant="dark"
               className={classes.callout}>
               <LangButton
                 className={classes.button}

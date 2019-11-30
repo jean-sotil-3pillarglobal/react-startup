@@ -8,7 +8,7 @@ import CONTENT_SERVICE_2 from './service-2';
 // constants
 const {
   // categories
-  CATEGORY_1,
+  CATEGORY_3,
 
   // services
   SERVICE_1,
@@ -19,7 +19,7 @@ const {
 } = constants;
 
 
-const currentCategory = CATEGORY_1;
+const currentCategory = CATEGORY_3;
 
 const Services = [
   {
@@ -36,11 +36,6 @@ const Services = [
       en: 'get quote now',
       es: 'consultar ahora',
     },
-    featured: true,
-    featuredText: {
-      en: 'new',
-      es: 'nuevo',
-    },
     ico: 'cloud-download',
     id: `${currentCategory}-${SERVICE_1}`,
     image: {
@@ -48,16 +43,16 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     label: {
-      en: 'rellenos',
-      es: 'rellenos',
+      en: 'EMSCULPT',
+      es: 'EMSCULPT',
     },
     title: {
-      en: 'rellenos',
-      es: 'rellenos',
+      en: 'EMSCULPT',
+      es: 'EMSCULPT',
     },
     url: {
-      en: 'rellenos',
-      es: 'rellenos',
+      en: 'emsculpt',
+      es: 'emsculpt',
     },
     value: `${currentCategory}-${SERVICE_1}`,
   },
@@ -82,16 +77,16 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     label: {
-      en: 'toxina botulinica',
-      es: 'toxina botulinica',
+      en: 'venus legacy',
+      es: 'venus legacy',
     },
     title: {
-      en: 'toxina botulinica',
-      es: 'toxina botulinica',
+      en: 'venus legacy',
+      es: 'venus legacy',
     },
     url: {
-      en: 'toxina-botulinica',
-      es: 'toxina-botulinica',
+      en: 'venus-legacy',
+      es: 'venus-legacy',
     },
     value: `${currentCategory}-${SERVICE_2}`,
   },
@@ -115,16 +110,16 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     label: {
-      en: 'rejuvenecimiento láser',
-      es: 'rejuvenecimiento láser',
+      en: 'ondas de choque',
+      es: 'ondas de choque',
     },
     title: {
-      en: 'rejuvenecimiento láser',
-      es: 'rejuvenecimiento láser',
+      en: 'ondas de choque',
+      es: 'ondas de choque',
     },
     url: {
-      en: 'rejuvenecimiento-laser',
-      es: 'rejuvenecimiento-laser',
+      en: 'ondas-de-choque',
+      es: 'ondas-de-choque',
     },
     value: `${currentCategory}-${SERVICE_3}`,
   },
@@ -181,16 +176,16 @@ const Services = [
       mobile: '/static/images/m-image-test.jpg',
     },
     label: {
-      en: 'eliminación de tatuajes',
-      es: 'eliminación de tatuajes',
+      en: 'oxygeneo',
+      es: 'oxygeneo',
     },
     title: {
-      en: 'eliminación de tatuajes',
-      es: 'eliminación de tatuajes',
+      en: 'oxygeneo',
+      es: 'oxygeneo',
     },
     url: {
-      en: 'eliminación-de-tatuajes',
-      es: 'eliminación-de-tatuajes',
+      en: 'oxygeneo',
+      es: 'oxygeneo',
     },
     value: `${currentCategory}-${SERVICE_5}`,
   },

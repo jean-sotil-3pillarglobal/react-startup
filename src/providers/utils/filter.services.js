@@ -3,5 +3,5 @@ export function FindServiceCategoryByPath (type, categories, language) {
 }
 
 export function FindServiceByPath (url, services, language) {
-  return services.find(service => service.url[language] === url);
+  return services.find(service => service.url[language].includes(url));
 }

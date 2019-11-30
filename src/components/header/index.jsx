@@ -46,7 +46,7 @@ const drawerWidth = 240;
 const styles = theme => ({
   appBar: props => ({
     background: ThemeBackground(!props.isHeaderVisible ? { variant: 'secondary' } : { variant: 'primary' }, theme),
-    border: `2px solid ${theme.palette.secondary.light}`,
+    border: `1px solid ${ThemeColor(!props.isHeaderVisible ? { variant: 'secondary' } : { variant: 'primary' }, theme)}`,
     padding: 0,
     transition: theme.transitions.create(['background-color', 'margin', 'width'], {
       duration: theme.transitions.duration.leavingScreen,
@@ -111,7 +111,7 @@ const styles = theme => ({
     fontSize: '1rem',
   },
   iconFab: props => ({
-    color: ThemeColor(props.isHeaderVisible ? { variant: 'primary' } : { variant: 'dark2' }, theme),
+    color: ThemeColor(props.isHeaderVisible ? { variant: 'light' } : { variant: 'secondary' }, theme),
     fontSize: '1rem',
   }),
   logo: {
@@ -132,11 +132,10 @@ const styles = theme => ({
   navbar: {
     background: 'transparent',
     float: 'right',
-    margin: 0,
     padding: 0,
   },
   phone: () => ({
-    color: ThemeColor({ variant: 'secondary' }, theme),
+    color: ThemeColor({ variant: 'primary' }, theme),
     marginRight: theme.spacing(1),
   }),
   root: () => ({
@@ -145,7 +144,6 @@ const styles = theme => ({
     },
   }),
   socialButtons: {
-    marginLeft: theme.spacing(3),
     padding: 0,
   },
   socialButtonsFixed: {
@@ -156,8 +154,8 @@ const styles = theme => ({
     zIndex: 999,
   },
   topHeader: {
-    background: theme.palette.secondary.main,
-    padding: `0 ${theme.spacing(2)}px`,
+    background: theme.palette.primary.light,
+    padding: `${theme.spacing(1)}px ${theme.spacing(8)}px`,
   },
   topHeaderSocial: {
     margin: 0,
@@ -226,13 +224,13 @@ class Header extends Component {
         <CssBaseline />
         <Grid
           container
-          alignItems="center"
+          alignItems="flex-end"
           direction="row"
-          justify="flex-start"
+          justify="flex-end"
           className={classes.topHeader}>
           <Grid
             item
-            sm={6}
+            sm={12}
             md={3}
             lg={3}>
             <LangButton
@@ -244,19 +242,19 @@ class Header extends Component {
           </Grid>
           <Grid
             item
-            sm={6}
-            md={2}
-            lg={2}
+            sm={12}
+            md={9}
+            lg={9}
             className={classes.socialButtons}
           >
-            <Box display="flex" flexDirection="row-reverse" p={1} m={1} className={classnames(classes.topHeaderSocial, !isHeaderVisible && classes.socialButtonsFixed)}>
+            <Box display="flex" flexDirection="row" justifyContent="flex-end" p={1} m={1} className={classnames(classes.topHeaderSocial, !isHeaderVisible && classes.socialButtonsFixed)}>
               {copy.social.map(item => (
                 <Box key={item.label} p={1}>
                   <LangButton
                     href={verbiage(item.link)}
                     key={item.label}
                     typeButton={TYPES.FAB}
-                    variant={(isHeaderVisible && 'light') || 'dark2'}
+                    variant={(isHeaderVisible && 'dark') || 'dark2'}
                   >
                     <Icon name={verbiage(item.label)} className={classes.iconFab} />
                   </LangButton>
@@ -306,7 +304,7 @@ class Header extends Component {
                       flexDirection="row"
                       p={1}
                       m={1}
-                      alignItems="center"
+                      alignItems="flex-end"
                       className={classes.navbar}>
                       {copy.publics.map((item) => {
                         const featured = verbiage(item.featured);

@@ -20,7 +20,7 @@ import ContactFormLayout from './../../../components/layouts/commons/contact_1';
 import SectionBlock from './../../../components/layouts/section';
 import SVGComponent from './../../../components/commons/svg';
 
-const variant = 'dark';
+const variant = 'primary';
 
 const styles = theme => ({
   background: {},
@@ -35,6 +35,8 @@ const styles = theme => ({
   },
   title: {
     color: ThemeColor({ variant }, theme),
+    // textAlign: 'center',
+    fontSize: '.9em',
   },
 });
 
@@ -78,7 +80,7 @@ class SectionA extends Component {
             md={12}
             lg={12}>
             <Typography
-              variant="h2"
+              variant="caption"
               className={classes.title}
             >
               <LangToggler id={copy.title} />
@@ -91,7 +93,7 @@ class SectionA extends Component {
             lg={6}>
             <ContactFormLayout
               proxy={proxy}
-              variant="primary"
+              variant={variant}
             />
           </Grid>
           <Grid

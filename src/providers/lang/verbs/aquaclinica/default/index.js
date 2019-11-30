@@ -6,6 +6,7 @@ import {
 } from '../../../../config';
 
 import categories from '../shared/categories';
+import clerks from '../shared/clerks';
 import forms from '../shared/forms';
 import promos from '../shared/promos';
 import services from '../shared/services';
@@ -21,6 +22,13 @@ const {
 
 const Verbiage = {
   commons: {
+    clerks_1: {
+      clerks,
+      title: {
+        en: 'our specialists',
+        es: 'nuestros especialistas',
+      },
+    },
     contact_1: {
       back: {
         en: '< previous',
@@ -30,10 +38,6 @@ const Verbiage = {
       forms,
       id: LINK_CONTACT_FORM_1,
       services,
-      title: {
-        en: '<span>get assistance quick and free now</span>',
-        es: '<span>obtenga asistencia gratis e inmediata</span>',
-      },
     },
     services_1: {
       body: {
@@ -71,8 +75,8 @@ const Verbiage = {
       publics,
       social: [
         {
-          icon: 'instagram',
-          label: 'instagram',
+          icon: 'facebook',
+          label: 'facebook',
           link: '#instagram',
         },
         {
@@ -204,17 +208,21 @@ const Verbiage = {
     section_1: {
       background: '/static/images/d-bg-1.jpg',
       cta: {
-        en: 'learn more',
-        es: 'inicia ahora',
+        en: 'check available services',
+        es: 'ver servicios disponibles',
       },
       id: LINK_SECTION_1,
+      logo: {
+        desktop: '/static/images/logo.jpg',
+        mobile: '/static/images/logo.jpg',
+      },
       subtitle: {
         en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
         es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
       },
       title: {
-        en: '<span>get assistance quick and free now.</span>',
-        es: '<span>obtenga asistencia gratis e inmediata.</span>',
+        en: '<span>welcome, we are clínica aqua</span>',
+        es: '<span>bienvenido, somos clínica aqua</span>',
       },
     },
     section_2: {
@@ -222,62 +230,27 @@ const Verbiage = {
         en: 'with over 30 years of experience, we have helped tens of thousands of people get the right coverage to meet their needs. simply click the below button to get a no obligation quote.',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
       },
+      cta: {
+        en: 'create your free quote',
+        es: 'hacer consulta gratuita',
+      },
       id: LINK_SECTION_2,
-      items: [
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          svg: '/static/svg/team_work.svg',
-          title: {
-            en: '1. your insurance type.',
-            es: '1. elige seguro',
-          },
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          svg: '/static/svg/team_work.svg',
-          title: {
-            en: '2. set your contact information.',
-            es: '2. proveé tu información',
-          },
-        },
-        {
-          body: {
-            en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-            es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-          },
-          cta: {
-            en: 'get a free quote now',
-            es: 'obtener asistencia ahora',
-          },
-          svg: '/static/svg/team_work.svg',
-          title: {
-            en: '3. get quick and free assistance',
-            es: '3. obtén asistencia rápida y gratuita',
-          },
-        },
-      ],
       subtitle: {
         en: '<span>Get our health services</br> information, quick and free.</span>',
         es: '<span>Obtén información sobre nuestros servicios</br> de salud, de manera fácil y gratuita.</span>',
       },
       svg: '/static/svg/team_work.svg',
       title: {
-        en: 'We work with the best!',
-        es: 'Trabajamos con los mejores!',
+        en: 'We work with the best',
+        es: 'Trabajamos con los mejores',
       },
     },
     section_4: {
       id: LINK_SECTION_4,
       svg: '/static/svg/team_work.svg',
       title: {
-        en: 'get your quote now',
-        es: '<span>haz tu consulta<br>ahora mismo!</span>',
+        en: 'we would love helping you to find the best attention and health threatments, make your free quote now.',
+        es: 'queremos brindarte la mejor atención. <br/>consulta sobre nuestros servicios ahora mismo.',
       },
     },
     section_5: {

@@ -6,13 +6,12 @@ import React, { Component } from 'react';
 import { cloneDeep } from 'lodash';
 
 import {
-  Typography,
   withStyles,
 } from '@material-ui/core';
 
 // provider
 import LangGenerateTree from './../../../../providers/utils/lang.generate.tree';
-import LangToggler from './../../../../providers/lang/toggler';
+// import LangToggler from './../../../../providers/lang/toggler';
 import ThemeBackground from './../../../../providers/utils/theme.background';
 import ThemeColor from './../../../../providers/utils/theme.color';
 
@@ -92,7 +91,7 @@ class ContactFormLayout extends Component {
   }
 
   props: {
-    classes: Object,
+    // classes: Object,
     proxy: Object,
     variant: String,
   }
@@ -132,7 +131,6 @@ class ContactFormLayout extends Component {
 
   render () {
     const {
-      classes,
       proxy,
       variant,
     } = this.props;
@@ -150,20 +148,17 @@ class ContactFormLayout extends Component {
       verbiage &&
       <Section id={verbiage(copy.id)}>
         <Fade left>
-          <Typography variant="body2" component="p" className={classes.title}>
-            <LangToggler id={copy.title} />
-          </Typography>
+          <Stepper
+            copy={copy}
+            document={document}
+            forms={forms}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
+            onSubmit={this.handleSubmit}
+            proxy={proxy}
+            variant={variant}
+          />
         </Fade>
-        <Stepper
-          copy={copy}
-          document={document}
-          forms={forms}
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          onSubmit={this.handleSubmit}
-          proxy={proxy}
-          variant={variant}
-        />
       </Section>
     );
   }

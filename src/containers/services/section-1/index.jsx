@@ -2,7 +2,7 @@ import { Parallax } from 'react-parallax';
 import { Section, SectionLink } from 'react-scroll-section';
 import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
-import Fade from 'react-reveal/Fade';
+// import Fade from 'react-reveal/Fade';
 
 import React, {
   Fragment,
@@ -40,7 +40,9 @@ const styles = theme => ({
   caption: () => ({
     background: ThemeBackground({ variant }, theme, 'dark'),
     color: ThemeColor({ variant }, theme),
+    fontSize: '.5em',
     padding: theme.spacing(4),
+    width: '100%',
   }),
   col1: {
     backgroundColor: 'transparent',
@@ -52,9 +54,10 @@ const styles = theme => ({
     margin: `0 ${theme.spacing(4)}px`,
   },
   copy: {
-    fontSize: '.8em',
-    margin: `0 0 ${theme.spacing(3)}px 0`,
+    fontSize: '.7em',
+    margin: `${theme.spacing(3)}px 0 0 0`,
     textAlign: 'justify',
+    width: '100%',
   },
   description: {
     textAlign: 'justify',
@@ -62,11 +65,7 @@ const styles = theme => ({
   h3: {
     fontSize: '1em',
   },
-  h4: {
-    fontSize: '1em',
-    fontWeight: 300,
-    textDecoration: 'underline',
-  },
+  h4: {},
   headroom: {
     padding: `${theme.spacing(2)}px 0`,
     width: '100%',
@@ -76,7 +75,7 @@ const styles = theme => ({
   },
   image: {
     background: 'transparent',
-    height: 300,
+    height: 400,
     padding: 0,
     position: 'relative',
     zIndex: 1,
@@ -156,6 +155,7 @@ function SectionA (props: {
   children: any,
   classes: Object,
   data: Object,
+  match: Object,
   onServiceListClick: Function,
   proxy: Object,
 }) {
@@ -163,6 +163,11 @@ function SectionA (props: {
     children,
     classes,
     data,
+    match: {
+      params: {
+        serviceUrl,
+      },
+    },
     onServiceListClick,
     proxy,
   } = props;
@@ -187,15 +192,20 @@ function SectionA (props: {
         );
       });
 
-      if (service === false) {
+      if (!service && serviceUrl) {
         view = (
           <Fragment>
-            <Fragment>Service Not Found</Fragment>
+            <Typography
+              variant="caption"
+              className={classes.caption}
+            >
+              <LangToggler id={category.unknown} />
+            </Typography>
             {view}
           </Fragment>
         );
       }
-    } else if (service.id) {
+    } else if (service && service.id) {
       view = (
         <Paper className={classes.col2} elevation={0}>
           <Card key={service.id} dense="true" elevation={0}>
@@ -213,14 +223,19 @@ function SectionA (props: {
               </Typography>
               {service.content &&
                 <Fragment>
-                  {service.content.map(item => (
-                    <Typography
-                      className={classnames(classes.copy, classes[item.component])}
-                      variant={item.component}
-                    >
-                      <LangToggler id={item.copy} />
-                    </Typography>
-                  ))}
+                  {service.content.map((item, y) => {
+                    const k = `copy-${y}`;
+
+                    return (
+                      <Typography
+                        className={classnames(classes.copy, classes[item.component])}
+                        variant={item.component}
+                        key={k}
+                      >
+                        <LangToggler id={item.copy} />
+                      </Typography>
+                    );
+                  })}
                 </Fragment>
               }
             </CardContent>
@@ -233,7 +248,6 @@ function SectionA (props: {
                     <LangButton
                       className={classes.button}
                       lang={service.cta}
-                      variant="dark2"
                       pos="right"
                       onClick={() => setShowForm(true)}>
                       <Icon name="keyboard_arrow_right" />
@@ -256,7 +270,7 @@ function SectionA (props: {
       <SectionBlock>
         <Section id="service-details">
           <Grid
-            container="true"
+            container
             direction="row"
             justify="flex-start"
             alignItems="flex-start"
@@ -320,7 +334,7 @@ function SectionA (props: {
                               lang={category.cta}
                               onClick={() => {
                                 setShowForm(false);
-                                onServiceListClick(item);
+                                onServiceListClick(category, item);
                               }}
                               variant="light"
                               pos="right">
@@ -340,9 +354,7 @@ function SectionA (props: {
               md={7}
               lg={7}
             >
-              <Fade>
-                {view}
-              </Fade>
+              {view}
             </Grid>
           </Grid>
         </Section>

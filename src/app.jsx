@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import { ScrollingProvider } from 'react-scroll-section';
 import React, { Component } from 'react';
 import UAParser from 'ua-parser-js';
 
@@ -109,27 +110,29 @@ class App extends Component {
         <CssBaseline />
         <div className={classes.container}>
           <Route render={({ location }) => (
-            <TransitionGroup className={classes.transitions}>
-              <CSSTransition
-                key={location.key}
-                timeout={{ enter: 300, exit: 300 }}
-                classNames={{
-                  enter: classes.appear,
-                  enterActive: classes.appearActive,
-                  exit: classes.exit,
-                  exitActive: classes.exitActive,
-                }}>
-                <div className={classes.switch}>
-                  <Switch location={location} >
-                    <Route exact path="/" component={Home} />
-                    <Route path="/services/:type/:serviceUrl?" component={Services} />
-                    <Route path="/servicios/:type/:serviceUrl?" component={Services} />
-                    <Route exact path="/blog" component={Blog} />
-                    <Route component={Four0Four} />
-                  </Switch>
-                </div>
-              </CSSTransition>
-            </TransitionGroup>
+            <ScrollingProvider>
+              <TransitionGroup className={classes.transitions}>
+                <CSSTransition
+                  key={location.key}
+                  timeout={{ enter: 300, exit: 300 }}
+                  classNames={{
+                    enter: classes.appear,
+                    enterActive: classes.appearActive,
+                    exit: classes.exit,
+                    exitActive: classes.exitActive,
+                  }}>
+                  <div className={classes.switch}>
+                    <Switch location={location} >
+                      <Route exact path="/" component={Home} />
+                      <Route path="/services/:type/:serviceUrl?" component={Services} />
+                      <Route path="/servicios/:type/:serviceUrl?" component={Services} />
+                      <Route exact path="/blog" component={Blog} />
+                      <Route component={Four0Four} />
+                    </Switch>
+                  </div>
+                </CSSTransition>
+              </TransitionGroup>
+            </ScrollingProvider>
           )} />
         </div>
       </MuiThemeProvider>

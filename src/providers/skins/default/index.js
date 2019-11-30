@@ -2,14 +2,14 @@ import Color from 'color';
 
 const PRIMARY = {
   contrastText: '#000000',
-  dark: '#818a95',
-  light: '#f8f8f8',
-  main: '#e9e9e9',
+  dark: '#d3d3d3',
+  light: '#ffffff',
+  main: '#eeeeee',
 };
 
 const SECONDARY = {
   contrastText: '#fafafa',
-  dark: '#212121',
+  dark: '#000000',
   light: '#424242',
   main: '#616161',
 };
@@ -75,6 +75,7 @@ const palette = {
     darker: Color(PRIMARY.dark).fade(0.5).string(),
     grey: '#e1e2e1',
     highlight: '#4c9aff',
+    input: '#f7f7f7',
     light: Color(PRIMARY.main).fade(0.2).string(),
     lighter: Color(PRIMARY.main).fade(0.35).toString(),
     transparent: Color(PRIMARY.main).fade(0.8).string(),
@@ -94,11 +95,23 @@ const overrides = {
       border: '2px solid',
       borderRadius: '0 0 0 0',
       boxShadow: 'none',
-      fontSize: '.6em',
-      fontWeight: 500,
+      fontSize: '.7em',
+      fontWeight: 600,
+      textTransform: 'capitalize',
     },
     text: {
       padding: '12px 16px',
+    },
+  },
+  MuiCardHeader: {
+    title: {
+      fontSize: '1.2em',
+    },
+  },
+  MuiFab: {
+    root: {
+      border: '0 solid',
+      boxShadow: 'initial',
     },
   },
   MuiFormControl: {
@@ -116,7 +129,7 @@ const overrides = {
         color: palette.primary.contrastText,
       },
       bottom: '-1.6em',
-      fontSize: '.8em',
+      fontSize: '.5em',
       fontWeight: 300,
       position: 'absolute',
       textTransform: 'capitalize',
@@ -156,7 +169,7 @@ const overrides = {
       '&:hover': {
         border: `1px solid ${palette.primary.dark}`,
       },
-      backgroundColor: palette.utils.white,
+      backgroundColor: palette.utils.input,
       border: '1px solid transparent',
     },
   },
@@ -166,6 +179,17 @@ const overrides = {
     },
     root: {
       textTransform: 'capitalize',
+    },
+  },
+  MuiLink: {
+    root: {
+      fontSize: '.8em',
+      fontWeight: 400,
+    },
+  },
+  MuiPaper: {
+    root: {
+      borderRadius: '0 0 0 0',
     },
   },
   MuiStepConnector: {
@@ -227,8 +251,8 @@ const typography = {
     textTransform: 'capitalize',
   },
   h4: {
-    fontSize: '2.1rem',
-    fontWeight: 400,
+    fontSize: '1.7rem',
+    fontWeight: 300,
     textTransform: 'capitalize',
   },
   h5: {

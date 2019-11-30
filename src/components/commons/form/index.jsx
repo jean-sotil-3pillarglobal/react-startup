@@ -28,7 +28,7 @@ const styles = theme => ({
     overflow: 'visible',
   }),
   helper: props => ({
-    background: ThemeBackground(props, theme, 'light'),
+    background: ThemeBackground(props, theme, 'dark'),
     color: ThemeColor(props, theme),
     margin: `${theme.spacing(1)}px 0 ${theme.spacing(4)}px`,
     padding: theme.spacing(2),

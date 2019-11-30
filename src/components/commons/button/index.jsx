@@ -19,6 +19,9 @@ const styles = theme => ({
       background: ThemeBackground(props, theme, 'light'),
       borderColor: ThemeColor(props, theme),
     },
+    '&:hover *': {
+      color: ThemeColor(props, theme),
+    },
     background: ThemeBackground(props, theme),
     borderColor: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
@@ -28,8 +31,6 @@ const styles = theme => ({
       background: ThemeBackground(props, theme, 'dark'),
     },
     background: ThemeBackground(props, theme),
-    border: `2px solid ${ThemeColor(props, theme)}`,
-    boxShadow: 'initial',
     color: ThemeColor(props, theme),
   }),
   link: props => ({
@@ -43,8 +44,6 @@ const styles = theme => ({
     borderWidth: 0,
     color: ThemeColor(props, theme),
     cursor: 'pointer',
-    fontSize: '.8em',
-    fontWeight: 400,
     padding: `0 ${theme.spacing(2)}px`,
     textTransform: 'none',
   }),
@@ -94,7 +93,7 @@ function LayoutButton (props: {
         href={href}
         target="_blank"
         onClick={onClick}
-        variant={TYPES.FAB}>
+        variant="round">
         {props.children}
       </Fab>
     );

@@ -3,11 +3,11 @@ import {
   VARIANT_VERBIAGE_SELECTED,
 } from '../../../actions/components/footer';
 
-import VerbiageOfAuto from '../../../../providers/lang/verbs/themajorhub/auto';
-import VerbiageOfDefault from '../../../../providers/lang/verbs/themajorhub/default';
-import VerbiageOfDental from '../../../../providers/lang/verbs/themajorhub/dental';
-import VerbiageOfGroup from '../../../../providers/lang/verbs/themajorhub/group';
-import VerbiageOfHealth from '../../../../providers/lang/verbs/themajorhub/health';
+import VerbiageOfAuto from '../../../../providers/lang/verbs/aquaclinica/auto';
+import VerbiageOfDefault from '../../../../providers/lang/verbs/aquaclinica/default';
+import VerbiageOfDental from '../../../../providers/lang/verbs/aquaclinica/dental';
+import VerbiageOfGroup from '../../../../providers/lang/verbs/aquaclinica/group';
+import VerbiageOfHealth from '../../../../providers/lang/verbs/aquaclinica/health';
 
 export const selectedLanguageReducer = (state = 'es', action) => {
   switch (action.type) {

@@ -20,6 +20,7 @@ import Footer from '../../components/footer';
 
 // commons
 import ServicesLayout from '../../components/layouts/commons/services_1';
+import ClerksLayout from '../../components/layouts/commons/clerks_1';
 
 import BannerA from './banner-1';
 import SectionA from './section-1';
@@ -121,13 +122,13 @@ class Home extends Component {
         <Header proxy={proxy} />
         <SectionA proxy={proxy} />
         <BannerA proxy={proxy} />
+
+        <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="primary" />
+
         <SectionB proxy={proxy} />
-
-        <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light" />
-
-        <SectionD proxy={proxy} />
-
+        <ClerksLayout proxy={proxy} variant="dark" />
         <BannerA proxy={proxy} />
+        <SectionD proxy={proxy} variant="primary" />
         <SectionE proxy={proxy} />
         <Footer />
       </Fragment>

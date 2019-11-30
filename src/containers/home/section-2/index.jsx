@@ -1,23 +1,36 @@
 import React from 'react';
 
 import {
+  Box,
   Grid,
   Typography,
   withStyles,
 } from '@material-ui/core';
 
+import { SectionLink } from 'react-scroll-section';
+
 // provider
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangToggler from './../../../providers/lang/toggler';
+import { constants } from './../../../providers/config';
 
 // components
+import { LangButton } from './../../../components/commons/button';
+import Icon from './../../../components/commons/icon';
 import SectionBlock from './../../../components/layouts/section';
-import SVGComponent from './../../../components/commons/svg';
+// import SVGComponent from './../../../components/commons/svg';
+
+const {
+  LINK_SECTION_4,
+} = constants;
+
+const variant = {
+  variant: 'light',
+};
 
 const styles = theme => ({
   body: {
     margin: '0 auto',
-    width: '80%',
   },
   body2: {
     marginBottom: `${theme.spacing(6)}px`,
@@ -33,7 +46,7 @@ const styles = theme => ({
     textAlign: 'center',
   },
   cta: {
-    padding: `${theme.spacing(6)}px 0`,
+    marginTop: theme.spacing(6),
   },
   icon: {
     fontSize: '3.4em',
@@ -50,7 +63,7 @@ const styles = theme => ({
     marginBottom: `${theme.spacing(2)}px`,
   },
   svg: {
-    margin: `${theme.spacing(8)}px 0`,
+    margin: `${theme.spacing(12)}px 0`,
   },
   title: {
     color: theme.palette.primary.contrastText,
@@ -61,18 +74,11 @@ const styles = theme => ({
 
 const NODE = 'home';
 const SLOT = 'section_2';
-// copy:
-// 1 title
-// 1 body
-// 4 items
+
 const copy = LangGenerateTree([NODE, SLOT], [
   'body',
+  'cta',
   'id',
-  'items-3-body',
-  'items-3-cta',
-  'items-3-cta_link',
-  'items-3-svg',
-  'items-3-title',
   'subtitle',
   'title',
 ]);
@@ -86,7 +92,7 @@ function SectionC (props: {
 
   return (
     verbiage &&
-    <SectionBlock id={verbiage(copy.id)} variant="primary">
+    <SectionBlock id={verbiage(copy.id)} variant={variant.variant}>
       <Grid
         container
         direction="row"
@@ -114,47 +120,26 @@ function SectionC (props: {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={(10)}>
-        {copy.items.map((item, i) => {
-          const key = `${i}_item_x`;
-
-          return (
-            <Grid
-              item
-              sm={12}
-              md={4}
-              lg={4}
-              key={key}>
-              <Grid
-                container
-                className={classes.items}>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}>
-                  <SVGComponent src={verbiage(item.svg)} className={classes.svg} />
-                  <Typography
-                    variant="h4"
-                    className={classes.subtitle2}>
-                    <LangToggler id={item.title} />
-                  </Typography>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}>
-                  <Typography
-                    variant="body1"
-                    className={classes.body2}>
-                    <LangToggler id={item.body} />
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-          );
-        })}
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item>
+          <SectionLink section={LINK_SECTION_4} key={copy.label}>
+            {link => (
+              <Box p={1} onClick={link.onClick}>
+                <LangButton
+                  className={classes.cta}
+                  lang={copy.cta}
+                  variant="dark">
+                  <Icon name="keyboard_arrow_right" className={classes.icon} />
+                </LangButton>
+              </Box>
+            )}
+          </SectionLink>
+        </Grid>
       </Grid>
     </SectionBlock>
   );

@@ -7,6 +7,10 @@ export const constants = {
   CATEGORY_4: 'category_4',
   CATEGORY_5: 'category_5',
 
+  CLERK_1: 'clerk_1',
+  CLERK_2: 'clerk_2',
+  CLERK_3: 'clerk_4',
+
   // general
   GENERAL: 'general',
 
@@ -33,6 +37,8 @@ export const constants = {
   SERVICE_6: 'service_6',
   SERVICE_7: 'service_7',
   SERVICE_8: 'service_8',
+  SERVICE_9: 'service_9',
+  SERVICE_10: 'service_10',
 };
 
 // public routes

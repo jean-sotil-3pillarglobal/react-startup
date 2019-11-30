@@ -90,18 +90,18 @@ class Services extends Component {
       selectVariantVerbiage('default');
     }
 
-    if (verbiage && !category.id) {
+    if (verbiage && !category) {
       setServiceCategory(FindServiceCategoryByPath(type, verbiage(copy.categories), language));
-    } else if (category.id) {
+    } else if (category) {
       data.category = category;
       data.services = verbiage(copy.services).filter(item => item.categories.includes(category.id));
     }
 
-    if (!service.id && serviceUrl && data.services) {
-      setService(FindServiceByPath(serviceUrl, data.services, language));
+    if (!service && serviceUrl && data.services) {
+      setService(FindServiceByPath(serviceUrl, data.services, language) || false);
     }
 
-    if (service.id) {
+    if (service) {
       data.service = service;
     }
 
@@ -130,6 +130,7 @@ class Services extends Component {
 
   props: {
     device: string,
+    // history: Object,
     language: string,
     setService: Function,
     setServiceCategory: Function,
@@ -158,9 +159,16 @@ class Services extends Component {
     cb(true);
   }
 
-  handleServiceListClick = (item) => {
-    const { setService } = this.props;
+  handleServiceListClick = (category, item) => {
+    const {
+      // history,
+      // language,
+      setService,
+    } = this.props;
+
+    // go to service
     setService(item);
+    // history.push(category.url[language].concat(item.url[language]));
   }
 
   render () {
@@ -171,7 +179,6 @@ class Services extends Component {
     } = this.props;
 
     const {
-      document,
       category,
       service,
       services,
@@ -198,12 +205,8 @@ class Services extends Component {
             proxy={proxy}
           >
             <ContactFormLayout
-              document={document}
-              onBlur={this.handleBlur}
-              onChange={this.handleChange}
-              onSubmit={this.handleSubmit}
               proxy={proxy}
-              variant="light"
+              variant="primary"
             />
           </SectionA>
           <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />

@@ -17,7 +17,8 @@ import ThemeColor from './../../../providers/utils/theme.color';
 const styles = theme => ({
   card: props => ({
     background: ThemeBackground(props, theme),
-    border: `1px solid ${ThemeColor(props, theme)}`,
+    border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
+    borderRadius: '0 0 0 0',
     overflow: 'visible',
   }),
   container: {
@@ -34,7 +35,7 @@ const styles = theme => ({
     fontWeight: 400,
     lineHeight: '1.2em',
     marginBottom: theme.spacing(2),
-    textAlign: 'justify',
+    textAlign: props.align || 'left',
     textTransform: 'capitalize',
   }),
 });

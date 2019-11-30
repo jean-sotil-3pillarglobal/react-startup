@@ -42,7 +42,6 @@ const styles = theme => ({
     padding: `${theme.spacing(4)}px 0`,
   },
   step: props => ({
-    background: ThemeBackground(props, theme),
     color: ThemeColor(props, theme),
   }),
   stepButton: props => ({
@@ -59,8 +58,7 @@ const styles = theme => ({
     '& .MuiStepIcon-root.MuiStepIcon-completed': {
       color: ThemeColor(props, theme),
     },
-    background: ThemeBackground(props, theme, 'main'),
-    border: `2px solid ${ThemeBackground(props, theme, 'light')}`,
+    background: ThemeBackground(props, theme),
     padding: '8px',
   }),
   submit: props => ({

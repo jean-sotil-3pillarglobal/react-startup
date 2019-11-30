@@ -1,5 +1,4 @@
 import React from 'react';
-import { ScrollingProvider } from 'react-scroll-section';
 
 import Loading from '../components/commons/preloader';
 
@@ -23,12 +22,9 @@ export default (loader, collection) => (
 
       if (Component) {
         return (
-          <ScrollingProvider>
-            <Component {...this.props} {...collection} />
-          </ScrollingProvider>
+          <Component {...this.props} {...collection} />
         );
       }
-
       return <Loading />;
     }
   }
