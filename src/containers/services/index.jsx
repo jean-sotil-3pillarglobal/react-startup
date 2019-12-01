@@ -25,6 +25,7 @@ import SectionA from './section-1';
 
 // commons
 import ContactFormLayout from '../../components/layouts/commons/contact_1';
+import Loading from './../../components/commons/preloader';
 import ServicesLayout from '../../components/layouts/commons/services_1';
 
 // provider
@@ -67,7 +68,18 @@ class Services extends Component {
     this.state = init;
   }
 
-  static getDerivedStateFromProps = (nextProps) => {
+  componentDidMount = () => {
+    const {
+      selectVariantVerbiage,
+      verbiage,
+    } = this.props;
+
+    if (!verbiage) {
+      selectVariantVerbiage('default');
+    }
+  }
+
+  static getDerivedStateFromProps = (nextProps, nextState) => {
     const {
       language,
       match: {
@@ -77,32 +89,26 @@ class Services extends Component {
         },
       },
       category,
-      selectVariantVerbiage,
       service,
       setService,
       setServiceCategory,
       verbiage,
     } = nextProps;
 
-    const data = cloneDeep(init);
+    const data = cloneDeep(nextState);
 
-    if (!verbiage) {
-      selectVariantVerbiage('default');
+    if (verbiage && category === null) {
+      data.category = FindServiceCategoryByPath(type, verbiage(copy.categories), language);
+      setServiceCategory(data.category);
     }
 
-    if (verbiage && !category) {
-      setServiceCategory(FindServiceCategoryByPath(type, verbiage(copy.categories), language));
-    } else if (category) {
-      data.category = category;
-      data.services = verbiage(copy.services).filter(item => item.categories.includes(category.id));
+    if (data.category) {
+      data.services = verbiage(copy.services).filter(item => item.categories.includes(data.category.id));
     }
 
-    if (!service && serviceUrl && data.services) {
-      setService(FindServiceByPath(serviceUrl, data.services, language) || false);
-    }
-
-    if (service) {
-      data.service = service;
+    if (service === null && serviceUrl && data.services) {
+      data.service = FindServiceByPath(serviceUrl, data.services, language);
+      setService(data.service || false);
     }
 
     return data;
@@ -123,15 +129,19 @@ class Services extends Component {
       setServiceCategory,
     } = this.props;
 
-    setServiceCategory({});
-    setService({});
-    this.setState(init);
+    this.setState(cloneDeep(init));
+    setServiceCategory(null);
+    setService(null);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
   }
 
   props: {
     device: string,
-    // history: Object,
+    history: Object,
     language: string,
+    selectVariantVerbiage: Function,
     setService: Function,
     setServiceCategory: Function,
     verbiage: Function,
@@ -161,14 +171,16 @@ class Services extends Component {
 
   handleServiceListClick = (category, item) => {
     const {
-      // history,
-      // language,
-      setService,
+      history,
+      language,
+      // setService,
     } = this.props;
 
     // go to service
-    setService(item);
-    // history.push(category.url[language].concat(item.url[language]));
+    this.reset();
+    setTimeout(() => {
+      history.push(category.url[language].concat(item.url[language]));
+    }, 500);
   }
 
   render () {
@@ -191,29 +203,26 @@ class Services extends Component {
     };
 
     return (
+      ((category && category.id) &&
       <Fragment>
-        {category && category.id &&
-        <Fragment>
-          <Helmet proxy={proxy} copy={copy} />
-          <SectionA
-            data={{
-              category,
-              service,
-              services,
-            }}
-            onServiceListClick={this.handleServiceListClick}
+        <Helmet proxy={proxy} copy={copy} />
+        <SectionA
+          data={{
+            category,
+            service,
+            services,
+          }}
+          onServiceListClick={this.handleServiceListClick}
+          proxy={proxy}
+        >
+          <ContactFormLayout
             proxy={proxy}
-          >
-            <ContactFormLayout
-              proxy={proxy}
-              variant="primary"
-            />
-          </SectionA>
-          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
-          <Footer />
-        </Fragment>
-        }
-      </Fragment>
+            variant="primary"
+          />
+        </SectionA>
+        <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
+        <Footer />
+      </Fragment>) || <Loading />
     );
   }
 }
