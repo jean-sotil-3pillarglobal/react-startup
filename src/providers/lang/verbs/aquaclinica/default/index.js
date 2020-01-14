@@ -71,21 +71,21 @@ const Verbiage = {
         en: '(506) 9999-9999',
         es: '(506) 9999-9999',
       },
-      phone_icon: 'phone',
+      phone_icon: '/static/svg/social/phone.svg',
       publics,
       social: [
         {
-          icon: 'facebook',
-          label: 'facebook',
-          link: '#instagram',
-        },
-        {
-          icon: 'facebook',
+          icon: '/static/svg/social/fb.svg',
           label: 'facebook',
           link: '#facebook',
         },
         {
-          icon: 'email',
+          icon: '/static/svg/social/ig.svg',
+          label: 'instagram',
+          link: '#instagram',
+        },
+        {
+          icon: '/static/svg/social/email.svg',
           label: 'email',
           link: '#email',
         },
@@ -142,71 +142,68 @@ const Verbiage = {
       items: [
         {
           alt: {
-            en: 'aetna insurance',
-            es: 'aetna seguro',
+            en: 'dysport',
+            es: 'dysport',
           },
-          logo: '/static/images/logos/aetna.png',
+          logo: '/static/images/logos/dysport.png',
         },
         {
           alt: {
-            en: 'ambetter insurance',
-            es: 'ambetter seguro',
+            en: 'EMSCULPT',
+            es: 'EMSCULPT',
           },
-          logo: '/static/images/logos/ambetter.png',
+          logo: '/static/images/logos/emsculpt.png',
         },
         {
           alt: {
-            en: 'blue cross insurance',
-            es: 'blue cross seguro',
+            en: 'fotona',
+            es: 'fotona',
           },
-          logo: '/static/images/logos/bluecross.png',
+          logo: '/static/images/logos/fotona.png',
         },
         {
           alt: {
-            en: 'cigna insurance',
-            es: 'cigna seguro',
+            en: 'geneo',
+            es: 'geneo',
           },
-          logo: '/static/images/logos/cigna.png',
+          logo: '/static/images/logos/geneo.png',
         },
         {
           alt: {
-            en: 'coventry insurance',
-            es: 'coventry seguro',
+            en: 'lumenis',
+            es: 'lumenis',
           },
-          logo: '/static/images/logos/coventry.png',
+          logo: '/static/images/logos/lumenis.png',
         },
         {
           alt: {
-            en: 'florida blue insurance',
-            es: 'florida blue seguro',
+            en: 'neauvia',
+            es: 'neauvia',
           },
-          logo: '/static/images/logos/fblue.png',
+          logo: '/static/images/logos/neauvia.png',
         },
         {
           alt: {
-            en: 'humana insurance',
-            es: 'humana seguro',
+            en: 'tentrek',
+            es: 'tentrek',
           },
-          logo: '/static/images/logos/humana.png',
+          logo: '/static/images/logos/tentrek.png',
         },
         {
           alt: {
-            en: 'molina insurance',
-            es: 'molina seguro',
+            en: 'venus',
+            es: 'venus',
           },
-          logo: '/static/images/logos/molina.png',
-        },
-        {
-          alt: {
-            en: 'national general insurance',
-            es: 'national general seguro',
-          },
-          logo: '/static/images/logos/ng.png',
+          logo: '/static/images/logos/venus.png',
         },
       ],
     },
     section_1: {
-      background: '/static/images/d-bg-1.jpg',
+      background: {
+        desktop: '/static/images/d-bg-1.png',
+        mobile: '/static/images/m-bg-1.jpg',
+      },
+      background_show: true,
       cta: {
         en: 'check available services',
         es: 'ver servicios disponibles',
@@ -220,6 +217,8 @@ const Verbiage = {
         en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
         es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
       },
+      svg: '/static/svg/coming.svg',
+      svg_show: false,
       title: {
         en: '<span>welcome, we are clínica aqua</span>',
         es: '<span>bienvenido, somos clínica aqua</span>',
@@ -239,7 +238,6 @@ const Verbiage = {
         en: '<span>Get our health services</br> information, quick and free.</span>',
         es: '<span>Obtén información sobre nuestros servicios</br> de salud, de manera fácil y gratuita.</span>',
       },
-      svg: '/static/svg/team_work.svg',
       title: {
         en: 'We work with the best',
         es: 'Trabajamos con los mejores',
@@ -247,7 +245,7 @@ const Verbiage = {
     },
     section_4: {
       id: LINK_SECTION_4,
-      svg: '/static/svg/team_work.svg',
+      svg: '/static/svg/right_places.svg',
       title: {
         en: 'we would love helping you to find the best attention and health threatments, make your free quote now.',
         es: 'queremos brindarte la mejor atención. <br/>consulta sobre nuestros servicios ahora mismo.',

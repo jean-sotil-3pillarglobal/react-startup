@@ -10,16 +10,18 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import ThemeBackground from './../../../providers/utils/theme.background';
+
 const styles = theme => ({
-  '@keyframes heartbeat': {
+  '@keyframes heartbeat': props => ({
     '0%': {
-      fill: theme.palette.primary.light,
+      fill: ThemeBackground(props, theme, 'light'),
       opacity: 0.8,
       strokeWidth: 0,
     },
     '50%': {
+      fill: ThemeBackground(props, theme, 'dark'),
       opacity: 0.5,
-      stroke: theme.palette.primary.dark,
       strokeOpacity: 0.6,
       strokeWidth: 1,
     },
@@ -27,29 +29,27 @@ const styles = theme => ({
       opacity: 1,
       strokeWidth: 0,
     },
-  },
-  root: {
-    '& [data-color="svg-blink"]': {
-      animationDuration: '3s',
-      animationIterationCount: 1,
-      animationName: 'heartbeat',
+  }),
+  root: props => ({
+    '& *': {
+      animationDuration: '5s',
+      animationIterationCount: 2,
       animationTimingFunction: 'ease-in',
-      strokeLinecap: 'round',
       transition: theme.transitions.create(
-        ['transform'],
+        ['fill'],
         { duration: theme.transitions.duration.complex },
       ),
     },
     '& [data-color="svg-primary"]': {
-      fill: theme.palette.primary.dark,
+      fill: ThemeBackground(props, theme, 'main'),
     },
     '& [data-color="svg-secondary"]': {
-      fill: theme.palette.secondary.dark,
+      fill: ThemeBackground(props, theme, 'light'),
     },
-    '& circle[data-color="svg-blink"]': {
-      transform: 'scale(1, 1)',
+    '& [data-color="svg-thrid"]': {
+      fill: ThemeBackground(props, theme, 'dark'),
     },
-  },
+  }),
 });
 
 const init = {
@@ -80,14 +80,12 @@ class SVGLayout extends Component {
   props: {
     classes: Object,
     className: Object,
-    color: String,
   }
 
   render () {
     const {
       classes,
       className,
-      color,
     } = this.props;
 
     const {
@@ -96,8 +94,13 @@ class SVGLayout extends Component {
 
     return (src && (
       <SvgLoader path={src} className={classnames(classes.root, className)}>
-        <SvgProxy selector="[fill*='#6c63ff']" data-color={`svg-${color || 'primary'}`} />
-        <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-blink" />
+        <SvgProxy selector="[fill*='#6c63ff']" data-color="svg-primary" />
+        <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-secondary" />
+        <SvgProxy selector="[fill*='#2f2e41']" data-color="svg-thrid" />
+        <SvgProxy selector="[fill*='#3f3d56']" data-color="svg-thrid" />
+        <SvgProxy selector="[fill*='#575a89']" data-color="svg-secondary" />
+        <SvgProxy selector="[fill*='#ff6584']" data-color="svg-secondary" />
+        <SvgProxy selector="[fill*='#575a88']" data-color="svg-thrid" />
       </SvgLoader>
     )) || <Fragment />;
   }

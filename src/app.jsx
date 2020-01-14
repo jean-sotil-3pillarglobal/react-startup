@@ -110,18 +110,18 @@ class App extends Component {
         <CssBaseline />
         <div className={classes.container}>
           <Route render={({ location }) => (
-            <ScrollingProvider>
-              <TransitionGroup className={classes.transitions}>
-                <CSSTransition
-                  key={location.key}
-                  timeout={{ enter: 300, exit: 300 }}
-                  classNames={{
-                    enter: classes.appear,
-                    enterActive: classes.appearActive,
-                    exit: classes.exit,
-                    exitActive: classes.exitActive,
-                  }}>
-                  <div className={classes.switch}>
+            <TransitionGroup className={classes.transitions}>
+              <CSSTransition
+                key={location.key}
+                timeout={{ enter: 300, exit: 300 }}
+                classNames={{
+                  enter: classes.appear,
+                  enterActive: classes.appearActive,
+                  exit: classes.exit,
+                  exitActive: classes.exitActive,
+                }}>
+                <div className={classes.switch}>
+                  <ScrollingProvider>
                     <Switch location={location} >
                       <Route exact path="/" component={Home} />
                       <Route path="/services/:type/:serviceUrl?" component={Services} />
@@ -129,10 +129,10 @@ class App extends Component {
                       <Route exact path="/blog" component={Blog} />
                       <Route component={Four0Four} />
                     </Switch>
-                  </div>
-                </CSSTransition>
-              </TransitionGroup>
-            </ScrollingProvider>
+                  </ScrollingProvider>
+                </div>
+              </CSSTransition>
+            </TransitionGroup>
           )} />
         </div>
       </MuiThemeProvider>

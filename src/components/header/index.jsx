@@ -45,8 +45,7 @@ const drawerWidth = 240;
 
 const styles = theme => ({
   appBar: props => ({
-    background: ThemeBackground(!props.isHeaderVisible ? { variant: 'secondary' } : { variant: 'primary' }, theme),
-    border: `1px solid ${ThemeColor(!props.isHeaderVisible ? { variant: 'secondary' } : { variant: 'primary' }, theme)}`,
+    background: ThemeBackground(!props.isHeaderVisible ? { variant: 'secondary' } : { variant: 'primary' }, theme, 'light'),
     padding: 0,
     transition: theme.transitions.create(['background-color', 'margin', 'width'], {
       duration: theme.transitions.duration.leavingScreen,
@@ -67,7 +66,7 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     marginLeft: -drawerWidth,
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
     transition: theme.transitions.create('margin', {
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp,
@@ -94,6 +93,9 @@ const styles = theme => ({
     color: theme.palette.secondary.contrastText,
     width: drawerWidth,
   },
+  fab: {
+    background: ThemeColor({ variant: 'secondary' }, theme),
+  },
   h3: {
     color: theme.palette.primary.contrastText,
     marginBottom: 0,
@@ -111,7 +113,7 @@ const styles = theme => ({
     fontSize: '1rem',
   },
   iconFab: props => ({
-    color: ThemeColor(props.isHeaderVisible ? { variant: 'light' } : { variant: 'secondary' }, theme),
+    color: ThemeColor(props.isHeaderVisible ? { variant: 'primary' } : { variant: 'secondary' }, theme),
     fontSize: '1rem',
   }),
   logo: {
@@ -135,7 +137,7 @@ const styles = theme => ({
     padding: 0,
   },
   phone: () => ({
-    color: ThemeColor({ variant: 'primary' }, theme),
+    color: ThemeColor({ variant: 'secondary' }, theme),
     marginRight: theme.spacing(1),
   }),
   root: () => ({
@@ -154,8 +156,7 @@ const styles = theme => ({
     zIndex: 999,
   },
   topHeader: {
-    background: theme.palette.primary.light,
-    padding: `${theme.spacing(1)}px ${theme.spacing(8)}px`,
+    padding: `0 ${theme.spacing(8)}px`,
   },
   topHeaderSocial: {
     margin: 0,
@@ -175,6 +176,7 @@ const copy = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
   'publics-5-id',
   'publics-5-label',
   'publics-5-route',
+  'social-3-icon',
   'social-3-label',
   'social-3-link',
   'title',
@@ -224,22 +226,10 @@ class Header extends Component {
         <CssBaseline />
         <Grid
           container
-          alignItems="flex-end"
+          alignItems="center"
           direction="row"
-          justify="flex-end"
+          justify="center"
           className={classes.topHeader}>
-          <Grid
-            item
-            sm={12}
-            md={3}
-            lg={3}>
-            <LangButton
-              lang={copy.phone}
-              typeButton={TYPES.LINK}
-              className={classes.phone}>
-              <Icon name={verbiage(copy.phone_icon)} className={classnames(classes.icon, classes.phone)} />
-            </LangButton>
-          </Grid>
           <Grid
             item
             sm={12}
@@ -247,16 +237,17 @@ class Header extends Component {
             lg={9}
             className={classes.socialButtons}
           >
-            <Box display="flex" flexDirection="row" justifyContent="flex-end" p={1} m={1} className={classnames(classes.topHeaderSocial, !isHeaderVisible && classes.socialButtonsFixed)}>
+            <Box display="flex" flexDirection="row" justifyContent="flex-end" p={1} m={1} className={classnames(classes.topHeaderSocial, classes.socialButtonsFixed)}>
               {copy.social.map(item => (
                 <Box key={item.label} p={1}>
                   <LangButton
                     href={verbiage(item.link)}
                     key={item.label}
                     typeButton={TYPES.FAB}
-                    variant={(isHeaderVisible && 'dark') || 'dark2'}
+                    variant="primary"
+                    className={classes.fab}
                   >
-                    <Icon name={verbiage(item.label)} className={classes.iconFab} />
+                    <Icon image={verbiage(item.icon)} className={classes.iconFab} />
                   </LangButton>
                 </Box>
               ))}
@@ -304,7 +295,7 @@ class Header extends Component {
                       flexDirection="row"
                       p={1}
                       m={1}
-                      alignItems="flex-end"
+                      alignItems="center"
                       className={classes.navbar}>
                       {copy.publics.map((item) => {
                         const featured = verbiage(item.featured);

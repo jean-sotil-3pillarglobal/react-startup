@@ -21,8 +21,8 @@ const NODE = 'home';
 const SLOT = 'banner_1';
 
 const copy = LangGenerateTree([NODE, SLOT], [
-  'items-9-logo',
-  'items-9-alt',
+  'items-8-logo',
+  'items-8-alt',
 ]);
 
 function BannerA (props: {

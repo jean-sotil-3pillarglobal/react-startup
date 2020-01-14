@@ -20,7 +20,7 @@ import ContactFormLayout from './../../../components/layouts/commons/contact_1';
 import SectionBlock from './../../../components/layouts/section';
 import SVGComponent from './../../../components/commons/svg';
 
-const variant = 'primary';
+const variant = 'light2';
 
 const styles = theme => ({
   background: {},
@@ -101,7 +101,7 @@ class SectionA extends Component {
             sm={10}
             md={6}
             lg={6}>
-            <SVGComponent src={verbiage(copy.svg)} className={classes.svg} color="secondary" />
+            <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="secondary" />
           </Grid>
         </Grid>
       </SectionBlock>

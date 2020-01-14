@@ -56,7 +56,10 @@ const styles = theme => ({
       color: ThemeBackground(props, theme, 'dark'),
     },
     '& .MuiStepIcon-root.MuiStepIcon-completed': {
-      color: ThemeColor(props, theme),
+      fill: ThemeColor(props, theme),
+    },
+    '& .MuiStepIcon-text': {
+      fill: ThemeColor(props, theme),
     },
     background: ThemeBackground(props, theme),
     padding: '8px',

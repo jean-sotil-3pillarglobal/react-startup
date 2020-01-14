@@ -1,5 +1,5 @@
 
-import { Parallax } from 'react-parallax';
+// import { Parallax } from 'react-parallax';
 import { Section } from 'react-scroll-section';
 import { withRouter } from 'react-router-dom';
 import React, { Component } from 'react';
@@ -15,14 +15,22 @@ import { LangButton } from './../../../components/commons/button';
 import Callout from './../../../components/commons/callout/';
 import Icon from './../../../components/commons/icon';
 import SmartImg from './../../../components/commons/img';
+import SVGComponent from './../../../components/commons/svg';
 
 const styles = theme => ({
-  background: {},
+  background: {
+    left: 0,
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    zIndex: -1,
+  },
   button: {
     margin: '0 auto',
   },
   callout: {
-    margin: '0 auto 2%',
+    background: 'transparent',
+    display: 'inline-block',
     textAlign: 'center',
     width: '60%',
     zIndex: 1,
@@ -32,9 +40,11 @@ const styles = theme => ({
     width: '100%',
   },
   hero: {
-    background: 'transparent',
-    padding: 0,
+    background: theme.palette.primary.main,
+    overflow: 'hidden',
+    padding: `${theme.spacing(12)}px 0 0 0`,
     position: 'relative',
+    textAlign: 'center',
     zIndex: 1,
   },
   icon: {
@@ -46,8 +56,15 @@ const styles = theme => ({
   },
   logo: {
     display: 'block',
-    margin: '100px auto 4px',
-    width: 140,
+    margin: '0 auto',
+    width: 320,
+  },
+  svg: {
+    bottom: '-10%',
+    position: 'absolute',
+    right: 0,
+    width: '50%',
+    zIndex: -1,
   },
 });
 
@@ -56,11 +73,14 @@ const NODE = 'home';
 const SLOT = 'section_1';
 // copy:
 const copy = LangGenerateTree([NODE, SLOT], [
+  'background_show',
   'background',
   'cta',
   'id',
   'logo',
   'subtitle',
+  'svg_show',
+  'svg',
   'title',
 ]);
 
@@ -77,28 +97,28 @@ class SectionA extends Component {
     return (
       verbiage &&
       <Section id={verbiage(copy.id)}>
-        <Parallax bgImage={verbiage(copy.background)} strength={500} className={classes.background}>
-          <Paper
-            container="true"
-            className={classes.hero}
-            elevation={0}>
-            <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
-            <Callout
-              align="center"
-              title={copy.title}
-              subtitle={copy.subtitle}
-              variant="dark"
-              className={classes.callout}>
-              <LangButton
-                className={classes.button}
-                lang={copy.cta}
-                onClick={this.handleClick}
-                variant="dark2">
-                <Icon name="keyboard_arrow_right" className={classes.icon} />
-              </LangButton>
-            </Callout>
-          </Paper>
-        </Parallax>
+        <Paper
+          container="true"
+          className={classes.hero}
+          elevation={0}>
+          {verbiage(copy.svg_show) && <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="primary" />}
+          {verbiage(copy.background_show) && <SmartImg proxy={proxy} src={verbiage(copy.background)} className={classes.background} />}
+          <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
+          <Callout
+            align="center"
+            title={copy.title}
+            subtitle={copy.subtitle}
+            variant="light"
+            className={classes.callout}>
+            <LangButton
+              className={classes.button}
+              lang={copy.cta}
+              onClick={this.handleClick}
+              variant="dark2">
+              <Icon name="keyboard_arrow_right" className={classes.icon} />
+            </LangButton>
+          </Callout>
+        </Paper>
       </Section>
     );
   }

@@ -4,7 +4,7 @@ const PRIMARY = {
   contrastText: '#000000',
   dark: '#d3d3d3',
   light: '#ffffff',
-  main: '#eeeeee',
+  main: '#f3f3f3',
 };
 
 const SECONDARY = {
@@ -78,7 +78,7 @@ const palette = {
     input: '#f7f7f7',
     light: Color(PRIMARY.main).fade(0.2).string(),
     lighter: Color(PRIMARY.main).fade(0.35).toString(),
-    transparent: Color(PRIMARY.main).fade(0.8).string(),
+    transparent: Color(PRIMARY.dark).fade(0.8).string(),
     white: '#ffffff',
   },
   warning: {
@@ -95,7 +95,7 @@ const overrides = {
       border: '2px solid',
       borderRadius: '0 0 0 0',
       boxShadow: 'none',
-      fontSize: '.7em',
+      fontSize: '.6em',
       fontWeight: 600,
       textTransform: 'capitalize',
     },
@@ -112,6 +112,9 @@ const overrides = {
     root: {
       border: '0 solid',
       boxShadow: 'initial',
+      height: '30px',
+      minHeight: 'initial',
+      width: '30px',
     },
   },
   MuiFormControl: {
@@ -183,8 +186,9 @@ const overrides = {
   },
   MuiLink: {
     root: {
-      fontSize: '.8em',
-      fontWeight: 400,
+      fontSize: '.6em',
+      fontWeight: 500,
+      textTransform: 'capitalize',
     },
   },
   MuiPaper: {

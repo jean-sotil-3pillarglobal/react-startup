@@ -19,20 +19,21 @@ const styles = theme => ({
     background: ThemeBackground(props, theme),
     border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
     borderRadius: '0 0 0 0',
+    margin: theme.spacing(3),
     overflow: 'visible',
   }),
   container: {
-    padding: '3.75rem 2.875rem 3.75rem 2.875rem!important',
+    padding: theme.spacing(3),
   },
   subtitle: props => ({
     color: ThemeColor(props, theme),
-    fontWeight: 300,
     marginBottom: theme.spacing(4),
+    width: '100%',
   }),
   title: props => ({
     color: ThemeColor(props, theme),
-    fontSize: '2.3rem',
-    fontWeight: 400,
+    fontSize: '1.8em',
+    fontWeight: 300,
     lineHeight: '1.2em',
     marginBottom: theme.spacing(2),
     textAlign: props.align || 'left',
@@ -59,11 +60,11 @@ function Callout (props: {
     <Card className={classnames(classes.card, className)} elevation={0}>
       <CardContent className={classes.container}>
         <Fade left>
-          <Typography variant="body2" component="p" className={classes.title}>
+          <Typography variant="body1" component="p" className={classes.title}>
             <LangToggler id={title} />
           </Typography>
         </Fade>
-        <Typography variant="body2" component="p" className={classes.subtitle}>
+        <Typography variant="caption" component="p" className={classes.subtitle}>
           <LangToggler id={subtitle} />
         </Typography>
         {children}

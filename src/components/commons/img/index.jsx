@@ -30,7 +30,7 @@ function SmartImg (props: {
     device,
     language,
   } = proxy;
-
+  console.log(src, language);
   return (
     <img
       className={classnames(classes.img, className)}

@@ -44,9 +44,6 @@ const styles = theme => ({
     padding: theme.spacing(4),
     width: '100%',
   }),
-  col1: {
-    backgroundColor: 'transparent',
-  },
   col2: {
     background: theme.palette.utils.transparent,
     border: `${theme.spacing(1)}px solid ${ThemeColor({ variant: 'secondary' }, theme)}`,
@@ -60,7 +57,10 @@ const styles = theme => ({
     width: '100%',
   },
   description: {
-    textAlign: 'justify',
+    background: theme.palette.primary.light,
+    color: theme.palette.primary.contrastText,
+    marginBottom: theme.spacing(2),
+    padding: theme.spacing(2),
   },
   h3: {
     fontSize: '1em',
@@ -72,13 +72,6 @@ const styles = theme => ({
   },
   icon: {
     fontSize: '3rem',
-  },
-  image: {
-    background: 'transparent',
-    height: 400,
-    padding: 0,
-    position: 'relative',
-    zIndex: 1,
   },
   images: {
     border: `1px solid ${ThemeBackground({ variant }, theme, 'light')}`,
@@ -115,8 +108,6 @@ const styles = theme => ({
   },
   itemList: {
     background: theme.palette.utils.transparent,
-    marginTop: theme.spacing(2),
-    paddingRight: theme.spacing(2),
   },
   itemMedia: {
     filter: 'grayscale(100%)',
@@ -139,6 +130,13 @@ const styles = theme => ({
   },
   title: {
     marginBottom: theme.spacing(2),
+  },
+  titleContainer: {
+    background: 'transparent',
+    padding: `${theme.spacing(16)}px 0`,
+    position: 'relative',
+    textAlign: 'center',
+    zIndex: 1,
   },
 });
 
@@ -265,42 +263,34 @@ function SectionA (props: {
   return (
     <Fragment>
       <Parallax bgImage={category.background} strength={500} className={classes.background}>
-        <Paper className={classes.image} />
+        <Paper className={classes.titleContainer} elevation={0}>
+          <Typography
+            variant="h2"
+            className={classes.title}
+          >
+            <LangToggler id={category.title} />
+          </Typography>
+        </Paper>
       </Parallax>
       <SectionBlock id="service-details">
         <Grid
           container
           direction="row"
           justify="flex-start"
-          alignItems="flex-start"
+          alignItems="flext-start"
           spacing={1}>
-          <Grid
-            item
-            sm={12}
-            md={12}
-            lg={12}
-          >
-            <Paper className={classes.col1} elevation={0}>
-              <Typography
-                variant="h2"
-                className={classes.title}
-              >
-                <LangToggler id={category.title} />
-              </Typography>
-            </Paper>
-          </Grid>
           <Grid
             item
             sm={12}
             md={5}
             lg={5}>
+            <Typography
+              variant="body1"
+              className={classes.description}
+            >
+              <LangToggler id={category.description} />
+            </Typography>
             <Paper className={classes.itemList} elevation={0}>
-              <Typography
-                variant="body1"
-                className={classes.description}
-              >
-                <LangToggler id={category.description} />
-              </Typography>
               {services && services.map(item => (
                 <Card key={item.id} dense="true" className={classnames(classes.item, (service && service.id === item.id) && classes.itemSelected)}>
                   <CardHeader
