@@ -1,3 +1,4 @@
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
@@ -63,10 +64,10 @@ const styles = theme => ({
 });
 
 // containers
-const Home = Async(() => import('./containers/home').then(module => module.default));
-const Services = Async(() => import('./containers/services').then(module => module.default));
-const Blog = Async(() => import('./containers/blog').then(module => module.default));
-const Four0Four = Async(() => import('./containers/404').then(module => module.default));
+const Home = Async(() => { return import('./containers/home'); });
+const Services = Async(() => { return import('./containers/services'); });
+const Blog = Async(() => { return import('./containers/blog'); });
+const Four0Four = Async(() => { return import('./containers/404'); });
 
 const init = {
   device: null,

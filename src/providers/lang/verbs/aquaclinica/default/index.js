@@ -121,7 +121,6 @@ const Verbiage = {
       },
     },
     services: {
-      categories,
       description: {
         en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
         es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
@@ -130,7 +129,6 @@ const Verbiage = {
         en: 'insurances, others',
         es: 'seguros, otros',
       },
-      services,
       title: {
         en: 'Clinica Aqua | Healthcare | Healthcare Help',
         es: 'Clinica Aqua | Salud | Solicitar Ayuda',
@@ -361,6 +359,7 @@ const Verbiage = {
         es: '< anterior',
       },
       categories,
+      id: 'services_index',
       promos,
       services,
     },

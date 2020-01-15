@@ -1,31 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Loading from '../components/commons/preloader';
 
-export default (loader, collection) => (
-  class AsyncComponent extends React.Component {
-    constructor (props) {
-      super(props);
-      this.state = { Component: null };
+const asyncComponent = (importComponent) => {
+  return class extends Component {
+    state = {
+      component: null,
     }
 
-    componentDidMount () {
-      if (!this.state.Component) {
-        loader().then((Component) => {
-          this.setState({ Component });
+    componentDidMount() {
+      importComponent()
+        .then((cmp) => {
+          this.setState({ component: cmp.default });
         });
-      }
     }
 
-    render () {
-      const { Component } = this.state;
-
-      if (Component) {
-        return (
-          <Component {...this.props} {...collection} />
-        );
-      }
-      return <Loading />;
+    render() {
+      const C = this.state.component;
+      return C ? <C {...this.props} /> : <Loading />;
     }
-  }
-);
+  };
+};
+
+export default asyncComponent;

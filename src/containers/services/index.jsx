@@ -1,7 +1,9 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Section } from 'react-scroll-section';
 import { withRouter } from 'react-router-dom';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+
 import {
   cloneDeep,
 } from 'lodash';
@@ -21,7 +23,7 @@ import {
 
 import Helmet from '../../components/commons/helmet';
 import Footer from '../../components/footer';
-import SectionA from './section-1';
+import SectionA from './section-1/index';
 
 // commons
 import ContactFormLayout from '../../components/layouts/commons/contact_1';
@@ -42,15 +44,18 @@ const styles = () => ({
   },
 });
 
-const NODE = 'headers';
-const SLOT = 'services';
-// copy:
-const copy = LangGenerateTree([NODE, SLOT], [
-  'categories',
+// headers:
+const headers = LangGenerateTree(['headers', 'services'], [
   'description',
   'keywords',
-  'services',
   'title',
+]);
+
+// copy:
+const copy = LangGenerateTree(['services', 'section_1'], [
+  'categories',
+  'services',
+  'id',
 ]);
 
 const init = {
@@ -203,9 +208,9 @@ class Services extends Component {
     };
 
     return (
-      ((category && category.id) &&
-      <Fragment>
-        <Helmet proxy={proxy} copy={copy} />
+      ((verbiage && category && category.id) &&
+      <Section id={verbiage(copy.id)}>
+        <Helmet proxy={proxy} copy={headers} />
         <SectionA
           data={{
             category,
@@ -222,7 +227,7 @@ class Services extends Component {
         </SectionA>
         <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
         <Footer />
-      </Fragment>) || <Loading />
+      </Section>) || <Loading />
     );
   }
 }
