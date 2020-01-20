@@ -12,9 +12,10 @@ import VerbiageOfHealth from '../../../../providers/lang/verbs/aquaclinica/healt
 export const selectedLanguageReducer = (state = 'es', action) => {
   switch (action.type) {
   case LANGUAGE_SELECTED:
+    window.localStorage.setItem('language', action.payload);
     return action.payload;
   default:
-    return state;
+    return window.localStorage.getItem('language') || state;
   }
 };
 

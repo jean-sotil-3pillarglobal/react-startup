@@ -5,10 +5,6 @@ import { withRouter } from 'react-router-dom';
 import React, { Component } from 'react';
 
 import {
-  cloneDeep,
-} from 'lodash';
-
-import {
   withStyles,
 } from '@material-ui/core';
 
@@ -19,6 +15,7 @@ import {
 import {
   setServiceCategoryAction,
   setServiceAction,
+  setServicesAction,
 } from './../../store/actions/services';
 
 import Helmet from '../../components/commons/helmet';
@@ -58,21 +55,7 @@ const copy = LangGenerateTree(['services', 'section_1'], [
   'id',
 ]);
 
-const init = {
-  category: null,
-  document: {},
-  service: null,
-  services: null,
-};
-
 class Services extends Component {
-  constructor(props) {
-    super(props);
-
-    // init
-    this.state = init;
-  }
-
   componentDidMount = () => {
     const {
       selectVariantVerbiage,
@@ -82,10 +65,40 @@ class Services extends Component {
     if (!verbiage) {
       selectVariantVerbiage('default');
     }
+
+    this.setServicesState();
   }
 
-  static getDerivedStateFromProps = (nextProps, nextState) => {
+  // shouldComponentUpdate = (nextProps) => {
+  //   return this.props.category !== nextProps.category ||
+  //   this.props.language !== nextProps.language ||
+  //     this.props.service !== nextProps.service ||
+  //     this.props.services !== nextProps.services;
+  //     this.props.verbiage !== nextProps.verbiage;
+  // }
+
+  componentDidUpdate = (prevProps) => {
     const {
+      category,
+      history,
+      language,
+      service,
+    } = this.props;
+
+    if (prevProps.language !== language) {
+      history.push(category.url[language].concat(service.url[language]));
+    }
+
+    this.setServicesState();
+  }
+
+  componentWillUnmount = () => {
+    this.reset();
+  }
+
+  setServicesState = () => {
+    const {
+      category,
       language,
       match: {
         params: {
@@ -93,50 +106,42 @@ class Services extends Component {
           type,
         },
       },
-      category,
       service,
+      services,
       setService,
       setServiceCategory,
+      setServices,
       verbiage,
-    } = nextProps;
+    } = this.props;
 
-    const data = cloneDeep(nextState);
+    if (verbiage && type) {
+      // find main category
+      if (!category) {
+        setServiceCategory(FindServiceCategoryByPath(type, verbiage(copy.categories), language));
+      }
 
-    if (verbiage && category === null) {
-      data.category = FindServiceCategoryByPath(type, verbiage(copy.categories), language);
-      setServiceCategory(data.category);
+      if (category && !services) {
+        // filter services by category id
+        setServices(verbiage(copy.services).filter(item => item.categories.includes(category.id)));
+      }
+
+      if (services && serviceUrl && service === null) {
+        setService(FindServiceByPath(serviceUrl, services, language) || false);
+      }
     }
-
-    if (data.category) {
-      data.services = verbiage(copy.services).filter(item => item.categories.includes(data.category.id));
-    }
-
-    if (service === null && serviceUrl && data.services) {
-      data.service = FindServiceByPath(serviceUrl, data.services, language);
-      setService(data.service || false);
-    }
-
-    return data;
-  }
-
-  shouldComponentUpdate = (nextProps, nextState) => {
-    return this.state.category !== nextState.category ||
-      this.state.service !== nextState.service;
-  }
-
-  componentWillUnmount = () => {
-    this.reset();
   }
 
   reset = () => {
     const {
       setService,
+      setServices,
       setServiceCategory,
     } = this.props;
 
-    this.setState(cloneDeep(init));
-    setServiceCategory(null);
     setService(null);
+    setServiceCategory(null);
+    setServices(null);
+
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 500);
@@ -146,23 +151,11 @@ class Services extends Component {
     device: string,
     history: Object,
     language: string,
+    match: History,
     selectVariantVerbiage: Function,
     setService: Function,
     setServiceCategory: Function,
     verbiage: Function,
-  }
-
-  handleChange = (event) => {
-    const { document } = this.state;
-    const { target } = event;
-    const { name, value } = target;
-
-    document[name] = value;
-
-    this.setState({
-      ...this.state,
-      document,
-    });
   }
 
   handleServiceCategory = (item, cb) => {
@@ -185,21 +178,28 @@ class Services extends Component {
     this.reset();
     setTimeout(() => {
       history.push(category.url[language].concat(item.url[language]));
-    }, 500);
+    }, 0);
+    // history.push(category.url[language].concat(item.url[language]));
+  }
+
+  props: {
+    category: Object,
+    service: Object,
+    services: Array,
+    setService: () => void,
+    setServiceCategory: () => void,
+    setServices: () => void,
   }
 
   render () {
     const {
+      category,
       device,
       language,
-      verbiage,
-    } = this.props;
-
-    const {
-      category,
       service,
       services,
-    } = this.state;
+      verbiage,
+    } = this.props;
 
     const proxy = {
       device,
@@ -238,6 +238,7 @@ function mapStateToProps (state) {
     device: state.device,
     language: state.language,
     service: state.service,
+    services: state.services,
     verbiage: state.verbiage,
   };
 }
@@ -247,6 +248,7 @@ function mapDispatchToProps (dispatch) {
     selectVariantVerbiage: selectVariantVerbiageAction,
     setService: setServiceAction,
     setServiceCategory: setServiceCategoryAction,
+    setServices: setServicesAction,
   }, dispatch);
 }
 

@@ -80,9 +80,13 @@ class App extends Component {
     this.state = init;
   }
 
-  static getDerivedStateFromProps = (nextProps) => {
-    // check browser
-    const { setDevice, device } = nextProps;
+  componentDidMount = () => {
+    this.updateDimensions();
+    window.addEventListener('resize', this.updateDimensions.bind(this));
+  }
+
+  updateDimensions = () => {
+    const { setDevice, device } = this.props;
     const ua = new UAParser().getDevice();
     const { type } = ua;
 
@@ -99,6 +103,8 @@ class App extends Component {
 
   props: {
     classes: Object,
+    device: String,
+    setDevice: () => void,
   }
 
   render () {
@@ -125,8 +131,8 @@ class App extends Component {
                   <ScrollingProvider>
                     <Switch location={location} >
                       <Route exact path="/" component={Home} />
-                      <Route path="/services/:type/:serviceUrl?" component={Services} />
-                      <Route path="/servicios/:type/:serviceUrl?" component={Services} />
+                      <Route exact path="/services/:type/:serviceUrl?" component={Services} />
+                      <Route exact path="/servicios/:type/:serviceUrl?" component={Services} />
                       <Route exact path="/blog" component={Blog} />
                       <Route component={Four0Four} />
                     </Switch>

@@ -30,6 +30,7 @@ import {
 import {
   getCategoryReducer,
   getServiceReducer,
+  getServicesReducer,
 } from './services';
 
 /*
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   lead: getLeadReducer,
   leadType: getLeadTypeReducer,
   service: getServiceReducer,
+  services: getServicesReducer,
   verbiage: selectedVariantVerbiageReducer,
 });
 

@@ -21,7 +21,6 @@ class LangToggler extends Component {
     id: any,
     language: string,
     leadType: string,
-    selectLanguage: Function,
     selectVariantVerbiage: Function,
     verbiage: Function,
   }
@@ -29,16 +28,11 @@ class LangToggler extends Component {
   render() {
     // default language
     let copy = null;
-    const defaultLang = 'es';
-    const { selectLanguage, language, verbiage, id, leadType } = this.props;
+    const { language, verbiage, id, leadType } = this.props;
 
     // select verbiage
     if (leadType && !verbiage) {
       this.chooseVerbiage(leadType);
-    }
-
-    if (language === '') {
-      selectLanguage(defaultLang);
     }
 
     if (verbiage) {
