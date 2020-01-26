@@ -1,5 +1,9 @@
 
-import { withRouter } from 'react-router-dom';
+import {
+  Link,
+  withRouter,
+} from 'react-router-dom';
+
 import classnames from 'classnames';
 import React, { useState } from 'react';
 
@@ -165,14 +169,10 @@ function ServicesLayout (props: {
 
   const handleServiceCategoryClick = (evt, item) => {
     evt.preventDefault();
-    setServiceCategory(item, (done) => {
-      if (done) history.push(item.url[language]);
-    });
-  };
 
-  const handleServiceClick = (evt, item, service) => {
-    evt.preventDefault();
-    history.push(item.url[language].concat(service.url[language]));
+    setServiceCategory(item, (done) => {
+      if (done) history.push('/'.concat(language.concat(item.url[language])));
+    });
   };
 
   const services = verbiage && verbiage(copy.services);
@@ -235,20 +235,26 @@ function ServicesLayout (props: {
                           </ListItemIcon>
                           <ListItemText
                             className={classes.serviceTitle}
-                            onClick={evt => handleServiceClick(evt, item, service)}
                             primary={(
-                              <Typography
-                                variant="caption"
-                              >
-                                <LangToggler id={service.label} />
-                                {service.featured &&
-                                  <Typography
-                                    variant="caption"
-                                    className={classes.featuredText}>
-                                    <LangToggler id={service.featuredText} />
-                                  </Typography>
-                                }
-                              </Typography>
+                              <Link to={{
+                                pathname: `/${language}${item.url[language]}${service.url[language]}`,
+                                state: {
+                                  category: item,
+                                  service,
+                                },
+                              }}>
+                                <Typography
+                                  variant="caption">
+                                  <LangToggler id={service.label} />
+                                  {service.featured &&
+                                    <Typography
+                                      variant="caption"
+                                      className={classes.featuredText}>
+                                      <LangToggler id={service.featuredText} />
+                                    </Typography>
+                                  }
+                                </Typography>
+                              </Link>
                             )} />
                         </ListItem>
                       );
@@ -261,13 +267,19 @@ function ServicesLayout (props: {
           <CardActions
             disableSpacing
           >
-            <LangButton
-              className={classnames(classes.button, isHover && classes.buttonHover)}
-              lang={item.cta}
-              onClick={evt => handleServiceCategoryClick(evt, item)}
-              typeButton={TYPES.CONTAINED}
-              variant={variant}
-            />
+            <Link to={{
+              pathname: `/${language}${item.url[language]}`,
+              state: {
+                category: item,
+              },
+            }}>
+              <LangButton
+                className={classnames(classes.button, isHover && classes.buttonHover)}
+                lang={item.cta}
+                typeButton={TYPES.CONTAINED}
+                variant={variant}
+              />
+            </Link>
           </CardActions>
         </Card>
       ),

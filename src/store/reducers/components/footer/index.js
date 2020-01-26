@@ -3,13 +3,15 @@ import {
   VARIANT_VERBIAGE_SELECTED,
 } from '../../../actions/components/footer';
 
+import config from '../../../../providers/config';
+
 import VerbiageOfAuto from '../../../../providers/lang/verbs/aquaclinica/auto';
 import VerbiageOfDefault from '../../../../providers/lang/verbs/aquaclinica/default';
 import VerbiageOfDental from '../../../../providers/lang/verbs/aquaclinica/dental';
 import VerbiageOfGroup from '../../../../providers/lang/verbs/aquaclinica/group';
 import VerbiageOfHealth from '../../../../providers/lang/verbs/aquaclinica/health';
 
-export const selectedLanguageReducer = (state = 'es', action) => {
+export const selectedLanguageReducer = (state = config.defaultLang, action) => {
   switch (action.type) {
   case LANGUAGE_SELECTED:
     window.localStorage.setItem('language', action.payload);

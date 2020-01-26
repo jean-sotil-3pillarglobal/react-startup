@@ -169,7 +169,6 @@ function SectionA (props: {
     onServiceListClick,
     proxy,
   } = props;
-
   let view = children;
 
   const [showForm, setShowForm] = useState(false);
@@ -276,8 +275,6 @@ function SectionA (props: {
         <Grid
           container
           direction="row"
-          justify="flex-start"
-          alignItems="flext-start"
           spacing={1}>
           <Grid
             item

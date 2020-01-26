@@ -11,6 +11,7 @@ import {
 } from './../../store/actions/services';
 
 import {
+  selectLanguageAction,
   selectVariantVerbiageAction,
 } from './../../store/actions/components/footer';
 
@@ -46,28 +47,34 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'title',
 ]);
 
-const init = {
-  document: {},
-  verbiage: null,
-};
-
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = init;
-  }
+  state = {
+    verbiage: null,
+  };
 
-  static getDerivedStateFromProps = (nextProps) => {
+  static getDerivedStateFromProps = (nextProps, nextState) => {
     const {
+      match: {
+        params,
+      },
+      selectLanguage,
       selectVariantVerbiage,
       verbiage,
     } = nextProps;
+
+    const init = {
+      ...nextState,
+    };
 
     if (!verbiage) {
       selectVariantVerbiage('default');
     }
 
-    if (verbiage) {
+    if (params.locale) {
+      selectLanguage(params.locale);
+    }
+
+    if (verbiage && !nextState.verbiage) {
       return {
         verbiage,
       };
@@ -150,6 +157,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
+    selectLanguage: selectLanguageAction,
     selectVariantVerbiage: selectVariantVerbiageAction,
     setServiceCategory: setServiceCategoryAction,
   }, dispatch);

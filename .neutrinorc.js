@@ -49,6 +49,7 @@ module.exports = {
             'import/no-named-as-default-member': 0,
             'import/prefer-default-export': 0,
             'indent': [1, 2],
+            'jsx-a11y/anchor-is-valid': 0,
             'jsx-a11y/mouse-events-have-key-events': 0,
             'linebreak-style': 0,
             'max-len': 0,

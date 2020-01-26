@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 
 import {
+  selectLanguageAction,
   selectVariantVerbiageAction,
 } from './../../store/actions/components/footer';
 
@@ -69,14 +70,6 @@ class Services extends Component {
     this.setServicesState();
   }
 
-  // shouldComponentUpdate = (nextProps) => {
-  //   return this.props.category !== nextProps.category ||
-  //   this.props.language !== nextProps.language ||
-  //     this.props.service !== nextProps.service ||
-  //     this.props.services !== nextProps.services;
-  //     this.props.verbiage !== nextProps.verbiage;
-  // }
-
   componentDidUpdate = (prevProps) => {
     const {
       category,
@@ -85,7 +78,7 @@ class Services extends Component {
       service,
     } = this.props;
 
-    if (prevProps.language !== language) {
+    if (prevProps.language && (prevProps.language !== language)) {
       history.push(category.url[language].concat(service.url[language]));
     }
 
@@ -102,10 +95,12 @@ class Services extends Component {
       language,
       match: {
         params: {
+          locale,
           serviceUrl,
           type,
         },
       },
+      selectLanguage,
       service,
       services,
       setService,
@@ -114,7 +109,11 @@ class Services extends Component {
       verbiage,
     } = this.props;
 
-    if (verbiage && type) {
+    if (locale) {
+      selectLanguage(locale);
+    }
+
+    if (verbiage && type && language) {
       // find main category
       if (!category) {
         setServiceCategory(FindServiceCategoryByPath(type, verbiage(copy.categories), language));
@@ -152,6 +151,7 @@ class Services extends Component {
     history: Object,
     language: string,
     match: History,
+    selectLanguage: Function,
     selectVariantVerbiage: Function,
     setService: Function,
     setServiceCategory: Function,
@@ -176,10 +176,10 @@ class Services extends Component {
 
     // go to service
     this.reset();
+
     setTimeout(() => {
-      history.push(category.url[language].concat(item.url[language]));
+      history.push(`/${language}${category.url[language]}${item.url[language]}`);
     }, 0);
-    // history.push(category.url[language].concat(item.url[language]));
   }
 
   props: {
@@ -245,6 +245,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
+    selectLanguage: selectLanguageAction,
     selectVariantVerbiage: selectVariantVerbiageAction,
     setService: setServiceAction,
     setServiceCategory: setServiceCategoryAction,

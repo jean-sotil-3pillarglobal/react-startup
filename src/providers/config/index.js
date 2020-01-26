@@ -119,6 +119,7 @@ export const assets = {
 
 const config = {
   assets,
+  defaultLang: 'en',
   rootUrl: 'http://localhost:5000',
   routes: {
     privates,

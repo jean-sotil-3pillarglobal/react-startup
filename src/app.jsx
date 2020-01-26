@@ -1,10 +1,16 @@
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
 import { ScrollingProvider } from 'react-scroll-section';
 import React, { Component } from 'react';
 import UAParser from 'ua-parser-js';
+
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
 import {
   CssBaseline,
@@ -104,44 +110,49 @@ class App extends Component {
   props: {
     classes: Object,
     device: String,
+    language: String,
     setDevice: () => void,
   }
 
   render () {
-    const { classes } = this.props;
+    const { classes, language } = this.props;
 
     const skin = createMuiTheme(SkinProvider('default'));
 
     return (
       <MuiThemeProvider theme={skin}>
         <CssBaseline />
-        <div className={classes.container}>
-          <Route render={({ location }) => (
-            <TransitionGroup className={classes.transitions}>
-              <CSSTransition
-                key={location.key}
-                timeout={{ enter: 300, exit: 300 }}
-                classNames={{
-                  enter: classes.appear,
-                  enterActive: classes.appearActive,
-                  exit: classes.exit,
-                  exitActive: classes.exitActive,
-                }}>
-                <div className={classes.switch}>
-                  <ScrollingProvider>
-                    <Switch location={location} >
-                      <Route exact path="/" component={Home} />
-                      <Route exact path="/services/:type/:serviceUrl?" component={Services} />
-                      <Route exact path="/servicios/:type/:serviceUrl?" component={Services} />
+        <ScrollingProvider>
+          <div className={classes.container}>
+            <Router>
+              <TransitionGroup className={classes.transitions}>
+                <CSSTransition
+                  key="transition"
+                  timeout={{ enter: 300, exit: 300 }}
+                  classNames={{
+                    enter: classes.appear,
+                    enterActive: classes.appearActive,
+                    exit: classes.exit,
+                    exitActive: classes.exitActive,
+                  }}>
+                  <div className={classes.switch}>
+                    <Switch>
+                      <Route exact path="/:locale" component={Home} />
+                      <Route exact path="/:locale/services/:type/:serviceUrl?" component={Services} />
+                      <Route exact path="/:locale/servicios/:type/:serviceUrl?" component={Services} />
                       <Route exact path="/blog" component={Blog} />
                       <Route component={Four0Four} />
                     </Switch>
-                  </ScrollingProvider>
-                </div>
-              </CSSTransition>
-            </TransitionGroup>
-          )} />
-        </div>
+
+                    <Route exact path="/">
+                      {language && <Redirect to={'/'.concat(language)} />}
+                    </Route>
+                  </div>
+                </CSSTransition>
+              </TransitionGroup>
+            </Router>
+          </div>
+        </ScrollingProvider>
       </MuiThemeProvider>
     );
   }
@@ -151,6 +162,7 @@ class App extends Component {
 function mapStateToProps (state) {
   return {
     device: state.device,
+    language: state.language,
     lead: state.lead,
     leadType: state.leadType,
   };

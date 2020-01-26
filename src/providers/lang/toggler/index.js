@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 // action creators
 import {
-  selectLanguageAction,
   selectVariantVerbiageAction,
 } from '../../../store/actions/components/footer';
 
@@ -67,7 +66,6 @@ function mapStateToProps (state) {
 // dispatch actionCreators
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    selectLanguage: selectLanguageAction,
     selectVariantVerbiage: selectVariantVerbiageAction,
   }, dispatch);
 }
