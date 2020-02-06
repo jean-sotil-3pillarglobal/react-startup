@@ -24,6 +24,11 @@ import {
   TransitionGroup,
 } from 'react-transition-group';
 
+// Config
+import {
+  constants,
+} from './providers/config';
+
 // providers
 import SkinProvider from './providers/skins';
 
@@ -74,6 +79,14 @@ const Home = Async(() => { return import('./containers/home'); });
 const Services = Async(() => { return import('./containers/services'); });
 const Blog = Async(() => { return import('./containers/blog'); });
 const Four0Four = Async(() => { return import('./containers/404'); });
+
+// paths
+const {
+  PATHS: {
+    SERVICES,
+    // SERVICES_DETAILS,
+  },
+} = constants;
 
 const init = {
   device: null,
@@ -138,8 +151,7 @@ class App extends Component {
                   <div className={classes.switch}>
                     <Switch>
                       <Route exact path="/:locale" component={Home} />
-                      <Route exact path="/:locale/services/:type/:serviceUrl?" component={Services} />
-                      <Route exact path="/:locale/servicios/:type/:serviceUrl?" component={Services} />
+                      <Route exact path={`/:locale/${SERVICES[language]}/:type/:serviceUrl?`} component={Services} />
                       <Route exact path="/blog" component={Blog} />
                       <Route component={Four0Four} />
                     </Switch>

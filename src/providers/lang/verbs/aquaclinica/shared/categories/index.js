@@ -2,6 +2,10 @@ import {
   constants,
 } from './../../../../../config';
 
+import {
+  CreateUrlOnePath,
+} from './../../../../../utils/url.formatter';
+
 // constants
 const {
   CATEGORY_1,
@@ -9,7 +13,14 @@ const {
   CATEGORY_3,
   CATEGORY_4,
   CATEGORY_5,
+
+
+  PATHS: {
+    SERVICES,
+  },
 } = constants;
+
+const url = CreateUrlOnePath(SERVICES);
 
 const Services = [
   {
@@ -49,7 +60,7 @@ const Services = [
     ],
     svg: '/static/svg/team_work.svg',
     title: {
-      en: 'dermatología estética',
+      en: 'beauty and dermatology',
       es: 'dermatología estética',
     },
     unknown: {
@@ -57,8 +68,8 @@ const Services = [
       es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
-      en: '/services/dermatologia-estetica',
-      es: '/servicios/dermatologia-estetica',
+      en: url('beauty-and-dermatology', 'en'),
+      es: url('dermatologia-estetica', 'es'),
     },
   },
   {
@@ -102,8 +113,8 @@ const Services = [
       es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
-      en: '/services/dermatologia-clinica',
-      es: '/servicios/dermatologia-clinica',
+      en: url('dermatologia-clinica', 'en'),
+      es: url('dermatologia-clinica', 'es'),
     },
   },
   {
@@ -132,8 +143,8 @@ const Services = [
       es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
-      en: '/services/estetica-y-spa-clinico',
-      es: '/servicios/estetica-y-spa-clinico',
+      en: url('estetica-y-spa-clinico', 'en'),
+      es: url('estetica-y-spa-clinico', 'es'),
     },
   },
   {
@@ -162,8 +173,8 @@ const Services = [
       es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
-      en: '/services/nutricion',
-      es: '/servicios/nutricion',
+      en: url('nutricion', 'en'),
+      es: url('nutricion', 'es'),
     },
   },
   {
@@ -192,8 +203,8 @@ const Services = [
       es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
-      en: '/services/terapia-fisica',
-      es: '/servicios/terapia-fisica',
+      en: url('terapia-fisica', 'en'),
+      es: url('terapia-fisica', 'es'),
     },
   },
 ];

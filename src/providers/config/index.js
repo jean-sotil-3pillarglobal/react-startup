@@ -23,6 +23,17 @@ export const constants = {
   LINK_SECTION_5: 'link_section_5',
   LINK_SERVICES_1: 'link_services_1',
 
+  PATHS: {
+    SERVICES: {
+      en: 'our-services',
+      es: 'servicios',
+    },
+    SERVICES_DETAILS: {
+      en: 'free-quote',
+      es: 'consulta-gratuita',
+    },
+  },
+
   // promos
   PROMO_1: 'promo_1',
   PROMO_2: 'promo_2',
@@ -50,7 +61,7 @@ export const publics = [
       es: '¿porqué escogernos?',
     },
     route: {
-      en: '/why-chooose-us',
+      en: '/why-choose-us',
       es: '/quienes-somos',
     },
   },
