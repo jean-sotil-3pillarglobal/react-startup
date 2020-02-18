@@ -4,6 +4,10 @@ export const CreateUrlOnePath = (path) => {
   };
 };
 
-export const CreateUrlCategoryDetails = (language, category, item) => {
-  return `/${language}${category.url[language]}/${item.url[language]}`;
+export const CreateUrlCategory = (language, category) => {
+  return `/${language}${category.url[language]}`;
+};
+
+export const CreateUrlCategoryDetails = (language, category, service) => {
+  return `/${language}${category.url[language]}/${service.url[language]}`;
 };

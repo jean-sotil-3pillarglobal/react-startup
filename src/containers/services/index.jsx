@@ -156,6 +156,7 @@ class Services extends Component {
       setServiceCategory,
     } = this.props;
 
+    this.reset();
     setServiceCategory(item);
     cb(true);
   }

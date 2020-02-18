@@ -30,6 +30,7 @@ import ThemeBackground from './../../../../providers/utils/theme.background';
 import ThemeColor from './../../../../providers/utils/theme.color';
 
 import {
+  CreateUrlCategory,
   CreateUrlCategoryDetails,
 } from './../../../../providers/utils/url.formatter';
 
@@ -175,7 +176,7 @@ function ServicesLayout (props: {
     evt.preventDefault();
 
     setServiceCategory(item, (done) => {
-      if (done) history.push('/'.concat(language.concat(item.url[language])));
+      if (done) history.push(CreateUrlCategory(language, item));
     });
   };
 
