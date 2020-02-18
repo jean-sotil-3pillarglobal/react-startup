@@ -2,8 +2,14 @@ import {
   constants,
 } from './../../../../../../config';
 
-import CONTENT_SERVICE_1 from './service-1';
-import CONTENT_SERVICE_2 from './service-2';
+import CONTENT_SERVICE_1 from './rellenos';
+import CONTENT_SERVICE_2 from './toxina-botulinica';
+import CONTENT_SERVICE_3 from './rejuvenecimiento-laser';
+import CONTENT_SERVICE_5 from './toxina-contra-hiperhidrosis';
+import CONTENT_SERVICE_6 from './eliminacion-tatuajes';
+import CONTENT_SERVICE_7 from './dermapen';
+import CONTENT_SERVICE_8 from './radiofrecuencia';
+import CONTENT_SERVICE_9 from './plex-air';
 
 // constants
 const {
@@ -16,70 +22,63 @@ const {
   SERVICE_3,
   SERVICE_4,
   SERVICE_5,
+  SERVICE_6,
+  SERVICE_7,
+  SERVICE_8,
+  SERVICE_9,
 } = constants;
-
-
-const currentCategory = CATEGORY_1;
 
 const Services = [
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_1,
     cta: {
       en: 'get quote now',
       es: 'consultar ahora',
     },
-    featured: true,
-    featuredText: {
-      en: 'new',
-      es: 'nuevo',
-    },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_1}`,
+    id: `${CATEGORY_1}-${SERVICE_1}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
-      en: 'rellenos',
-      es: 'rellenos',
+      en: 'rellenos de ácido hialurónico',
+      es: 'rellenos de ácido hialurónico',
     },
     title: {
-      en: 'rellenos',
-      es: 'rellenos',
+      en: 'rellenos de ácido hialurónico',
+      es: 'rellenos de ácido hialurónico',
     },
     url: {
-      en: '/rellenos',
-      es: '/rellenos',
+      en: 'rellenos-de-ácido-hialurónico',
+      es: 'rellenos-de-ácido-hialurónico',
     },
-    value: `${currentCategory}-${SERVICE_1}`,
+    value: `${CATEGORY_1}-${SERVICE_1}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
+    featured: true,
+    featuredText: {
+      en: '5% discount',
+      es: '5% descuento',
+    },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_2}`,
+    id: `${CATEGORY_1}-${SERVICE_2}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'toxina botulinica',
@@ -90,29 +89,26 @@ const Services = [
       es: 'toxina botulinica',
     },
     url: {
-      en: '/toxina-botulinica',
-      es: '/toxina-botulinica',
+      en: 'toxina-botulinica',
+      es: 'toxina-botulinica',
     },
-    value: `${currentCategory}-${SERVICE_2}`,
+    value: `${CATEGORY_1}-${SERVICE_2}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_1,
     ],
+    content: CONTENT_SERVICE_3,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_3}`,
+    id: `${CATEGORY_1}-${SERVICE_3}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'rejuvenecimiento láser',
@@ -123,29 +119,26 @@ const Services = [
       es: 'rejuvenecimiento láser',
     },
     url: {
-      en: '/rejuvenecimiento-laser',
-      es: '/rejuvenecimiento-laser',
+      en: 'rejuvenecimiento-laser',
+      es: 'rejuvenecimiento-laser',
     },
-    value: `${currentCategory}-${SERVICE_3}`,
+    value: `${CATEGORY_1}-${SERVICE_3}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_1,
     ],
+    content: CONTENT_SERVICE_3,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_4}`,
+    id: `${CATEGORY_1}-${SERVICE_4}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'tratamiento láser para manchas e hiperpigmentación',
@@ -156,29 +149,56 @@ const Services = [
       es: 'tratamiento láser para manchas e hiperpigmentación',
     },
     url: {
-      en: '/tratamiento-laser-para-manchas-e-hiperpigmentacion',
-      es: '/tratamiento-laser-para-manchas-e-hiperpigmentacion',
+      en: 'tratamiento-laser-para-manchas-e-hiperpigmentacion',
+      es: 'tratamiento-laser-para-manchas-e-hiperpigmentacion',
     },
-    value: `${currentCategory}-${SERVICE_4}`,
+    value: `${CATEGORY_1}-${SERVICE_4}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_1,
     ],
+    content: CONTENT_SERVICE_5,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_5}`,
+    id: `${CATEGORY_1}-${SERVICE_5}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+    },
+    label: {
+      en: 'toxina contra hiperhidrosis',
+      es: 'toxina contra hiperhidrosis',
+    },
+    title: {
+      en: 'toxina contra hiperhidrosis',
+      es: 'toxina contra hiperhidrosis',
+    },
+    url: {
+      en: 'toxina-contra-hiperhidrosis',
+      es: 'toxina-contra-hiperhidrosis',
+    },
+    value: `${CATEGORY_1}-${SERVICE_5}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    categories: [
+      CATEGORY_1,
+    ],
+    content: CONTENT_SERVICE_6,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_1}-${SERVICE_6}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'eliminación de tatuajes',
@@ -189,10 +209,100 @@ const Services = [
       es: 'eliminación de tatuajes',
     },
     url: {
-      en: '/eliminación-de-tatuajes',
-      es: '/eliminación-de-tatuajes',
+      en: 'eliminación-de-tatuajes',
+      es: 'eliminación-de-tatuajes',
     },
-    value: `${currentCategory}-${SERVICE_5}`,
+    value: `${CATEGORY_1}-${SERVICE_6}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    categories: [
+      CATEGORY_1,
+    ],
+    content: CONTENT_SERVICE_7,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_1}-${SERVICE_7}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+    },
+    label: {
+      en: 'dermapen',
+      es: 'dermapen',
+    },
+    title: {
+      en: 'dermapen',
+      es: 'dermapen',
+    },
+    url: {
+      en: 'dermapen',
+      es: 'dermapen',
+    },
+    value: `${CATEGORY_1}-${SERVICE_7}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    categories: [
+      CATEGORY_1,
+    ],
+    content: CONTENT_SERVICE_8,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_1}-${SERVICE_8}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+    },
+    label: {
+      en: 'radio frecuencia con agujas',
+      es: 'radio frecuencia con agujas',
+    },
+    title: {
+      en: 'radio frecuencia con agujas',
+      es: 'radio frecuencia con agujas',
+    },
+    url: {
+      en: 'radio-frecuencia-con-agujas',
+      es: 'radio-frecuencia-con-agujas',
+    },
+    value: `${CATEGORY_1}-${SERVICE_8}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    categories: [
+      CATEGORY_1,
+    ],
+    content: CONTENT_SERVICE_9,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_1}-${SERVICE_9}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+    },
+    label: {
+      en: 'plex air, blefaroplatia sin cirugía',
+      es: 'plex air, blefaroplatia sin cirugía',
+    },
+    title: {
+      en: 'plex air, blefaroplatia sin cirugía',
+      es: 'plex air, blefaroplatia sin cirugía',
+    },
+    url: {
+      en: 'plex-air-blefaroplatia-sin-cirugía',
+      es: 'plex-air-blefaroplatia-sin-cirugía',
+    },
+    value: `${CATEGORY_1}-${SERVICE_9}`,
   },
 ];
 

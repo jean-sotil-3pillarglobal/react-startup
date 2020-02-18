@@ -32,6 +32,10 @@ import ServicesLayout from '../../components/layouts/commons/services_1';
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
 
 import {
+  CreateUrlCategoryDetails,
+} from './../../providers/utils/url.formatter';
+
+import {
   FindServiceByPath,
   FindServiceCategoryByPath,
 } from './../../providers/utils/filter.services';
@@ -70,18 +74,7 @@ class Services extends Component {
     this.setServicesState();
   }
 
-  componentDidUpdate = (prevProps) => {
-    const {
-      category,
-      history,
-      language,
-      service,
-    } = this.props;
-
-    if (prevProps.language && (prevProps.language !== language)) {
-      history.push(category.url[language].concat(service.url[language]));
-    }
-
+  componentDidUpdate = () => {
     this.setServicesState();
   }
 
@@ -171,15 +164,12 @@ class Services extends Component {
     const {
       history,
       language,
-      // setService,
     } = this.props;
 
     // go to service
     this.reset();
 
-    setTimeout(() => {
-      history.push(`/${language}${category.url[language]}${item.url[language]}`);
-    }, 0);
+    history.push(CreateUrlCategoryDetails(language, category, item));
   }
 
   props: {

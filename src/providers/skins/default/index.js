@@ -226,7 +226,7 @@ const overrides = {
 
 const typography = {
   body1: {
-    fontSize: '1.5rem',
+    fontSize: '1.3rem',
     fontWeight: 300,
   },
   body2: {
@@ -255,8 +255,8 @@ const typography = {
     textTransform: 'capitalize',
   },
   h4: {
-    fontSize: '1.7rem',
-    fontWeight: 300,
+    fontSize: '1.4rem',
+    fontWeight: 600,
     textTransform: 'capitalize',
   },
   h5: {

@@ -14,7 +14,6 @@ const {
   CATEGORY_4,
   CATEGORY_5,
 
-
   PATHS: {
     SERVICES,
   },
@@ -24,7 +23,7 @@ const url = CreateUrlOnePath(SERVICES);
 
 const Services = [
   {
-    background: '/static/images/m-image-test.jpg',
+    background: `/static/images/${CATEGORY_1}/3.png`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
@@ -45,22 +44,22 @@ const Services = [
     ico: 'home',
     id: CATEGORY_1,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_1}/3.png`,
+      mobile: `/static/images/${CATEGORY_1}/3.png`,
     },
     images: [
       {
-        desktop: '/static/images/d-image-test.jpg',
-        mobile: '/static/images/m-image-test.jpg',
+        desktop: `/static/images/${CATEGORY_1}/3.png`,
+        mobile: `/static/images/${CATEGORY_1}/3.png`,
       },
       {
-        desktop: '/static/images/d-image-test.jpg',
-        mobile: '/static/images/m-image-test.jpg',
+        desktop: `/static/images/${CATEGORY_1}/3.png`,
+        mobile: `/static/images/${CATEGORY_1}/3.png`,
       },
     ],
     svg: '/static/svg/team_work.svg',
     title: {
-      en: 'beauty and dermatology',
+      en: 'estetic dermatology',
       es: 'dermatología estética',
     },
     unknown: {
@@ -68,12 +67,12 @@ const Services = [
       es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
-      en: url('beauty-and-dermatology', 'en'),
+      en: url('estetic-dermatology', 'en'),
       es: url('dermatologia-estetica', 'es'),
     },
   },
   {
-    background: '/static/images/m-image-test.jpg',
+    background: `/static/images/${CATEGORY_2}/2.jpg`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
@@ -90,22 +89,22 @@ const Services = [
     ico: 'cloud-download',
     id: CATEGORY_2,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_2}/2.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/2.jpg`,
     },
     images: [
       {
-        desktop: '/static/images/d-image-test.jpg',
-        mobile: '/static/images/m-image-test.jpg',
+        desktop: `/static/images/${CATEGORY_2}/2.jpg`,
+        mobile: `/static/images/${CATEGORY_2}/2.jpg`,
       },
       {
-        desktop: '/static/images/d-image-test.jpg',
-        mobile: '/static/images/m-image-test.jpg',
+        desktop: `/static/images/${CATEGORY_2}/2.jpg`,
+        mobile: `/static/images/${CATEGORY_2}/2.jpg`,
       },
     ],
     svg: '/static/svg/team_work.svg',
     title: {
-      en: 'dermatología clinica',
+      en: 'clinic dermatology',
       es: 'dermatología clinica',
     },
     unknown: {
@@ -113,12 +112,12 @@ const Services = [
       es: 'disculpa, no pudimos encontrar ese servicio.',
     },
     url: {
-      en: url('dermatologia-clinica', 'en'),
+      en: url('clinic-dermatology', 'en'),
       es: url('dermatologia-clinica', 'es'),
     },
   },
   {
-    background: '/static/images/m-image-test.jpg',
+    background: `/static/images/${CATEGORY_3}/3.png`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
@@ -131,8 +130,8 @@ const Services = [
     ico: 'cloud-download',
     id: CATEGORY_3,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_3}/3.png`,
+      mobile: `/static/images/${CATEGORY_3}/3.png`,
     },
     title: {
       en: 'estética y spa clínico',
@@ -148,7 +147,7 @@ const Services = [
     },
   },
   {
-    background: '/static/images/m-image-test.jpg',
+    background: `/static/images/${CATEGORY_4}/3.jpg`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
@@ -161,8 +160,8 @@ const Services = [
     ico: 'cloud-download',
     id: CATEGORY_4,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_4}/3.jpg`,
+      mobile: `/static/images/${CATEGORY_4}/3.jpg`,
     },
     title: {
       en: 'nutricion',
@@ -178,7 +177,7 @@ const Services = [
     },
   },
   {
-    background: '/static/images/m-image-test.jpg',
+    background: `/static/images/${CATEGORY_5}/3.jpg`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
@@ -191,8 +190,8 @@ const Services = [
     ico: 'cloud-download',
     id: CATEGORY_5,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_5}/3.jpg`,
+      mobile: `/static/images/${CATEGORY_5}/3.jpg`,
     },
     title: {
       en: 'terapia fisica',

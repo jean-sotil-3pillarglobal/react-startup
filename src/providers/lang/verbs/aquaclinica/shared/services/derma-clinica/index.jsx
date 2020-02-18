@@ -2,8 +2,8 @@ import {
   constants,
 } from './../../../../../../config';
 
-import CONTENT_SERVICE_1 from './service-1';
-import CONTENT_SERVICE_2 from './service-2';
+import CONTENT_SERVICE_1 from './escleroterapia';
+import CONTENT_SERVICE_2 from './alergias';
 
 // constants
 const {
@@ -18,18 +18,11 @@ const {
   SERVICE_5,
 } = constants;
 
-
-const currentCategory = CATEGORY_2;
-
 const Services = [
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_1,
     cta: {
@@ -37,10 +30,10 @@ const Services = [
       es: 'consultar ahora',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_1}`,
+    id: `${CATEGORY_2}-${SERVICE_1}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'escleroterapia',
@@ -54,16 +47,12 @@ const Services = [
       en: 'escleroterapia',
       es: 'escleroterapia',
     },
-    value: `${currentCategory}-${SERVICE_1}`,
+    value: `${CATEGORY_2}-${SERVICE_1}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -76,10 +65,10 @@ const Services = [
       es: '5% descuento',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_2}`,
+    id: `${CATEGORY_2}-${SERVICE_2}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'alergías',
@@ -93,26 +82,22 @@ const Services = [
       en: 'alergias',
       es: 'alergias',
     },
-    value: `${currentCategory}-${SERVICE_2}`,
+    value: `${CATEGORY_2}-${SERVICE_2}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_2,
     ],
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_3}`,
+    id: `${CATEGORY_2}-${SERVICE_3}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'tratamiento para hongos en uña',
@@ -126,26 +111,23 @@ const Services = [
       en: 'tratamiento-para-hongos-en-uña',
       es: 'tratamiento-para-hongos-en-uña',
     },
-    value: `${currentCategory}-${SERVICE_3}`,
+    value: `${CATEGORY_2}-${SERVICE_3}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_2,
     ],
+    content: CONTENT_SERVICE_2,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_4}`,
+    id: `${CATEGORY_2}-${SERVICE_4}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'diagnóstico y tratamiento para cáncer de piel',
@@ -159,26 +141,23 @@ const Services = [
       en: 'diagnostico-y-tratamiento-para-cancer-de-piel',
       es: 'diagnostico-y-tratamiento-para-cancer-de-piel',
     },
-    value: `${currentCategory}-${SERVICE_4}`,
+    value: `${CATEGORY_2}-${SERVICE_4}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_2,
     ],
+    content: CONTENT_SERVICE_2,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_5}`,
+    id: `${CATEGORY_2}-${SERVICE_5}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'dermatitis y enfermedades de la piel',
@@ -192,7 +171,7 @@ const Services = [
       en: 'dermatitis-y-enfermedades-de-la-piel',
       es: 'dermatitis-y-enfermedades-de-la-piel',
     },
-    value: `${currentCategory}-${SERVICE_5}`,
+    value: `${CATEGORY_2}-${SERVICE_5}`,
   },
 ];
 

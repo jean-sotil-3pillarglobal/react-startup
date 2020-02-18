@@ -1,11 +1,11 @@
 // constants
 export const constants = {
   // categories
-  CATEGORY_1: 'category_1',
-  CATEGORY_2: 'category_2',
-  CATEGORY_3: 'category_3',
-  CATEGORY_4: 'category_4',
-  CATEGORY_5: 'category_5',
+  CATEGORY_1: 'derma-clinica',
+  CATEGORY_2: 'derma-estetica',
+  CATEGORY_3: 'spa-clinico',
+  CATEGORY_4: 'nutri',
+  CATEGORY_5: 'terapia-ficia',
 
   CLERK_1: 'clerk_1',
   CLERK_2: 'clerk_2',
@@ -25,7 +25,7 @@ export const constants = {
 
   PATHS: {
     SERVICES: {
-      en: 'our-services',
+      en: 'services',
       es: 'servicios',
     },
     SERVICES_DETAILS: {

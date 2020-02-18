@@ -29,6 +29,10 @@ import LangToggler from './../../../../providers/lang/toggler';
 import ThemeBackground from './../../../../providers/utils/theme.background';
 import ThemeColor from './../../../../providers/utils/theme.color';
 
+import {
+  CreateUrlCategoryDetails,
+} from './../../../../providers/utils/url.formatter';
+
 // components
 import Icon from './../../../commons/icon';
 import SectionBlock from './../../section';
@@ -237,7 +241,7 @@ function ServicesLayout (props: {
                             className={classes.serviceTitle}
                             primary={(
                               <Link to={{
-                                pathname: `/${language}${item.url[language]}${service.url[language]}`,
+                                pathname: CreateUrlCategoryDetails(language, item, service),
                                 state: {
                                   category: item,
                                   service,
