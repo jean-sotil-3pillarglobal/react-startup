@@ -6,6 +6,8 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import { Element } from 'react-scroll';
+
 import {
   setServiceCategoryAction,
 } from './../../store/actions/services';
@@ -27,10 +29,11 @@ import BannerA from './banner-1';
 import SectionA from './section-1';
 import SectionB from './section-2';
 import SectionD from './section-4';
-import SectionE from './section-5';
 
 // provider
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
+
+import { constants } from './../../providers/config';
 
 const styles = () => ({
   container: {
@@ -130,13 +133,24 @@ class Home extends Component {
         <SectionA proxy={proxy} />
         <BannerA proxy={proxy} />
 
-        <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="primary" />
+        <Element name={constants.LINK_SERVICES_1}>
+          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="primary" />
+        </Element>
 
-        <SectionB proxy={proxy} />
-        <ClerksLayout proxy={proxy} variant="dark" />
+        <Element name={constants.LINK_SECTION_2}>
+          <SectionB proxy={proxy} />
+        </Element>
+
+        <Element name={constants.LINK_SECTION_3}>
+          <ClerksLayout proxy={proxy} variant="dark" />
+        </Element>
+
         <BannerA proxy={proxy} />
-        <SectionD proxy={proxy} variant="primary" />
-        <SectionE proxy={proxy} />
+
+        <Element name={constants.LINK_SECTION_4}>
+          <SectionD proxy={proxy} variant="primary" />
+        </Element>
+
         <Footer />
       </Fragment>
     );

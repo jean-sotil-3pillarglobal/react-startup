@@ -24,6 +24,8 @@ import {
   Menu,
 } from '@material-ui/icons';
 
+import { Link } from 'react-scroll';
+
 // provider
 import LangToggler from '../../providers/lang/toggler';
 import LangGenerateTree from '../../providers/utils/lang.generate.tree';
@@ -287,15 +289,23 @@ class Header extends Component {
                       const featured = verbiage(item.featured);
 
                       return (
-                        <Box p={1} className={classes.navbarItem} key={item.id}>
-                          <LangButton
-                            key={item.label}
-                            lang={item.label}
-                            pos="right"
-                            typeButton={(featured && TYPES.CONTAINED) || TYPES.LINK}
-                            variant="light"
-                          />
-                        </Box>
+                        <Link
+                          activeClass="active"
+                          key={item.id}
+                          smooth
+                          spy
+                          to={verbiage(item.id)}
+                        >
+                          <Box p={1} className={classes.navbarItem} key={item.id}>
+                            <LangButton
+                              key={item.label}
+                              lang={item.label}
+                              pos="right"
+                              typeButton={(featured && TYPES.CONTAINED) || TYPES.LINK}
+                              variant="light"
+                            />
+                          </Box>
+                        </Link>
                       );
                     })}
                   </Box>

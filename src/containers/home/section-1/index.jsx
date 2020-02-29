@@ -8,6 +8,10 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import { Link } from 'react-scroll';
+
+import { constants } from './../../../providers/config';
+
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
 import { LangButton } from './../../../components/commons/button';
@@ -108,13 +112,20 @@ class SectionA extends Component {
           subtitle={copy.subtitle}
           variant="light"
           className={classes.callout}>
-          <LangButton
-            className={classes.button}
-            lang={copy.cta}
-            onClick={this.handleClick}
-            variant="dark2">
-            <Icon name="keyboard_arrow_right" className={classes.icon} />
-          </LangButton>
+          <Link
+            activeClass="active"
+            smooth
+            spy
+            to={constants.LINK_SERVICES_1}
+          >
+            <LangButton
+              className={classes.button}
+              lang={copy.cta}
+              onClick={this.handleClick}
+              variant="dark2">
+              <Icon name="keyboard_arrow_right" className={classes.icon} />
+            </LangButton>
+          </Link>
         </Callout>
       </Paper>
     );
