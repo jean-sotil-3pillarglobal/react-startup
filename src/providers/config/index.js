@@ -55,17 +55,6 @@ export const constants = {
 // public routes
 export const publics = [
   {
-    id: constants.LINK_SECTION_2,
-    label: {
-      en: 'why choose us?',
-      es: '¿porqué escogernos?',
-    },
-    route: {
-      en: '/why-choose-us',
-      es: '/quienes-somos',
-    },
-  },
-  {
     id: constants.LINK_SERVICES_1,
     label: {
       en: 'services',
@@ -77,6 +66,17 @@ export const publics = [
     },
   },
   {
+    id: constants.LINK_SECTION_2,
+    label: {
+      en: 'why choose us?',
+      es: '¿porqué escogernos?',
+    },
+    route: {
+      en: '/why-choose-us',
+      es: '/quienes-somos',
+    },
+  },
+  {
     id: constants.LINK_SECTION_3,
     label: {
       en: 'our team',
@@ -85,17 +85,6 @@ export const publics = [
     route: {
       en: '/our-team',
       es: '/nuestro-equipo',
-    },
-  },
-  {
-    id: constants.LINK_SECTION_5,
-    label: {
-      en: 'blog',
-      es: 'blog',
-    },
-    route: {
-      en: '/blog',
-      es: '/blog',
     },
   },
   {

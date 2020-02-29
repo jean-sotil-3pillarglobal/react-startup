@@ -1,8 +1,6 @@
 
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import Headroom from 'react-headroom';
 import React, { Component } from 'react';
 
 import {
@@ -37,20 +35,17 @@ import { LangButton, TYPES } from './../commons/button';
 import SmartImg from './../commons/img';
 import Icon from './../commons/icon';
 
-// action creators
-import { setHeaderVisibilityAction } from '../../store/actions/components/header';
-
 const drawerWidth = 240;
 
 const styles = theme => ({
-  appBar: props => ({
-    background: ThemeBackground(!props.isHeaderVisible ? { variant: 'secondary' } : { variant: 'primary' }, theme, 'light'),
+  appBar: {
+    background: ThemeBackground({ variant: 'primary' }, theme, 'light'),
     padding: 0,
     transition: theme.transitions.create(['background-color', 'margin', 'width'], {
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp,
     }),
-  }),
+  },
   appBarShift: {
     marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
@@ -111,10 +106,10 @@ const styles = theme => ({
     color: theme.palette.secondary.contrastText,
     fontSize: '1rem',
   },
-  iconFab: props => ({
-    color: ThemeColor(props.isHeaderVisible ? { variant: 'primary' } : { variant: 'secondary' }, theme),
+  iconFab: {
+    color: ThemeColor({ variant: 'primary' }, theme),
     fontSize: '1rem',
-  }),
+  },
   logo: {
     display: 'block',
     margin: 0,
@@ -170,11 +165,11 @@ const copy = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
   'logo',
   'phone_icon',
   'phone',
-  'publics-5-featured_icon',
-  'publics-5-featured',
-  'publics-5-id',
-  'publics-5-label',
-  'publics-5-route',
+  'publics-4-featured_icon',
+  'publics-4-featured',
+  'publics-4-id',
+  'publics-4-label',
+  'publics-4-route',
   'social-3-icon',
   'social-3-label',
   'social-3-link',
@@ -200,18 +195,14 @@ class Header extends Component {
 
   props: {
     classes: Object,
-    isHeaderVisible: Boolean,
     proxy: Object,
-    setHeaderVisibility: Function,
     theme: Object,
   };
 
   render() {
     const {
       classes,
-      isHeaderVisible,
       proxy,
-      setHeaderVisibility,
       theme,
     } = this.props;
 
@@ -253,71 +244,66 @@ class Header extends Component {
             </Box>
           </Grid>
         </Grid>
-        <Headroom
-          className={classes.headroom}
-          onUnpin={() => setHeaderVisibility(false)}
-          onUnfix={() => setHeaderVisibility(true)}>
-          <AppBar
-            position="relative"
-            className={classnames(classes.appBar, {
-              [classes.appBarShift]: open,
-            })}>
-            <Toolbar disableGutters={!open}>
+        <AppBar
+          position="relative"
+          className={classnames(classes.appBar, {
+            [classes.appBarShift]: open,
+          })}>
+          <Toolbar disableGutters={!open}>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center">
               <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center">
-                <Grid
-                  item
-                  sm={2}
-                  md={1}
-                  lg={1}>
-                  {isMobile ?
-                    <IconButton
-                      aria-label="Open drawer"
-                      onClick={this.handleDrawerOpen}
-                      className={classnames(classes.menuButton, open && classes.hide)}>
-                      <Menu />
-                    </IconButton> : null
-                  }
-                  <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
-                </Grid>
-                <Grid
-                  item
-                  sm={12}
-                  md={10}
-                  lg={10}>
-                  {(!open && !isMobile) &&
-                    <Box
-                      display="flex"
-                      flexDirection="row"
-                      p={1}
-                      m={1}
-                      alignItems="center"
-                      className={classes.navbar}>
-                      {copy.publics.map((item) => {
-                        const featured = verbiage(item.featured);
-
-                        return (
-                          <Box p={1} className={classes.navbarItem} key={item.id}>
-                            <LangButton
-                              key={item.label}
-                              lang={item.label}
-                              pos="right"
-                              typeButton={(featured && TYPES.CONTAINED) || TYPES.LINK}
-                              variant={(isHeaderVisible && 'light') || 'light2'}
-                            />
-                          </Box>
-                        );
-                      })}
-                    </Box>
-                  }
-                </Grid>
+                item
+                sm={2}
+                md={1}
+                lg={1}>
+                {isMobile ?
+                  <IconButton
+                    aria-label="Open drawer"
+                    onClick={this.handleDrawerOpen}
+                    className={classnames(classes.menuButton, open && classes.hide)}>
+                    <Menu />
+                  </IconButton> : null
+                }
+                <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
               </Grid>
-            </Toolbar>
-          </AppBar>
-        </Headroom>
+              <Grid
+                item
+                sm={12}
+                md={10}
+                lg={10}>
+                {(!open && !isMobile) &&
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    p={1}
+                    m={1}
+                    alignItems="center"
+                    className={classes.navbar}>
+                    {copy.publics.map((item) => {
+                      const featured = verbiage(item.featured);
+
+                      return (
+                        <Box p={1} className={classes.navbarItem} key={item.id}>
+                          <LangButton
+                            key={item.label}
+                            lang={item.label}
+                            pos="right"
+                            typeButton={(featured && TYPES.CONTAINED) || TYPES.LINK}
+                            variant="light"
+                          />
+                        </Box>
+                      );
+                    })}
+                  </Box>
+                }
+              </Grid>
+            </Grid>
+          </Toolbar>
+        </AppBar>
         {isMobile &&
           <Drawer
             className={classes.drawer}
@@ -350,18 +336,4 @@ class Header extends Component {
   }
 }
 
-// map state to props
-function mapStateToProps (state) {
-  return {
-    isHeaderVisible: state.isHeaderVisible,
-  };
-}
-
-// dispatch actionCreators
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({
-    setHeaderVisibility: setHeaderVisibilityAction,
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(Header));
+export default connect(null, null)(withStyles(styles, { withTheme: true })(Header));

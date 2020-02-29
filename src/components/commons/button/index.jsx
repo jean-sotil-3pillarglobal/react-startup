@@ -104,7 +104,9 @@ function LayoutButton (props: {
           classes.link,
           className,
         )}
-        onClick={onClick}>
+        component="button"
+        onClick={onClick}
+      >
         {props.children}
         <LangToggler id={lang} />
       </Link>

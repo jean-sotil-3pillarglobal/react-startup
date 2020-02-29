@@ -55,7 +55,9 @@ function SectionBlock (props: {
     <Fade>
       <Paper
         elevation={0}
-        className={variant ? classes[variant] : classes.primary}>
+        className={variant ? classes[variant] : classes.primary}
+        square
+      >
         <Grid
           container
           direction="row"
