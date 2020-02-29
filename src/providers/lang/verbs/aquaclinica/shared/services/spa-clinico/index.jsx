@@ -2,8 +2,13 @@ import {
   constants,
 } from './../../../../../../config';
 
-import CONTENT_SERVICE_1 from './service-1';
-import CONTENT_SERVICE_2 from './service-2';
+import CONTENT_SERVICE_1 from './emsculpt';
+import CONTENT_SERVICE_2 from './venus-legacy';
+import CONTENT_SERVICE_3 from './ondas-de-choque';
+import CONTENT_SERVICE_4 from './oxygeneo';
+import CONTENT_SERVICE_5 from './preso-terapia';
+import CONTENT_SERVICE_6 from './meso-terapia';
+import CONTENT_SERVICE_7 from './carboxiterapia';
 
 // constants
 const {
@@ -16,31 +21,26 @@ const {
   SERVICE_3,
   SERVICE_4,
   SERVICE_5,
+  SERVICE_6,
+  SERVICE_7,
 } = constants;
-
-
-const currentCategory = CATEGORY_3;
 
 const Services = [
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_3}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_3,
     ],
     content: CONTENT_SERVICE_1,
     cta: {
-      en: 'get quote now',
-      es: 'consultar ahora',
+      en: 'learn more',
+      es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_1}`,
+    id: `${CATEGORY_3}-${SERVICE_1}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_3}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_3}/1.jpg`,
     },
     label: {
       en: 'EMSCULPT',
@@ -54,16 +54,12 @@ const Services = [
       en: 'emsculpt',
       es: 'emsculpt',
     },
-    value: `${currentCategory}-${SERVICE_1}`,
+    value: `${CATEGORY_3}-${SERVICE_1}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_3}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_3,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -71,10 +67,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_2}`,
+    id: `${CATEGORY_3}-${SERVICE_2}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_3}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_3}/1.jpg`,
     },
     label: {
       en: 'venus legacy',
@@ -88,26 +84,23 @@ const Services = [
       en: 'venus-legacy',
       es: 'venus-legacy',
     },
-    value: `${currentCategory}-${SERVICE_2}`,
+    value: `${CATEGORY_3}-${SERVICE_2}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_3}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_3,
     ],
+    content: CONTENT_SERVICE_3,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_3}`,
+    id: `${CATEGORY_3}-${SERVICE_3}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_3}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_3}/1.jpg`,
     },
     label: {
       en: 'ondas de choque',
@@ -121,59 +114,23 @@ const Services = [
       en: 'ondas-de-choque',
       es: 'ondas-de-choque',
     },
-    value: `${currentCategory}-${SERVICE_3}`,
+    value: `${CATEGORY_3}-${SERVICE_3}`,
   },
   {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
+    background: `/static/images/${CATEGORY_3}/1.jpg`,
     categories: [
-      currentCategory,
+      CATEGORY_3,
     ],
+    content: CONTENT_SERVICE_4,
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_4}`,
+    id: `${CATEGORY_3}-${SERVICE_4}`,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
-    },
-    label: {
-      en: 'tratamiento láser para manchas e hiperpigmentación',
-      es: 'tratamiento láser para manchas e hiperpigmentación',
-    },
-    title: {
-      en: 'tratamiento láser para manchas e hiperpigmentación',
-      es: 'tratamiento láser para manchas e hiperpigmentación',
-    },
-    url: {
-      en: 'tratamiento-laser-para-manchas-e-hiperpigmentacion',
-      es: 'tratamiento-laser-para-manchas-e-hiperpigmentacion',
-    },
-    value: `${currentCategory}-${SERVICE_4}`,
-  },
-  {
-    background: '/static/images/m-image-test.jpg',
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
-    categories: [
-      currentCategory,
-    ],
-    cta: {
-      en: 'learn more',
-      es: 'conoce más',
-    },
-    ico: 'cloud-download',
-    id: `${currentCategory}-${SERVICE_5}`,
-    image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: `/static/images/${CATEGORY_3}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_3}/1.jpg`,
     },
     label: {
       en: 'oxygeneo',
@@ -187,7 +144,97 @@ const Services = [
       en: 'oxygeneo',
       es: 'oxygeneo',
     },
-    value: `${currentCategory}-${SERVICE_5}`,
+    value: `${CATEGORY_3}-${SERVICE_4}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_3}/1.jpg`,
+    categories: [
+      CATEGORY_3,
+    ],
+    content: CONTENT_SERVICE_5,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_3}-${SERVICE_5}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_3}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_3}/1.jpg`,
+    },
+    label: {
+      en: 'preso-terapia',
+      es: 'preso-terapia',
+    },
+    title: {
+      en: 'preso-terapia',
+      es: 'preso-terapia',
+    },
+    url: {
+      en: 'preso-terapia',
+      es: 'preso-terapia',
+    },
+    value: `${CATEGORY_3}-${SERVICE_5}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_3}/1.jpg`,
+    categories: [
+      CATEGORY_3,
+    ],
+    content: CONTENT_SERVICE_6,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_3}-${SERVICE_6}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_3}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_3}/1.jpg`,
+    },
+    label: {
+      en: 'meso-terapia',
+      es: 'meso-terapia',
+    },
+    title: {
+      en: 'meso-terapia',
+      es: 'meso-terapia',
+    },
+    url: {
+      en: 'meso-terapia',
+      es: 'meso-terapia',
+    },
+    value: `${CATEGORY_3}-${SERVICE_6}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_3}/1.jpg`,
+    categories: [
+      CATEGORY_3,
+    ],
+    content: CONTENT_SERVICE_7,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_3}-${SERVICE_7}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_3}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_3}/1.jpg`,
+    },
+    label: {
+      en: 'carboxiterapia',
+      es: 'carboxiterapia',
+    },
+    title: {
+      en: 'carboxiterapia',
+      es: 'carboxiterapia',
+    },
+    url: {
+      en: 'carboxiterapia',
+      es: 'carboxiterapia',
+    },
+    value: `${CATEGORY_3}-${SERVICE_7}`,
   },
 ];
 

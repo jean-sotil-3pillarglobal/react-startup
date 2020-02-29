@@ -55,25 +55,4 @@ export default [
       es: 'Las recomendaciones se las dará el especialista a cargo.',
     },
   },
-  // {
-  //   bullets: [
-  //     {
-  //       en: 'Benefit 1',
-  //       es: 'Beneficio 1',
-  //     },
-  //     {
-  //       en: 'Benefit 2',
-  //       es: 'Beneficio 2',
-  //     },
-  //     {
-  //       en: 'Benefit 3',
-  //       es: 'Beneficio 3',
-  //     },
-  //   ],
-  //   component: 'body1',
-  //   copy: {
-  //     en: 'change',
-  //     es: 'change',
-  //   },
-  // },
 ];

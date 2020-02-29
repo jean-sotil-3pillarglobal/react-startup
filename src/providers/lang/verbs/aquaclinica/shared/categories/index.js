@@ -34,12 +34,8 @@ const Services = [
       es: 'conoce más',
     },
     description: {
-      en: `
-        lorem ipsum dolor sit amet, consectetuer adipiscing elit. lorem ipsum dolor sit amet, consectetuer adipiscing elit. lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br/><br/>
-      `,
-      es: `
-        lorem ipsum dolor sit amet, <strong>consectetuer adipiscing elit.</strong> lorem ipsum dolor sit amet, consectetuer adipiscing elit. lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br/><br/>
-      `,
+      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
     ico: 'home',
     id: CATEGORY_1,

@@ -4,6 +4,7 @@ import {
 
 import CONTENT_SERVICE_1 from './escleroterapia';
 import CONTENT_SERVICE_2 from './alergias';
+import CONTENT_SERVICE_3 from './tratamiento-para-hongos';
 
 // constants
 const {
@@ -16,6 +17,9 @@ const {
   SERVICE_3,
   SERVICE_4,
   SERVICE_5,
+  SERVICE_6,
+  SERVICE_7,
+  SERVICE_8,
 } = constants;
 
 const Services = [
@@ -59,11 +63,6 @@ const Services = [
       en: 'learn more',
       es: 'conoce más',
     },
-    featured: true,
-    featuredText: {
-      en: '5% discount',
-      es: '5% descuento',
-    },
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_2}`,
     image: {
@@ -89,6 +88,7 @@ const Services = [
     categories: [
       CATEGORY_2,
     ],
+    content: CONTENT_SERVICE_2,
     cta: {
       en: 'learn more',
       es: 'conoce más',
@@ -100,16 +100,16 @@ const Services = [
       mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
-      en: 'tratamiento para hongos en uña',
-      es: 'tratamiento para hongos en uña',
+      en: 'diagnóstico y tratramiento para cáncer de piel',
+      es: 'diagnóstico y tratramiento para cáncer de piel',
     },
     title: {
-      en: 'tratamiento para hongos en uña',
-      es: 'tratamiento para hongos en uña',
+      en: 'diagnóstico y tratramiento para cáncer de piel',
+      es: 'diagnóstico y tratramiento para cáncer de piel',
     },
     url: {
-      en: 'tratamiento-para-hongos-en-uña',
-      es: 'tratamiento-para-hongos-en-uña',
+      en: 'diagnóstico-y-tratramiento-para-cáncer-de-piel',
+      es: 'diagnóstico-y-tratramiento-para-cáncer-de-piel',
     },
     value: `${CATEGORY_2}-${SERVICE_3}`,
   },
@@ -130,16 +130,16 @@ const Services = [
       mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
-      en: 'diagnóstico y tratamiento para cáncer de piel',
-      es: 'diagnóstico y tratamiento para cáncer de piel',
+      en: 'dermatitis y enfermedades de la piel',
+      es: 'dermatitis y enfermedades de la piel',
     },
     title: {
-      en: 'diagnóstico y tratamiento para cáncer de piel',
-      es: 'diagnóstico y tratamiento para cáncer de piel',
+      en: 'dermatitis y enfermedades de la piel',
+      es: 'dermatitis y enfermedades de la piel',
     },
     url: {
-      en: 'diagnostico-y-tratamiento-para-cancer-de-piel',
-      es: 'diagnostico-y-tratamiento-para-cancer-de-piel',
+      en: 'dermatitis-y-enfermedades-de-la-piel',
+      es: 'dermatitis-y-enfermedades-de-la-piel',
     },
     value: `${CATEGORY_2}-${SERVICE_4}`,
   },
@@ -160,18 +160,108 @@ const Services = [
       mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
-      en: 'dermatitis y enfermedades de la piel',
-      es: 'dermatitis y enfermedades de la piel',
+      en: 'tratamiento para acné',
+      es: 'tratamiento para acné',
     },
     title: {
-      en: 'dermatitis y enfermedades de la piel',
-      es: 'dermatitis y enfermedades de la piel',
+      en: 'tratamiento para acné',
+      es: 'tratamiento para acné',
     },
     url: {
-      en: 'dermatitis-y-enfermedades-de-la-piel',
-      es: 'dermatitis-y-enfermedades-de-la-piel',
+      en: 'tratamiento-para-acné',
+      es: 'tratamiento-para-acné',
     },
     value: `${CATEGORY_2}-${SERVICE_5}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    categories: [
+      CATEGORY_2,
+    ],
+    content: CONTENT_SERVICE_2,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_2}-${SERVICE_6}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+    },
+    label: {
+      en: 'caída de cabello y tratamiento capilar',
+      es: 'caída de cabello y tratamiento capilar',
+    },
+    title: {
+      en: 'caída de cabello y tratamiento capilar',
+      es: 'caída de cabello y tratamiento capilar',
+    },
+    url: {
+      en: 'caída-de-cabello-y-tratamiento-capilar',
+      es: 'caída-de-cabello-y-tratamiento-capilar',
+    },
+    value: `${CATEGORY_2}-${SERVICE_6}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    categories: [
+      CATEGORY_2,
+    ],
+    content: CONTENT_SERVICE_2,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_2}-${SERVICE_7}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+    },
+    label: {
+      en: 'vitiligo',
+      es: 'vitiligo',
+    },
+    title: {
+      en: 'vitiligo',
+      es: 'vitiligo',
+    },
+    url: {
+      en: 'vitiligo',
+      es: 'vitiligo',
+    },
+    value: `${CATEGORY_2}-${SERVICE_7}`,
+  },
+  {
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    categories: [
+      CATEGORY_2,
+    ],
+    content: CONTENT_SERVICE_3,
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    ico: 'cloud-download',
+    id: `${CATEGORY_2}-${SERVICE_8}`,
+    image: {
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+    },
+    label: {
+      en: 'tratamiento para hongos en uñas',
+      es: 'tratamiento para hongos en uñas',
+    },
+    title: {
+      en: 'tratamiento para hongos en uñas',
+      es: 'tratamiento para hongos en uñas',
+    },
+    url: {
+      en: 'tratamiento-para-hongos-en-uñas',
+      es: 'tratamiento-para-hongos-en-uñas',
+    },
+    value: `${CATEGORY_2}-${SERVICE_8}`,
   },
 ];
 
