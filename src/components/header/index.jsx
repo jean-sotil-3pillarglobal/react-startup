@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import Headroom from 'react-headroom';
 import React, { Component } from 'react';
-import { SectionLink } from 'react-scroll-section';
 
 import {
   AppBar,
@@ -301,20 +300,15 @@ class Header extends Component {
                         const featured = verbiage(item.featured);
 
                         return (
-                          <SectionLink section={verbiage(item.id)} key={item.id}>
-                            {link => (
-                              <Box p={1} onClick={link.onClick} className={classes.navbarItem}>
-                                <LangButton
-                                  key={item.label}
-                                  lang={item.label}
-                                  pos="right"
-                                  selected={link.isSelected}
-                                  typeButton={(featured && TYPES.CONTAINED) || TYPES.LINK}
-                                  variant={(isHeaderVisible && 'light') || 'light2'}
-                                />
-                              </Box>
-                            )}
-                          </SectionLink>
+                          <Box p={1} className={classes.navbarItem} key={item.id}>
+                            <LangButton
+                              key={item.label}
+                              lang={item.label}
+                              pos="right"
+                              typeButton={(featured && TYPES.CONTAINED) || TYPES.LINK}
+                              variant={(isHeaderVisible && 'light') || 'light2'}
+                            />
+                          </Box>
                         );
                       })}
                     </Box>

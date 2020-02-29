@@ -1,8 +1,6 @@
 import { Parallax } from 'react-parallax';
-import { SectionLink } from 'react-scroll-section';
 import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
-// import Fade from 'react-reveal/Fade';
 
 import React, {
   Fragment,
@@ -23,7 +21,6 @@ import {
 } from '@material-ui/core';
 
 // provider
-// import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangToggler from './../../../providers/lang/toggler';
 import ThemeBackground from './../../../providers/utils/theme.background';
 import ThemeColor from './../../../providers/utils/theme.color';
@@ -239,19 +236,15 @@ function SectionA (props: {
             <CardActions
               disableSpacing
             >
-              <SectionLink section="service-details" key={`category-link-${service.id}`}>
-                {link => (
-                  <Box p={1} onClick={link.onClick}>
-                    <LangButton
-                      className={classes.button}
-                      lang={service.cta}
-                      pos="right"
-                      onClick={() => setShowForm(true)}>
-                      <Icon name="keyboard_arrow_right" />
-                    </LangButton>
-                  </Box>
-                )}
-              </SectionLink>
+              <Box p={1} key={`category-link-${service.id}`}>
+                <LangButton
+                  className={classes.button}
+                  lang={service.cta}
+                  pos="right"
+                  onClick={() => setShowForm(true)}>
+                  <Icon name="keyboard_arrow_right" />
+                </LangButton>
+              </Box>
             </CardActions>
           </Card>
         </Paper>

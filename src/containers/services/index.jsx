@@ -1,8 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Section } from 'react-scroll-section';
 import { withRouter } from 'react-router-dom';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import {
   withStyles,
@@ -200,7 +199,7 @@ class Services extends Component {
 
     return (
       ((verbiage && category && category.id) &&
-      <Section id={verbiage(copy.id)}>
+      <Fragment>
         <Helmet proxy={proxy} copy={headers} />
         <SectionA
           data={{
@@ -218,7 +217,7 @@ class Services extends Component {
         </SectionA>
         <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
         <Footer />
-      </Section>) || <Loading />
+      </Fragment>) || <Loading />
     );
   }
 }

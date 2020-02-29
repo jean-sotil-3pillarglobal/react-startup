@@ -7,22 +7,14 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import { SectionLink } from 'react-scroll-section';
-
 // provider
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangToggler from './../../../providers/lang/toggler';
-import { constants } from './../../../providers/config';
 
 // components
 import { LangButton } from './../../../components/commons/button';
 import Icon from './../../../components/commons/icon';
 import SectionBlock from './../../../components/layouts/section';
-// import SVGComponent from './../../../components/commons/svg';
-
-const {
-  LINK_SECTION_4,
-} = constants;
 
 const variant = {
   variant: 'light',
@@ -127,18 +119,14 @@ function SectionC (props: {
         alignItems="center"
       >
         <Grid item>
-          <SectionLink section={LINK_SECTION_4} key={copy.label}>
-            {link => (
-              <Box p={1} onClick={link.onClick}>
-                <LangButton
-                  className={classes.cta}
-                  lang={copy.cta}
-                  variant="dark">
-                  <Icon name="keyboard_arrow_right" className={classes.icon} />
-                </LangButton>
-              </Box>
-            )}
-          </SectionLink>
+          <Box p={1} key={copy.label}>
+            <LangButton
+              className={classes.cta}
+              lang={copy.cta}
+              variant="dark">
+              <Icon name="keyboard_arrow_right" className={classes.icon} />
+            </LangButton>
+          </Box>
         </Grid>
       </Grid>
     </SectionBlock>

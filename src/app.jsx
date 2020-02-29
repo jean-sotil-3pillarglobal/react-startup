@@ -1,7 +1,6 @@
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ScrollingProvider } from 'react-scroll-section';
 import React, { Component } from 'react';
 import UAParser from 'ua-parser-js';
 
@@ -135,36 +134,34 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={skin}>
         <CssBaseline />
-        <ScrollingProvider>
-          <div className={classes.container}>
-            <Router>
-              <TransitionGroup className={classes.transitions}>
-                <CSSTransition
-                  key="transition"
-                  timeout={{ enter: 300, exit: 300 }}
-                  classNames={{
-                    enter: classes.appear,
-                    enterActive: classes.appearActive,
-                    exit: classes.exit,
-                    exitActive: classes.exitActive,
-                  }}>
-                  <div className={classes.switch}>
-                    <Switch>
-                      <Route exact path="/:locale" component={Home} />
-                      <Route exact path={`/:locale/${SERVICES[language]}/:type/:serviceUrl?`} component={Services} />
-                      <Route exact path="/blog" component={Blog} />
-                      <Route component={Four0Four} />
-                    </Switch>
+        <div className={classes.container}>
+          <Router>
+            <TransitionGroup className={classes.transitions}>
+              <CSSTransition
+                key="transition"
+                timeout={{ enter: 300, exit: 300 }}
+                classNames={{
+                  enter: classes.appear,
+                  enterActive: classes.appearActive,
+                  exit: classes.exit,
+                  exitActive: classes.exitActive,
+                }}>
+                <div className={classes.switch}>
+                  <Switch>
+                    <Route exact path="/:locale" component={Home} />
+                    <Route exact path={`/:locale/${SERVICES[language]}/:type/:serviceUrl?`} component={Services} />
+                    <Route exact path="/blog" component={Blog} />
+                    <Route component={Four0Four} />
+                  </Switch>
 
-                    <Route exact path="/">
-                      {language && <Redirect to={'/'.concat(language)} />}
-                    </Route>
-                  </div>
-                </CSSTransition>
-              </TransitionGroup>
-            </Router>
-          </div>
-        </ScrollingProvider>
+                  <Route exact path="/">
+                    {language && <Redirect to={`/${language}`} />}
+                  </Route>
+                </div>
+              </CSSTransition>
+            </TransitionGroup>
+          </Router>
+        </div>
       </MuiThemeProvider>
     );
   }

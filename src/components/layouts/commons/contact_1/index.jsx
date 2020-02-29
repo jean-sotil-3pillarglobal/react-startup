@@ -1,5 +1,4 @@
 
-import { Section } from 'react-scroll-section';
 import { withRouter } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import React, { Component } from 'react';
@@ -146,20 +145,18 @@ class ContactFormLayout extends Component {
 
     return (
       verbiage &&
-      <Section id={verbiage(copy.id)}>
-        <Fade left>
-          <Stepper
-            copy={copy}
-            document={document}
-            forms={forms}
-            onBlur={this.handleBlur}
-            onChange={this.handleChange}
-            onSubmit={this.handleSubmit}
-            proxy={proxy}
-            variant={variant}
-          />
-        </Fade>
-      </Section>
+      <Fade left>
+        <Stepper
+          copy={copy}
+          document={document}
+          forms={forms}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+          proxy={proxy}
+          variant={variant}
+        />
+      </Fade>
     );
   }
 }

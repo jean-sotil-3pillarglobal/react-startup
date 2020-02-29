@@ -2,7 +2,6 @@
 import React from 'react';
 import classnames from 'classnames';
 import Fade from 'react-reveal/Fade';
-import { Section } from 'react-scroll-section';
 import {
   Grid,
   Paper,
@@ -40,7 +39,7 @@ function SectionBlock (props: {
   children: Object,
   classes: Object,
   className: Object,
-  id: string,
+  // id: string,
   variant: string,
 }) {
   const {
@@ -48,7 +47,7 @@ function SectionBlock (props: {
     children,
     classes,
     className,
-    id,
+    // id,
     variant,
   } = props;
 
@@ -57,22 +56,20 @@ function SectionBlock (props: {
       <Paper
         elevation={0}
         className={variant ? classes[variant] : classes.primary}>
-        <Section id={id || ''}>
+        <Grid
+          container
+          direction="row"
+          justify={!align ? 'center' : align}
+          alignItems="center"
+          className={classnames(className, classes.container)}>
           <Grid
-            container
-            direction="row"
-            justify={!align ? 'center' : align}
-            alignItems="center"
-            className={classnames(className, classes.container)}>
-            <Grid
-              item
-              sm={12}
-              md={11}
-              lg={10}>
-              {children}
-            </Grid>
+            item
+            sm={12}
+            md={11}
+            lg={10}>
+            {children}
           </Grid>
-        </Section>
+        </Grid>
       </Paper>
     </Fade>
   );

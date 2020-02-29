@@ -1,6 +1,5 @@
 
-// import { Parallax } from 'react-parallax';
-import { Section } from 'react-scroll-section';
+
 import { withRouter } from 'react-router-dom';
 import React, { Component } from 'react';
 
@@ -96,30 +95,28 @@ class SectionA extends Component {
 
     return (
       verbiage &&
-      <Section id={verbiage(copy.id)}>
-        <Paper
-          container="true"
-          className={classes.hero}
-          elevation={0}>
-          {verbiage(copy.svg_show) && <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="primary" />}
-          {verbiage(copy.background_show) && <SmartImg proxy={proxy} src={verbiage(copy.background)} className={classes.background} />}
-          <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
-          <Callout
-            align="center"
-            title={copy.title}
-            subtitle={copy.subtitle}
-            variant="light"
-            className={classes.callout}>
-            <LangButton
-              className={classes.button}
-              lang={copy.cta}
-              onClick={this.handleClick}
-              variant="dark2">
-              <Icon name="keyboard_arrow_right" className={classes.icon} />
-            </LangButton>
-          </Callout>
-        </Paper>
-      </Section>
+      <Paper
+        container="true"
+        className={classes.hero}
+        elevation={0}>
+        {verbiage(copy.svg_show) && <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="primary" />}
+        {verbiage(copy.background_show) && <SmartImg proxy={proxy} src={verbiage(copy.background)} className={classes.background} />}
+        <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
+        <Callout
+          align="center"
+          title={copy.title}
+          subtitle={copy.subtitle}
+          variant="light"
+          className={classes.callout}>
+          <LangButton
+            className={classes.button}
+            lang={copy.cta}
+            onClick={this.handleClick}
+            variant="dark2">
+            <Icon name="keyboard_arrow_right" className={classes.icon} />
+          </LangButton>
+        </Callout>
+      </Paper>
     );
   }
 }
