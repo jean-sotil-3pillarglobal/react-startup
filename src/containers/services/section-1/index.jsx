@@ -20,6 +20,12 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import { Element, Link } from 'react-scroll';
+
+import {
+  constants,
+} from './../../../providers/config';
+
 // provider
 import LangToggler from './../../../providers/lang/toggler';
 import ThemeBackground from './../../../providers/utils/theme.background';
@@ -236,15 +242,22 @@ function SectionA (props: {
             <CardActions
               disableSpacing
             >
-              <Box p={1} key={`category-link-${service.id}`}>
-                <LangButton
-                  className={classes.button}
-                  lang={service.cta}
-                  pos="right"
-                  onClick={() => setShowForm(true)}>
-                  <Icon name="keyboard_arrow_right" />
-                </LangButton>
-              </Box>
+              <Link
+                activeClass="active"
+                smooth
+                spy
+                to={constants.LINK_CONTACT_FORM_2}
+              >
+                <Box p={1} key={`category-link-${service.id}`}>
+                  <LangButton
+                    className={classes.button}
+                    lang={service.cta}
+                    pos="right"
+                    onClick={() => setShowForm(true)}>
+                    <Icon name="keyboard_arrow_right" />
+                  </LangButton>
+                </Box>
+              </Link>
             </CardActions>
           </Card>
         </Paper>
@@ -264,73 +277,75 @@ function SectionA (props: {
           </Typography>
         </Paper>
       </Parallax>
-      <SectionBlock id="service-details">
-        <Grid
-          container
-          direction="row"
-          spacing={1}>
+      <Element name={constants.LINK_CONTACT_FORM_2}>
+        <SectionBlock>
           <Grid
-            item
-            sm={12}
-            md={5}
-            lg={5}>
-            <Typography
-              variant="body1"
-              className={classes.description}
+            container
+            direction="row"
+            spacing={1}>
+            <Grid
+              item
+              sm={12}
+              md={5}
+              lg={5}>
+              <Typography
+                variant="body1"
+                className={classes.description}
+              >
+                <LangToggler id={category.description} />
+              </Typography>
+              <Paper className={classes.itemList} elevation={0}>
+                {services && services.map(item => (
+                  <Card key={item.id} dense="true" className={classnames(classes.item, (service && service.id === item.id) && classes.itemSelected)}>
+                    <CardHeader
+                      avatar={
+                        <Icon name={category.ico} color={category.color} className={classes.icon} />
+                      }
+                      className={classes.itemHeader}
+                      title={
+                        <Typography
+                          variant="h4"
+                          className={classes.itemTitle}
+                        >
+                          <LangToggler id={item.title} />
+                        </Typography>
+                      }
+                    />
+                    <CardMedia
+                      className={classes.itemMedia}
+                      image={item.background}
+                    />
+                    <CardActions
+                      className={classes.itemActions}
+                      disableSpacing
+                    >
+                      <LangButton
+                        className={classes.button}
+                        lang={category.cta}
+                        onClick={() => {
+                          setShowForm(false);
+                          onServiceListClick(category, item);
+                        }}
+                        variant="light"
+                        pos="right">
+                        <Icon name="keyboard_arrow_right" />
+                      </LangButton>
+                    </CardActions>
+                  </Card>
+                ))}
+              </Paper>
+            </Grid>
+            <Grid
+              item
+              sm={12}
+              md={7}
+              lg={7}
             >
-              <LangToggler id={category.description} />
-            </Typography>
-            <Paper className={classes.itemList} elevation={0}>
-              {services && services.map(item => (
-                <Card key={item.id} dense="true" className={classnames(classes.item, (service && service.id === item.id) && classes.itemSelected)}>
-                  <CardHeader
-                    avatar={
-                      <Icon name={category.ico} color={category.color} className={classes.icon} />
-                    }
-                    className={classes.itemHeader}
-                    title={
-                      <Typography
-                        variant="h4"
-                        className={classes.itemTitle}
-                      >
-                        <LangToggler id={item.title} />
-                      </Typography>
-                    }
-                  />
-                  <CardMedia
-                    className={classes.itemMedia}
-                    image={item.background}
-                  />
-                  <CardActions
-                    className={classes.itemActions}
-                    disableSpacing
-                  >
-                    <LangButton
-                      className={classes.button}
-                      lang={category.cta}
-                      onClick={() => {
-                        setShowForm(false);
-                        onServiceListClick(category, item);
-                      }}
-                      variant="light"
-                      pos="right">
-                      <Icon name="keyboard_arrow_right" />
-                    </LangButton>
-                  </CardActions>
-                </Card>
-              ))}
-            </Paper>
+              {view}
+            </Grid>
           </Grid>
-          <Grid
-            item
-            sm={12}
-            md={7}
-            lg={7}
-          >
-            {view}
-          </Grid>
-        </Grid>
-      </SectionBlock>
+        </SectionBlock>
+      </Element>
     </Fragment>
   );
 }

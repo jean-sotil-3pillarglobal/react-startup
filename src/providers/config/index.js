@@ -16,6 +16,7 @@ export const constants = {
 
   // links
   LINK_CONTACT_FORM_1: 'link_contact_form_1',
+  LINK_CONTACT_FORM_2: 'link_contact_form_2',
   LINK_SECTION_1: 'link_section_1',
   LINK_SECTION_2: 'link_section_2',
   LINK_SECTION_3: 'link_section_3',
