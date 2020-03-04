@@ -1,327 +1,218 @@
-import { cloneDeep } from 'lodash';
-import React, { Component } from 'react';
+// @flow
+
+import { useForm } from 'react-hook-form';
 import classnames from 'classnames';
+import React, { Fragment, useState } from 'react';
 
 import {
+  Grid,
+  MobileStepper,
+  Paper,
   Step,
-  StepButton,
   StepContent,
   StepLabel,
   Stepper,
   withStyles,
 } from '@material-ui/core';
 
-import ThemeBackground from './../../../providers/utils/theme.background';
-import ThemeColor from './../../../providers/utils/theme.color';
-
 // components
 import { LangButton, TYPES } from './../button';
 import FormBlock from './../form';
 import Icon from './../icon';
 
+// import {
+//   CheckNext,
+// } from '../../utils/common/check.next';
+
 const styles = theme => ({
-  back: {
-    backgroundColor: theme.palette.primary.main,
-    padding: `${theme.spacing(2)}px`,
+  caption: {
+    display: 'inline-block',
+    margin: `${theme.spacing(6)}px 0`,
+    textTransform: 'capitalize',
   },
-  button: () => ({
-    margin: 0,
-  }),
-  content: {
-    padding: `0 ${theme.spacing(3)}px`,
-    [theme.breakpoints.up('sm')]: {},
+  finished: {
+    marginBottom: theme.spacing(1),
+    padding: theme.spacing(1),
   },
-  cta: {
-    width: '100%',
-  },
-  form: {},
-  header: {
-    backgroundColor: theme.palette.primary.main,
-  },
-  section: {
-    padding: `${theme.spacing(4)}px 0`,
-  },
-  step: props => ({
-    color: ThemeColor(props, theme),
-  }),
-  stepButton: props => ({
-    background: 'transparent',
-    color: ThemeColor(props, theme),
-  }),
-  stepper: props => ({
-    '& .MuiFormLabel-root:not(.Mui-error), .MuiTypography-caption': {
-      color: ThemeColor(props, theme),
-    },
-    '& .MuiStepIcon-root.MuiStepIcon-active': {
-      color: ThemeBackground(props, theme, 'dark'),
-    },
-    '& .MuiStepIcon-root.MuiStepIcon-completed': {
-      fill: ThemeColor(props, theme),
-    },
-    '& .MuiStepIcon-text': {
-      fill: ThemeColor(props, theme),
-    },
-    background: ThemeBackground(props, theme),
-    padding: '8px',
-  }),
-  submit: props => ({
-    backgroundColor: ThemeBackground(props, theme, 'dark'),
-  }),
 });
 
-const init = {
-  errors: {},
-  forms: [],
-  steps: 0,
-};
+function StepperForm (props: {
+  // size
+  sm: Integer,
+  md: Integer,
+  lg: Integer,
+  // props
+  classes: Object,
+  className: Object,
+  copy: Object,
+  document: Object,
+  forms: Array,
+  id: String,
+  onBlur: Function,
+  onChange: Function,
+  // onReset: Function,
+  onSubmit: Function,
+  proxy: Object,
+  variant: String,
+}) {
+  const {
+    // size
+    lg,
+    md,
+    sm,
+    // props
+    classes,
+    className,
+    copy,
+    document,
+    id,
+    onBlur,
+    onChange,
+    forms,
+    // onReset,
+    onSubmit,
+    proxy: {
+      language,
+      verbiage,
+    },
+    variant,
+  } = props;
 
-class StepperLayout extends Component {
-  constructor(props) {
-    super(props);
-    const stateClone = cloneDeep(init);
-    stateClone.forms = this.getForms(props) || [];
-    this.state = stateClone;
-  }
+  const [activeStep, setActiveStep] = useState(0);
+  // const [disabled, setDisabled] = useState(true);
 
-  componentWillUnmount = () => {
-    this.reset();
-  }
+  const formProps = useForm({
+    mode: 'onChange',
+  });
 
-  getSteps = () => {
-    const {
-      proxy: {
-        language,
-      },
-    } = this.props;
+  const { handleSubmit } = formProps;
 
-    const { forms } = this.state;
+  const handleNext = () => {
+    setActiveStep(step => step + 1);
+  };
 
-    return forms && forms.map((form) => {
+  const handleBack = () => {
+    setActiveStep(step => step - 1);
+  };
+
+  const handleBlur = (event) => {
+    onBlur(event);
+  };
+
+  const handleChange = (e) => {
+    onChange(e);
+  };
+
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  //   setDisabled(true);
+  //   onReset();
+  // };
+
+  // // check next enable
+  // CheckNext(steps, activeStep, document)
+  //   .then((allow) => {
+  //     setDisabled(allow);
+  //   });
+
+  const getSteps = () => {
+    return forms.map((form) => {
       return form.label[language];
     });
-  }
+  };
 
-  getForm = (i) => {
-    const {
-      forms,
-    } = this.state;
+  const steps = getSteps();
 
+  const getForm = (i) => {
     return forms[i] || null;
-  }
+  };
 
-  getForms = (props) => {
-    const {
-      forms,
-    } = props;
+  return (
+    <Fragment>
+      {steps && (
+        <form id={id || 'default'} onSubmit={handleSubmit(onSubmit)}>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            spacing={2}>
+            <Grid item sm={sm} md={md} lg={lg}>
+              <Paper elevation={0} className={className}>
+                <Stepper
+                  activeStep={activeStep}
+                  orientation="vertical"
+                >
+                  {steps.map((label, i) => {
+                    const form = getForm(i);
 
-    return forms
-      // forms stack
-      .map((form, i) => {
-        const obj = form;
+                    return (
+                      <Step key={label}>
+                        <StepLabel>
+                          {label}
+                        </StepLabel>
+                        <StepContent>
+                          {form.rows && form.rows.map((row, y) => {
+                            const key = `${form.value}_row_${y}`;
 
-        // mark
-        obj.index = i;
-
-        if (i > 0) {
-          obj.disable = true;
-        } else {
-          obj.current = true;
-          obj.disable = false;
-        }
-
-        return obj;
-      });
-  }
-
-  reset = () => {
-    this.setState(init);
-  }
-
-  handleBlur = (event, error) => {
-    const {
-      onBlur,
-    } = this.props;
-
-    onBlur(event, error);
-  }
-
-  handleChange = (event) => {
-    const { onChange } = this.props;
-    onChange(event);
-  }
-
-  handleStepperIndex = (i) => {
-    this.setState({
-      steps: i,
-    });
-  }
-
-  handleStepperNext = () => {
-    const {
-      steps,
-      forms,
-    } = this.state;
-
-    if (steps + 1 < forms.length) {
-      this.setState({
-        steps: steps + 1,
-      });
-    }
-  }
-
-  handleStepperPrev = () => {
-    const {
-      steps,
-    } = this.state;
-
-    if (steps - 1 !== -1) {
-      this.setState({
-        steps: steps - 1,
-      });
-    }
-  }
-
-  handleStepperReset = () => {
-    this.setState({
-      steps: 0,
-    });
-  }
-
-  checkListener = (name) => {
-    const { errors, forms } = this.state;
-    let current;
-    const required = [];
-
-    const checking = forms.map((form) => {
-      current = form;
-      current.on = false;
-
-      current.rows.forEach((rows) => {
-        if (!current.disable && rows.fields.find(field => field.key && field.key.includes(name))) {
-          current.dirty = true;
-          current.error = false;
-          current.on = true;
-
-          // on select form
-          rows.fields.forEach((field) => {
-            if (field.key.includes(name) && (errors[name] && errors[name].check)) {
-              current.error = true;
-              required.push(field);
-            }
-          });
-        }
-      });
-
-      // check current form
-      if (current.on) {
-        // check if current
-        console.log(current.rows);
-      }
-
-      return current;
-    });
-
-    this.setState({
-      forms: checking,
-    });
-  }
-
-  props: {
-    classes: Object,
-    copy: Object,
-    document: Object,
-    onBlur: Function,
-    onChange: Function,
-    proxy: Object,
-    variant: String,
-  }
-
-  render () {
-    const {
-      errors,
-      steps,
-    } = this.state;
-
-    const {
-      classes,
-      copy,
-      document,
-      proxy: {
-        language,
-        verbiage,
-      },
-      variant,
-    } = this.props;
-
-    const {
-      handleBlur,
-      handleChange,
-      handleFocus,
-      handleStepperIndex,
-      handleStepperNext,
-      handleStepperPrev,
-    } = this;
-
-    const stepForms = this.getSteps();
-
-    return (
-      <Stepper activeStep={steps} orientation="vertical" className={classes.stepper}>
-        {stepForms.map((label, i) => {
-          const form = this.getForm(i);
-
-          return (
-            <Step key={`step_label_${label}`}>
-              <StepButton
-                onClick={() => handleStepperIndex(i)}
-                className={classes.stepButton}
-              >
-                <StepLabel className={classes.step}>{label}</StepLabel>
-              </StepButton>
-              <StepContent className={classes.content}>
-                {form.rows && form.rows.map((row, y) => {
-                  const key = `${form.value}_row_${y}`;
-                  return (
-                    <FormBlock
-                      document={document}
-                      copy={row}
-                      proxy={{
-                        document,
-                        errors,
-                        handleBlur,
-                        handleChange,
-                        handleFocus,
-                        language,
-                        verbiage,
-                      }}
-                      variant={variant}
-                      key={key}
-                    />
-                  );
-                })}
-                {steps > 0 &&
-                  <LangButton
-                    lang={copy.back}
-                    onClick={handleStepperPrev}
-                    variant={variant}
-                    typeButton={TYPES.LINK}>
-                    <Icon name="angle-left-b" className={classes.icon} />
-                  </LangButton>
-                }
-                <LangButton
-                  lang={form.cta}
-                  onClick={handleStepperNext}
-                  variant={variant}
-                  typeButton={TYPES.CONTAINED}
-                  className={classnames(classes.cta, stepForms.length === (steps + 1) && classes.submit)}>
-                  <Icon name="angle-right-b" className={classes.icon} />
-                </LangButton>
-              </StepContent>
-            </Step>
-          );
-        })}
-      </Stepper>
-    );
-  }
+                            return (
+                              <FormBlock
+                                copy={row}
+                                document={document}
+                                formProps={formProps}
+                                key={key}
+                                proxy={{
+                                  document,
+                                  handleBlur,
+                                  handleChange,
+                                  language,
+                                  verbiage,
+                                }}
+                                variant={variant}
+                              />
+                            );
+                          })}
+                          {activeStep < steps.length && (
+                            <MobileStepper
+                              variant="progress"
+                              steps={steps.length + 1}
+                              position="static"
+                              activeStep={activeStep}
+                              nextButton={
+                                <LangButton
+                                  lang={activeStep === steps.length - 1 ? form.cta : form.cta}
+                                  onClick={activeStep === steps.length - 1 ? onSubmit : handleNext}
+                                  variant={variant}
+                                  typeButton={TYPES.CONTAINED}
+                                  className={classnames(classes.cta, steps.length === (activeStep + 1) && classes.submit)}>
+                                  <Icon name="angle-right-b" className={classes.icon} />
+                                </LangButton>
+                              }
+                              backButton={
+                                <LangButton
+                                  disabled={activeStep === 0}
+                                  lang={copy.back}
+                                  onClick={handleBack}
+                                  typeButton={TYPES.CONTAINED}
+                                  variant={variant}
+                                >
+                                  <Icon name="angle-left-b" className={classes.icon} />
+                                </LangButton>
+                              }
+                            />
+                          )}
+                        </StepContent>
+                      </Step>
+                    );
+                  })}
+                </Stepper>
+              </Paper>
+            </Grid>
+          </Grid>
+        </form>
+      )}
+    </Fragment>
+  );
 }
 
-export default withStyles(styles)(StepperLayout);
+export default withStyles(styles)(StepperForm);

@@ -24,7 +24,6 @@ const styles = () => ({});
 
 class InputLayout extends Component {
   state = {
-    error: {},
     focused: false,
   };
 
@@ -64,43 +63,45 @@ class InputLayout extends Component {
       proxy: {
         handleBlur,
       },
-      fieldType,
-      name,
-      required,
-      value,
     } = this.props;
 
-    const check = Validate(required, value, fieldType) || null;
-
     this.setState({
-      error: check,
       focused: false,
     });
 
     if (handleBlur) {
-      handleBlur(event, {
-        [name]: check,
-      });
+      handleBlur(event);
     }
   }
 
-  error = () => {
+  handleRegister = () => {
     const {
+      formProps: {
+        register,
+      },
       proxy: {
         language,
       },
+      rules,
     } = this.props;
 
-    const {
-      error,
-    } = this.state;
+    const obj = {
+      validate: {},
+    };
 
-    return (error.check && Messages(error.error, language)) || '';
+    if (rules) {
+      rules.forEach((rule) => {
+        obj.validate[rule.type] = Validate(rule, language);
+      });
+    }
+
+    return register(obj);
   }
 
   props: {
     classes: Object,
     fieldType: string,
+    formProps: Object,
     label: string,
     lang: string,
     multiline: Boolean,
@@ -110,6 +111,7 @@ class InputLayout extends Component {
     placeholder: Object,
     proxy: Function,
     required: Boolean,
+    rules: Array,
     type: String,
     value: any,
   };
@@ -118,6 +120,8 @@ class InputLayout extends Component {
     const {
       classes,
       fieldType,
+      formProps,
+      name,
       options,
       proxy: {
         handleChange,
@@ -125,22 +129,27 @@ class InputLayout extends Component {
         language,
         verbiage,
       },
+      required,
       value,
     } = this.props;
 
     const {
       focused,
-      error,
     } = this.state;
+
+    const {
+      errors,
+    } = formProps;
+    const hasError = errors[name] !== undefined;
 
     let placeholder = '';
 
     const props = {
       ...this.props,
-      error: error.check,
-      errorMsg: this.error(),
+      errors,
       filled: value && value.length > 0,
       focused,
+      inputRef: this.handleRegister(),
       onBlur: this.handleBlur,
       onChange: handleChange,
       onFocus: handleFocus,
@@ -156,11 +165,11 @@ class InputLayout extends Component {
 
       delete props.lang;
 
-      if (props.required === false) {
+      if (required === false) {
         props.label = (
           <Fragment>
             {props.label}
-            <Typography variant="caption" component="span">{Messages('optional', language)}</Typography>
+            <Typography variant="caption" component="span">{Messages['optional'][language]}</Typography>
           </Fragment>
         );
       }
@@ -168,12 +177,12 @@ class InputLayout extends Component {
 
     props.inputProps = {
       endAdornment: (
-        error.check !== undefined &&
+        hasError &&
         <InputAdornment>
-          {!error.check &&
+          {!hasError &&
             <Icon name="check" color="success" />
           }
-          {error.check &&
+          {hasError &&
             <Icon name="error" color="error" />
           }
         </InputAdornment>

@@ -44,7 +44,7 @@ const ForwardTextField = React.forwardRef((props: {
     required,
     value,
   } = props;
-  console.log(placeholder);
+
   return (
     <FormControl>
       <InputLabel error={error || false} htmlFor={name} required={required} shrink>

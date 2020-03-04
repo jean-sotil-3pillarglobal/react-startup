@@ -11,6 +11,11 @@ export const SERVICES_INFORMATION_1_1 = [
       es: 'juan pablo',
     },
     required: true,
+    rules: [
+      {
+        type: 'required',
+      },
+    ],
     size_lg: 12,
     size_md: 12,
     size_sm: 12,
@@ -28,6 +33,14 @@ export const SERVICES_INFORMATION_1_1 = [
       es: 'juan@gmail.com',
     },
     required: true,
+    rules: [
+      {
+        type: 'required',
+      },
+      {
+        type: 'email',
+      },
+    ],
     size_lg: 12,
     size_md: 12,
     size_sm: 12,
@@ -74,6 +87,11 @@ export const SERVICES_INFORMATION_1_2 = [
       es: 'seleccionar servicio',
     },
     required: true,
+    rules: [
+      {
+        type: 'empty',
+      },
+    ],
     size_lg: 12,
     size_md: 12,
     size_sm: 12,

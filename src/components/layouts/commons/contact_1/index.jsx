@@ -51,7 +51,6 @@ const copy = LangGenerateTree([NODE, SLOT], [
 
 const init = {
   document: {},
-  errors: {},
   forms: [],
 };
 
@@ -95,16 +94,8 @@ class ContactFormLayout extends Component {
     variant: String,
   }
 
-  handleBlur = (event, error) => {
-    const { errors } = this.state;
-
-    this.setState({
-      ...this.state,
-      errors: {
-        ...errors,
-        ...error,
-      },
-    });
+  handleBlur = (event) => {
+    console.log(event);
   }
 
   handleChange = (event) => {

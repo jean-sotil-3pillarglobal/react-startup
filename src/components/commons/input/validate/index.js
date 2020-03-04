@@ -1,33 +1,20 @@
+import Messages from '../messages';
 
-export default function (required, value, fieldType) {
-  let check = false;
-  let error = false;
+export default function (rule, language) {
+  const msg = Messages[rule.type][language];
 
-  const checkPhone = () => {
-    return value.length !== 10;
+  const validate = {
+    email: (value) => {
+      const reg = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+      return (value && reg.test(value)) || msg;
+    },
+    empty: value => (value && Array.isArray(value) && value.length > 0) || msg,
+    max: value => (value && value.length <= rule.value) || msg.replace('$value', rule.value),
+    min: value => (value && value.length >= rule.value) || msg.replace('$value', rule.value),
+    required: (value) => {
+      return (value && value.length > 0) || msg;
+    },
   };
 
-  if (required) {
-    switch (fieldType) {
-    case 'input':
-      // required and empty
-      check = value.length <= 0;
-      error = 'required';
-
-      break;
-    default:
-      check = false;
-      error = false;
-    }
-  }
-
-  if (fieldType === 'phone' && value.length > 0) {
-    check = checkPhone();
-    error = check ? 'phone' : false;
-  }
-
-  return {
-    check,
-    error,
-  };
+  return validate[rule.type];
 }

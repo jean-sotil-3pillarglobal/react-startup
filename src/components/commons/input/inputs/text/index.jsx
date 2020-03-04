@@ -24,8 +24,6 @@ class InputBase extends Component {
     return (
       nextProps.value !== this.props.value ||
       nextProps.disabled !== this.props.disabled ||
-      nextProps.error !== this.props.error ||
-      nextProps.errorMsg !== this.props.errorMsg ||
       nextProps.required !== this.props.required
     );
   };
@@ -33,8 +31,7 @@ class InputBase extends Component {
   props: {
     classes: Object,
     disabled: Boolean,
-    error: any,
-    errorMsg: any,
+    errors: Array,
     inputProps: children,
     inputRef: node,
     label: string,
@@ -53,8 +50,7 @@ class InputBase extends Component {
   render() {
     const {
       classes,
-      error,
-      errorMsg,
+      errors,
       inputProps,
       inputRef,
       label,
@@ -69,6 +65,9 @@ class InputBase extends Component {
       type,
       value,
     } = this.props;
+
+    const error = errors[name] !== undefined;
+    const errorMsg = (error && errors[name].message) || '';
 
     return (
       <ForwardTextField
