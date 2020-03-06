@@ -9,7 +9,7 @@ import CONTENT_SERVICE_3 from './tratamiento-para-hongos';
 // constants
 const {
   // categories
-  CATEGORY_2,
+  CATEGORY_1,
 
   // services
   SERVICE_1,
@@ -24,9 +24,9 @@ const {
 
 const Services = [
   {
-    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    background: `/static/images/${CATEGORY_1}/escleroterapia.jpg`,
     categories: [
-      CATEGORY_2,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_1,
     cta: {
@@ -34,10 +34,10 @@ const Services = [
       es: 'consultar ahora',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_2}-${SERVICE_1}`,
+    id: `${CATEGORY_1}-${SERVICE_1}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/escleroterapia.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/escleroterapia.jpg`,
     },
     label: {
       en: 'escleroterapia',
@@ -51,12 +51,12 @@ const Services = [
       en: 'escleroterapia',
       es: 'escleroterapia',
     },
-    value: `${CATEGORY_2}-${SERVICE_1}`,
+    value: `${CATEGORY_1}-${SERVICE_1}`,
   },
   {
-    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      CATEGORY_2,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -64,10 +64,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_2}-${SERVICE_2}`,
+    id: `${CATEGORY_1}-${SERVICE_2}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'alergías',
@@ -81,12 +81,12 @@ const Services = [
       en: 'alergias',
       es: 'alergias',
     },
-    value: `${CATEGORY_2}-${SERVICE_2}`,
+    value: `${CATEGORY_1}-${SERVICE_2}`,
   },
   {
-    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      CATEGORY_2,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -94,10 +94,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_2}-${SERVICE_3}`,
+    id: `${CATEGORY_1}-${SERVICE_3}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'diagnóstico y tratramiento para cáncer de piel',
@@ -111,12 +111,12 @@ const Services = [
       en: 'diagnóstico-y-tratramiento-para-cáncer-de-piel',
       es: 'diagnóstico-y-tratramiento-para-cáncer-de-piel',
     },
-    value: `${CATEGORY_2}-${SERVICE_3}`,
+    value: `${CATEGORY_1}-${SERVICE_3}`,
   },
   {
-    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      CATEGORY_2,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -124,10 +124,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_2}-${SERVICE_4}`,
+    id: `${CATEGORY_1}-${SERVICE_4}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'dermatitis y enfermedades de la piel',
@@ -141,12 +141,12 @@ const Services = [
       en: 'dermatitis-y-enfermedades-de-la-piel',
       es: 'dermatitis-y-enfermedades-de-la-piel',
     },
-    value: `${CATEGORY_2}-${SERVICE_4}`,
+    value: `${CATEGORY_1}-${SERVICE_4}`,
   },
   {
-    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      CATEGORY_2,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -154,10 +154,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_2}-${SERVICE_5}`,
+    id: `${CATEGORY_1}-${SERVICE_5}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'tratamiento para acné',
@@ -171,12 +171,12 @@ const Services = [
       en: 'tratamiento-para-acné',
       es: 'tratamiento-para-acné',
     },
-    value: `${CATEGORY_2}-${SERVICE_5}`,
+    value: `${CATEGORY_1}-${SERVICE_5}`,
   },
   {
-    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      CATEGORY_2,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -184,10 +184,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_2}-${SERVICE_6}`,
+    id: `${CATEGORY_1}-${SERVICE_6}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'caída de cabello y tratamiento capilar',
@@ -201,12 +201,12 @@ const Services = [
       en: 'caída-de-cabello-y-tratamiento-capilar',
       es: 'caída-de-cabello-y-tratamiento-capilar',
     },
-    value: `${CATEGORY_2}-${SERVICE_6}`,
+    value: `${CATEGORY_1}-${SERVICE_6}`,
   },
   {
-    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    background: `/static/images/${CATEGORY_1}/1.jpg`,
     categories: [
-      CATEGORY_2,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -214,10 +214,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_2}-${SERVICE_7}`,
+    id: `${CATEGORY_1}-${SERVICE_7}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'vitiligo',
@@ -231,12 +231,12 @@ const Services = [
       en: 'vitiligo',
       es: 'vitiligo',
     },
-    value: `${CATEGORY_2}-${SERVICE_7}`,
+    value: `${CATEGORY_1}-${SERVICE_7}`,
   },
   {
-    background: `/static/images/${CATEGORY_2}/1.jpg`,
+    background: `/static/images/${CATEGORY_1}/tratamiento-para-hongos.jpg`,
     categories: [
-      CATEGORY_2,
+      CATEGORY_1,
     ],
     content: CONTENT_SERVICE_3,
     cta: {
@@ -244,10 +244,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_2}-${SERVICE_8}`,
+    id: `${CATEGORY_1}-${SERVICE_8}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/tratamiento-para-hongos.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/tratamiento-para-hongos.jpg`,
     },
     label: {
       en: 'tratamiento para hongos en uñas',
@@ -261,7 +261,7 @@ const Services = [
       en: 'tratamiento-para-hongos-en-uñas',
       es: 'tratamiento-para-hongos-en-uñas',
     },
-    value: `${CATEGORY_2}-${SERVICE_8}`,
+    value: `${CATEGORY_1}-${SERVICE_8}`,
   },
 ];
 

@@ -14,7 +14,7 @@ import CONTENT_SERVICE_9 from './plex-air';
 // constants
 const {
   // categories
-  CATEGORY_1,
+  CATEGORY_2,
 
   // services
   SERVICE_1,
@@ -30,9 +30,9 @@ const {
 
 const Services = [
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_1,
     cta: {
@@ -40,10 +40,10 @@ const Services = [
       es: 'consultar ahora',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_1}`,
+    id: `${CATEGORY_2}-${SERVICE_1}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'rellenos de ácido hialurónico',
@@ -57,12 +57,12 @@ const Services = [
       en: 'rellenos-de-ácido-hialurónico',
       es: 'rellenos-de-ácido-hialurónico',
     },
-    value: `${CATEGORY_1}-${SERVICE_1}`,
+    value: `${CATEGORY_2}-${SERVICE_1}`,
   },
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/toxina-botulinica.jpg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
@@ -75,10 +75,10 @@ const Services = [
       es: '5% descuento',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_2}`,
+    id: `${CATEGORY_2}-${SERVICE_2}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/toxina-botulinica.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/toxina-botulinica.jpg`,
     },
     label: {
       en: 'toxina botulinica',
@@ -92,12 +92,12 @@ const Services = [
       en: 'toxina-botulinica',
       es: 'toxina-botulinica',
     },
-    value: `${CATEGORY_1}-${SERVICE_2}`,
+    value: `${CATEGORY_2}-${SERVICE_2}`,
   },
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/rejuvenecimiento-laser.jpg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_3,
     cta: {
@@ -105,10 +105,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_3}`,
+    id: `${CATEGORY_2}-${SERVICE_3}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/rejuvenecimiento-laser.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/rejuvenecimiento-laser.jpg`,
     },
     label: {
       en: 'rejuvenecimiento láser',
@@ -122,12 +122,12 @@ const Services = [
       en: 'rejuvenecimiento-laser',
       es: 'rejuvenecimiento-laser',
     },
-    value: `${CATEGORY_1}-${SERVICE_3}`,
+    value: `${CATEGORY_2}-${SERVICE_3}`,
   },
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_3,
     cta: {
@@ -135,10 +135,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_4}`,
+    id: `${CATEGORY_2}-${SERVICE_4}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'tratamiento láser para manchas e hiperpigmentación',
@@ -152,12 +152,12 @@ const Services = [
       en: 'tratamiento-laser-para-manchas-e-hiperpigmentacion',
       es: 'tratamiento-laser-para-manchas-e-hiperpigmentacion',
     },
-    value: `${CATEGORY_1}-${SERVICE_4}`,
+    value: `${CATEGORY_2}-${SERVICE_4}`,
   },
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_5,
     cta: {
@@ -165,10 +165,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_5}`,
+    id: `${CATEGORY_2}-${SERVICE_5}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'toxina contra hiperhidrosis',
@@ -182,12 +182,12 @@ const Services = [
       en: 'toxina-contra-hiperhidrosis',
       es: 'toxina-contra-hiperhidrosis',
     },
-    value: `${CATEGORY_1}-${SERVICE_5}`,
+    value: `${CATEGORY_2}-${SERVICE_5}`,
   },
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/eliminacion-tatuajes.jpeg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_6,
     cta: {
@@ -195,10 +195,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_6}`,
+    id: `${CATEGORY_2}-${SERVICE_6}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/eliminacion-tatuajes.jpeg`,
+      mobile: `/static/images/${CATEGORY_2}/eliminacion-tatuajes.jpeg`,
     },
     label: {
       en: 'eliminación de tatuajes',
@@ -212,12 +212,12 @@ const Services = [
       en: 'eliminación-de-tatuajes',
       es: 'eliminación-de-tatuajes',
     },
-    value: `${CATEGORY_1}-${SERVICE_6}`,
+    value: `${CATEGORY_2}-${SERVICE_6}`,
   },
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_7,
     cta: {
@@ -225,10 +225,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_7}`,
+    id: `${CATEGORY_2}-${SERVICE_7}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'dermapen',
@@ -242,12 +242,12 @@ const Services = [
       en: 'dermapen',
       es: 'dermapen',
     },
-    value: `${CATEGORY_1}-${SERVICE_7}`,
+    value: `${CATEGORY_2}-${SERVICE_7}`,
   },
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_8,
     cta: {
@@ -255,10 +255,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_8}`,
+    id: `${CATEGORY_2}-${SERVICE_8}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'radio frecuencia con agujas',
@@ -272,12 +272,12 @@ const Services = [
       en: 'radio-frecuencia-con-agujas',
       es: 'radio-frecuencia-con-agujas',
     },
-    value: `${CATEGORY_1}-${SERVICE_8}`,
+    value: `${CATEGORY_2}-${SERVICE_8}`,
   },
   {
-    background: `/static/images/${CATEGORY_1}/1.jpg`,
+    background: `/static/images/${CATEGORY_2}/1.jpg`,
     categories: [
-      CATEGORY_1,
+      CATEGORY_2,
     ],
     content: CONTENT_SERVICE_9,
     cta: {
@@ -285,10 +285,10 @@ const Services = [
       es: 'conoce más',
     },
     ico: 'cloud-download',
-    id: `${CATEGORY_1}-${SERVICE_9}`,
+    id: `${CATEGORY_2}-${SERVICE_9}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'plex air, blefaroplatia sin cirugía',
@@ -302,7 +302,7 @@ const Services = [
       en: 'plex-air-blefaroplatia-sin-cirugía',
       es: 'plex-air-blefaroplatia-sin-cirugía',
     },
-    value: `${CATEGORY_1}-${SERVICE_9}`,
+    value: `${CATEGORY_2}-${SERVICE_9}`,
   },
 ];
 

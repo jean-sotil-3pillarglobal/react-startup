@@ -23,52 +23,7 @@ const url = CreateUrlOnePath(SERVICES);
 
 const Services = [
   {
-    background: `/static/images/${CATEGORY_1}/3.png`,
-    body: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
-    color: '#ef1e83',
-    cta: {
-      en: 'learn more',
-      es: 'conoce más',
-    },
-    description: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    },
-    ico: 'home',
-    id: CATEGORY_1,
-    image: {
-      desktop: `/static/images/${CATEGORY_1}/3.png`,
-      mobile: `/static/images/${CATEGORY_1}/3.png`,
-    },
-    images: [
-      {
-        desktop: `/static/images/${CATEGORY_1}/3.png`,
-        mobile: `/static/images/${CATEGORY_1}/3.png`,
-      },
-      {
-        desktop: `/static/images/${CATEGORY_1}/3.png`,
-        mobile: `/static/images/${CATEGORY_1}/3.png`,
-      },
-    ],
-    svg: '/static/svg/team_work.svg',
-    title: {
-      en: 'estetic dermatology',
-      es: 'dermatología estética',
-    },
-    unknown: {
-      en: 'sorry, we could not find that service.',
-      es: 'disculpa, no pudimos encontrar ese servicio.',
-    },
-    url: {
-      en: url('estetic-dermatology', 'en'),
-      es: url('dermatologia-estetica', 'es'),
-    },
-  },
-  {
-    background: `/static/images/${CATEGORY_2}/2.jpg`,
+    background: `/static/images/${CATEGORY_1}/derma-clinica.jpg`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
@@ -83,19 +38,19 @@ const Services = [
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
     ico: 'cloud-download',
-    id: CATEGORY_2,
+    id: CATEGORY_1,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/2.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/2.jpg`,
+      desktop: `/static/images/${CATEGORY_1}/derma-clinica.jpg`,
+      mobile: `/static/images/${CATEGORY_1}/derma-clinica.jpg`,
     },
     images: [
       {
-        desktop: `/static/images/${CATEGORY_2}/2.jpg`,
-        mobile: `/static/images/${CATEGORY_2}/2.jpg`,
+        desktop: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
+        mobile: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
       },
       {
-        desktop: `/static/images/${CATEGORY_2}/2.jpg`,
-        mobile: `/static/images/${CATEGORY_2}/2.jpg`,
+        desktop: `/static/images/${CATEGORY_1}/derma-clinica-2.jpg`,
+        mobile: `/static/images/${CATEGORY_1}/derma-clinica-2.jpg`,
       },
     ],
     svg: '/static/svg/team_work.svg',
@@ -113,7 +68,52 @@ const Services = [
     },
   },
   {
-    background: `/static/images/${CATEGORY_3}/3.png`,
+    background: `/static/images/${CATEGORY_2}/derma-estetica.jpg`,
+    body: {
+      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+    },
+    color: '#ef1e83',
+    cta: {
+      en: 'learn more',
+      es: 'conoce más',
+    },
+    description: {
+      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+    },
+    ico: 'home',
+    id: CATEGORY_2,
+    image: {
+      desktop: `/static/images/${CATEGORY_2}/3.png`,
+      mobile: `/static/images/${CATEGORY_2}/3.png`,
+    },
+    images: [
+      {
+        desktop: `/static/images/${CATEGORY_2}/derma-estetica-1.jpg`,
+        mobile: `/static/images/${CATEGORY_2}/derma-estetica-1.jpg`,
+      },
+      {
+        desktop: `/static/images/${CATEGORY_2}/derma-estetica-2.jpg`,
+        mobile: `/static/images/${CATEGORY_2}/derma-estetica-2.jpg`,
+      },
+    ],
+    svg: '/static/svg/team_work.svg',
+    title: {
+      en: 'estetic dermatology',
+      es: 'dermatología estética',
+    },
+    unknown: {
+      en: 'sorry, we could not find that service.',
+      es: 'disculpa, no pudimos encontrar ese servicio.',
+    },
+    url: {
+      en: url('estetic-dermatology', 'en'),
+      es: url('dermatologia-estetica', 'es'),
+    },
+  },
+  {
+    background: `/static/images/${CATEGORY_3}/spa-clinico.jpg`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
@@ -126,9 +126,19 @@ const Services = [
     ico: 'cloud-download',
     id: CATEGORY_3,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/3.png`,
-      mobile: `/static/images/${CATEGORY_3}/3.png`,
+      desktop: `/static/images/${CATEGORY_3}/spa-clinico.jpg`,
+      mobile: `/static/images/${CATEGORY_3}/spa-clinico.jpg`,
     },
+    images: [
+      {
+        desktop: `/static/images/${CATEGORY_3}/spa-clinico-1.jpg`,
+        mobile: `/static/images/${CATEGORY_3}/spa-clinico-1.jpg`,
+      },
+      {
+        desktop: `/static/images/${CATEGORY_3}/spa-clinico-2.jpg`,
+        mobile: `/static/images/${CATEGORY_3}/spa-clinico-2.jpg`,
+      },
+    ],
     title: {
       en: 'estética y spa clínico',
       es: 'estética y spa clínico',

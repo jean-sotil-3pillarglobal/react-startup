@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 
 import { withStyles, TextField } from '@material-ui/core';
 
+import Error from '../error';
+
 const styles = () => ({
   input: {},
 });
@@ -31,7 +33,7 @@ class InputBase extends Component {
   props: {
     classes: Object,
     disabled: Boolean,
-    errors: Array,
+    formProps: Object,
     inputProps: children,
     inputRef: node,
     label: string,
@@ -50,7 +52,7 @@ class InputBase extends Component {
   render() {
     const {
       classes,
-      errors,
+      formProps,
       inputProps,
       inputRef,
       label,
@@ -66,8 +68,12 @@ class InputBase extends Component {
       value,
     } = this.props;
 
+    const {
+      errors,
+    } = formProps;
+
     const error = errors[name] !== undefined;
-    const errorMsg = (error && errors[name].message) || '';
+    const errorMsg = (error && <Error message={errors[name].message} />) || '';
 
     return (
       <ForwardTextField

@@ -136,7 +136,7 @@ const styles = theme => ({
   },
   titleContainer: {
     background: 'transparent',
-    padding: `${theme.spacing(16)}px 0`,
+    padding: `${theme.spacing(20)}px 0`,
     position: 'relative',
     textAlign: 'center',
     zIndex: 1,
@@ -267,7 +267,7 @@ function SectionA (props: {
 
   return (
     <Fragment>
-      <Parallax bgImage={category.background} strength={500} className={classes.background}>
+      <Parallax bgImage={category.background} strength={200} className={classes.background}>
         <Paper className={classes.titleContainer} elevation={0}>
           <Typography
             variant="h2"

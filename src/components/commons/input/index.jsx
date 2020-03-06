@@ -146,9 +146,9 @@ class InputLayout extends Component {
 
     const props = {
       ...this.props,
-      errors,
       filled: value && value.length > 0,
       focused,
+      formProps,
       inputRef: this.handleRegister(),
       onBlur: this.handleBlur,
       onChange: handleChange,
