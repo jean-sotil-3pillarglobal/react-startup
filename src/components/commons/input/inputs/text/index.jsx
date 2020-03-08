@@ -70,6 +70,7 @@ class InputBase extends Component {
 
     const {
       errors,
+      register,
     } = formProps;
 
     const error = errors[name] !== undefined;
@@ -86,7 +87,7 @@ class InputBase extends Component {
         onChange={onChange}
         onFocus={onFocus}
         options={options}
-        ref={inputRef}
+        ref={register(inputRef)}
         required={required}
         rows={rows}
         type={type}

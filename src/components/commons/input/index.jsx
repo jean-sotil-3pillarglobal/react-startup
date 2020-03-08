@@ -76,9 +76,6 @@ class InputLayout extends Component {
 
   handleRegister = () => {
     const {
-      formProps: {
-        register,
-      },
       proxy: {
         language,
       },
@@ -95,7 +92,7 @@ class InputLayout extends Component {
       });
     }
 
-    return register(obj);
+    return obj;
   }
 
   props: {
@@ -140,7 +137,6 @@ class InputLayout extends Component {
     const {
       errors,
     } = formProps;
-    const hasError = errors[name] !== undefined;
 
     let placeholder = '';
 
@@ -153,6 +149,7 @@ class InputLayout extends Component {
       onBlur: this.handleBlur,
       onChange: handleChange,
       onFocus: handleFocus,
+      value,
     };
 
     delete props.options;
@@ -177,12 +174,8 @@ class InputLayout extends Component {
 
     props.inputProps = {
       endAdornment: (
-        hasError &&
         <InputAdornment>
-          {!hasError &&
-            <Icon name="check" color="success" />
-          }
-          {hasError &&
+          {(errors[name] !== undefined) &&
             <Icon name="error" color="error" />
           }
         </InputAdornment>

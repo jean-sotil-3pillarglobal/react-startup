@@ -60,6 +60,7 @@ module.exports = {
             'no-undef': 0,
             'object-curly-newline': 0,
             'object-shorthand': 0,
+            'prefer-destructuring': 0,
             'quote-props': 0,
             'react/jsx-closing-bracket-location': 0,
             'react/jsx-filename-extension': [1, { "extensions": [".js", ".jsx"] }],

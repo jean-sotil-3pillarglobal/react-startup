@@ -2,22 +2,61 @@
 
 
 import React, { Component } from 'react';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
+
 import {
   FormControl,
-  FormHelperText,
   InputLabel,
   withStyles,
 } from '@material-ui/core';
+
+// components
+import Error from '../error';
+import Icon from '../../../icon';
 
 const styles = () => ({
   input: {},
 });
 
+const customStyles = {
+  control: () => ({
+    background: '#f7f7f7',
+    border: '1px solid transparent',
+    borderRadius: '0 0 0 0',
+  }),
+  indicatorsContainer: () => ({
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  }),
+  indicatorSeparator: () => ({
+    display: 'none',
+  }),
+  multiValue: (provided, state) => {
+    return ({
+      ...provided,
+      '& div:first-of-type': {
+        width: '100%',
+      },
+      color: (state.isSelected && state.theme.primary.light) || '',
+      fontSize: '.6em',
+      width: '100%',
+    });
+  },
+};
+
+const DropdownIndicator = (props: ElementConfig<typeof components.DropdownIndicator>) => {
+  return (
+    <components.DropdownIndicator {...props}>
+      <Icon name="error" color="error" />
+    </components.DropdownIndicator>
+  );
+};
+
 const ForwardTextField = React.forwardRef((props: {
   disabled: Boolean,
-  error: any,
-  errorMsg: any,
+  formProps: Object,
+  inputRef: Object,
   isMulti: Boolean,
   label: String,
   name: String,
@@ -27,12 +66,12 @@ const ForwardTextField = React.forwardRef((props: {
   options: Array,
   placeholder: String,
   required: Boolean,
-  value: String,
+  value: Object,
 }, ref) => {
   const {
     disabled,
-    error,
-    errorMsg,
+    formProps,
+    inputRef,
     isMulti,
     label,
     name,
@@ -45,15 +84,76 @@ const ForwardTextField = React.forwardRef((props: {
     value,
   } = props;
 
+  const {
+    clearError,
+    errors,
+    register,
+    setValue,
+  } = formProps;
+
+  const error = errors[name] !== undefined;
+
+  const getValue = (val) => {
+    const { type } = props;
+    const v = val;
+
+    if (val !== undefined) {
+      if (type === 'text') {
+        options.sort((a, b) => {
+          if (a.label > b.label) {
+            return 1;
+          } else if (a.label < b.label) {
+            return -1;
+          }
+          return 0;
+        });
+      } else if (type === 'number') {
+        v.sort((a, b) => {
+          if (Number(a.value) > Number(b.value)) {
+            return 1;
+          } else if (Number(a.value) < Number(b.value)) {
+            return -1;
+          }
+          return 0;
+        });
+      }
+
+      return v || null;
+    }
+    return null;
+  };
+
+  const handleChange = (e) => {
+    const currentValue = getValue(e);
+
+    if (currentValue) {
+      clearError(name);
+    }
+
+    setValue(name, currentValue, true);
+    onChange(e);
+  };
+
   return (
     <FormControl>
-      <InputLabel error={error || false} htmlFor={name} required={required} shrink>
+      <InputLabel
+        style={{
+          fontSize: '0.6em',
+          position: 'relative',
+          top: '-4px',
+          transform: 'initial',
+        }}
+        error={error || false}
+        htmlFor={name}
+        required={required}
+      >
         {label}
       </InputLabel>
       <Select
-        className="basic-single"
-        classNamePrefix="select"
-        defaultValue={value}
+        className={name}
+        closeMenuOnSelect={false}
+        components={errors[name] !== undefined && { DropdownIndicator }}
+        defaultValue={value || null}
         id={name}
         isMulti={isMulti}
         isClearable
@@ -61,7 +161,7 @@ const ForwardTextField = React.forwardRef((props: {
         isSearchable
         name={name}
         onBlur={onBlur}
-        onChange={onChange}
+        onChange={handleChange}
         onFocus={onFocus}
         options={options}
         placeholder={placeholder}
@@ -69,10 +169,13 @@ const ForwardTextField = React.forwardRef((props: {
         inputProps={{
           ref,
         }}
+        ref={() => {
+          register({ name }, inputRef);
+        }}
+        styles={customStyles}
       />
-      {error && <FormHelperText error={error}>{errorMsg}</FormHelperText>}
+      {(error && <Error message={errors[name].message} />) || ''}
     </FormControl>
-
   );
 });
 

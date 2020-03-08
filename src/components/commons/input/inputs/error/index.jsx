@@ -12,6 +12,7 @@ import Icon from '../../../icon';
 
 const styles = theme => ({
   container: {
+    lineHeight: 0,
     position: 'relative',
     top: theme.spacing(0.5),
   },
@@ -22,6 +23,7 @@ const styles = theme => ({
   },
   message: {
     position: 'relative',
+    textTransform: 'capitalize',
     top: '-3px',
   },
 });
@@ -36,10 +38,10 @@ const Error = (props: {
   } = props;
 
   return (
-    <div className={classes.container}>
+    <span className={classes.container}>
       <Icon name="error" color="error" className={classes.icon} />
       <Typography className={classes.message} variant="caption">{message}</Typography>
-    </div>
+    </span>
   );
 };
 

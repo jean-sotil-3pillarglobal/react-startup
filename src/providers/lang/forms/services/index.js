@@ -12,9 +12,7 @@ export const SERVICES_INFORMATION_1_1 = [
     },
     required: true,
     rules: [
-      {
-        type: 'required',
-      },
+      { type: 'required' },
     ],
     size_lg: 12,
     size_md: 12,
@@ -34,12 +32,8 @@ export const SERVICES_INFORMATION_1_1 = [
     },
     required: true,
     rules: [
-      {
-        type: 'required',
-      },
-      {
-        type: 'email',
-      },
+      { type: 'required' },
+      { type: 'email' },
     ],
     size_lg: 12,
     size_md: 12,
@@ -58,7 +52,10 @@ export const SERVICES_INFORMATION_1_1 = [
       en: '(777) 889-9088',
       es: '(777) 889-9088',
     },
-    required: false,
+    required: true,
+    rules: [
+      { type: 'required' },
+    ],
     size_lg: 12,
     size_md: 12,
     size_sm: 12,
@@ -88,9 +85,7 @@ export const SERVICES_INFORMATION_1_2 = [
     },
     required: true,
     rules: [
-      {
-        type: 'empty',
-      },
+      { type: 'empty' },
     ],
     size_lg: 12,
     size_md: 12,
@@ -109,6 +104,9 @@ export const SERVICES_INFORMATION_1_2 = [
       es: 'Hola, me gustaría saber más...',
     },
     required: true,
+    rules: [
+      { type: 'required' },
+    ],
     size_lg: 12,
     size_md: 12,
     size_sm: 12,
