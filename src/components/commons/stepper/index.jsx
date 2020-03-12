@@ -138,7 +138,7 @@ function StepperForm (props: {
             alignItems="center"
             spacing={2}>
             <Grid item sm={sm} md={md} lg={lg}>
-              <Paper elevation={0} className={className}>
+              <Paper elevation={2} className={className}>
                 <Stepper
                   activeStep={activeStep}
                   orientation="vertical"

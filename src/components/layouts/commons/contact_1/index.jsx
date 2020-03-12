@@ -24,6 +24,9 @@ const styles = theme => ({
     position: 'relative',
     zIndex: 1,
   }),
+  container: props => ({
+    background: ThemeBackground(props, theme, 'light'),
+  }),
   subtitle: props => ({
     color: ThemeColor(props, theme),
     fontWeight: 400,
@@ -89,7 +92,7 @@ class ContactFormLayout extends Component {
   }
 
   props: {
-    // classes: Object,
+    classes: Object,
     proxy: Object,
     variant: String,
   }
@@ -121,6 +124,7 @@ class ContactFormLayout extends Component {
 
   render () {
     const {
+      classes,
       proxy,
       variant,
     } = this.props;
@@ -138,6 +142,7 @@ class ContactFormLayout extends Component {
       verbiage &&
       <Fade left>
         <Stepper
+          className={classes.container}
           copy={copy}
           document={document}
           forms={forms}

@@ -93,6 +93,7 @@ const overrides = {
   MuiButton: {
     root: {
       border: '2px solid',
+      borderColor: 'transparent',
       borderRadius: '0 0 0 0',
       boxShadow: 'none',
       fontSize: '.6em',
@@ -196,6 +197,12 @@ const overrides = {
       borderRadius: '0 0 0 0',
     },
   },
+  MuiPickersCalendarHeader: {
+    transitionContainer: {
+      overflow: 'visible',
+      textTransform: 'capitalize',
+    },
+  },
   MuiStepConnector: {
     vertical: {
       marginLeft: 20,
@@ -220,6 +227,11 @@ const overrides = {
     },
     root: {
       padding: '7px 28px 7px 6px',
+    },
+  },
+  MuiStepper: {
+    root: {
+      background: 'transparent',
     },
   },
 };

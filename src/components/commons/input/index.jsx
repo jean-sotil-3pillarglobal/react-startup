@@ -16,6 +16,8 @@ import Icon from '../icon';
 import Messages from './messages';
 import Validate from './validate';
 
+import DateField from './inputs/date';
+import DateTimeField from './inputs/hours';
 import PhoneField from './inputs/phone';
 import SelectField from './inputs/select';
 import TextField from './inputs/text';
@@ -194,6 +196,8 @@ class InputLayout extends Component {
           <Typography className="toggle" variant="caption">{props.label}</Typography>
         </FormControl>
       ),
+      date: <DateField locale={language} {...props} />,
+      datetime: <DateTimeField locale={language} {...props} />,
       divider: <Divider variant="middle" />,
       input: <TextField {...props} />,
       multiselect: <SelectField isMulti options={this.formatList(options || [])} {...props} />,

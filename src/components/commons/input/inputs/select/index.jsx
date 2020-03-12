@@ -23,8 +23,12 @@ const customStyles = {
     background: '#f7f7f7',
     border: '1px solid transparent',
     borderRadius: '0 0 0 0',
+    fontSize: '16px',
+    padding: '.6em 0',
+    textTransform: 'capitalize',
   }),
   indicatorsContainer: () => ({
+    padding: '16px',
     position: 'absolute',
     right: 0,
     top: 0,
@@ -39,8 +43,10 @@ const customStyles = {
         width: '100%',
       },
       color: (state.isSelected && state.theme.primary.light) || '',
-      fontSize: '.6em',
-      width: '100%',
+      fontSize: '1.2em',
+      padding: '4px',
+      textTransform: 'capitalize',
+      width: '75%',
     });
   },
 };
@@ -166,6 +172,7 @@ const ForwardTextField = React.forwardRef((props: {
         options={options}
         placeholder={placeholder}
         value={value}
+        inputVariant="filled"
         inputProps={{
           ref,
         }}

@@ -63,6 +63,7 @@ class FormBlock extends Component {
     document: Object,
     formProps: Object,
     proxy: Object,
+    variant: Object,
   }
 
   render () {
@@ -73,6 +74,7 @@ class FormBlock extends Component {
       document,
       formProps,
       proxy,
+      variant,
     } = this.props;
 
     const {
@@ -149,6 +151,7 @@ class FormBlock extends Component {
                         rules={rules}
                         type={type}
                         value={document[key] || ''}
+                        variant={variant}
                       />
                     </Grid>
                   );

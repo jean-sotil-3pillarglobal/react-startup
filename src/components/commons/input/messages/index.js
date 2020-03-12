@@ -1,5 +1,9 @@
 
 const Messages = {
+  date: {
+    en: 'invalid date',
+    es: 'fecha inválida',
+  },
   email: {
     en: 'invalid email',
     es: 'email inválido',
@@ -17,8 +21,8 @@ const Messages = {
     es: 'mínimo $value dígitos.',
   },
   optional: {
-    en: ' — optional',
-    es: ' — opcional',
+    en: ' — is optional :)',
+    es: ' — es opcional :)',
   },
   phone: {
     en: 'invalid phone.',

@@ -1,9 +1,15 @@
+import moment from 'moment';
+
 import Messages from '../messages';
 
 export default function (rule, language) {
   const msg = Messages[rule.type][language];
 
   const validate = {
+    date: (value) => {
+      const date = moment(value);
+      return date.isValid() || msg;
+    },
     email: (value) => {
       const reg = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
       return (value && reg.test(value)) || msg;
