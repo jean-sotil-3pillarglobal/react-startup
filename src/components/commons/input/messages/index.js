@@ -21,8 +21,8 @@ const Messages = {
     es: 'mínimo $value dígitos.',
   },
   optional: {
-    en: ' — is optional :)',
-    es: ' — es opcional :)',
+    en: ' — is optional',
+    es: ' — es opcional',
   },
   phone: {
     en: 'invalid phone.',

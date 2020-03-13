@@ -18,8 +18,7 @@ import Icon from '../icon';
 import Messages from './messages';
 import Validate from './validate';
 
-// import DateField from './inputs/date';
-// import DateTimeField from './inputs/hours';
+import DateField from './inputs/date';
 // import PhoneField from './inputs/phone';
 import SelectField from './inputs/select';
 import TextField from './inputs/text';
@@ -160,8 +159,8 @@ function InputLayout (props: {
         <Typography className="toggle" variant="caption">{newProps.label}</Typography>
       </FormControl>
     ),
-    // date: <DateField locale={language} {...newProps} />,
-    // datetime: <DateTimeField locale={language} {...newProps} />,
+    date: <DateField format="MM/DD/YYYY" locale={language} {...newProps} />,
+    datetime: <DateField format="HH:MM:ss" locale={language} {...newProps} />,
     divider: <Divider variant="middle" />,
     input: <TextField {...newProps} />,
     multiselect: <SelectField isMulti options={formatList(options || [])} {...newProps} />,

@@ -1,146 +1,149 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 
+import { Controller, useFormContext } from 'react-hook-form';
 import { withStyles } from '@material-ui/core';
-import MomentUtils from '@date-io/moment';
 import moment from 'moment';
+import MomentUtils from '@date-io/moment';
 
 import {
+  KeyboardTimePicker,
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 
 import Error from '../error';
 
+// components
+import Icon from '../../../icon';
+
 const styles = () => ({
-  input: {},
+  input: {
+    marginTop: '32px !important',
+  },
 });
 
-const ForwardTextField = React.forwardRef((props, ref) => {
-  return (
-    <KeyboardDatePicker
-      {...props}
-      variant="dialog"
-      openTo="year"
-      inputProps={{
-        ref,
-      }}
-    />
-  );
-});
+function DateField (props: {
+  classes: Object,
+  document: object,
+  format: string,
+  label: string,
+  locale: string,
+  name: string,
+  onChange: Function,
+  onFieldChange: Function,
+  required: Boolean,
+  type: string,
+}) {
+  const {
+    classes,
+    document,
+    format,
+    label,
+    locale,
+    name,
+    onChange,
+    onFieldChange,
+    required,
+    type,
+  } = props;
 
-class DateField extends Component {
-  shouldComponentUpdate = (nextProps) => {
-    return (
-      nextProps.value !== this.props.value ||
-      nextProps.disabled !== this.props.disabled ||
-      nextProps.required !== this.props.required
-    );
+  const {
+    errors,
+  } = useFormContext();
+
+  const error = errors[name] !== undefined;
+  const errorMsg = (error && <Error message={errors[name].message} />) || '';
+  const value = document[name] || null;
+
+  const inputProps = {
+    className: classes.input,
+    disableUnderline: true,
   };
 
-  props: {
-    classes: Object,
-    disabled: Boolean,
-    fieldType: string,
-    formProps: Object,
-    id: string,
-    inputComponent: children,
-    inputRef: node,
-    locale: String,
-    name: string,
-    onChange: Function,
-    options: Array,
-    required: Boolean,
-    type: string,
-    value: any,
-  };
-
-  handleChange = (e) => {
-    const {
-      formProps: {
-        clearError,
-        setValue,
-      },
-      name,
-      onChange,
-    } = this.props;
-
-    const date = moment(e);
-
-    if (e && date.isValid()) {
-      clearError(name);
-    }
-
-    setValue(name, (e && e.format('MM/DD/YYYY')) || null, true);
-
-    onChange({
+  const handleChange = (e) => {
+    const v = {
       target: {
         name,
-        value: e,
+        value: moment(e),
       },
-    });
-  };
-
-  render() {
-    const {
-      classes,
-      fieldType,
-      formProps,
-      inputComponent,
-      inputRef,
-      name,
-      onChange,
-      options,
-      required,
-      type,
-      value,
-      ...props
-    } = this.props;
-
-    const {
-      errors,
-      register,
-    } = formProps;
-
-    const error = errors[name] !== undefined;
-    const errorMsg = (error && <Error message={errors[name].message} />) || '';
-
-    const inputProps = {
-      className: classes.input,
-      disableUnderline: true,
     };
 
-    delete props.formProps;
-    delete props.focused;
-    delete props.filled;
+    onChange(v);
+    onFieldChange(v);
+  };
 
-    return (
-      <MuiPickersUtilsProvider utils={MomentUtils} locale={props.locale}>
-        <ForwardTextField
-          className={name}
-          error={error}
-          format="MM/DD/YYYY"
-          helperText={errorMsg}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          InputProps={inputProps}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-          name={name}
-          onChange={this.handleChange}
-          placeholder="mm/dd/yyyy"
-          ref={register(inputRef)}
-          required={required}
-          type={type}
-          value={value || null}
-          {...props}
-        />
-      </MuiPickersUtilsProvider>
-    );
+  const isDate = format.includes('MM/DD/YYYY');
+  const Component = !isDate ? KeyboardTimePicker : KeyboardDatePicker;
+  let datePickerProps = {};
+
+  if (isDate) {
+    datePickerProps = {
+      format,
+      KeyboardButtonProps: {
+        'aria-label': 'change date',
+      },
+      variant: 'dialog',
+    };
+  } else {
+    datePickerProps = {
+      format,
+      keyboardIcon: <Icon name="access_time" color="rgba(0, 0, 0, 0.54)" />,
+      variant: 'dialog',
+    };
   }
+
+  return (
+    <MuiPickersUtilsProvider utils={MomentUtils} locale={locale}>
+      <Component
+        className={name}
+        error={error}
+        helperText={errorMsg}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        InputProps={inputProps}
+        label={label}
+        name={name}
+        onChange={handleChange}
+        placeholder={format}
+        required={required}
+        type={type}
+        value={value || null}
+        openTo={((isDate && (value === null && 'year')) || 'date') || 'hours'}
+        {...datePickerProps}
+      />
+    </MuiPickersUtilsProvider>
+  );
 }
 
-export default withStyles(styles)(DateField);
+function ControllerDateField (props: {
+  document: Object,
+  inputRef: Object,
+  name: string,
+}) {
+  const {
+    document,
+    inputRef,
+    name,
+  } = props;
+
+  const {
+    control,
+  } = useFormContext();
+
+  const value = document[name];
+
+  return (
+    <Controller
+      as={<DateField {...props} />}
+      control={control}
+      name={name}
+      rules={inputRef}
+      value={value}
+    />
+  );
+}
+
+export default withStyles(styles)(ControllerDateField);
