@@ -1,13 +1,16 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-import { withStyles, TextField } from '@material-ui/core';
+import { FormControl, withStyles, TextField } from '@material-ui/core';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import Error from '../error';
 
 const styles = () => ({
-  input: {},
+  input: {
+    marginTop: '32px !important',
+  },
 });
 
 const ForwardTextField = React.forwardRef((props, ref) => {
@@ -21,62 +24,57 @@ const ForwardTextField = React.forwardRef((props, ref) => {
   );
 });
 
-class InputBase extends Component {
-  shouldComponentUpdate = (nextProps) => {
-    return (
-      nextProps.value !== this.props.value ||
-      nextProps.disabled !== this.props.disabled ||
-      nextProps.required !== this.props.required
-    );
+function InputBase (props: {
+  classes: Object,
+  inputProps: Object,
+  InputProps: Object,
+  label: string,
+  multiline: Boolean,
+  name: string,
+  onBlur: Function,
+  onChange: Function,
+  onFieldChange: Function,
+  onFocus: Function,
+  options: Array,
+  required: Boolean,
+  rows: Int,
+  type: string,
+}) {
+  const {
+    classes,
+    inputProps,
+    InputProps,
+    label,
+    multiline,
+    name,
+    onBlur,
+    onChange,
+    onFieldChange,
+    onFocus,
+    options,
+    required,
+    rows,
+    type,
+  } = props;
+
+  const value = (document && document[name]) || '';
+  const [inputValue, setInputValue] = useState(value);
+
+  const {
+    errors,
+  } = useFormContext();
+
+  const error = errors[name] !== undefined;
+  const errorMsg = (error && <Error message={errors[name].message} />) || '';
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    onChange(e);
+    onFieldChange(e);
   };
 
-  props: {
-    classes: Object,
-    disabled: Boolean,
-    formProps: Object,
-    inputProps: children,
-    inputRef: node,
-    label: string,
-    multiline: Boolean,
-    name: string,
-    onBlur: Function,
-    onChange: Function,
-    onFocus: Function,
-    options: Array,
-    required: Boolean,
-    rows: Int,
-    type: string,
-    value: any,
-  };
-
-  render() {
-    const {
-      classes,
-      formProps,
-      inputProps,
-      inputRef,
-      label,
-      multiline,
-      name,
-      onBlur,
-      onChange,
-      onFocus,
-      options,
-      required,
-      rows,
-      type,
-      value,
-    } = this.props;
-
-    const {
-      errors,
-      register,
-    } = formProps;
-
-    const error = errors[name] !== undefined;
-    const errorMsg = (error && <Error message={errors[name].message} />) || '';
-
-    return (
+  return (
+    <FormControl fullWidth>
       <ForwardTextField
         error={error || false}
         helperText={errorMsg}
@@ -84,25 +82,60 @@ class InputBase extends Component {
         multiline={multiline}
         name={name}
         onBlur={onBlur}
-        onChange={onChange}
+        onChange={e => handleChange(e)}
         onFocus={onFocus}
         options={options}
-        ref={register(inputRef)}
         required={required}
         rows={rows}
         type={type}
-        value={value}
+        value={inputValue || ''}
         InputLabelProps={{
           shrink: true,
         }}
         InputProps={{
           ...inputProps,
+          ...InputProps,
           className: classes.input,
           disableUnderline: true,
         }}
       />
-    );
-  }
+    </FormControl>
+  );
 }
 
-export default withStyles(styles)(InputBase);
+function ControllerInputBase (props: {
+  document: Object,
+  inputRef: Object,
+  name: string,
+}) {
+  const {
+    document,
+    inputRef,
+    name,
+  } = props;
+
+  const {
+    control,
+  } = useFormContext();
+
+  const value = document[name] || '';
+
+  return (
+    <Controller
+      as={(
+        <InputBase
+          name={name}
+          key={name}
+          value={value || ''}
+          {...props}
+        />
+      )}
+      name={name}
+      value={value}
+      control={control}
+      rules={inputRef}
+    />
+  );
+}
+
+export default withStyles(styles)(ControllerInputBase);

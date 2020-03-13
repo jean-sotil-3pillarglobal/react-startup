@@ -61,7 +61,6 @@ class FormBlock extends Component {
     copy: Object,
     disabled: Boolean,
     document: Object,
-    formProps: Object,
     proxy: Object,
     variant: Object,
   }
@@ -72,7 +71,6 @@ class FormBlock extends Component {
       classes,
       copy,
       document,
-      formProps,
       proxy,
       variant,
     } = this.props;
@@ -138,8 +136,8 @@ class FormBlock extends Component {
                     <Grid key={`form_${key}`} item sm={sm} md={md} lg={lg} className={classes.item}>
                       <LangInput
                         disabled={disabled}
+                        document={document}
                         fieldType={fieldType}
-                        formProps={formProps}
                         id={key}
                         lang={label}
                         mask={mask || ''}

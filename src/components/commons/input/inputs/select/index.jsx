@@ -1,22 +1,19 @@
 // @flow
 
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Select, { components } from 'react-select';
+
+import { Controller, useFormContext } from 'react-hook-form';
 
 import {
   FormControl,
   InputLabel,
-  withStyles,
 } from '@material-ui/core';
 
 // components
 import Error from '../error';
 import Icon from '../../../icon';
-
-const styles = () => ({
-  input: {},
-});
 
 const customStyles = {
   control: () => ({
@@ -28,7 +25,7 @@ const customStyles = {
     textTransform: 'capitalize',
   }),
   indicatorsContainer: () => ({
-    padding: '16px',
+    padding: '8px',
     position: 'absolute',
     right: 0,
     top: 0,
@@ -54,14 +51,13 @@ const customStyles = {
 const DropdownIndicator = (props: ElementConfig<typeof components.DropdownIndicator>) => {
   return (
     <components.DropdownIndicator {...props}>
-      <Icon name="error" color="error" />
+      <Icon name="error_outlined" color="error" />
     </components.DropdownIndicator>
   );
 };
 
 const ForwardTextField = React.forwardRef((props: {
   disabled: Boolean,
-  formProps: Object,
   inputRef: Object,
   isMulti: Boolean,
   label: String,
@@ -71,12 +67,12 @@ const ForwardTextField = React.forwardRef((props: {
   onFocus: Function,
   options: Array,
   placeholder: String,
+  proxy: Object,
   required: Boolean,
   value: Object,
 }, ref) => {
   const {
     disabled,
-    formProps,
     inputRef,
     isMulti,
     label,
@@ -86,58 +82,29 @@ const ForwardTextField = React.forwardRef((props: {
     onFocus,
     options,
     placeholder,
+    proxy,
     required,
     value,
+    ...rest
   } = props;
 
   const {
-    clearError,
     errors,
-    register,
-    setValue,
-  } = formProps;
+  } = useFormContext();
 
   const error = errors[name] !== undefined;
 
-  const getValue = (val) => {
-    const { type } = props;
-    const v = val;
-
-    if (val !== undefined) {
-      if (type === 'text') {
-        options.sort((a, b) => {
-          if (a.label > b.label) {
-            return 1;
-          } else if (a.label < b.label) {
-            return -1;
-          }
-          return 0;
-        });
-      } else if (type === 'number') {
-        v.sort((a, b) => {
-          if (Number(a.value) > Number(b.value)) {
-            return 1;
-          } else if (Number(a.value) < Number(b.value)) {
-            return -1;
-          }
-          return 0;
-        });
-      }
-
-      return v || null;
-    }
-    return null;
-  };
+  const [selectVal, setSelectVal] = useState((document && document[name]) || null);
 
   const handleChange = (e) => {
-    const currentValue = getValue(e);
-
-    if (currentValue) {
-      clearError(name);
-    }
-
-    setValue(name, currentValue, true);
-    onChange(e);
+    setSelectVal(e || []);
+    onChange(e || []);
+    proxy.handleChange({
+      target: {
+        name,
+        value: e || [],
+      },
+    });
   };
 
   return (
@@ -159,7 +126,8 @@ const ForwardTextField = React.forwardRef((props: {
         className={name}
         closeMenuOnSelect={false}
         components={errors[name] !== undefined && { DropdownIndicator }}
-        defaultValue={value || null}
+        defaultValue={selectVal}
+        value={selectVal}
         id={name}
         isMulti={isMulti}
         isClearable
@@ -171,59 +139,42 @@ const ForwardTextField = React.forwardRef((props: {
         onFocus={onFocus}
         options={options}
         placeholder={placeholder}
-        value={value}
         inputVariant="filled"
         inputProps={{
           ref,
         }}
-        ref={() => {
-          register({ name }, inputRef);
-        }}
         styles={customStyles}
+        {...rest}
       />
       {(error && <Error message={errors[name].message} />) || ''}
     </FormControl>
   );
 });
 
-class InputSelectBase extends Component {
-  handleChange = (event) => {
-    const {
-      onChange,
-      name,
-    } = this.props;
+function ControllerSelectField (props: {
+  inputRef: Object,
+  name: string,
+  value: Object,
+}) {
+  const {
+    inputRef,
+    name,
+    value,
+  } = props;
 
-    onChange({
-      target: {
-        name,
-        value: event,
-      },
-    });
-  }
+  const {
+    control,
+  } = useFormContext();
 
-  props: {
-    disabled: Boolean,
-    error: Boolean,
-    errorMsg: String,
-    inputRef: any,
-    name: String,
-    onChange: Function,
-    required: Boolean,
-  };
-
-  render() {
-    const {
-      inputRef,
-    } = this.props;
-
-    return (
-      <ForwardTextField
-        {...this.props}
-        ref={inputRef}
-        onChange={this.handleChange}
-      />
-    );
-  }
+  return (
+    <Controller
+      as={<ForwardTextField {...props} />}
+      control={control}
+      name={name}
+      rules={inputRef}
+      value={value}
+    />
+  );
 }
 
-export default withStyles(styles)(InputSelectBase);
+export default ControllerSelectField;

@@ -55,6 +55,7 @@ const copy = LangGenerateTree([NODE, SLOT], [
 const init = {
   document: {},
   forms: [],
+  valid: false,
 };
 
 class ContactFormLayout extends Component {
@@ -101,22 +102,17 @@ class ContactFormLayout extends Component {
     console.log(event);
   }
 
-  handleChange = (event) => {
+  handleChange = (e) => {
     const { document } = this.state;
     const cloneDocu = cloneDeep(document);
+    const { target } = e;
+    const { name, value } = target;
 
-    const {
-      target: {
-        value,
-        name,
-      },
-    } = event;
-
-    cloneDocu[name] = value;
+    cloneDocu[name] = value || null;
 
     this.setState({
-      ...this.state,
       document: cloneDocu,
+      valid: false,
     });
   }
 
@@ -136,6 +132,7 @@ class ContactFormLayout extends Component {
     const {
       document,
       forms,
+      valid,
     } = this.state;
 
     return (
@@ -151,6 +148,7 @@ class ContactFormLayout extends Component {
           onSubmit={this.handleSubmit}
           proxy={proxy}
           variant={variant}
+          valid={valid}
         />
       </Fade>
     );

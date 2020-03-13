@@ -22,6 +22,7 @@ const styles = theme => ({
     marginRight: '4px',
   },
   message: {
+    color: theme.palette.error.main,
     position: 'relative',
     textTransform: 'capitalize',
     top: '-3px',
@@ -39,7 +40,7 @@ const Error = (props: {
 
   return (
     <span className={classes.container}>
-      <Icon name="error" color="error" className={classes.icon} />
+      <Icon name="error_outlined" color="error" className={classes.icon} />
       <Typography className={classes.message} variant="caption">{message}</Typography>
     </span>
   );
