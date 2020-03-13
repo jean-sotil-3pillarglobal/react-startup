@@ -19,6 +19,10 @@ export default function (rule, language) {
     },
     max: value => (value && value.length <= rule.value) || msg.replace('$value', rule.value),
     min: value => (value && value.length >= rule.value) || msg.replace('$value', rule.value),
+    phone: (value) => {
+      const phone = (value && (value.replace && value.replace(/\D+/g, ''))) || '';
+      return phone.length > 10 || msg;
+    },
     required: (value) => {
       return (value && value.length > 0) || msg;
     },

@@ -49,12 +49,12 @@ export const SERVICES_INFORMATION_1_1 = [
     },
     mask: 'phone',
     placeholder: {
-      en: '(777) 889-9088',
-      es: '(777) 889-9088',
+      en: '(506) 8888-8888',
+      es: '(506) 8888-8888',
     },
     required: true,
     rules: [
-      { type: 'required' },
+      { type: 'phone' },
     ],
     size_lg: 12,
     size_md: 12,

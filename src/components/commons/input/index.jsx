@@ -19,7 +19,7 @@ import Messages from './messages';
 import Validate from './validate';
 
 import DateField from './inputs/date';
-// import PhoneField from './inputs/phone';
+import PhoneField from './inputs/phone';
 import SelectField from './inputs/select';
 import TextField from './inputs/text';
 
@@ -164,7 +164,7 @@ function InputLayout (props: {
     divider: <Divider variant="middle" />,
     input: <TextField {...newProps} />,
     multiselect: <SelectField isMulti options={formatList(options || [])} {...newProps} />,
-    // phone: <PhoneField {...newProps} />,
+    phone: <PhoneField {...newProps} />,
     select: <SelectField options={formatList(options || [])} {...newProps} />,
     // textarea: <TextField multiline rows={6} {...newProps} />,
   };
