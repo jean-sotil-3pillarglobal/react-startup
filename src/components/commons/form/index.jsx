@@ -44,7 +44,7 @@ const styles = theme => ({
     padding: `${theme.spacing(3)}px 0 ${theme.spacing(3)}px`,
   },
   row: {
-    marginBottom: `${theme.spacing(2)}px`,
+    marginBottom: `${theme.spacing(1)}px`,
   },
   title: props => ({
     color: ThemeColor(props, theme),
@@ -115,7 +115,7 @@ class FormBlock extends Component {
             }
 
             <CardContent className={classes.root}>
-              <Grid container className={classes.row}>
+              <Grid container className={classes.row} spacing={4}>
                 {copy.fields.map((field) => {
                   const fieldType = field.input_type;
                   const sm = field.size_sm;

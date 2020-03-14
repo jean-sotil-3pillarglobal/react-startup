@@ -123,7 +123,6 @@ const overrides = {
       '& .basic-single': {
         marginTop: '16px',
       },
-      marginBottom: '40px',
       width: '100%',
     },
   },
@@ -154,6 +153,7 @@ const overrides = {
   MuiInputBase: {
     input: {
       color: palette.primary.contrastText,
+      fontWeight: 800,
       height: '1.8em',
       padding: '.6em',
     },
@@ -179,7 +179,7 @@ const overrides = {
   },
   MuiInputLabel: {
     formControl: {
-      top: '-6px',
+      fontWeight: 800,
     },
     root: {
       textTransform: 'capitalize',
@@ -219,8 +219,11 @@ const overrides = {
     },
   },
   MuiStepLabel: {
-    label: {
+    active: {
       fontSize: '1.3em',
+    },
+    label: {
+      fontSize: '0.8em',
       fontWeight: 700,
       textDecoration: 'underline',
       textTransform: 'capitalize',
@@ -247,9 +250,9 @@ const typography = {
   },
   caption: {
     display: 'inline-block',
-    fontSize: '.7rem',
+    fontSize: '1rem',
     fontWeight: 500,
-    textTransform: 'uppercase',
+    textTransform: 'capitalize',
   },
   h1: {
     fontSize: '3rem',

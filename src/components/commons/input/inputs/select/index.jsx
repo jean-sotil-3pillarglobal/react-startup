@@ -34,18 +34,28 @@ const customStyles = {
     display: 'none',
   }),
   multiValue: (provided, state) => {
+    console.log(provided, state);
     return ({
       ...provided,
       '& div:first-of-type': {
         width: '100%',
       },
-      color: (state.isSelected && state.theme.primary.light) || '',
-      fontSize: '1.2em',
+      background: state.theme.primary.dark,
+      color: state.theme.primary.contrastText,
+      fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+      fontSize: '1em',
+      fontWeight: 800,
       padding: '4px',
       textTransform: 'capitalize',
-      width: '75%',
+      width: '40%',
     });
   },
+  placeholder: () => ({
+    display: 'none',
+    fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+    fontSize: '1.2em',
+    fontWeight: 800,
+  }),
 };
 
 const DropdownIndicator = (props: ElementConfig<typeof components.DropdownIndicator>) => {
@@ -64,7 +74,6 @@ const ForwardTextField = React.forwardRef((props: {
   name: String,
   onBlur: Function,
   onChange: Function,
-  onFocus: Function,
   options: Array,
   placeholder: String,
   proxy: Object,
@@ -79,7 +88,6 @@ const ForwardTextField = React.forwardRef((props: {
     name,
     onBlur,
     onChange,
-    onFocus,
     options,
     placeholder,
     proxy,
@@ -95,6 +103,7 @@ const ForwardTextField = React.forwardRef((props: {
   const error = errors[name] !== undefined;
 
   const [selectVal, setSelectVal] = useState((document && document[name]) || null);
+  const [focused, setFocused] = useState(false);
 
   const handleChange = (e) => {
     setSelectVal(e || []);
@@ -106,6 +115,7 @@ const ForwardTextField = React.forwardRef((props: {
       },
     });
   };
+  console.log(focused);
 
   return (
     <FormControl>
@@ -113,7 +123,7 @@ const ForwardTextField = React.forwardRef((props: {
         style={{
           fontSize: '0.6em',
           position: 'relative',
-          top: '-4px',
+          top: '-12px',
           transform: 'initial',
         }}
         error={error || false}
@@ -134,9 +144,13 @@ const ForwardTextField = React.forwardRef((props: {
         isDisabled={disabled}
         isSearchable
         name={name}
-        onBlur={onBlur}
+        onBlur={() => {
+          setFocused(false);
+        }}
         onChange={handleChange}
-        onFocus={onFocus}
+        onFocus={() => {
+          setFocused(true);
+        }}
         options={options}
         placeholder={placeholder}
         inputVariant="filled"

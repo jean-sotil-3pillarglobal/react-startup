@@ -9,7 +9,7 @@ import Error from '../error';
 
 const styles = () => ({
   input: {
-    marginTop: '32px !important',
+    marginTop: '28px !important',
   },
 });
 

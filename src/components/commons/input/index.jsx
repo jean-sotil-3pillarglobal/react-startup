@@ -151,12 +151,12 @@ function InputLayout (props: {
   const field = {
     checkbox: (
       <FormControl fullWidth>
+        <Typography className="toggle" variant="caption">{newProps.label}</Typography>
         <Toggle
           defaultChecked={Boolean(value)}
           className={classes.marginNormal}
           onBlur={this.handleBlur}
           onChange={handleChange} />
-        <Typography className="toggle" variant="caption">{newProps.label}</Typography>
       </FormControl>
     ),
     date: <DateField format="MM/DD/YYYY" locale={language} {...newProps} />,

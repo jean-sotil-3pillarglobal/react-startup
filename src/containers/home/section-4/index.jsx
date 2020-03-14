@@ -18,7 +18,6 @@ import ContactFormLayout from './../../../components/layouts/commons/contact_1';
 
 // components
 import SectionBlock from './../../../components/layouts/section';
-import SVGComponent from './../../../components/commons/svg';
 
 const variant = 'primary';
 
@@ -90,19 +89,12 @@ class SectionA extends Component {
           <Grid
             item
             sm={10}
-            md={6}
-            lg={6}>
+            md={8}
+            lg={8}>
             <ContactFormLayout
               proxy={proxy}
               variant={variant}
             />
-          </Grid>
-          <Grid
-            item
-            sm={10}
-            md={6}
-            lg={6}>
-            <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="secondary" />
           </Grid>
         </Grid>
       </SectionBlock>
