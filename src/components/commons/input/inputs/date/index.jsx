@@ -8,6 +8,10 @@ import moment from 'moment';
 import MomentUtils from '@date-io/moment';
 
 import {
+  cloneDeep,
+} from 'lodash';
+
+import {
   KeyboardTimePicker,
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
@@ -47,6 +51,7 @@ function DateField (props: {
     onFieldChange,
     required,
     type,
+    ...rest
   } = props;
 
   const {
@@ -76,7 +81,10 @@ function DateField (props: {
 
   const isDate = format.includes('MM/DD/YYYY');
   const Component = !isDate ? KeyboardTimePicker : KeyboardDatePicker;
-  let datePickerProps = {};
+
+  let datePickerProps = {
+    ...rest,
+  };
 
   if (isDate) {
     datePickerProps = {
@@ -133,7 +141,7 @@ function ControllerDateField (props: {
     control,
   } = useFormContext();
 
-  const value = document[name];
+  const value = cloneDeep(document[name]);
 
   return (
     <Controller

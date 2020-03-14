@@ -6,8 +6,8 @@ export default function (rule, language) {
   const msg = Messages[rule.type][language];
 
   const validate = {
-    date: (value) => {
-      const date = moment(value);
+    date: ({ target }) => {
+      const date = moment(target.value);
       return date.isValid() || msg;
     },
     email: (value) => {

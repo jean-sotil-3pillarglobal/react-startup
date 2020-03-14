@@ -203,6 +203,14 @@ const overrides = {
       textTransform: 'capitalize',
     },
   },
+  MuiPickersClockPointer: {
+    pin: {
+      backgroundColor: `${PRIMARY.contrastText}!important`,
+    },
+    pointer: {
+      backgroundColor: `${PRIMARY.contrastText}!important`,
+    },
+  },
   MuiStepConnector: {
     vertical: {
       marginLeft: 20,
@@ -243,15 +251,17 @@ const typography = {
   body1: {
     fontSize: '1.3rem',
     fontWeight: 300,
+    textTransform: 'capitalize',
   },
   body2: {
     fontSize: '1.6rem',
-    fontWeight: 400,
+    fontWeight: 500,
+    textTransform: 'capitalize',
   },
   caption: {
     display: 'inline-block',
     fontSize: '1rem',
-    fontWeight: 500,
+    fontWeight: 300,
     textTransform: 'capitalize',
   },
   h1: {
@@ -271,7 +281,7 @@ const typography = {
   },
   h4: {
     fontSize: '1.4rem',
-    fontWeight: 600,
+    fontWeight: 400,
     textTransform: 'capitalize',
   },
   h5: {

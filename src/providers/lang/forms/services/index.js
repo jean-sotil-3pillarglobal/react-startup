@@ -133,8 +133,10 @@ export const SERVICES_INFORMATION_1_2 = [
       en: 'hora',
       es: 'hora',
     },
-    required: false,
-    rules: [],
+    required: true,
+    rules: [
+      { type: 'required' },
+    ],
     size_lg: 6,
     size_md: 6,
     size_sm: 12,

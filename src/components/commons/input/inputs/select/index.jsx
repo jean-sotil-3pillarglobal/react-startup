@@ -33,15 +33,12 @@ const customStyles = {
   indicatorSeparator: () => ({
     display: 'none',
   }),
-  multiValue: (provided, state) => {
-    console.log(provided, state);
+  multiValue: (provided) => {
     return ({
       ...provided,
       '& div:first-of-type': {
         width: '100%',
       },
-      background: state.theme.primary.dark,
-      color: state.theme.primary.contrastText,
       fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       fontSize: '1em',
       fontWeight: 800,
@@ -115,7 +112,6 @@ const ForwardTextField = React.forwardRef((props: {
       },
     });
   };
-  console.log(focused);
 
   return (
     <FormControl>
@@ -143,8 +139,10 @@ const ForwardTextField = React.forwardRef((props: {
         isClearable
         isDisabled={disabled}
         isSearchable
+        focused={focused}
         name={name}
-        onBlur={() => {
+        onBlur={(evt) => {
+          onBlur(evt);
           setFocused(false);
         }}
         onChange={handleChange}
