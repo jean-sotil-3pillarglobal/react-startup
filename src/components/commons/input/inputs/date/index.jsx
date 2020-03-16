@@ -8,10 +8,6 @@ import moment from 'moment';
 import MomentUtils from '@date-io/moment';
 
 import {
-  cloneDeep,
-} from 'lodash';
-
-import {
   KeyboardTimePicker,
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
@@ -35,7 +31,6 @@ function DateField (props: {
   label: string,
   locale: string,
   name: string,
-  onChange: Function,
   onFieldChange: Function,
   required: Boolean,
   type: string,
@@ -47,7 +42,6 @@ function DateField (props: {
     label,
     locale,
     name,
-    onChange,
     onFieldChange,
     required,
     type,
@@ -56,11 +50,12 @@ function DateField (props: {
 
   const {
     errors,
+    setValue,
   } = useFormContext();
 
   const error = errors[name] !== undefined;
   const errorMsg = (error && <Error message={errors[name].message} />) || '';
-  const value = document[name] || null;
+  const value = (Object.keys(document).includes(name) && document[name]) || null;
 
   const inputProps = {
     className: classes.input,
@@ -68,15 +63,13 @@ function DateField (props: {
   };
 
   const handleChange = (e) => {
-    const v = {
+    setValue(name, moment(e), true);
+    onFieldChange({
       target: {
         name,
         value: moment(e),
       },
-    };
-
-    onChange(v);
-    onFieldChange(v);
+    });
   };
 
   const isDate = format.includes('MM/DD/YYYY');
@@ -108,17 +101,18 @@ function DateField (props: {
         className={name}
         error={error}
         helperText={errorMsg}
+        format={format}
         InputLabelProps={{
           shrink: true,
         }}
         InputProps={inputProps}
         label={label}
         name={name}
-        onChange={handleChange}
+        onChange={(e, date) => handleChange(date)}
         placeholder={format}
         required={required}
         type={type}
-        value={value || null}
+        value={value}
         openTo={((isDate && (value === null && 'year')) || 'date') || 'hours'}
         {...datePickerProps}
       />
@@ -128,12 +122,12 @@ function DateField (props: {
 
 function ControllerDateField (props: {
   document: Object,
-  inputRef: Object,
+  rules: Object,
   name: string,
 }) {
   const {
     document,
-    inputRef,
+    rules,
     name,
   } = props;
 
@@ -141,15 +135,13 @@ function ControllerDateField (props: {
     control,
   } = useFormContext();
 
-  const value = cloneDeep(document[name]);
-
   return (
     <Controller
       as={<DateField {...props} />}
       control={control}
       name={name}
-      rules={inputRef}
-      value={value}
+      rules={rules}
+      value={document[name]}
     />
   );
 }

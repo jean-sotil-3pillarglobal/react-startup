@@ -26,13 +26,13 @@ const ForwardTextField = React.forwardRef((props, ref) => {
 
 function InputBase (props: {
   classes: Object,
+  document: Object,
   inputProps: Object,
   InputProps: Object,
   label: string,
   multiline: Boolean,
   name: string,
   onBlur: Function,
-  onChange: Function,
   onFieldChange: Function,
   onFocus: Function,
   options: Array,
@@ -42,13 +42,13 @@ function InputBase (props: {
 }) {
   const {
     classes,
+    document,
     inputProps,
     InputProps,
     label,
     multiline,
     name,
     onBlur,
-    onChange,
     onFieldChange,
     onFocus,
     options,
@@ -62,14 +62,17 @@ function InputBase (props: {
 
   const {
     errors,
+    setValue,
   } = useFormContext();
 
   const error = errors[name] !== undefined;
   const errorMsg = (error && <Error message={errors[name].message} />) || '';
 
   const handleChange = (e) => {
-    setInputValue(e.target.value);
-    onChange(e);
+    const { target } = e;
+
+    setInputValue(target.value);
+    setValue(name, target.value, true);
     onFieldChange(e);
   };
 
@@ -88,7 +91,7 @@ function InputBase (props: {
         required={required}
         rows={rows}
         type={type}
-        value={inputValue || ''}
+        value={inputValue}
         InputLabelProps={{
           shrink: true,
         }}
@@ -105,12 +108,12 @@ function InputBase (props: {
 
 function ControllerInputBase (props: {
   document: Object,
-  inputRef: Object,
+  rules: Object,
   name: string,
 }) {
   const {
     document,
-    inputRef,
+    rules,
     name,
   } = props;
 
@@ -126,14 +129,13 @@ function ControllerInputBase (props: {
         <InputBase
           name={name}
           key={name}
-          value={value || ''}
           {...props}
         />
       )}
       name={name}
       value={value}
       control={control}
-      rules={inputRef}
+      rules={rules}
     />
   );
 }

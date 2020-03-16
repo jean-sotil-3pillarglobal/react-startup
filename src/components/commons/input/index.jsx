@@ -38,7 +38,6 @@ function InputLayout (props: {
   required: Boolean,
   rules: Array,
   type: String,
-  value: any,
 }) {
   const [focused, setFocused] = useState(false);
 
@@ -87,6 +86,14 @@ function InputLayout (props: {
     }
   };
 
+  const handleInputFocus = (event) => {
+    setFocused(true);
+
+    if (handleFocus) {
+      handleFocus(event);
+    }
+  };
+
   const handleInputRegister = () => {
     const obj = {
       validate: {},
@@ -106,17 +113,15 @@ function InputLayout (props: {
   } = useFormContext();
 
   let placeholder = '';
-  const value = document && document[props.value];
 
   const newProps = {
     ...props,
-    filled: value && value.length > 0,
     focused,
-    inputRef: handleInputRegister(),
+    id: name,
     onBlur: handleInputBlur,
     onFieldChange: handleChange,
-    onFocus: handleFocus,
-    value,
+    onFocus: handleInputFocus,
+    rules: handleInputRegister(),
   };
 
   delete newProps.options;
@@ -153,9 +158,9 @@ function InputLayout (props: {
       <FormControl fullWidth>
         <Typography className="toggle" variant="caption">{newProps.label}</Typography>
         <Toggle
-          defaultChecked={Boolean(value)}
+          defaultChecked={Boolean(document[name])}
           className={classes.marginNormal}
-          onBlur={this.handleBlur}
+          onBlur={handleInputBlur}
           onChange={handleChange} />
       </FormControl>
     ),

@@ -2,7 +2,7 @@
 
 import { useForm, FormContext } from 'react-hook-form';
 import classnames from 'classnames';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import {
   Grid,
@@ -21,8 +21,8 @@ import FormBlock from './../form';
 import Icon from './../icon';
 
 // import {
-//   CheckNext,
-// } from '../../utils/common/check.next';
+// // CheckNext,
+// } from '../../../providers/utils/check.next';
 
 const styles = theme => ({
   caption: {
@@ -35,6 +35,16 @@ const styles = theme => ({
     padding: theme.spacing(1),
   },
 });
+
+const getSteps = (forms, language) => {
+  return forms.map((form) => {
+    return form.label[language];
+  });
+};
+
+const getForm = (i, forms) => {
+  return forms[i] || null;
+};
 
 function StepperForm (props: {
   // size
@@ -79,13 +89,16 @@ function StepperForm (props: {
   } = props;
 
   const [activeStep, setActiveStep] = useState(0);
-  // const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(true);
 
   const formProps = useForm({
     mode: 'onChange',
   });
 
-  const { handleSubmit } = formProps;
+  const {
+    handleSubmit,
+    setValue,
+  } = formProps;
 
   const handleNext = () => {
     setActiveStep(step => step + 1);
@@ -101,6 +114,7 @@ function StepperForm (props: {
 
   const handleChange = (e) => {
     onChange(e);
+    setDisabled(false);
   };
 
   // const handleReset = () => {
@@ -109,23 +123,27 @@ function StepperForm (props: {
   //   onReset();
   // };
 
+  const steps = getSteps(forms, language);
+
   // // check next enable
-  // CheckNext(steps, activeStep, document)
+  // CheckNext(forms, activeStep, document)
   //   .then((allow) => {
   //     setDisabled(allow);
   //   });
 
-  const getSteps = () => {
-    return forms.map((form) => {
-      return form.label[language];
+  useEffect(() => {
+    Object.keys(document).forEach((k) => {
+      const value = document[k];
+      console.log(typeof value, k);
+      if (typeof value === 'string' || typeof value === 'object') {
+        if (value.isValid && !value.isValid()) {
+          setValue(k, new Date(), true);
+        } else {
+          setValue(k, value, true);
+        }
+      }
     });
-  };
-
-  const steps = getSteps();
-
-  const getForm = (i) => {
-    return forms[i] || null;
-  };
+  }, [activeStep]);
 
   return (
     <Fragment>
@@ -145,7 +163,7 @@ function StepperForm (props: {
                     orientation="vertical"
                   >
                     {steps.map((label, i) => {
-                      const form = getForm(i);
+                      const form = getForm(i, forms);
 
                       return (
                         <Step key={label}>
@@ -171,6 +189,7 @@ function StepperForm (props: {
                                 />
                               );
                             })}
+
                             {activeStep < steps.length && (
                               <MobileStepper
                                 variant="progress"
@@ -179,6 +198,7 @@ function StepperForm (props: {
                                 activeStep={activeStep}
                                 nextButton={
                                   <LangButton
+                                    disabled={disabled}
                                     lang={activeStep === steps.length - 1 ? form.cta : form.cta}
                                     onClick={activeStep === steps.length - 1 ? onSubmit : handleNext}
                                     variant={variant}

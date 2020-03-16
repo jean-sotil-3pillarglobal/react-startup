@@ -65,46 +65,43 @@ const DropdownIndicator = (props: ElementConfig<typeof components.DropdownIndica
 
 const ForwardTextField = React.forwardRef((props: {
   disabled: Boolean,
-  inputRef: Object,
+  document: Object,
+  focused: Boolean,
   isMulti: Boolean,
   label: String,
   name: String,
-  onBlur: Function,
-  onChange: Function,
   options: Array,
   placeholder: String,
   proxy: Object,
   required: Boolean,
-  value: Object,
 }, ref) => {
   const {
     disabled,
-    inputRef,
+    document,
+    focused,
     isMulti,
     label,
     name,
-    onBlur,
-    onChange,
     options,
     placeholder,
     proxy,
     required,
-    value,
-    ...rest
   } = props;
 
   const {
     errors,
+    setValue,
   } = useFormContext();
 
   const error = errors[name] !== undefined;
+  const value = document && document[name];
 
-  const [selectVal, setSelectVal] = useState((document && document[name]) || null);
-  const [focused, setFocused] = useState(false);
+  const [selectVal, setSelectVal] = useState(value || []);
 
   const handleChange = (e) => {
     setSelectVal(e || []);
-    onChange(e || []);
+    setValue(name, e || [], true);
+
     proxy.handleChange({
       target: {
         name,
@@ -122,6 +119,7 @@ const ForwardTextField = React.forwardRef((props: {
           top: '-12px',
           transform: 'initial',
         }}
+        focused={focused}
         error={error || false}
         htmlFor={name}
         required={required}
@@ -133,7 +131,7 @@ const ForwardTextField = React.forwardRef((props: {
         closeMenuOnSelect={false}
         components={errors[name] !== undefined && { DropdownIndicator }}
         defaultValue={selectVal}
-        value={selectVal}
+        value={document[name] || selectVal}
         id={name}
         isMulti={isMulti}
         isClearable
@@ -141,14 +139,7 @@ const ForwardTextField = React.forwardRef((props: {
         isSearchable
         focused={focused}
         name={name}
-        onBlur={(evt) => {
-          onBlur(evt);
-          setFocused(false);
-        }}
-        onChange={handleChange}
-        onFocus={() => {
-          setFocused(true);
-        }}
+        onChange={e => handleChange(e)}
         options={options}
         placeholder={placeholder}
         inputVariant="filled"
@@ -156,7 +147,6 @@ const ForwardTextField = React.forwardRef((props: {
           ref,
         }}
         styles={customStyles}
-        {...rest}
       />
       {(error && <Error message={errors[name].message} />) || ''}
     </FormControl>
@@ -164,14 +154,14 @@ const ForwardTextField = React.forwardRef((props: {
 });
 
 function ControllerSelectField (props: {
-  inputRef: Object,
+  document: Object,
+  rules: Object,
   name: string,
-  value: Object,
 }) {
   const {
-    inputRef,
+    document,
+    rules,
     name,
-    value,
   } = props;
 
   const {
@@ -183,8 +173,8 @@ function ControllerSelectField (props: {
       as={<ForwardTextField {...props} />}
       control={control}
       name={name}
-      rules={inputRef}
-      value={value}
+      rules={rules}
+      value={document[name]}
     />
   );
 }

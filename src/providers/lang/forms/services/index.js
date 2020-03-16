@@ -133,10 +133,8 @@ export const SERVICES_INFORMATION_1_2 = [
       en: 'hora',
       es: 'hora',
     },
-    required: true,
-    rules: [
-      { type: 'required' },
-    ],
+    required: false,
+    rules: [],
     size_lg: 6,
     size_md: 6,
     size_sm: 12,
@@ -157,9 +155,12 @@ export const SERVICES_INFORMATION_1_2 = [
       es: 'estoy deacuerdo, aqui.',
     },
     required: true,
+    rules: [
+      { type: 'required' },
+    ],
     size_lg: 12,
     size_md: 12,
     size_sm: 12,
-    type: 'email',
+    type: 'text',
   },
 ];
