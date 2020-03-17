@@ -33,9 +33,9 @@ function InputBase (props: {
   multiline: Boolean,
   name: string,
   onBlur: Function,
-  onFieldChange: Function,
   onFocus: Function,
   options: Array,
+  proxy: Object,
   required: Boolean,
   rows: Int,
   type: string,
@@ -49,9 +49,9 @@ function InputBase (props: {
     multiline,
     name,
     onBlur,
-    onFieldChange,
     onFocus,
     options,
+    proxy,
     required,
     rows,
     type,
@@ -73,7 +73,13 @@ function InputBase (props: {
 
     setInputValue(target.value);
     setValue(name, target.value, true);
-    onFieldChange(e);
+
+    proxy.handleChange({
+      target: {
+        name,
+        value: target.value,
+      },
+    });
   };
 
   return (

@@ -22,12 +22,12 @@ export default [
   // SERVICE 1
   {
     cta: {
-      en: 'send your quote',
-      es: 'enviar consulta',
+      en: 'next >',
+      es: 'siguiente >',
     },
     icon: icons.general,
     label: {
-      en: 'your question',
+      en: 'your quote',
       es: 'tú consulta',
     },
     rows: [
@@ -58,8 +58,8 @@ export default [
   // SERVICE 1
   {
     cta: {
-      en: 'next: your message',
-      es: 'siguiente: tú mensaje',
+      en: 'create quote',
+      es: 'crear consulta',
     },
     icon: icons.service1,
     label: {
@@ -70,8 +70,8 @@ export default [
       {
         fields: SERVICES_INFORMATION_1_1,
         label: {
-          en: 'About you',
-          es: 'Datos Personales',
+          en: 'Provide your personal information',
+          es: 'Provee tus datos personales',
         },
         label_helper: {
           en: 'Let&#39;s begin your quote. Take a <br/>minute to fill with your information.',

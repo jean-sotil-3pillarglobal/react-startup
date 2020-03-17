@@ -14,9 +14,10 @@ export function CheckFields (forms, activeStep) {
 
 export function CheckNext (forms, activeStep, document) {
   let disabled = false;
+  const fields = CheckFields(forms, activeStep) || [];
 
   return new Promise((resolve) => {
-    CheckFields(forms, activeStep).forEach((field) => {
+    fields.forEach((field) => {
       if (!document) {
         disabled = true;
       } else if (
@@ -24,11 +25,14 @@ export function CheckNext (forms, activeStep, document) {
           !field['input_type'].includes('checkbox') &&
           !field['input_type'].includes('divider')
         ) &&
-        (field.required && (document && !document[field.key]))
+        (field.required && (document && document[field.key] === undefined))
       ) {
         disabled = true;
       }
     });
-    resolve(disabled);
+    resolve({
+      allow: disabled,
+      fields,
+    });
   });
 }

@@ -31,7 +31,7 @@ function DateField (props: {
   label: string,
   locale: string,
   name: string,
-  onFieldChange: Function,
+  proxy: Object,
   required: Boolean,
   type: string,
 }) {
@@ -42,10 +42,9 @@ function DateField (props: {
     label,
     locale,
     name,
-    onFieldChange,
+    proxy,
     required,
     type,
-    ...rest
   } = props;
 
   const {
@@ -55,7 +54,9 @@ function DateField (props: {
 
   const error = errors[name] !== undefined;
   const errorMsg = (error && <Error message={errors[name].message} />) || '';
-  const value = (Object.keys(document).includes(name) && document[name]) || null;
+
+  let value = (Object.keys(document).includes(name) && document[name]) || null;
+  value = value && value.isValid() ? value : null;
 
   const inputProps = {
     className: classes.input,
@@ -63,11 +64,13 @@ function DateField (props: {
   };
 
   const handleChange = (e) => {
-    setValue(name, moment(e), true);
-    onFieldChange({
+    const date = moment(e);
+    setValue(name, date, true);
+
+    proxy.handleChange({
       target: {
         name,
-        value: moment(e),
+        value: (date.isValid() && date) || null,
       },
     });
   };
@@ -75,9 +78,7 @@ function DateField (props: {
   const isDate = format.includes('MM/DD/YYYY');
   const Component = !isDate ? KeyboardTimePicker : KeyboardDatePicker;
 
-  let datePickerProps = {
-    ...rest,
-  };
+  let datePickerProps = {};
 
   if (isDate) {
     datePickerProps = {
@@ -96,7 +97,7 @@ function DateField (props: {
   }
 
   return (
-    <MuiPickersUtilsProvider utils={MomentUtils} locale={locale}>
+    <MuiPickersUtilsProvider utils={MomentUtils} moment={moment} locale={locale}>
       <Component
         className={name}
         error={error}
@@ -108,12 +109,14 @@ function DateField (props: {
         InputProps={inputProps}
         label={label}
         name={name}
-        onChange={(e, date) => handleChange(date)}
+        onChange={handleChange}
         placeholder={format}
         required={required}
         type={type}
         value={value}
         openTo={((isDate && (value === null && 'year')) || 'date') || 'hours'}
+        autoOk
+        animateYearScrolling={false}
         {...datePickerProps}
       />
     </MuiPickersUtilsProvider>

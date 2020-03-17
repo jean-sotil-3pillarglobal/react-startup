@@ -153,7 +153,7 @@ const Services = [
     },
   },
   {
-    background: `/static/images/${CATEGORY_4}/3.jpg`,
+    background: `/static/images/${CATEGORY_4}/nutricion.jpg`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',

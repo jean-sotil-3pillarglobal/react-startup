@@ -20,9 +20,9 @@ import { LangButton, TYPES } from './../button';
 import FormBlock from './../form';
 import Icon from './../icon';
 
-// import {
-// // CheckNext,
-// } from '../../../providers/utils/check.next';
+import {
+  CheckNext,
+} from '../../../providers/utils/check.next';
 
 const styles = theme => ({
   caption: {
@@ -88,9 +88,6 @@ function StepperForm (props: {
     variant,
   } = props;
 
-  const [activeStep, setActiveStep] = useState(0);
-  const [disabled, setDisabled] = useState(true);
-
   const formProps = useForm({
     mode: 'onChange',
   });
@@ -99,6 +96,20 @@ function StepperForm (props: {
     handleSubmit,
     setValue,
   } = formProps;
+
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    Object.keys(document).forEach((k) => {
+      const value = document[k];
+
+      if (typeof value === 'string' || typeof value === 'object') {
+        setValue(k, value, true);
+      }
+    });
+  }, [activeStep]);
+
+  const [disabled, setDisabled] = useState(true);
 
   const handleNext = () => {
     setActiveStep(step => step + 1);
@@ -114,7 +125,6 @@ function StepperForm (props: {
 
   const handleChange = (e) => {
     onChange(e);
-    setDisabled(false);
   };
 
   // const handleReset = () => {
@@ -126,24 +136,18 @@ function StepperForm (props: {
   const steps = getSteps(forms, language);
 
   // // check next enable
-  // CheckNext(forms, activeStep, document)
-  //   .then((allow) => {
-  //     setDisabled(allow);
-  //   });
+  CheckNext(forms, activeStep, document)
+    .then(({ allow, fields }) => {
+      const errors = Object.keys(formProps.errors);
 
-  useEffect(() => {
-    Object.keys(document).forEach((k) => {
-      const value = document[k];
-      console.log(typeof value, k);
-      if (typeof value === 'string' || typeof value === 'object') {
-        if (value.isValid && !value.isValid()) {
-          setValue(k, new Date(), true);
-        } else {
-          setValue(k, value, true);
-        }
+      const check = fields.find(f => errors.includes(f.key));
+
+      if (allow === false && !check) {
+        setDisabled(false);
+      } else {
+        setDisabled(true);
       }
     });
-  }, [activeStep]);
 
   return (
     <Fragment>

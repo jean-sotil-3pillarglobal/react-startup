@@ -15,15 +15,8 @@ import {
 import Error from '../error';
 import Icon from '../../../icon';
 
+
 const customStyles = {
-  control: () => ({
-    background: '#f7f7f7',
-    border: '1px solid transparent',
-    borderRadius: '0 0 0 0',
-    fontSize: '16px',
-    padding: '.6em 0',
-    textTransform: 'capitalize',
-  }),
   indicatorsContainer: () => ({
     padding: '8px',
     position: 'absolute',
@@ -105,10 +98,30 @@ const ForwardTextField = React.forwardRef((props: {
     proxy.handleChange({
       target: {
         name,
-        value: e || [],
+        value: e || null,
       },
     });
   };
+
+  if (error) {
+    customStyles.control = () => ({
+      background: '#f7f7f7',
+      border: '1px solid red',
+      borderRadius: '0 0 0 0',
+      fontSize: '16px',
+      padding: '.6em 0',
+      textTransform: 'capitalize',
+    });
+  } else {
+    customStyles.control = () => ({
+      background: '#f7f7f7',
+      border: '1px solid transparent',
+      borderRadius: '0 0 0 0',
+      fontSize: '16px',
+      padding: '.6em 0',
+      textTransform: 'capitalize',
+    });
+  }
 
   return (
     <FormControl>
@@ -131,18 +144,19 @@ const ForwardTextField = React.forwardRef((props: {
         closeMenuOnSelect={false}
         components={errors[name] !== undefined && { DropdownIndicator }}
         defaultValue={selectVal}
-        value={document[name] || selectVal}
+        error={error || false}
+        focused={focused}
         id={name}
-        isMulti={isMulti}
+        inputVariant="filled"
         isClearable
         isDisabled={disabled}
+        isMulti={isMulti}
         isSearchable
-        focused={focused}
         name={name}
         onChange={e => handleChange(e)}
         options={options}
         placeholder={placeholder}
-        inputVariant="filled"
+        value={document[name] || selectVal}
         inputProps={{
           ref,
         }}
