@@ -24,6 +24,7 @@ const styles = theme => ({
     borderRadius: '0 0 0 0',
   }),
   container: {
+    padding: `${theme.spacing(4)}px 0`,
     textAlign: 'center',
   },
   description: props => ({

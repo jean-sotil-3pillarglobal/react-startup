@@ -109,6 +109,14 @@ const overrides = {
       fontSize: '1.2em',
     },
   },
+  MuiDivider: {
+    middle: {
+      margin: '30px 0',
+      marginLeft: 0,
+      marginRight: 0,
+      padding: 0,
+    },
+  },
   MuiFab: {
     root: {
       border: '0 solid',
@@ -129,7 +137,7 @@ const overrides = {
   MuiFormHelperText: {
     root: {
       '&.Mui-error': {
-        color: palette.primary.contrastText,
+        color: PRIMARY.contrastText,
       },
       bottom: '-1.6em',
       fontSize: '.5em',
@@ -140,6 +148,7 @@ const overrides = {
   },
   MuiFormLabel: {
     root: {
+      color: PRIMARY.contrastText,
       fontSize: '.8em',
       fontWeight: 400,
     },
@@ -152,7 +161,7 @@ const overrides = {
   },
   MuiInputBase: {
     input: {
-      color: palette.primary.contrastText,
+      color: PRIMARY.contrastText,
       fontWeight: 800,
       height: '1.8em',
       padding: '.6em',
@@ -168,10 +177,10 @@ const overrides = {
         border: `1px solid ${palette.error.main}`,
       },
       '&.Mui-focused.MuiInput-root': {
-        border: `1px solid ${palette.primary.contrastText}`,
+        border: `1px solid ${PRIMARY.contrastText}`,
       },
       '&:hover': {
-        border: `1px solid ${palette.primary.dark}`,
+        border: `1px solid ${PRIMARY.dark}`,
       },
       backgroundColor: palette.utils.input,
       border: '1px solid transparent',
@@ -190,6 +199,11 @@ const overrides = {
       fontSize: '.6em',
       fontWeight: 500,
       textTransform: 'capitalize',
+    },
+  },
+  MuiMobileStepper: {
+    dotActive: {
+      backgroundColor: PRIMARY.contrastText,
     },
   },
   MuiPaper: {
@@ -212,37 +226,46 @@ const overrides = {
     },
   },
   MuiStepConnector: {
+    lineVertical: {
+      display: 'none',
+    },
     vertical: {
-      marginLeft: 20,
+      display: 'none',
+      marginLeft: 0,
     },
   },
   MuiStepContent: {
     root: {
-      marginLeft: 20,
+      backgroundColor: 'transparent',
+      borderLeft: '0 solid transparent',
+      marginLeft: 0,
+      marginTop: 0,
+      paddingBottom: 0,
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingTop: 0,
     },
   },
   MuiStepIcon: {
-    root: {
-      fontSize: '3.4em',
-    },
+    root: {},
   },
   MuiStepLabel: {
     active: {
-      fontSize: '1.3em',
+      fontWeight: 700,
     },
     label: {
-      fontSize: '0.8em',
-      fontWeight: 700,
-      textDecoration: 'underline',
+      fontWeight: 500,
       textTransform: 'capitalize',
     },
     root: {
-      padding: '7px 28px 7px 6px',
+      border: '1px solid transparent',
+      padding: 20,
     },
   },
   MuiStepper: {
     root: {
       background: 'transparent',
+      padding: 0,
     },
   },
 };
@@ -260,8 +283,8 @@ const typography = {
   },
   caption: {
     display: 'inline-block',
-    fontSize: '1rem',
-    fontWeight: 300,
+    fontSize: '0.8rem',
+    fontWeight: 600,
     textTransform: 'capitalize',
   },
   h1: {

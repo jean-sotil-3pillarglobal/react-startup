@@ -25,7 +25,7 @@ const styles = theme => ({
     zIndex: 1,
   }),
   container: props => ({
-    background: ThemeBackground(props, theme, 'light'),
+    background: ThemeBackground(props, theme, 'main'),
   }),
   subtitle: props => ({
     color: ThemeColor(props, theme),
@@ -33,6 +33,7 @@ const styles = theme => ({
     marginBottom: theme.spacing(2),
   }),
   title: props => ({
+    borderColor: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
     marginBottom: theme.spacing(4),
     textAlign: 'justify',

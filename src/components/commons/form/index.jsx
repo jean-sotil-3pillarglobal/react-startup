@@ -25,13 +25,16 @@ const styles = theme => ({
   },
   card: () => ({
     background: 'transparent',
+    marginBottom: theme.spacing(1),
     overflow: 'visible',
   }),
   helper: props => ({
-    background: ThemeBackground(props, theme, 'dark'),
+    background: ThemeBackground(props, theme, 'light'),
+    border: `1px solid ${ThemeBackground(props, theme, 'dark')}`,
     color: ThemeColor(props, theme),
     margin: `${theme.spacing(1)}px 0 ${theme.spacing(4)}px`,
     padding: theme.spacing(2),
+    width: '100%',
   }),
   icon: props => ({
     color: ThemeColor(props, theme),
@@ -100,13 +103,13 @@ class FormBlock extends Component {
                     item
                     md={1}
                   >
-                    <Icon name="keyboard_arrow_right" className={classes.icon} />
+                    <Icon name="info_oulined" className={classes.icon} />
                   </Grid>
                   <Grid
                     item
                     md={11}
                   >
-                    <Typography variant="caption">
+                    <Typography variant="caption" className={classes.copy}>
                       <LangToggler id={copy.label_helper} />
                     </Typography>
                   </Grid>

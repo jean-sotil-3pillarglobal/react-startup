@@ -1,5 +1,25 @@
 export const SERVICES_INFORMATION_1_1 = [
   {
+    input_type: 'id',
+    key: 'id',
+    label: {
+      en: 'id',
+      es: 'cédula',
+    },
+    placeholder: {
+      en: '222-210-882',
+      es: '222-210-882',
+    },
+    required: true,
+    rules: [
+      { type: 'required' },
+    ],
+    size_lg: 12,
+    size_md: 12,
+    size_sm: 12,
+    type: 'text',
+  },
+  {
     input_type: 'input',
     key: 'first_name',
     label: {
@@ -9,6 +29,26 @@ export const SERVICES_INFORMATION_1_1 = [
     placeholder: {
       en: 'jean paul',
       es: 'juan pablo',
+    },
+    required: true,
+    rules: [
+      { type: 'required' },
+    ],
+    size_lg: 12,
+    size_md: 12,
+    size_sm: 12,
+    type: 'text',
+  },
+  {
+    input_type: 'input',
+    key: 'last_name',
+    label: {
+      en: 'last name',
+      es: 'apellidos',
+    },
+    placeholder: {
+      en: 'sotil pastor',
+      es: 'sotil pastor',
     },
     required: true,
     rules: [
@@ -47,7 +87,6 @@ export const SERVICES_INFORMATION_1_1 = [
       en: 'phone',
       es: 'télefono',
     },
-    mask: 'phone',
     placeholder: {
       en: '(506) 8888-8888',
       es: '(506) 8888-8888',

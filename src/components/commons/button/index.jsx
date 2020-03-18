@@ -23,7 +23,7 @@ const styles = theme => ({
       color: ThemeColor(props, theme),
     },
     background: ThemeBackground(props, theme),
-    borderColor: ThemeBackground(props, theme, 'light'),
+    borderColor: ThemeBackground(props, theme, 'dark'),
     color: ThemeColor(props, theme),
   }),
   fab: props => ({

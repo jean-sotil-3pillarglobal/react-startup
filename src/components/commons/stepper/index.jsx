@@ -1,7 +1,6 @@
 // @flow
 
 import { useForm, FormContext } from 'react-hook-form';
-import classnames from 'classnames';
 import React, { Fragment, useState, useEffect } from 'react';
 
 import {
@@ -24,6 +23,9 @@ import {
   CheckNext,
 } from '../../../providers/utils/check.next';
 
+import ThemeBackground from '../../../providers/utils/theme.background';
+import ThemeColor from '../../../providers/utils/theme.color';
+
 const styles = theme => ({
   caption: {
     display: 'inline-block',
@@ -34,6 +36,22 @@ const styles = theme => ({
     marginBottom: theme.spacing(1),
     padding: theme.spacing(1),
   },
+  icon: {
+    color: 'red',
+  },
+  item: props => ({
+    background: ThemeBackground(props, theme, 'dark'),
+    border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
+  }),
+  mobileStepper: props => ({
+    background: ThemeBackground(props, theme, 'main'),
+    border: `1px solid ${ThemeBackground(props, theme, 'dark')}`,
+    marginBottom: theme.spacing(1),
+  }),
+  mobileStepperActive: props => ({
+    background: ThemeBackground(props, theme, 'dark'),
+    color: ThemeColor(props, theme),
+  }),
 });
 
 const getSteps = (forms, language) => {
@@ -158,9 +176,8 @@ function StepperForm (props: {
               container
               direction="row"
               justify="center"
-              alignItems="center"
-              spacing={2}>
-              <Grid item sm={sm} md={md} lg={lg}>
+              alignItems="center">
+              <Grid item sm={sm} md={md} lg={lg} className={classes.item}>
                 <Paper elevation={2} className={className}>
                   <Stepper
                     activeStep={activeStep}
@@ -171,7 +188,7 @@ function StepperForm (props: {
 
                       return (
                         <Step key={label}>
-                          <StepLabel>
+                          <StepLabel className={classes.item}>
                             {label}
                           </StepLabel>
                           <StepContent>
@@ -196,7 +213,8 @@ function StepperForm (props: {
 
                             {activeStep < steps.length && (
                               <MobileStepper
-                                variant="progress"
+                                className={classes.mobileStepper}
+                                variant="dots"
                                 steps={steps.length + 1}
                                 position="static"
                                 activeStep={activeStep}
@@ -207,7 +225,7 @@ function StepperForm (props: {
                                     onClick={activeStep === steps.length - 1 ? onSubmit : handleNext}
                                     variant={variant}
                                     typeButton={TYPES.CONTAINED}
-                                    className={classnames(classes.cta, steps.length === (activeStep + 1) && classes.submit)}>
+                                    className={!disabled && classes.mobileStepperActive}>
                                     <Icon name="angle-right-b" className={classes.icon} />
                                   </LangButton>
                                 }
@@ -218,6 +236,7 @@ function StepperForm (props: {
                                     onClick={handleBack}
                                     typeButton={TYPES.CONTAINED}
                                     variant={variant}
+                                    className={activeStep !== 0 && classes.mobileStepperActive}
                                   >
                                     <Icon name="angle-left-b" className={classes.icon} />
                                   </LangButton>

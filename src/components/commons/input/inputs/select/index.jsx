@@ -9,12 +9,19 @@ import { Controller, useFormContext } from 'react-hook-form';
 import {
   FormControl,
   InputLabel,
+  withStyles,
 } from '@material-ui/core';
 
 // components
 import Error from '../error';
 import Icon from '../../../icon';
 
+import ThemeBackground from '../../../../../providers/utils/theme.background';
+import ThemeColor from '../../../../../providers/utils/theme.color';
+
+const styles = () => ({
+  root: {},
+});
 
 const customStyles = {
   indicatorsContainer: () => ({
@@ -67,6 +74,7 @@ const ForwardTextField = React.forwardRef((props: {
   placeholder: String,
   proxy: Object,
   required: Boolean,
+  theme: Object,
 }, ref) => {
   const {
     disabled,
@@ -79,6 +87,7 @@ const ForwardTextField = React.forwardRef((props: {
     placeholder,
     proxy,
     required,
+    theme,
   } = props;
 
   const {
@@ -122,6 +131,11 @@ const ForwardTextField = React.forwardRef((props: {
       textTransform: 'capitalize',
     });
   }
+
+  customStyles.Control = () => ({
+    backgroundColor: ThemeBackground(props, theme, 'light'),
+    color: ThemeColor(props, theme),
+  });
 
   return (
     <FormControl>
@@ -193,4 +207,4 @@ function ControllerSelectField (props: {
   );
 }
 
-export default ControllerSelectField;
+export default withStyles(styles, { withTheme: true })(ControllerSelectField);

@@ -19,6 +19,7 @@ import Messages from './messages';
 import Validate from './validate';
 
 import DateField from './inputs/date';
+import IdField from './inputs/id';
 import PhoneField from './inputs/phone';
 import SelectField from './inputs/select';
 import TextField from './inputs/text';
@@ -167,6 +168,7 @@ function InputLayout (props: {
     date: <DateField format="MM/DD/YYYY" locale={language} {...newProps} />,
     datetime: <DateField format="HH:MM:ss" locale={language} {...newProps} />,
     divider: <Divider variant="middle" />,
+    id: <IdField {...newProps} />,
     input: <TextField {...newProps} />,
     multiselect: <SelectField isMulti options={formatList(options || [])} {...newProps} />,
     phone: <PhoneField {...newProps} />,

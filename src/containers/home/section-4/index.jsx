@@ -19,13 +19,16 @@ import ContactFormLayout from './../../../components/layouts/commons/contact_1';
 // components
 import SectionBlock from './../../../components/layouts/section';
 
-const variant = 'primary';
+const variant = 'light';
 
 const styles = theme => ({
   background: {},
   button: {
     margin: 0,
     width: '100%',
+  },
+  container: {
+    padding: 0,
   },
   svg: {
     bottom: theme.spacing(20),
@@ -67,12 +70,12 @@ class SectionA extends Component {
 
     return (
       verbiage &&
-      <SectionBlock variant={variant} id={verbiage(copy.id)}>
+      <SectionBlock className={classes.container} variant={variant} id={verbiage(copy.id)}>
         <Grid
           container
           direction="row"
-          justify="center"
-          alignItems="center"
+          justify="flex-start"
+          alignItems="flex-start"
           spacing={6}>
           <Grid
             item
@@ -89,11 +92,11 @@ class SectionA extends Component {
           <Grid
             item
             sm={10}
-            md={8}
-            lg={8}>
+            md={6}
+            lg={6}>
             <ContactFormLayout
               proxy={proxy}
-              variant={variant}
+              variant="primary"
             />
           </Grid>
         </Grid>
