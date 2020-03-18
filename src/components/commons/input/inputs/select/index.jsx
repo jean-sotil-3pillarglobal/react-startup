@@ -70,6 +70,8 @@ const ForwardTextField = React.forwardRef((props: {
   isMulti: Boolean,
   label: String,
   name: String,
+  onBlur: Function,
+  onFocus: Function,
   options: Array,
   placeholder: String,
   proxy: Object,
@@ -83,6 +85,8 @@ const ForwardTextField = React.forwardRef((props: {
     isMulti,
     label,
     name,
+    onBlur,
+    onFocus,
     options,
     placeholder,
     proxy,
@@ -167,7 +171,9 @@ const ForwardTextField = React.forwardRef((props: {
         isMulti={isMulti}
         isSearchable
         name={name}
+        onBlur={onBlur}
         onChange={e => handleChange(e)}
+        onFocus={onFocus}
         options={options}
         placeholder={placeholder}
         value={document[name] || selectVal}
