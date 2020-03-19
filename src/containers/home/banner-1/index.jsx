@@ -45,7 +45,7 @@ function BannerA (props: {
   }
 
   return (
-    <Paper elevation={3}>
+    <Paper elevation={0}>
       <Slider sm={12} md={10} lg={10} items={items} slidesToShow={7} />
     </Paper>
   );

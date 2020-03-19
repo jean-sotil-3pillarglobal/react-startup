@@ -92,21 +92,23 @@ const palette = {
 const overrides = {
   MuiButton: {
     root: {
-      border: '2px solid',
+      border: '1px solid',
       borderColor: 'transparent',
       borderRadius: '0 0 0 0',
       boxShadow: 'none',
-      fontSize: '.6em',
-      fontWeight: 600,
+      fontSize: '.7em',
+      fontWeight: 500,
       textTransform: 'capitalize',
     },
     text: {
-      padding: '12px 16px',
+      padding: '6px 14px',
     },
   },
   MuiCardHeader: {
     title: {
-      fontSize: '1.2em',
+      fontSize: '1em',
+      fontWeight: 400,
+      textTransform: 'capitalize',
     },
   },
   MuiDivider: {
@@ -196,8 +198,8 @@ const overrides = {
   },
   MuiLink: {
     root: {
-      fontSize: '.6em',
-      fontWeight: 500,
+      fontSize: '.7em',
+      fontWeight: 400,
       textTransform: 'capitalize',
     },
   },
@@ -272,45 +274,45 @@ const overrides = {
 
 const typography = {
   body1: {
-    fontSize: '1.3rem',
-    fontWeight: 300,
-    textTransform: 'capitalize',
+    fontSize: '1.5rem',
+    fontWeight: 400,
+    textTransform: 'initial',
   },
   body2: {
     fontSize: '1.6rem',
-    fontWeight: 500,
-    textTransform: 'capitalize',
+    fontWeight: 700,
+    textTransform: 'initial',
   },
   caption: {
     display: 'inline-block',
     fontSize: '0.8rem',
-    fontWeight: 600,
-    textTransform: 'capitalize',
+    fontWeight: 500,
+    textTransform: 'initial',
   },
   h1: {
-    fontSize: '3rem',
+    fontSize: '2.6rem',
     fontWeight: 500,
-    textTransform: 'capitalize',
+    textTransform: 'initial',
   },
   h2: {
-    fontSize: '2.8rem',
+    fontSize: '2.4rem',
     fontWeight: 500,
-    textTransform: 'capitalize',
+    textTransform: 'initial',
   },
   h3: {
     fontSize: '2.2rem',
     fontWeight: 400,
-    textTransform: 'capitalize',
+    textTransform: 'initial',
   },
   h4: {
     fontSize: '1.4rem',
     fontWeight: 400,
-    textTransform: 'capitalize',
+    textTransform: 'initial',
   },
   h5: {
     fontSize: '1rem',
     fontWeight: 300,
-    textTransform: 'capitalize',
+    textTransform: 'initial',
   },
   h6: {
     fontSize: '0.6rem',
@@ -323,7 +325,7 @@ const typography = {
   subtitle1: {
     fontSize: '1.4rem',
     fontWeight: 300,
-    textTransform: 'capitalize',
+    textTransform: 'initial',
   },
   subtitle2: {
     fontSize: '1.2rem',

@@ -25,6 +25,7 @@ const styles = theme => ({
     background: ThemeBackground(props, theme),
     borderColor: ThemeBackground(props, theme, 'dark'),
     color: ThemeColor(props, theme),
+    opacity: props.disabled ? 0.3 : 1,
   }),
   fab: props => ({
     '&:hover': {
@@ -123,6 +124,7 @@ function LayoutButton (props: {
               classes.button,
               className,
             )}
+            size="medium"
             startIcon={(pos === 'left' && props.children) || null}
             endIcon={(pos === 'right' && props.children) || null}
           >

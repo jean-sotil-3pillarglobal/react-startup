@@ -32,12 +32,9 @@ const styles = theme => ({
   }),
   title: props => ({
     color: ThemeColor(props, theme),
-    fontSize: '1.8em',
-    fontWeight: 300,
-    lineHeight: '1.2em',
     marginBottom: theme.spacing(2),
     textAlign: props.align || 'left',
-    textTransform: 'capitalize',
+    textTransform: 'initial',
   }),
 });
 
@@ -60,7 +57,7 @@ function Callout (props: {
     <Card className={classnames(classes.card, className)} elevation={0}>
       <CardContent className={classes.container}>
         <Fade left>
-          <Typography variant="body1" component="p" className={classes.title}>
+          <Typography variant="h1" component="p" className={classes.title}>
             <LangToggler id={title} />
           </Typography>
         </Fade>

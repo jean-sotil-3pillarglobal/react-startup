@@ -315,7 +315,7 @@ function ServicesLayout (props: {
             <LangToggler id={copy.title} />
           </Typography>
           <Typography
-            variant="body2"
+            variant="body1"
             className={classes.subtitle}
           >
             <LangToggler id={copy.body} />

@@ -89,7 +89,7 @@ class FormBlock extends Component {
           <Card className={classes.card} elevation={0}>
             {copy.label &&
               <Fragment>
-                <Typography variant="body2" align="left" className={classes.title}>
+                <Typography variant="body1" align="left" className={classes.title}>
                   <LangToggler id={copy.label} />
                 </Typography>
                 <Grid

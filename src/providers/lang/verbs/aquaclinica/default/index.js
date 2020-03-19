@@ -31,8 +31,8 @@ const Verbiage = {
     },
     contact_1: {
       back: {
-        en: '< previous',
-        es: '< anterior',
+        en: 'previous',
+        es: 'anterior',
       },
       categories,
       forms,
@@ -229,7 +229,7 @@ const Verbiage = {
       },
       cta: {
         en: 'create your free quote',
-        es: 'hacer consulta gratuita',
+        es: 'consultar ahora',
       },
       id: LINK_SECTION_2,
       subtitle: {
@@ -245,8 +245,8 @@ const Verbiage = {
       id: LINK_SECTION_4,
       svg: '/static/svg/right_places.svg',
       title: {
-        en: 'we would love helping you to find the best attention and health threatments, make your free quote now.',
-        es: 'queremos brindarte la mejor atención. <br/>consulta sobre nuestros servicios ahora mismo.',
+        en: 'we would love helping you to find the best attention <br/>and health threatments, make your free quote now.',
+        es: 'es 100% gratuito,<br/> te estamos esperando.',
       },
     },
     section_5: {

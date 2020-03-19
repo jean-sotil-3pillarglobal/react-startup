@@ -2,6 +2,7 @@
 
 import { useForm, FormContext } from 'react-hook-form';
 import React, { Fragment, useState, useEffect } from 'react';
+import classnames from 'classnames';
 
 import {
   Grid,
@@ -13,6 +14,8 @@ import {
   Stepper,
   withStyles,
 } from '@material-ui/core';
+
+import { Element, scroller } from 'react-scroll';
 
 // components
 import { LangButton, TYPES } from './../button';
@@ -27,6 +30,9 @@ import ThemeBackground from '../../../providers/utils/theme.background';
 import ThemeColor from '../../../providers/utils/theme.color';
 
 const styles = theme => ({
+  button: props => ({
+    background: ThemeBackground(props, theme, 'dark'),
+  }),
   caption: {
     display: 'inline-block',
     margin: `${theme.spacing(6)}px 0`,
@@ -36,9 +42,9 @@ const styles = theme => ({
     marginBottom: theme.spacing(1),
     padding: theme.spacing(1),
   },
-  icon: {
-    color: 'red',
-  },
+  icon: props => ({
+    color: ThemeColor(props, theme),
+  }),
   item: props => ({
     background: ThemeBackground(props, theme, 'dark'),
     border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
@@ -111,6 +117,7 @@ function StepperForm (props: {
   });
 
   const {
+    formState,
     handleSubmit,
     setValue,
   } = formProps;
@@ -125,6 +132,15 @@ function StepperForm (props: {
         setValue(k, value, true);
       }
     });
+
+    if (activeStep !== 0 || formState.dirty) {
+      // anchor header on tab change
+      scroller.scrollTo('stepper_header', {
+        delay: 500,
+        duration: 1000,
+        smooth: 'easeInOutQuint',
+      });
+    }
   }, [activeStep]);
 
   const [disabled, setDisabled] = useState(true);
@@ -171,87 +187,90 @@ function StepperForm (props: {
     <Fragment>
       {steps && (
         <FormContext {...formProps}>
-          <form id={id || 'default'} onSubmit={handleSubmit(onSubmit)}>
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center">
-              <Grid item sm={sm} md={md} lg={lg} className={classes.item}>
-                <Paper elevation={2} className={className}>
-                  <Stepper
-                    activeStep={activeStep}
-                    orientation="vertical"
-                  >
-                    {steps.map((label, i) => {
-                      const form = getForm(i, forms);
+          <Element name="stepper_header">
+            <form id={id || 'default'} onSubmit={handleSubmit(onSubmit)}>
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center">
+                <Grid item sm={sm} md={md} lg={lg} className={classes.item}>
+                  <Paper elevation={2} className={className}>
+                    <Stepper
+                      activeStep={activeStep}
+                      orientation="vertical"
+                    >
+                      {steps.map((label, i) => {
+                        const form = getForm(i, forms);
 
-                      return (
-                        <Step key={label}>
-                          <StepLabel className={classes.item}>
-                            {label}
-                          </StepLabel>
-                          <StepContent>
-                            {form.rows && form.rows.map((row, y) => {
-                              const key = `${form.value}_row_${y}`;
+                        return (
+                          <Step key={label}>
+                            <StepLabel className={classes.item}>
+                              {label}
+                            </StepLabel>
+                            <StepContent>
+                              {form.rows && form.rows.map((row, y) => {
+                                const key = `${form.value}_row_${y}`;
 
-                              return (
-                                <FormBlock
-                                  copy={row}
-                                  document={document}
-                                  key={key}
-                                  proxy={{
-                                    handleBlur,
-                                    handleChange,
-                                    language,
-                                    verbiage,
-                                  }}
-                                  variant={variant}
+                                return (
+                                  <FormBlock
+                                    copy={row}
+                                    document={document}
+                                    key={key}
+                                    proxy={{
+                                      handleBlur,
+                                      handleChange,
+                                      language,
+                                      verbiage,
+                                    }}
+                                    variant={variant}
+                                  />
+                                );
+                              })}
+
+                              {activeStep < steps.length && (
+                                <MobileStepper
+                                  className={classes.mobileStepper}
+                                  variant="dots"
+                                  steps={steps.length + 1}
+                                  position="static"
+                                  activeStep={activeStep}
+                                  nextButton={
+                                    <LangButton
+                                      disabled={disabled}
+                                      lang={activeStep === steps.length - 1 ? form.cta : form.cta}
+                                      onClick={activeStep === steps.length - 1 ? onSubmit : handleNext}
+                                      variant={variant}
+                                      typeButton={TYPES.CONTAINED}
+                                      className={classnames(classes.button, !disabled && classes.mobileStepperActive)}>
+                                      <Icon name="arrow_right" className={classes.icon} />
+                                    </LangButton>
+                                  }
+                                  backButton={
+                                    <LangButton
+                                      disabled={activeStep === 0}
+                                      lang={copy.back}
+                                      onClick={handleBack}
+                                      typeButton={TYPES.CONTAINED}
+                                      variant={variant}
+                                      className={classnames(classes.button, activeStep !== 0 && classes.mobileStepperActive)}
+                                      pos="left"
+                                    >
+                                      <Icon name="arrow_left" className={classes.icon} />
+                                    </LangButton>
+                                  }
                                 />
-                              );
-                            })}
-
-                            {activeStep < steps.length && (
-                              <MobileStepper
-                                className={classes.mobileStepper}
-                                variant="dots"
-                                steps={steps.length + 1}
-                                position="static"
-                                activeStep={activeStep}
-                                nextButton={
-                                  <LangButton
-                                    disabled={disabled}
-                                    lang={activeStep === steps.length - 1 ? form.cta : form.cta}
-                                    onClick={activeStep === steps.length - 1 ? onSubmit : handleNext}
-                                    variant={variant}
-                                    typeButton={TYPES.CONTAINED}
-                                    className={!disabled && classes.mobileStepperActive}>
-                                    <Icon name="angle-right-b" className={classes.icon} />
-                                  </LangButton>
-                                }
-                                backButton={
-                                  <LangButton
-                                    disabled={activeStep === 0}
-                                    lang={copy.back}
-                                    onClick={handleBack}
-                                    typeButton={TYPES.CONTAINED}
-                                    variant={variant}
-                                    className={activeStep !== 0 && classes.mobileStepperActive}
-                                  >
-                                    <Icon name="angle-left-b" className={classes.icon} />
-                                  </LangButton>
-                                }
-                              />
-                            )}
-                          </StepContent>
-                        </Step>
-                      );
-                    })}
-                  </Stepper>
-                </Paper>
+                              )}
+                            </StepContent>
+                          </Step>
+                        );
+                      })}
+                    </Stepper>
+                  </Paper>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
+            </form>
+          </Element>
         </FormContext>
       )}
     </Fragment>

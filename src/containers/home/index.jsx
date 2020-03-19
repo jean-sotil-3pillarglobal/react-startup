@@ -17,6 +17,8 @@ import {
   selectVariantVerbiageAction,
 } from './../../store/actions/components/footer';
 
+import ScrollToTopOnMount from '../../components/commons/scrollToTopOnMount';
+
 import Helmet from '../../components/commons/helmet';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
@@ -145,13 +147,12 @@ class Home extends Component {
           <ClerksLayout proxy={proxy} variant="dark" />
         </Element>
 
-        <BannerA proxy={proxy} />
-
         <Element name={constants.LINK_SECTION_4}>
           <SectionD proxy={proxy} variant="primary" />
         </Element>
 
         <Footer />
+        <ScrollToTopOnMount />
       </Fragment>
     );
   }

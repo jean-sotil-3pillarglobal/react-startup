@@ -22,20 +22,20 @@ export default [
   // SERVICE 1
   {
     cta: {
-      en: 'next >',
-      es: 'siguiente >',
+      en: 'next',
+      es: 'siguiente',
     },
     icon: icons.general,
     label: {
-      en: 'your quote',
-      es: 'tú consulta',
+      en: 'Create quote',
+      es: 'Crear consulta',
     },
     rows: [
       {
         fields: SERVICES_INFORMATION_1_2,
         label: {
-          en: 'Free quote in minutes',
-          es: 'Consulta gratuita en minutos',
+          en: 'Choose service, date and hour',
+          es: 'Elegir servicio, fecha y hora',
         },
         label_helper: {
           en: 'Let&#39; us know which service you feel instered and we will contact you inmediatly with more information.',
@@ -59,7 +59,7 @@ export default [
   {
     cta: {
       en: 'create quote',
-      es: 'crear consulta',
+      es: 'iniciar consulta',
     },
     icon: icons.service1,
     label: {

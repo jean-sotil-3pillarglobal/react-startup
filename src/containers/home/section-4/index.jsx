@@ -1,6 +1,6 @@
 
 import { withRouter } from 'react-router-dom';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import {
   Grid,
@@ -15,6 +15,8 @@ import ThemeColor from './../../../providers/utils/theme.color';
 
 // commons
 import ContactFormLayout from './../../../components/layouts/commons/contact_1';
+
+import BannerA from './../banner-1';
 
 // components
 import SectionBlock from './../../../components/layouts/section';
@@ -38,7 +40,6 @@ const styles = theme => ({
   title: {
     // textAlign: 'center',
     color: ThemeColor({ variant }, theme),
-    fontSize: '.9em',
     textTransform: 'capitalize',
   },
 });
@@ -70,37 +71,42 @@ class SectionA extends Component {
 
     return (
       verbiage &&
-      <SectionBlock className={classes.container} variant={variant} id={verbiage(copy.id)}>
-        <Grid
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="flex-start"
-          spacing={6}>
-          <Grid
-            item
-            sm={12}
-            md={12}
-            lg={12}>
-            <Typography
-              variant="body2"
-              className={classes.title}
-            >
-              <LangToggler id={copy.title} />
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            sm={10}
-            md={6}
-            lg={6}>
-            <ContactFormLayout
-              proxy={proxy}
-              variant="primary"
-            />
-          </Grid>
-        </Grid>
-      </SectionBlock>
+      (
+        <Fragment>
+          <BannerA proxy={proxy} />
+          <SectionBlock className={classes.container} variant={variant} id={verbiage(copy.id)}>
+            <Grid
+              container
+              direction="row"
+              justify="flex-start"
+              alignItems="flex-start"
+              spacing={6}>
+              <Grid
+                item
+                sm={12}
+                md={12}
+                lg={12}>
+                <Typography
+                  variant="h3"
+                  className={classes.title}
+                >
+                  <LangToggler id={copy.title} />
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                sm={10}
+                md={6}
+                lg={6}>
+                <ContactFormLayout
+                  proxy={proxy}
+                  variant="primary"
+                />
+              </Grid>
+            </Grid>
+          </SectionBlock>
+        </Fragment>
+      )
     );
   }
 }
