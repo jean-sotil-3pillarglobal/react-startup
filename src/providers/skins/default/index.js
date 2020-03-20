@@ -104,12 +104,20 @@ const overrides = {
       padding: '6px 14px',
     },
   },
+  MuiCard: {
+    root: {
+      borderRadius: '0 0 0 0',
+    },
+  },
   MuiCardHeader: {
     avatar: {
       zIndex: 2,
     },
     content: {
       zIndex: 2,
+    },
+    root: {
+      padding: 0,
     },
     title: {
       fontSize: '1em',
@@ -218,6 +226,9 @@ const overrides = {
   },
   MuiPaper: {
     root: {
+      '& *[class="react-parallax-bgimage"]': {
+        zIndex: -1,
+      },
       borderRadius: '0 0 0 0',
     },
   },
@@ -314,7 +325,8 @@ const typography = {
   },
   h4: {
     fontSize: '1.4rem',
-    fontWeight: 400,
+    fontWeight: 500,
+    textDecoration: 'underline',
     textTransform: 'initial',
   },
   h5: {

@@ -7,11 +7,11 @@ import {
 
 import SVGComponent from '../svg';
 
+import ThemeBackground from '../../../providers/utils/theme.background';
+
 const styles = theme => ({
   root: props => ({
-    color: (props.color === 'error') ?
-      theme.palette.error.main :
-      ((props.color === 'success') ? (theme.palette.success.main) : (props.color || theme.palette.primary.main)),
+    color: (props.variant && ThemeBackground(props, theme, 'dark')) || props.color || theme.palette.primary.main,
   }),
   svg: {
     width: '20px',

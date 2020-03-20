@@ -10,7 +10,7 @@ import ThemeBackground from './../../../providers/utils/theme.background';
 
 const styles = theme => ({
   opacity: props => ({
-    background: ThemeBackground(props, theme, 'light'),
+    background: !props.backgroundImage ? ThemeBackground(props, theme, 'light') : `url(${props.backgroundImage})`,
     content: '',
     display: 'block',
     height: '100%',
