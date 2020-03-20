@@ -5,14 +5,13 @@ import {
 } from 'react-router-dom';
 
 import classnames from 'classnames';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import {
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  CardMedia,
   Fab,
   Grid,
   List,
@@ -36,6 +35,7 @@ import {
 
 // components
 import Icon from './../../../commons/icon';
+import Opacity from './../../../commons/opacity';
 import SectionBlock from './../../section';
 
 import { LangButton, TYPES } from './../../../commons/button';
@@ -51,12 +51,12 @@ const styles = theme => ({
     '&:hover': {
       borderColor: ThemeColor(props, theme),
     },
-    background: ThemeBackground(props, theme, 'main'),
+    backgroundColor: ThemeBackground(props, theme, 'main'),
     border: `2px solid ${ThemeBackground(props, theme, 'light')}`,
     borderRadius: '0 0 0 0',
     boxShadow: 'initial',
     flexShrink: 0,
-    padding: `${theme.spacing(4)}px ${theme.spacing(1)}px`,
+    padding: theme.spacing(1),
     position: 'relative',
     textAlign: 'center',
     transition: theme.transitions.create(
@@ -65,30 +65,45 @@ const styles = theme => ({
     ),
   }),
   cardContent: props => ({
-    background: ThemeBackground(props, theme, 'main'),
+    background: ThemeBackground(props, theme, 'light'),
     marginTop: theme.spacing(1),
     padding: theme.spacing(0),
   }),
   cardHover: {},
   cardList: props => ({
-    background: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
     cursor: 'default',
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     textAlign: 'right',
   }),
   cardMedia: {
     height: 60,
   },
   cardTitle: props => ({
+    backgroundSize: 'cover',
+    border: `2px solid ${ThemeBackground(props, theme, 'dark')}`,
     color: ThemeColor(props, theme),
     cursor: 'default',
+    position: 'relative',
+  }),
+  cardTitleOpacity: props => ({
+    background: ThemeBackground(props, theme, 'light'),
+    content: '',
+    display: 'block',
+    height: '100%',
+    left: 0,
+    opacity: 0.4,
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    zIndex: 0,
   }),
   cta: {
     padding: `${theme.spacing(2)}px 0`,
   },
   fab: props => ({
     backgroundColor: ThemeBackground(props, theme, 'light'),
+    zIndex: 2,
   }),
   fabHover: props => ({
     backgroundColor: `${ThemeBackground(props, theme, 'dark')}!important`,
@@ -100,7 +115,7 @@ const styles = theme => ({
     fontSize: '.8em',
     marginLeft: theme.spacing(2),
     padding: '2px',
-    textTransform: 'uppercase',
+    textTransform: 'capitalize',
   }),
   icon: () => ({
     fontSize: '1.8em',
@@ -117,15 +132,20 @@ const styles = theme => ({
     padding: 0,
     textAlign: 'center',
   },
+  link: {
+    textDecoration: 'none',
+  },
   serviceIcon: props => ({
     color: ThemeColor(props, theme),
     fontSize: '.5em',
   }),
-  serviceTitle: {
-    lineHeight: '0!important',
+  serviceTitle: props => ({
+    color: ThemeColor(props, theme),
+    fontWeight: 500,
     marginBottom: 0,
     marginTop: 0,
-  },
+    textTransform: 'capitalize',
+  }),
   subtitle: props => ({
     color: ThemeColor(props, theme),
     marginBottom: `${theme.spacing(8)}px`,
@@ -192,26 +212,28 @@ function ServicesLayout (props: {
       render: () => (
         <Card
           className={classnames(classes.card, isHover && classes.cardHover)}
-          key={item.id}>
+          key={item.id}
+        >
           <CardHeader
             avatar={
-              <Fab
-                className={classnames(classes.fab, isHover && classes.fabHover)}
-                onClick={evt => handleServiceCategoryClick(evt, item)}>
-                <Icon
-                  name={item.ico}
-                  className={classnames(classes.icon, isHover && classes.iconHover)}
-                  color={item.color}
-                />
-              </Fab>
+              <Fragment>
+                <Fab
+                  className={classnames(classes.fab, isHover && classes.fabHover)}
+                  onClick={evt => handleServiceCategoryClick(evt, item)}>
+                  <Icon
+                    name={item.ico}
+                    className={classnames(classes.icon, isHover && classes.iconHover)}
+                    color={item.color}
+                  />
+                </Fab>
+                <Opacity variant={variant} />
+              </Fragment>
             }
             title={<LangToggler id={item.title} />}
             className={classes.cardTitle}
-          />
-          <CardMedia
-            image={item.background}
-            title={item.title[language] || ''}
-            className={classes.cardMedia}
+            style={{
+              backgroundImage: `url(${item.background})`,
+            }}
           />
           {filteredServices.length > 0 &&
             <CardContent className={classes.cardContent}>
@@ -241,15 +263,17 @@ function ServicesLayout (props: {
                           <ListItemText
                             className={classes.serviceTitle}
                             primary={(
-                              <Link to={{
-                                pathname: CreateUrlCategoryDetails(language, item, service),
-                                state: {
-                                  category: item,
-                                  service,
-                                },
-                              }}>
-                                <Typography
-                                  variant="caption">
+                              <Link
+                                className={classes.link}
+                                to={{
+                                  pathname: CreateUrlCategoryDetails(language, item, service),
+                                  state: {
+                                    category: item,
+                                    service,
+                                  },
+                                }}
+                              >
+                                <Typography variant="h5" className={classes.serviceTitle}>
                                   <LangToggler id={service.label} />
                                   {service.featured &&
                                     <Typography
@@ -273,7 +297,7 @@ function ServicesLayout (props: {
             disableSpacing
           >
             <Link to={{
-              pathname: `/${language}${item.url[language]}`,
+              pathname: CreateUrlCategory(language, item),
               state: {
                 category: item,
               },

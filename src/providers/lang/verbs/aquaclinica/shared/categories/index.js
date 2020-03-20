@@ -28,7 +28,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    color: '#ef1e83',
+    color: '#878a8c',
     cta: {
       en: 'learn more',
       es: 'conoce más',
@@ -37,7 +37,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    ico: 'cloud-download',
+    ico: 'info_outlined',
     id: CATEGORY_1,
     image: {
       desktop: `/static/images/${CATEGORY_1}/derma-clinica.jpg`,
@@ -73,7 +73,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    color: '#ef1e83',
+    color: '#878a8c',
     cta: {
       en: 'learn more',
       es: 'conoce más',
@@ -82,7 +82,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    ico: 'home',
+    ico: 'info_outlined',
     id: CATEGORY_2,
     image: {
       desktop: `/static/images/${CATEGORY_2}/3.png`,
@@ -118,12 +118,12 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    color: '#ef1e83',
+    color: '#878a8c',
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
-    ico: 'cloud-download',
+    ico: 'info_outlined',
     id: CATEGORY_3,
     image: {
       desktop: `/static/images/${CATEGORY_3}/spa-clinico.jpg`,
@@ -158,12 +158,12 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    color: '#ef1e83',
+    color: '#878a8c',
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
-    ico: 'cloud-download',
+    ico: 'info_outlined',
     id: CATEGORY_4,
     image: {
       desktop: `/static/images/${CATEGORY_4}/3.jpg`,
@@ -188,12 +188,12 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    color: '#ef1e83',
+    color: '#878a8c',
     cta: {
       en: 'learn more',
       es: 'conoce más',
     },
-    ico: 'cloud-download',
+    ico: 'info_outlined',
     id: CATEGORY_5,
     image: {
       desktop: `/static/images/${CATEGORY_5}/3.jpg`,

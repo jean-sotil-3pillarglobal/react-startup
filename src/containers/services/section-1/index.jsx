@@ -34,6 +34,7 @@ import ThemeColor from './../../../providers/utils/theme.color';
 // components
 import { LangButton } from './../../../components/commons/button';
 import Icon from './../../../components/commons/icon';
+import Opacity from './../../../components/commons/opacity';
 import SectionBlock from './../../../components/layouts/section';
 import SmartImg from './../../../components/commons/img';
 
@@ -269,6 +270,7 @@ function SectionA (props: {
     <Fragment>
       <Parallax bgImage={category.background} strength={200} className={classes.background}>
         <Paper className={classes.titleContainer} elevation={0}>
+          <Opacity opacity={0.6} variant="dark" />
           <Typography
             variant="h2"
             className={classes.title}

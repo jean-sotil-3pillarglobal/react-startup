@@ -9,7 +9,6 @@ import VerbiageOfAuto from '../../../../providers/lang/verbs/aquaclinica/auto';
 import VerbiageOfDefault from '../../../../providers/lang/verbs/aquaclinica/default';
 import VerbiageOfDental from '../../../../providers/lang/verbs/aquaclinica/dental';
 import VerbiageOfGroup from '../../../../providers/lang/verbs/aquaclinica/group';
-import VerbiageOfHealth from '../../../../providers/lang/verbs/aquaclinica/health';
 
 export const selectedLanguageReducer = (state = config.defaultLang, action) => {
   switch (action.type) {
@@ -33,9 +32,6 @@ export const selectedVariantVerbiageReducer = (state = false, action) => {
       break;
     case 'group':
       value = VerbiageOfGroup;
-      break;
-    case 'health':
-      value = VerbiageOfHealth;
       break;
     default:
       value = VerbiageOfDefault;

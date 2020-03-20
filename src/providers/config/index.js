@@ -109,11 +109,11 @@ export const privates = [];
 //
 export const assets = {
   icons: {
-    general: 'home',
-    service1: 'home',
-    service2: 'home',
-    service3: 'home',
-    service4: 'home',
+    general: 'local_hospital',
+    service1: 'local_hospital',
+    service2: 'local_hospital',
+    service3: 'local_hospital',
+    service4: 'local_hospital',
   },
 };
 

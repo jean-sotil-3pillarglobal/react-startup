@@ -105,9 +105,17 @@ const overrides = {
     },
   },
   MuiCardHeader: {
+    avatar: {
+      zIndex: 2,
+    },
+    content: {
+      zIndex: 2,
+    },
     title: {
       fontSize: '1em',
-      fontWeight: 400,
+      fontWeight: 600,
+      margin: '6px 10px',
+      textAlign: 'left',
       textTransform: 'capitalize',
     },
   },
