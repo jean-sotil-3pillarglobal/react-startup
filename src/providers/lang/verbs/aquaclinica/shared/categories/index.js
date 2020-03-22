@@ -49,8 +49,8 @@ const Services = [
         mobile: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
       },
       {
-        desktop: `/static/images/${CATEGORY_1}/derma-clinica-2.jpg`,
-        mobile: `/static/images/${CATEGORY_1}/derma-clinica-2.jpg`,
+        desktop: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
+        mobile: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
       },
     ],
     svg: '/static/svg/team_work.svg',

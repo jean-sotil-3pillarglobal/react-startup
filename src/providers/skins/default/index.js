@@ -109,6 +109,9 @@ const overrides = {
       borderRadius: '0 0 0 0',
     },
   },
+  MuiCardActions: {
+    root: {},
+  },
   MuiCardHeader: {
     avatar: {
       zIndex: 2,
@@ -229,6 +232,7 @@ const overrides = {
       '& *[class="react-parallax-bgimage"]': {
         zIndex: -1,
       },
+      backgroundColor: 'transparent',
       borderRadius: '0 0 0 0',
     },
   },
@@ -309,12 +313,12 @@ const typography = {
     textTransform: 'initial',
   },
   h1: {
-    fontSize: '2.6rem',
+    fontSize: '2.8rem',
     fontWeight: 500,
     textTransform: 'initial',
   },
   h2: {
-    fontSize: '2.4rem',
+    fontSize: '2.6rem',
     fontWeight: 500,
     textTransform: 'initial',
   },
@@ -324,32 +328,31 @@ const typography = {
     textTransform: 'initial',
   },
   h4: {
-    fontSize: '1.4rem',
-    fontWeight: 500,
-    textDecoration: 'underline',
+    fontSize: '1.6rem',
+    fontWeight: 400,
     textTransform: 'initial',
   },
   h5: {
     fontSize: '1rem',
-    fontWeight: 300,
+    fontWeight: 400,
     textTransform: 'initial',
   },
   h6: {
     fontSize: '0.6rem',
-    fontWeight: 300,
+    fontWeight: 400,
   },
   overline: {
     fontSize: '1rem',
-    fontWeight: 300,
+    fontWeight: 400,
   },
   subtitle1: {
     fontSize: '1.4rem',
-    fontWeight: 300,
+    fontWeight: 400,
     textTransform: 'initial',
   },
   subtitle2: {
     fontSize: '1.2rem',
-    fontWeight: 300,
+    fontWeight: 400,
   },
   useNextVariants: true,
 };

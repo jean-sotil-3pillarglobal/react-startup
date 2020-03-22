@@ -4,6 +4,10 @@ import { withRouter } from 'react-router-dom';
 import React, { Component, Fragment } from 'react';
 
 import {
+  cloneDeep,
+} from 'lodash';
+
+import {
   withStyles,
 } from '@material-ui/core';
 
@@ -73,15 +77,17 @@ class Services extends Component {
     this.setServicesState();
   }
 
-  componentDidUpdate = () => {
-    this.setServicesState();
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.match.url !== this.props.match.url) {
+      this.setServicesState(true);
+    }
   }
 
   componentWillUnmount = () => {
     this.reset();
   }
 
-  setServicesState = () => {
+  setServicesState = (refresh) => {
     const {
       category,
       language,
@@ -93,8 +99,6 @@ class Services extends Component {
         },
       },
       selectLanguage,
-      service,
-      services,
       setService,
       setServiceCategory,
       setServices,
@@ -106,18 +110,17 @@ class Services extends Component {
     }
 
     if (verbiage && type && language) {
+      const cloneCategory = cloneDeep(FindServiceCategoryByPath(type, verbiage(copy.categories), language));
+      const cloneServices = cloneDeep(verbiage(copy.services).filter(item => item.categories.includes(cloneCategory.id)));
+
       // find main category
-      if (!category) {
-        setServiceCategory(FindServiceCategoryByPath(type, verbiage(copy.categories), language));
+      if (!category || refresh) {
+        setServiceCategory(cloneCategory);
+        setServices(cloneServices);
       }
 
-      if (category && !services) {
-        // filter services by category id
-        setServices(verbiage(copy.services).filter(item => item.categories.includes(category.id)));
-      }
-
-      if (services && serviceUrl && service === null) {
-        setService(FindServiceByPath(serviceUrl, services, language) || false);
+      if (serviceUrl) {
+        setService(FindServiceByPath(serviceUrl, cloneServices, language) || false);
       }
     }
   }

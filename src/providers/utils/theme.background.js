@@ -16,8 +16,8 @@ export default function ThemeBackground (props, theme, variation) {
     },
     light: {
       dark: theme.palette.primary.dark,
-      light: theme.palette.primary.main,
-      main: theme.palette.primary.light,
+      light: theme.palette.primary.light,
+      main: theme.palette.primary.primary,
     },
     light2: {
       dark: theme.palette.secondary.dark,

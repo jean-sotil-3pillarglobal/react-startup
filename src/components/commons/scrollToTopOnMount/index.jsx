@@ -1,8 +1,13 @@
 import React from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 
 class ScrollToTopOnMount extends React.Component {
   componentDidMount() {
-    window.scrollTo(0, 0);
+    scroll.scrollToTop({
+      delay: 0,
+      duration: 0,
+      smooth: true,
+    });
   }
 
   render() {

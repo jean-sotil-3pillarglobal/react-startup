@@ -17,8 +17,6 @@ import {
   selectVariantVerbiageAction,
 } from './../../store/actions/components/footer';
 
-import ScrollToTopOnMount from '../../components/commons/scrollToTopOnMount';
-
 import Helmet from '../../components/commons/helmet';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
@@ -152,7 +150,6 @@ class Home extends Component {
         </Element>
 
         <Footer />
-        <ScrollToTopOnMount />
       </Fragment>
     );
   }

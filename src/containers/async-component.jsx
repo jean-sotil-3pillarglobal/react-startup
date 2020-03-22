@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Loading from '../components/commons/preloader';
+import ScrollToTopOnMount from '../components/commons/scrollToTopOnMount';
 
 const asyncComponent = (importComponent) => {
   return class extends Component {
@@ -17,7 +18,12 @@ const asyncComponent = (importComponent) => {
 
     render = () => {
       const C = this.state.component;
-      return C ? <C {...this.props} /> : <Loading />;
+      return C ? (
+        <Fragment>
+          <C {...this.props} />
+          <ScrollToTopOnMount />
+        </Fragment>
+      ) : <Loading />;
     }
   };
 };

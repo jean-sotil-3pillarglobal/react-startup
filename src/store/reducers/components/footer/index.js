@@ -20,7 +20,7 @@ export const selectedLanguageReducer = (state = config.defaultLang, action) => {
   }
 };
 
-export const selectedVariantVerbiageReducer = (state = false, action) => {
+export const selectedVariantVerbiageReducer = (state = VerbiageOfDefault, action) => {
   if (action.type === VARIANT_VERBIAGE_SELECTED) {
     let value;
     switch (action.payload) {

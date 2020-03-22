@@ -8,12 +8,12 @@ import React, {
 } from 'react';
 
 import {
-  Box,
   Card,
   CardActions,
   CardContent,
   CardHeader,
   CardMedia,
+  Divider,
   Grid,
   Paper,
   Typography,
@@ -41,7 +41,10 @@ import SmartImg from './../../../components/commons/img';
 const variant = 'light';
 
 const styles = theme => ({
-  button: {},
+  button: {
+    cursor: 'pointer',
+    margin: '0 auto',
+  },
   caption: () => ({
     background: ThemeBackground({ variant }, theme, 'dark'),
     color: ThemeColor({ variant }, theme),
@@ -49,7 +52,6 @@ const styles = theme => ({
     padding: theme.spacing(4),
     width: '100%',
   }),
-  col2: {},
   container: {
     background: 'transparent',
   },
@@ -65,11 +67,17 @@ const styles = theme => ({
     textAlign: 'center',
   },
   descriptionContainer: {
-    background: ThemeBackground({ variant }, theme, 'dark'),
-    margin: 0,
+    background: ThemeBackground({ variant }, theme, 'light'),
+    marginTop: theme.spacing(8),
     maxWidth: 'initial',
     minHeight: 'initial',
     padding: `${theme.spacing(1)}px 0`,
+  },
+  details: {
+    padding: `${theme.spacing(4)}px 0 0 0`,
+  },
+  divider: {
+    margin: `${theme.spacing(4)}px 0`,
   },
   h3: {
     fontSize: '1em',
@@ -79,9 +87,7 @@ const styles = theme => ({
     padding: `${theme.spacing(2)}px 0`,
     width: '100%',
   },
-  icon: {
-    fontSize: '3rem',
-  },
+  icon: {},
   images: {
     border: `1px solid ${ThemeBackground({ variant }, theme, 'light')}`,
     marginTop: theme.spacing(2),
@@ -93,7 +99,7 @@ const styles = theme => ({
     '&:hover .MuiCardMedia-root': {
       filter: 'grayscale(0%)',
     },
-    backgroundSize: 'cover',
+    background: ThemeBackground({ variant }, theme, 'main'),
     border: '0 solid transparent',
     borderColor: ThemeBackground({ variant }, theme, 'light'),
     borderWidth: '2px',
@@ -111,37 +117,29 @@ const styles = theme => ({
     zIndex: 2,
   },
   itemContent: {
-    padding: `${theme.spacing(8)}px`,
+    padding: 0,
   },
   itemHeader: {},
-  itemList: {
-    background: theme.palette.utils.transparent,
-  },
+  itemList: {},
   itemMedia: {
-    filter: 'grayscale(100%)',
-    height: theme.spacing(9),
-  },
-  itemMedia2: {
     backgroundSize: 'cover',
     height: 400,
+    marginTop: theme.spacing(2),
+    position: 'relative',
   },
   itemSelected: {
-    '& .MuiCardMedia-root': {
-      filter: 'grayscale(0%)',
-    },
     borderColor: ThemeColor({ variant }, theme),
+    color: ThemeColor({ variant }, theme),
+    fontWeight: 'bolder',
   },
   itemTitle: {
-    paddingRight: '30%',
+    background: 'transparent',
+    color: ThemeColor({ variant }, theme),
+    paddingRight: '20%',
     textTransform: 'capitalize',
   },
   svg: {
     marginBottom: theme.spacing(2),
-  },
-  title: {
-    background: ThemeBackground({ variant }, theme, 'main'),
-    padding: theme.spacing(2),
-    textTransform: 'capitalize',
   },
   titleContainer: {
     background: 'transparent',
@@ -149,6 +147,12 @@ const styles = theme => ({
     position: 'relative',
     textAlign: 'center',
     zIndex: 1,
+  },
+  titleHeader: {
+    background: ThemeBackground({ variant }, theme, 'light'),
+    opacity: 0.8,
+    padding: theme.spacing(1),
+    textTransform: 'capitalize',
   },
 });
 
@@ -216,20 +220,27 @@ function SectionA (props: {
       }
     } else if (service && service.id) {
       view = (
-        <Paper className={classes.col2} elevation={0}>
+        <Paper className={classes.details} elevation={0}>
           <Card key={service.id} dense="true" elevation={0}>
-            <CardMedia
-              className={classes.itemMedia2}
-              image={service.background}
+            <CardHeader
+              title={
+                <Typography
+                  variant="h2"
+                  className={classes.itemTitle}
+                >
+                  <LangToggler id={service.title} />
+                </Typography>
+              }
             />
+            <CardMedia
+              className={classes.itemMedia}
+              image={service.background}
+            >
+              <Opacity opacity={0.4} />
+            </CardMedia>
+            <Divider className={classes.divider} />
             <CardContent
               className={classes.itemContent}>
-              <Typography
-                variant="h3"
-                className={classes.title}
-              >
-                <LangToggler id={service.title} />
-              </Typography>
               {service.content &&
                 <Fragment>
                   {service.content.map((item, y) => {
@@ -245,6 +256,7 @@ function SectionA (props: {
                       </Typography>
                     );
                   })}
+                  <Divider className={classes.divider} />
                 </Fragment>
               }
             </CardContent>
@@ -252,20 +264,19 @@ function SectionA (props: {
               disableSpacing
             >
               <Link
+                className={classes.button}
                 activeClass="active"
                 smooth
                 spy
                 to={constants.LINK_CONTACT_FORM_2}
               >
-                <Box p={1} key={`category-link-${service.id}`}>
-                  <LangButton
-                    className={classes.button}
-                    lang={service.cta}
-                    pos="right"
-                    onClick={() => setShowForm(true)}>
-                    <Icon variant="primary" name="left_arrow" />
-                  </LangButton>
-                </Box>
+                <LangButton
+                  lang={service.cta}
+                  pos="right"
+                  onClick={() => setShowForm(true)}
+                  variant="dark2">
+                  <Icon variant="primary" name="left_arrow" />
+                </LangButton>
               </Link>
             </CardActions>
           </Card>
@@ -280,104 +291,127 @@ function SectionA (props: {
         <Opacity opacity={0.5} zIndex={0} variant="light" />
         <Paper className={classes.titleContainer} elevation={0}>
           <Typography
-            variant="h2"
-            className={classes.title}
+            className={classes.titleHeader}
+            variant="h3"
           >
             <LangToggler id={category.title} />
           </Typography>
         </Paper>
       </Parallax>
-      <SectionBlock className={classes.descriptionContainer}>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          spacing={1}>
+      <Divider />
+      <Element name={constants.LINK_CONTACT_FORM_2}>
+        <SectionBlock className={classes.descriptionContainer}>
           <Grid
-            item
-            sm={12}
-            md={10}
-            lg={10}
-          >
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            spacing={1}>
             <Grid
-              container
+              item
+              sm={12}
+              md={10}
+              lg={10}
             >
-              {!service && (
+              <Grid
+                container
+                direction="row"
+                justify="flex-start"
+                alignItems="flex-start"
+              >
+                {!service && (
+                  <Grid
+                    item
+                    sm={12}
+                    md={6}
+                    lg={6}
+                  >
+                    <Typography
+                      variant="body1"
+                      className={classes.description}
+                    >
+                      <LangToggler id={category.description} />
+                    </Typography>
+                  </Grid>)
+                }
+                {showForm && (
+                  <Grid
+                    item
+                    sm={12}
+                    md={(!service || showForm) ? 6 : 12}
+                    lg={(!service || showForm) ? 6 : 12}
+                  >
+                    <Typography
+                      variant="body1"
+                      className={classes.description}
+                    >
+                      <LangToggler id={category.description} />
+                    </Typography>
+                  </Grid>
+                )}
                 <Grid
                   item
                   sm={12}
-                  md={6}
-                  lg={6}
+                  md={(!service || showForm) ? 6 : 12}
+                  lg={(!service || showForm) ? 6 : 12}
                 >
-                  <Typography
-                    variant="body1"
-                    className={classes.description}
-                  >
-                    <LangToggler id={category.description} />
-                  </Typography>
-                </Grid>)
-              }
-              <Grid
-                item
-                sm={12}
-                md={!service ? 6 : 12}
-                lg={!service ? 6 : 12}
-              >
-                {view}
+                  {view}
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid
-            item
-            sm={12}
-            md={10}
-            lg={10}
-          >
-            <Element name={constants.LINK_CONTACT_FORM_2}>
-              {services && services.map(item => (
-                <Card
-                  key={item.id}
-                  dense="true"
-                  className={classnames(classes.item, (service && service.id === item.id) && classes.itemSelected)}
-                >
-                  <CardHeader
-                    avatar={
-                      <Icon name={category.ico} color={category.color} className={classes.icon} />
-                    }
-                    className={classes.itemHeader}
-                    title={
-                      <Typography
-                        variant="h4"
-                        className={classes.itemTitle}
-                      >
-                        <LangToggler id={item.title} />
-                        <Opacity opacity={0.4} />
-                      </Typography>
-                    }
-                  />
-                  <CardActions
-                    className={classes.itemActions}
-                    disableSpacing
+            <Grid
+              item
+              sm={12}
+              md={10}
+              lg={10}
+            >
+              {services && services.map((item) => {
+                const seleted = (service && service.id === item.id);
+
+                return (
+                  <Card
+                    key={item.id}
+                    dense="true"
+                    className={classnames(classes.item, seleted && classes.itemSelected)}
                   >
-                    <LangButton
-                      className={classes.button}
-                      lang={category.cta}
-                      onClick={() => {
-                        setShowForm(false);
-                        onServiceListClick(category, item);
-                      }}
-                      variant="light"
-                      pos="right">
-                      <Icon name="keyboard_arrow_right" />
-                    </LangButton>
-                  </CardActions>
-                </Card>
-              ))}
-            </Element>
+                    <CardHeader
+                      avatar={
+                        <Icon name={category.ico} color={category.color} className={classnames(classes.icon, seleted && classes.itemSelected)} />
+                      }
+                      className={classes.itemHeader}
+                      title={
+                        <Typography
+                          variant="h4"
+                          className={classnames(classes.itemTitle, seleted && classes.itemSelected)}
+                        >
+                          <LangToggler id={item.title} />
+                          <Opacity opacity={0.4} />
+                        </Typography>
+                      }
+                    />
+                    <CardActions
+                      className={classes.itemActions}
+                      disableSpacing
+                    >
+                      <LangButton
+                        className={classnames(classes.button, seleted && classes.itemSelected)}
+                        lang={category.cta}
+                        onClick={() => {
+                          setShowForm(false);
+                          onServiceListClick(category, item);
+                        }}
+                        variant="light"
+                        pos="right">
+                        <Icon className={classnames(classes.icon, seleted && classes.itemSelected)} name="keyboard_arrow_right" />
+                      </LangButton>
+                    </CardActions>
+                  </Card>
+                );
+              })}
+            </Grid>
           </Grid>
-        </Grid>
-      </SectionBlock>
+        </SectionBlock>
+      </Element>
     </Paper>
   );
 }

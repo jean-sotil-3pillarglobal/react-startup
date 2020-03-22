@@ -26,6 +26,8 @@ const styles = theme => ({
   }),
   container: props => ({
     background: ThemeBackground(props, theme, 'main'),
+    borderRadius: '0 0 0 0',
+    paddingTop: theme.spacing(4),
   }),
   subtitle: props => ({
     color: ThemeColor(props, theme),
