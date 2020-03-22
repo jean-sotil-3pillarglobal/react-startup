@@ -10,7 +10,6 @@ import {
 
 // provider
 import LangGenerateTree from './../../../../providers/utils/lang.generate.tree';
-// import LangToggler from './../../../../providers/lang/toggler';
 import ThemeBackground from './../../../../providers/utils/theme.background';
 import ThemeColor from './../../../../providers/utils/theme.color';
 
@@ -64,12 +63,14 @@ const init = {
 class ContactFormLayout extends Component {
   constructor(props) {
     super(props);
+
     const {
       proxy: {
         verbiage,
       },
     } = this.props;
 
+    // init with forms
     init.forms = verbiage(copy.forms).map((form) => {
       const cloneForm = form;
 
@@ -119,7 +120,15 @@ class ContactFormLayout extends Component {
     });
   }
 
-  handleSubmit = () => {}
+  handleSubmit = (valid) => {
+    const {
+      document,
+    } = this.state;
+
+    if (valid) {
+      console.log(document);
+    }
+  }
 
   render () {
     const {

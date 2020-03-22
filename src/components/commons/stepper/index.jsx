@@ -10,6 +10,7 @@ import {
   Paper,
   Step,
   StepContent,
+  StepIcon,
   StepLabel,
   Stepper,
   withStyles,
@@ -69,6 +70,13 @@ const getSteps = (forms, language) => {
 const getForm = (i, forms) => {
   return forms[i] || null;
 };
+
+function QontoStepIcon () {
+  return (
+    <StepIcon icon={<Icon name="error" />} />
+  );
+}
+
 
 function StepperForm (props: {
   // size
@@ -145,7 +153,13 @@ function StepperForm (props: {
 
   const [disabled, setDisabled] = useState(true);
 
+  const steps = getSteps(forms, language);
+
   const handleNext = () => {
+    if (activeStep === steps.length - 1) {
+      onSubmit(formState.isValid);
+    }
+
     setActiveStep(step => step + 1);
   };
 
@@ -166,8 +180,6 @@ function StepperForm (props: {
   //   setDisabled(true);
   //   onReset();
   // };
-
-  const steps = getSteps(forms, language);
 
   // // check next enable
   CheckNext(forms, activeStep, document)
@@ -199,6 +211,7 @@ function StepperForm (props: {
                     <Stepper
                       activeStep={activeStep}
                       orientation="vertical"
+                      alternativeLabel
                     >
                       {steps.map((label, i) => {
                         const form = getForm(i, forms);
@@ -239,7 +252,7 @@ function StepperForm (props: {
                                     <LangButton
                                       disabled={disabled}
                                       lang={activeStep === steps.length - 1 ? form.cta : form.cta}
-                                      onClick={activeStep === steps.length - 1 ? onSubmit : handleNext}
+                                      onClick={handleNext}
                                       variant={variant}
                                       typeButton={TYPES.CONTAINED}
                                       className={classnames(classes.button, !disabled && classes.mobileStepperActive)}>
@@ -265,6 +278,14 @@ function StepperForm (props: {
                           </Step>
                         );
                       })}
+                      <Step>
+                        <StepLabel StepIconComponent={QontoStepIcon} className={classes.item}>
+                          Thank you
+                        </StepLabel>
+                        <StepContent>
+                          Your request was sent
+                        </StepContent>
+                      </Step>
                     </Stepper>
                   </Paper>
                 </Grid>

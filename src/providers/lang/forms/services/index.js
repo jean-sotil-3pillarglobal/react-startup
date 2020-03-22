@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const SERVICES_INFORMATION_1_1 = [
   {
     input_type: 'id',
@@ -156,6 +158,7 @@ export const SERVICES_INFORMATION_1_2 = [
       en: 'fecha',
       es: 'fecha',
     },
+    minDate: moment(),
     required: true,
     rules: [
       { type: 'date' },

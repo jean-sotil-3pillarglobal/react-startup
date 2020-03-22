@@ -30,6 +30,7 @@ function DateField (props: {
   format: string,
   label: string,
   locale: string,
+  minDate: Object,
   name: string,
   proxy: Object,
   required: Boolean,
@@ -41,6 +42,7 @@ function DateField (props: {
     format,
     label,
     locale,
+    minDate,
     name,
     proxy,
     required,
@@ -94,6 +96,10 @@ function DateField (props: {
       keyboardIcon: <Icon name="access_time" color="rgba(0, 0, 0, 0.54)" />,
       variant: 'dialog',
     };
+  }
+
+  if (minDate) {
+    datePickerProps.minDate = minDate;
   }
 
   return (

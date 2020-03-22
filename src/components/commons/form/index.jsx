@@ -128,6 +128,7 @@ class FormBlock extends Component {
                     key,
                     label,
                     mask,
+                    minDate,
                     options,
                     placeholder,
                     required,
@@ -144,6 +145,7 @@ class FormBlock extends Component {
                         id={key}
                         lang={label}
                         mask={mask || ''}
+                        minDate={minDate}
                         name={key}
                         options={options || []}
                         placeholder={placeholder}

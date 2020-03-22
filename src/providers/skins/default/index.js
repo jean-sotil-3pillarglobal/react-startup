@@ -284,7 +284,7 @@ const overrides = {
     },
     root: {
       border: '1px solid transparent',
-      padding: 20,
+      padding: 8,
     },
   },
   MuiStepper: {
