@@ -1,18 +1,14 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 
-class ScrollToTopOnMount extends React.Component {
-  componentDidMount() {
+export default function () {
+  useEffect(() => {
     scroll.scrollToTop({
       delay: 0,
-      duration: 0,
+      duration: 1000,
       smooth: true,
     });
-  }
+  });
 
-  render() {
-    return null;
-  }
+  return null;
 }
-
-export default ScrollToTopOnMount;

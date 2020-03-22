@@ -11,6 +11,8 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import { scroller as scroll } from 'react-scroll';
+
 import {
   selectLanguageAction,
   selectVariantVerbiageAction,
@@ -24,11 +26,13 @@ import {
 
 import Helmet from '../../components/commons/helmet';
 import Footer from '../../components/footer';
+
 import SectionA from './section-1/index';
 
 // commons
 import ContactFormLayout from '../../components/layouts/commons/contact_1';
 import Loading from './../../components/commons/preloader';
+import ScrollToTopOnMount from '../../components/commons/scrollToTopOnMount';
 import ServicesLayout from '../../components/layouts/commons/services_1';
 
 // provider
@@ -42,6 +46,10 @@ import {
   FindServiceByPath,
   FindServiceCategoryByPath,
 } from './../../providers/utils/filter.services';
+
+import {
+  constants,
+} from './../../providers/config';
 
 const styles = () => ({
   container: {
@@ -80,6 +88,7 @@ class Services extends Component {
   componentDidUpdate = (prevProps) => {
     if (prevProps.match.url !== this.props.match.url) {
       this.setServicesState(true);
+      scroll.scrollTo(constants.LINK_CONTACT_FORM_2);
     }
   }
 
@@ -135,10 +144,6 @@ class Services extends Component {
     setService(null);
     setServiceCategory(null);
     setServices(null);
-
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 500);
   }
 
   props: {
@@ -160,6 +165,7 @@ class Services extends Component {
 
     this.reset();
     setServiceCategory(item);
+    this.setServicesState();
     cb(true);
   }
 
@@ -220,6 +226,7 @@ class Services extends Component {
         </SectionA>
         <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
         <Footer />
+        <ScrollToTopOnMount />
       </Fragment>) || <Loading />
     );
   }
