@@ -49,7 +49,7 @@ const styles = theme => ({
     padding: `${theme.spacing(12)}px 0 0 0`,
     position: 'relative',
     textAlign: 'center',
-    zIndex: -2,
+    zIndex: 0,
   },
   icon: {
     fontSize: '1rem',
@@ -105,7 +105,7 @@ class SectionA extends Component {
         container="true"
         className={classes.hero}
         elevation={0}>
-        <Opacity variant="primary" />
+        <Opacity opacity={0} variant="primary" />
         {verbiage(copy.svg_show) && <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="primary" />}
         {verbiage(copy.background_show) && <SmartImg proxy={proxy} src={verbiage(copy.background)} className={classes.background} />}
         <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />

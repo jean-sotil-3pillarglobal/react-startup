@@ -41,12 +41,16 @@ const customStyles = {
       },
       fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       fontSize: '1em',
-      fontWeight: 800,
       padding: '4px',
       textTransform: 'capitalize',
-      width: '40%',
     });
   },
+  option: () => ({
+    fontSize: '0.9em',
+    fontWeight: 500,
+    padding: '8px',
+    textTransform: 'capitalize',
+  }),
   placeholder: () => ({
     display: 'none',
     fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
@@ -139,6 +143,16 @@ const ForwardTextField = React.forwardRef((props: {
   customStyles.Control = () => ({
     backgroundColor: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
+  });
+
+  customStyles.option = () => ({
+    backgroundColor: ThemeBackground(props, theme, 'light'),
+    borderBottom: `1px solid '${ThemeBackground(props, theme, 'main')}'`,
+    fontSize: '0.8em',
+    fontWeight: 400,
+    marginBottom: '1px',
+    padding: '8px 16px',
+    textTransform: 'capitalize',
   });
 
   return (

@@ -73,7 +73,7 @@ const getForm = (i, forms) => {
 
 function QontoStepIcon () {
   return (
-    <StepIcon icon={<Icon name="error" />} />
+    <StepIcon icon={<Icon color="success" name="error" />} />
   );
 }
 
@@ -84,6 +84,7 @@ function StepperForm (props: {
   md: Integer,
   lg: Integer,
   // props
+  // onReset: Function,
   classes: Object,
   className: Object,
   copy: Object,
@@ -92,9 +93,9 @@ function StepperForm (props: {
   id: String,
   onBlur: Function,
   onChange: Function,
-  // onReset: Function,
   onSubmit: Function,
   proxy: Object,
+  valid: Boolean,
   variant: String,
 }) {
   const {
@@ -117,6 +118,7 @@ function StepperForm (props: {
       language,
       verbiage,
     },
+    valid,
     variant,
   } = props;
 
@@ -195,6 +197,10 @@ function StepperForm (props: {
       }
     });
 
+  if (!valid && (activeStep === steps.length + 1)) {
+    handleBack();
+  }
+
   return (
     <Fragment>
       {steps && (
@@ -211,9 +217,8 @@ function StepperForm (props: {
                     <Stepper
                       activeStep={activeStep}
                       orientation="vertical"
-                      alternativeLabel
                     >
-                      {steps.map((label, i) => {
+                      {!valid && steps.map((label, i) => {
                         const form = getForm(i, forms);
 
                         return (
@@ -240,52 +245,61 @@ function StepperForm (props: {
                                   />
                                 );
                               })}
-
-                              {activeStep < steps.length && (
-                                <MobileStepper
-                                  className={classes.mobileStepper}
-                                  variant="dots"
-                                  steps={steps.length + 1}
-                                  position="static"
-                                  activeStep={activeStep}
-                                  nextButton={
-                                    <LangButton
-                                      disabled={disabled}
-                                      lang={activeStep === steps.length - 1 ? form.cta : form.cta}
-                                      onClick={handleNext}
-                                      variant={variant}
-                                      typeButton={TYPES.CONTAINED}
-                                      className={classnames(classes.button, !disabled && classes.mobileStepperActive)}>
-                                      <Icon name="arrow_right" className={classes.icon} />
-                                    </LangButton>
-                                  }
-                                  backButton={
-                                    <LangButton
-                                      disabled={activeStep === 0}
-                                      lang={copy.back}
-                                      onClick={handleBack}
-                                      typeButton={TYPES.CONTAINED}
-                                      variant={variant}
-                                      className={classnames(classes.button, activeStep !== 0 && classes.mobileStepperActive)}
-                                      pos="left"
-                                    >
-                                      <Icon name="arrow_left" className={classes.icon} />
-                                    </LangButton>
-                                  }
-                                />
-                              )}
+                              <MobileStepper
+                                className={classes.mobileStepper}
+                                variant="dots"
+                                steps={steps.length + 1}
+                                position="static"
+                                activeStep={activeStep}
+                                nextButton={
+                                  <LangButton
+                                    disabled={disabled}
+                                    lang={activeStep === steps.length - 1 ? form.cta : form.cta}
+                                    onClick={handleNext}
+                                    variant={variant}
+                                    typeButton={TYPES.CONTAINED}
+                                    className={classnames(classes.button, !disabled && classes.mobileStepperActive)}>
+                                    <Icon name="arrow_right" className={classes.icon} />
+                                  </LangButton>
+                                }
+                                backButton={
+                                  <LangButton
+                                    disabled={activeStep === 0}
+                                    lang={copy.back}
+                                    onClick={handleBack}
+                                    typeButton={TYPES.CONTAINED}
+                                    variant={variant}
+                                    className={classnames(classes.button, activeStep !== 0 && classes.mobileStepperActive)}
+                                    pos="left"
+                                  >
+                                    <Icon name="arrow_left" className={classes.icon} />
+                                  </LangButton>
+                                }
+                              />
                             </StepContent>
                           </Step>
                         );
                       })}
-                      <Step>
-                        <StepLabel StepIconComponent={QontoStepIcon} className={classes.item}>
-                          Thank you
-                        </StepLabel>
-                        <StepContent>
-                          Your request was sent
-                        </StepContent>
-                      </Step>
+                      {valid && (
+                        <Step>
+                          <StepLabel StepIconComponent={QontoStepIcon} className={classes.item}>
+                            Thank you
+                          </StepLabel>
+                          <StepContent>
+                            <LangButton
+                              disabled={activeStep === 0}
+                              lang={copy.back}
+                              onClick={handleBack}
+                              typeButton={TYPES.CONTAINED}
+                              variant={variant}
+                              className={classnames(classes.button, activeStep !== 0 && classes.mobileStepperActive)}
+                              pos="left"
+                            >
+                              <Icon name="arrow_left" className={classes.icon} />
+                            </LangButton>
+                          </StepContent>
+                        </Step>
+                      )}
                     </Stepper>
                   </Paper>
                 </Grid>

@@ -1,8 +1,9 @@
 
+import { cloneDeep } from 'lodash';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 import Fade from 'react-reveal/Fade';
 import React, { Component } from 'react';
-import { cloneDeep } from 'lodash';
 
 import {
   withStyles,
@@ -125,9 +126,43 @@ class ContactFormLayout extends Component {
       document,
     } = this.state;
 
-    if (valid) {
-      console.log(document);
-    }
+    return new Promise((resolve, reject) => {
+      const request = {
+        data: document,
+        method: 'post',
+        url: '',
+      };
+
+      if (valid) {
+        const makeRequest = async () => {
+          try {
+            const result = await axios(request);
+
+            if (result) {
+              this.setState({
+                valid,
+              });
+
+              resolve();
+            }
+          } catch (error) {
+            let message = error.response
+              ? error.response.data.message
+              : error.message;
+            message = message || 'Oops something went wrong';
+            reject(message);
+          }
+        };
+
+        makeRequest.call(this);
+      } else {
+        let message = error.response
+          ? error.response.data.message
+          : error.message;
+        message = message || 'Oops something went wrong';
+        reject(message);
+      }
+    });
   }
 
   render () {

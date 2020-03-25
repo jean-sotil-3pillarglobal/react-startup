@@ -84,6 +84,7 @@ const styles = theme => ({
     border: `2px solid ${ThemeBackground(props, theme, 'dark')}`,
     color: ThemeColor(props, theme),
     cursor: 'default',
+    padding: `0 ${theme.spacing(2)}px`,
     position: 'relative',
   }),
   cardTitleOpacity: props => ({
@@ -133,6 +134,7 @@ const styles = theme => ({
     textAlign: 'center',
   },
   link: {
+    margin: '0 auto',
     textDecoration: 'none',
   },
   serviceIcon: props => ({
@@ -296,12 +298,15 @@ function ServicesLayout (props: {
           <CardActions
             disableSpacing
           >
-            <Link to={{
-              pathname: CreateUrlCategory(language, item),
-              state: {
-                category: item,
-              },
-            }}>
+            <Link
+              className={classes.link}
+              to={{
+                pathname: CreateUrlCategory(language, item),
+                state: {
+                  category: item,
+                },
+              }}
+            >
               <LangButton
                 className={classnames(classes.button, isHover && classes.buttonHover)}
                 lang={item.cta}

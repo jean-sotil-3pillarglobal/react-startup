@@ -130,6 +130,14 @@ const overrides = {
       textTransform: 'capitalize',
     },
   },
+  MuiDialogActions: {
+    root: {
+      '& *': {
+        color: PRIMARY.contrastText,
+      },
+      background: PRIMARY.dark,
+    },
+  },
   MuiDivider: {
     middle: {
       margin: '30px 0',
@@ -249,6 +257,14 @@ const overrides = {
     pointer: {
       backgroundColor: `${PRIMARY.contrastText}!important`,
     },
+    thumb: {
+      backgroundColor: `${PRIMARY.contrastText}!important`,
+    },
+  },
+  MuiPickersModal: {
+    dialogRoot: {
+      background: PRIMARY.main,
+    },
   },
   MuiStepConnector: {
     lineVertical: {
@@ -328,7 +344,7 @@ const typography = {
     textTransform: 'initial',
   },
   h4: {
-    fontSize: '1.6rem',
+    fontSize: '1.9rem',
     fontWeight: 400,
     textTransform: 'initial',
   },
