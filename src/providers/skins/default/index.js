@@ -266,6 +266,12 @@ const overrides = {
       background: PRIMARY.main,
     },
   },
+  MuiPickersYear: {
+    yearSelected: {
+      color: PRIMARY.contrastText,
+      fontSize: '1.4em',
+    },
+  },
   MuiStepConnector: {
     lineVertical: {
       display: 'none',

@@ -33,6 +33,11 @@ const customStyles = {
   indicatorSeparator: () => ({
     display: 'none',
   }),
+  menu: () => ({
+    borderRadius: '0 0 0 0',
+    margin: 0,
+    padding: 0,
+  }),
   multiValue: (provided) => {
     return ({
       ...provided,
@@ -141,17 +146,17 @@ const ForwardTextField = React.forwardRef((props: {
   }
 
   customStyles.Control = () => ({
-    backgroundColor: ThemeBackground(props, theme, 'light'),
+    backgroundColor: ThemeBackground(props, theme, 'dark'),
     color: ThemeColor(props, theme),
   });
 
   customStyles.option = () => ({
     backgroundColor: ThemeBackground(props, theme, 'light'),
-    borderBottom: `1px solid '${ThemeBackground(props, theme, 'main')}'`,
-    fontSize: '0.8em',
-    fontWeight: 400,
-    marginBottom: '1px',
-    padding: '8px 16px',
+    borderBottom: `2px solid '${ThemeBackground(props, theme, 'main')}'`,
+    fontSize: '14px',
+    fontWeight: 500,
+    marginBottom: '2px',
+    padding: '10px 15% 10px 28px',
     textTransform: 'capitalize',
   });
 

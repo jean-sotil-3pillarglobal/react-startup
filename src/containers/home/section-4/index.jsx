@@ -40,6 +40,7 @@ const styles = theme => ({
   title: {
     // textAlign: 'center',
     color: ThemeColor({ variant }, theme),
+    margin: `${theme.spacing(4)}px 0`,
     textTransform: 'capitalize',
   },
 });

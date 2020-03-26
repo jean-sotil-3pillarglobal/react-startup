@@ -29,11 +29,10 @@ const styles = theme => ({
     overflow: 'visible',
   }),
   helper: props => ({
-    background: ThemeBackground(props, theme, 'light'),
-    border: `1px solid ${ThemeBackground(props, theme, 'dark')}`,
+    border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
     color: ThemeColor(props, theme),
     margin: `${theme.spacing(1)}px 0 ${theme.spacing(4)}px`,
-    padding: theme.spacing(2),
+    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px`,
     width: '100%',
   }),
   icon: props => ({
