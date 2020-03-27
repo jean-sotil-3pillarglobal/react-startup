@@ -56,7 +56,7 @@ export default [
     },
   },
   {
-    component: 'caption',
+    component: 'body1',
     copy: {
       en: 'aplicar crema hidratante y bloqueador.',
       es: 'aplicar crema hidratante y bloqueador.',
