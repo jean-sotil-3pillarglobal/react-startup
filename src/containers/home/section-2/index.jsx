@@ -7,6 +7,10 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import { Link } from 'react-scroll';
+
+import { constants } from './../../../providers/config';
+
 // provider
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangToggler from './../../../providers/lang/toggler';
@@ -119,14 +123,20 @@ function SectionC (props: {
         alignItems="center"
       >
         <Grid item>
-          <Box p={1} key={copy.label}>
-            <LangButton
-              className={classes.cta}
-              lang={copy.cta}
-              variant="dark">
-              <Icon name="keyboard_arrow_right" className={classes.icon} />
-            </LangButton>
-          </Box>
+          <Link
+            smooth
+            spy
+            to={constants.LINK_SECTION_4}
+          >
+            <Box p={1} key={copy.label}>
+              <LangButton
+                className={classes.cta}
+                lang={copy.cta}
+                variant="dark">
+                <Icon name="keyboard_arrow_right" className={classes.icon} />
+              </LangButton>
+            </Box>
+          </Link>
         </Grid>
       </Grid>
     </SectionBlock>
