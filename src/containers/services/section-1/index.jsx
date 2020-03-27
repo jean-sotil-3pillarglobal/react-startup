@@ -82,7 +82,10 @@ const styles = theme => ({
   h3: {
     fontSize: '1em',
   },
-  h4: {},
+  h4: {
+    marginTop: theme.spacing(6),
+    textDecoration: 'underline',
+  },
   headroom: {
     padding: `${theme.spacing(2)}px 0`,
     width: '100%',
@@ -130,7 +133,7 @@ const styles = theme => ({
   itemSelected: {
     borderColor: ThemeColor({ variant }, theme),
     color: ThemeColor({ variant }, theme),
-    fontWeight: 'bolder',
+    fontWeight: 600,
   },
   itemTitle: {
     background: 'transparent',
@@ -381,7 +384,7 @@ function SectionA (props: {
                       className={classes.itemHeader}
                       title={
                         <Typography
-                          variant="h4"
+                          variant="h5"
                           className={classnames(classes.itemTitle, seleted && classes.itemSelected)}
                         >
                           <LangToggler id={item.title} />

@@ -153,7 +153,7 @@ const ForwardTextField = React.forwardRef((props: {
   customStyles.option = () => ({
     backgroundColor: ThemeBackground(props, theme, 'light'),
     borderBottom: `2px solid '${ThemeBackground(props, theme, 'main')}'`,
-    fontSize: '14px',
+    fontSize: '18px',
     fontWeight: 500,
     marginBottom: '2px',
     padding: '10px 15% 10px 28px',

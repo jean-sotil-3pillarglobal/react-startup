@@ -111,11 +111,10 @@ const styles = theme => ({
     color: ThemeColor(props, theme),
   }),
   featuredText: props => ({
-    background: ThemeBackground(props, theme, 'main'),
+    background: ThemeBackground(props, theme, 'dark'),
     display: 'inline-block',
     fontSize: '.8em',
-    marginLeft: theme.spacing(2),
-    padding: '2px',
+    padding: theme.spacing(0.5),
     textTransform: 'capitalize',
   }),
   icon: () => ({
@@ -275,7 +274,7 @@ function ServicesLayout (props: {
                                   },
                                 }}
                               >
-                                <Typography variant="h5" className={classes.serviceTitle}>
+                                <Typography variant="caption" className={classes.serviceTitle}>
                                   <LangToggler id={service.label} />
                                   {service.featured &&
                                     <Typography

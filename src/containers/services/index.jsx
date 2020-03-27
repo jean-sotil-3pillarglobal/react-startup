@@ -130,6 +130,8 @@ class Services extends Component {
 
       if (serviceUrl) {
         setService(FindServiceByPath(serviceUrl, cloneServices, language) || false);
+      } else {
+        setService(null);
       }
     }
   }

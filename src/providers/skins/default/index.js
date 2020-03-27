@@ -325,13 +325,14 @@ const typography = {
   },
   body2: {
     fontSize: '1.6rem',
-    fontWeight: 700,
+    fontWeight: 500,
     textTransform: 'initial',
   },
   caption: {
     display: 'inline-block',
-    fontSize: '0.8rem',
+    fontSize: '1rem',
     fontWeight: 500,
+    lineHeight: 'normal',
     textTransform: 'initial',
   },
   h1: {
@@ -345,17 +346,16 @@ const typography = {
     textTransform: 'initial',
   },
   h3: {
-    fontSize: '2.2rem',
+    fontSize: '2.4rem',
     fontWeight: 400,
     textTransform: 'initial',
   },
   h4: {
-    fontSize: '1.9rem',
+    fontSize: '2.2rem',
     fontWeight: 400,
-    textTransform: 'initial',
   },
   h5: {
-    fontSize: '1rem',
+    fontSize: '1.8rem',
     fontWeight: 400,
     textTransform: 'initial',
   },
