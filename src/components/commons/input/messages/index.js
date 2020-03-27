@@ -1,5 +1,9 @@
 
 const Messages = {
+  check: {
+    en: 'should agree with our policies to proceed',
+    es: 'debes de estar deacuerdo con nuestras policas para continuar',
+  },
   date: {
     en: 'invalid date',
     es: 'fecha inválida',

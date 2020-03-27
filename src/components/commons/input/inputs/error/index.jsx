@@ -12,8 +12,10 @@ import Icon from '../../../icon';
 
 const styles = theme => ({
   container: {
+    display: 'inline',
     lineHeight: 0,
     position: 'relative',
+    textTransform: 'capitalize',
     top: theme.spacing(0.5),
   },
   icon: {
@@ -23,6 +25,7 @@ const styles = theme => ({
   },
   message: {
     color: theme.palette.error.main,
+    display: 'inline',
     position: 'relative',
     textTransform: 'capitalize',
     top: '-3px',

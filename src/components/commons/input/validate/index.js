@@ -2,9 +2,13 @@
 import Messages from '../messages';
 
 export default function (rule, language) {
-  const msg = Messages[rule.type][language];
+  const type = Messages[rule.type];
+  const msg = type && type[language];
 
   const validate = {
+    check: (value) => {
+      return value || msg;
+    },
     date: (date) => {
       return (date && date.isValid()) || msg;
     },

@@ -22,7 +22,6 @@ export function CheckNext (forms, activeStep, document) {
         disabled = true;
       } else if (
         (
-          !field['input_type'].includes('checkbox') &&
           !field['input_type'].includes('divider')
         ) &&
         (field.required && (document && document[field.key] === undefined))

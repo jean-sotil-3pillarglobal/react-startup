@@ -103,24 +103,6 @@ export const SERVICES_INFORMATION_1_1 = [
     type: 'text',
   },
   {
-    input_type: 'textarea',
-    key: 'message',
-    label: {
-      en: 'Message',
-      es: 'Mensaje',
-    },
-    placeholder: {
-      en: 'Hi, I would like to know...',
-      es: 'Hola, me gustaría saber más...',
-    },
-    required: false,
-    rules: [],
-    size_lg: 12,
-    size_md: 12,
-    size_sm: 12,
-    type: 'text',
-  },
-  {
     input_type: 'divider',
     key: 'divider_1',
     size_lg: 12,
@@ -198,7 +180,7 @@ export const SERVICES_INFORMATION_1_2 = [
     },
     required: true,
     rules: [
-      { type: 'required' },
+      { type: 'check' },
     ],
     size_lg: 12,
     size_md: 12,

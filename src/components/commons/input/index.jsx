@@ -1,10 +1,8 @@
 import 'react-toggle/style.css';
 import React, { Fragment, useState } from 'react';
-import Toggle from 'react-toggle';
 
 import {
   Divider,
-  FormControl,
   InputAdornment,
   Typography,
   withStyles,
@@ -18,6 +16,7 @@ import Icon from '../icon';
 import Messages from './messages';
 import Validate from './validate';
 
+import CheckField from './inputs/check';
 import DateField from './inputs/date';
 import IdField from './inputs/id';
 import PhoneField from './inputs/phone';
@@ -27,7 +26,6 @@ import TextField from './inputs/text';
 const styles = () => ({});
 
 function InputLayout (props: {
-  classes: Object,
   fieldType: string,
   label: string,
   lang: string,
@@ -43,7 +41,6 @@ function InputLayout (props: {
   const [focused, setFocused] = useState(false);
 
   const {
-    classes,
     fieldType,
     name,
     options,
@@ -155,16 +152,7 @@ function InputLayout (props: {
   };
 
   const field = {
-    checkbox: (
-      <FormControl fullWidth>
-        <Typography className="toggle" variant="caption">{newProps.label}</Typography>
-        <Toggle
-          defaultChecked={Boolean(document[name])}
-          className={classes.marginNormal}
-          onBlur={handleInputBlur}
-          onChange={handleChange} />
-      </FormControl>
-    ),
+    checkbox: <CheckField {...newProps} />,
     date: <DateField format="MM/DD/YYYY" locale={language} {...newProps} />,
     datetime: <DateField format="HH:MM:ss" locale={language} {...newProps} />,
     divider: <Divider variant="middle" />,
