@@ -347,20 +347,11 @@ const Verbiage = {
       },
     },
   },
-  quote: {
-    section_1: {
-      back: {
-        en: '< previous',
-        es: '< anterior',
-      },
-      forms,
-    },
-  },
   services: {
     section_1: {
       back: {
-        en: '< previous',
-        es: '< anterior',
+        en: 'Homepage',
+        es: 'Página Principal',
       },
       categories,
       id: 'services_index',

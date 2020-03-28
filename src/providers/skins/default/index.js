@@ -331,7 +331,7 @@ const typography = {
   caption: {
     display: 'inline-block',
     fontSize: '1rem',
-    fontWeight: 500,
+    fontWeight: 400,
     lineHeight: 'normal',
     textTransform: 'initial',
   },

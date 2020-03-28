@@ -66,6 +66,7 @@ const headers = LangGenerateTree(['headers', 'services'], [
 
 // copy:
 const copy = LangGenerateTree(['services', 'section_1'], [
+  'back',
   'categories',
   'services',
   'id',
@@ -165,9 +166,11 @@ class Services extends Component {
       setServiceCategory,
     } = this.props;
 
-    this.reset();
     setServiceCategory(item);
+
+    this.reset();
     this.setServicesState();
+
     cb(true);
   }
 
@@ -203,6 +206,7 @@ class Services extends Component {
     } = this.props;
 
     const proxy = {
+      copy,
       device,
       language,
       verbiage,
@@ -227,7 +231,7 @@ class Services extends Component {
           />
         </SectionA>
         <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
-        <Footer proxy={proxy} />
+        <Footer proxy={proxy} variant="light" />
         <ScrollToTopOnMount />
       </Fragment>) || <Loading />
     );

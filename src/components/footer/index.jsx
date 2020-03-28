@@ -49,6 +49,7 @@ const styles = theme => ({
   logo: {
     display: 'block',
     margin: 0,
+    textAlign: 'right',
   },
   title: props => ({
     color: ThemeColor(props, theme),
@@ -167,8 +168,9 @@ function Footer (props: {
           lg={2}
           md={2}
           sm={12}
+          className={classes.logo}
         >
-          <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
+          <SmartImg proxy={proxy} src={verbiage(copy.logo)} />
           <select
             onChange={handleChange}
             value={language}>

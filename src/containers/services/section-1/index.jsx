@@ -90,7 +90,12 @@ const styles = theme => ({
     padding: `${theme.spacing(2)}px 0`,
     width: '100%',
   },
-  icon: {},
+  icon: {
+    color: ThemeColor({ variant }, theme),
+    fontWeight: 200,
+    height: 18,
+    marginTop: theme.spacing(1),
+  },
   images: {
     border: `1px solid ${ThemeBackground({ variant }, theme, 'light')}`,
     marginTop: theme.spacing(2),
@@ -141,8 +146,14 @@ const styles = theme => ({
     paddingRight: '20%',
     textTransform: 'capitalize',
   },
+  navigation: {
+    padding: theme.spacing(2),
+  },
   svg: {
     marginBottom: theme.spacing(2),
+  },
+  title: {
+    textTransform: 'capitalize',
   },
   titleContainer: {
     background: 'transparent',
@@ -159,19 +170,11 @@ const styles = theme => ({
   },
 });
 
-// const NODE = 'services';
-// const SLOT = 'section_1';
-// // copy:
-// const copy = LangGenerateTree([NODE, SLOT], [
-//   'back',
-//   'promos',
-//   'services',
-// ]);
-
 function SectionA (props: {
   children: any,
   classes: Object,
   data: Object,
+  history: Object,
   match: Object,
   onServiceListClick: Function,
   proxy: Object,
@@ -180,6 +183,7 @@ function SectionA (props: {
     children,
     classes,
     data,
+    history,
     match: {
       params: {
         serviceUrl,
@@ -197,6 +201,10 @@ function SectionA (props: {
     service,
     services,
   } = data;
+
+  const {
+    copy,
+  } = proxy;
 
   if (!showForm) {
     if (!service) {
@@ -290,6 +298,49 @@ function SectionA (props: {
 
   return (
     <Paper className={classes.container} elevation={0}>
+      <Grid
+        container
+        className={classes.navigation}
+      >
+        <Grid
+          item
+          sm={12}
+          md={6}
+        >
+          <LangButton
+            lang={copy.back}
+            onClick={() => {
+              history.push('/');
+            }}
+            variant="light"
+            pos="left">
+            <Icon variant={variant} name="keyboard_arrow_left" />
+          </LangButton>
+        </Grid>
+        {(service && service.id) && (
+          <Grid
+            item
+            sm={12}
+            md={6}
+          >
+            <Typography
+              className={classes.title}
+              component="span"
+              variant="caption"
+            >
+              <LangToggler id={category.title} />
+            </Typography>
+            <Icon className={classes.icon} name="arrow_right" />
+            <Typography
+              className={classes.title}
+              component="span"
+              variant="caption"
+            >
+              <LangToggler id={service.title} />
+            </Typography>
+          </Grid>
+        )}
+      </Grid>
       <Parallax bgImage={category.background} strength={200} className={classes.background}>
         <Opacity opacity={0.5} zIndex={0} variant="light" />
         <Paper className={classes.titleContainer} elevation={0}>
@@ -379,7 +430,7 @@ function SectionA (props: {
                   >
                     <CardHeader
                       avatar={
-                        <Icon name={category.ico} color={category.color} className={classnames(classes.icon, seleted && classes.itemSelected)} />
+                        <Icon name={category.ico} color={category.color} className={classnames(seleted && classes.itemSelected)} />
                       }
                       className={classes.itemHeader}
                       title={
@@ -405,7 +456,7 @@ function SectionA (props: {
                         }}
                         variant="light"
                         pos="right">
-                        <Icon className={classnames(classes.icon, seleted && classes.itemSelected)} name="keyboard_arrow_right" />
+                        <Icon variant="light" className={classnames(seleted && classes.itemSelected)} name="keyboard_arrow_right" />
                       </LangButton>
                     </CardActions>
                   </Card>
