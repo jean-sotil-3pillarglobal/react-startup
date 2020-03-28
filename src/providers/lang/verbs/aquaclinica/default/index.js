@@ -2,7 +2,10 @@ import LangProxy from '../../../../utils/lang.proxy';
 
 import {
   constants,
+  info,
+  langs,
   publics,
+  social,
 } from '../../../../config';
 
 import categories from '../shared/categories';
@@ -54,6 +57,29 @@ const Verbiage = {
     },
   },
   components: {
+    footer: {
+      column: [
+        {
+          items: info,
+          title: {
+            en: 'Contact us',
+            es: 'Contactenos',
+          },
+        },
+        {
+          items: social,
+          title: {
+            en: 'Connect with us',
+            es: 'Conectese con nosotros',
+          },
+        },
+      ],
+      langs,
+      logo: {
+        desktop: '/static/images/logo.jpg',
+        mobile: '/static/images/logo.jpg',
+      },
+    },
     header: {
       cta: [
         {
@@ -67,29 +93,8 @@ const Verbiage = {
         desktop: '/static/images/logo.jpg',
         mobile: '/static/images/logo.jpg',
       },
-      phone: {
-        en: '(506) 9999-9999',
-        es: '(506) 9999-9999',
-      },
-      phone_icon: '/static/svg/social/phone.svg',
       publics,
-      social: [
-        {
-          icon: '/static/svg/social/fb.svg',
-          label: 'facebook',
-          link: '#facebook',
-        },
-        {
-          icon: '/static/svg/social/ig.svg',
-          label: 'instagram',
-          link: '#instagram',
-        },
-        {
-          icon: '/static/svg/social/email.svg',
-          label: 'email',
-          link: '#email',
-        },
-      ],
+      social,
       title: {
         en: 'clinica aqua',
         es: 'clinica aqua',
@@ -243,7 +248,6 @@ const Verbiage = {
     },
     section_4: {
       id: LINK_SECTION_4,
-      svg: '/static/svg/right_places.svg',
       title: {
         en: 'we would love helping you to find the best attention <br/>and health threatments, make your free quote now.',
         es: 'es 100% gratuito,<br/> te estamos esperando.',

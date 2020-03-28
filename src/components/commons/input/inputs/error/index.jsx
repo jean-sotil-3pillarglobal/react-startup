@@ -15,7 +15,6 @@ const styles = theme => ({
     display: 'inline',
     lineHeight: 0,
     position: 'relative',
-    textTransform: 'capitalize',
     top: theme.spacing(0.5),
   },
   icon: {
@@ -27,7 +26,6 @@ const styles = theme => ({
     color: theme.palette.error.main,
     display: 'inline',
     position: 'relative',
-    textTransform: 'capitalize',
     top: '-3px',
   },
 });

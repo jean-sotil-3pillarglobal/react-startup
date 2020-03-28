@@ -30,12 +30,8 @@ const styles = theme => ({
     width: '100%',
   },
   container: {
+    marginBottom: theme.spacing(20),
     padding: 0,
-  },
-  svg: {
-    bottom: theme.spacing(20),
-    right: theme.spacing(6),
-    width: '100%',
   },
   title: {
     // textAlign: 'center',
@@ -50,7 +46,6 @@ const SLOT = 'section_4';
 
 const copy = LangGenerateTree([NODE, SLOT], [
   'id',
-  'svg',
   'title',
 ]);
 

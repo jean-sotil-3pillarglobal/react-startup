@@ -1,10 +1,6 @@
-import React, {
-  Component,
-  Fragment,
-} from 'react';
+import React from 'react';
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import classnames from 'classnames';
-import { cloneDeep } from 'lodash';
 
 import {
   withStyles,
@@ -52,58 +48,28 @@ const styles = theme => ({
   }),
 });
 
-const init = {
-  src: null,
+const SVGLayout = (props: {
+  classes: Object,
+  className: Object,
+  src: String,
+}) => {
+  const {
+    classes,
+    className,
+    src,
+  } = props;
+
+  return (
+    <SvgLoader path={src} className={classnames(classes.root, className)}>
+      <SvgProxy selector="[fill*='#6c63ff']" data-color="svg-primary" />
+      <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-secondary" />
+      <SvgProxy selector="[fill*='#2f2e41']" data-color="svg-thrid" />
+      <SvgProxy selector="[fill*='#3f3d56']" data-color="svg-thrid" />
+      <SvgProxy selector="[fill*='#575a89']" data-color="svg-secondary" />
+      <SvgProxy selector="[fill*='#ff6584']" data-color="svg-secondary" />
+      <SvgProxy selector="[fill*='#575a88']" data-color="svg-thrid" />
+    </SvgLoader>
+  );
 };
-
-class SVGLayout extends Component {
-  constructor(props) {
-    super(props);
-    const stateClone = cloneDeep(init);
-    this.state = stateClone;
-  }
-
-  static getDerivedStateFromProps = (nextProps) => {
-    const {
-      src,
-    } = nextProps;
-
-    return {
-      src,
-    };
-  }
-
-  shouldComponentUpdate = (nextProps, nextState) => {
-    return this.state.src !== nextState.src;
-  }
-
-  props: {
-    classes: Object,
-    className: Object,
-  }
-
-  render () {
-    const {
-      classes,
-      className,
-    } = this.props;
-
-    const {
-      src,
-    } = this.state;
-
-    return (src && (
-      <SvgLoader path={src} className={classnames(classes.root, className)}>
-        <SvgProxy selector="[fill*='#6c63ff']" data-color="svg-primary" />
-        <SvgProxy selector="[fill*='#f2f2f2']" data-color="svg-secondary" />
-        <SvgProxy selector="[fill*='#2f2e41']" data-color="svg-thrid" />
-        <SvgProxy selector="[fill*='#3f3d56']" data-color="svg-thrid" />
-        <SvgProxy selector="[fill*='#575a89']" data-color="svg-secondary" />
-        <SvgProxy selector="[fill*='#ff6584']" data-color="svg-secondary" />
-        <SvgProxy selector="[fill*='#575a88']" data-color="svg-thrid" />
-      </SvgLoader>
-    )) || <Fragment />;
-  }
-}
 
 export default withStyles(styles)(SVGLayout);

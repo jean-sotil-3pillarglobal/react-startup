@@ -149,7 +149,7 @@ class Home extends Component {
           <SectionD proxy={proxy} variant="primary" />
         </Element>
 
-        <Footer />
+        <Footer variant="dark2" proxy={proxy} />
       </Fragment>
     );
   }

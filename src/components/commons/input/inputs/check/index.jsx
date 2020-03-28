@@ -20,7 +20,6 @@ const styles = () => ({
 });
 
 const ForwardCheckField = (props: {
-  focused: Boolean,
   label: String,
   name: String,
   onBlur: Function,
@@ -29,7 +28,6 @@ const ForwardCheckField = (props: {
   required: Boolean,
 }) => {
   const {
-    focused,
     label,
     name,
     onBlur,
@@ -71,7 +69,6 @@ const ForwardCheckField = (props: {
           top: '-12px',
           transform: 'initial',
         }}
-        focused={focused}
         error={error || false}
         htmlFor={name}
         required={required}

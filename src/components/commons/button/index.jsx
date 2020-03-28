@@ -27,12 +27,12 @@ const styles = theme => ({
     color: ThemeColor(props, theme),
     opacity: props.disabled ? 0.3 : 1,
   }),
-  fab: props => ({
-    '&:hover': {
-      background: ThemeBackground(props, theme, 'dark'),
+  fab: () => ({
+    '&:hover *': {
+      background: 'transparent',
     },
-    background: ThemeBackground(props, theme),
-    color: ThemeColor(props, theme),
+    background: 'transparent',
+    color: 'transparent',
   }),
   link: props => ({
     '&:active': {

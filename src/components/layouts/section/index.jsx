@@ -39,19 +39,21 @@ const styles = theme => ({
 });
 
 function SectionBlock (props: {
+  // id: string,
   align: string,
   children: Object,
   classes: Object,
   className: Object,
-  // id: string,
+  outside: Boolean,
   variant: string,
 }) {
   const {
+    // id,
     align,
     children,
     classes,
     className,
-    // id,
+    outside,
     variant,
   } = props;
 
@@ -62,20 +64,23 @@ function SectionBlock (props: {
         className={variant ? classes[variant] : classes.primary}
         square
       >
-        <Grid
-          container
-          direction="row"
-          justify={!align ? 'center' : align}
-          alignItems="center"
-          className={classnames(className, classes.container)}>
+        {!outside && (
           <Grid
-            item
-            sm={12}
-            md={11}
-            lg={10}>
-            {children}
+            container
+            direction="row"
+            justify={!align ? 'center' : align}
+            alignItems="center"
+            className={classnames(className, classes.container)}>
+            <Grid
+              item
+              sm={12}
+              md={11}
+              lg={10}>
+              {children}
+            </Grid>
           </Grid>
-        </Grid>
+        )}
+        {outside && children}
       </Paper>
     </Fade>
   );

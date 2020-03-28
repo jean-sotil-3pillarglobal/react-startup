@@ -150,9 +150,9 @@ const overrides = {
     root: {
       border: '0 solid',
       boxShadow: 'initial',
-      height: '30px',
+      height: '40px',
       minHeight: 'initial',
-      width: '30px',
+      width: '40px',
     },
   },
   MuiFormControl: {

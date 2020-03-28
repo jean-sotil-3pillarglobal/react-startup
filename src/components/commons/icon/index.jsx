@@ -14,6 +14,7 @@ const styles = theme => ({
     color: (props.variant && ThemeBackground(props, theme, 'dark')) || props.color || theme.palette.primary.main,
   }),
   svg: {
+    height: 'initial',
     width: '20px',
   },
 });
@@ -36,7 +37,7 @@ function IconLayout (props: {
       {name}
     </Icon>
   ) : (
-    <SVGComponent src={image} className={classes.svg} />
+    <SVGComponent src={image} className={classnames(classes.svg, className)} />
   );
 
 

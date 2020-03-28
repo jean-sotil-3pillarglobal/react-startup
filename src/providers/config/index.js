@@ -106,6 +106,68 @@ export const publics = [
 // private routes
 export const privates = [];
 
+// social links
+export const social = [
+  {
+    icon: '/static/svg/social/fb.svg',
+    isFab: true,
+    label: 'facebook',
+    link: '#facebook',
+  },
+  {
+    icon: '/static/svg/social/ig.svg',
+    isFab: true,
+    label: 'instagram',
+    link: '#instagram',
+  },
+  {
+    icon: '/static/svg/social/email.svg',
+    isFab: true,
+    label: 'email',
+    link: '#email',
+  },
+];
+
+export const info = [
+  {
+    icon: '/static/svg/social/phone.svg',
+    isFab: false,
+    label: '+506 2772-0960',
+  },
+  {
+    icon: '/static/svg/social/phone.svg',
+    isFab: false,
+    label: '+506 8801-2626',
+  },
+  {
+    icon: '/static/svg/social/email.svg',
+    isFab: false,
+    label: 'contacto@clinicaaqua.com',
+  },
+  {
+    icon: '/static/svg/social/location.svg',
+    isFab: false,
+    label: 'Pérez Zeledón, Costa Rica',
+  },
+];
+
+export const langs = [
+  {
+    label: {
+      en: 'english',
+      es: 'spanish',
+    },
+    value: 'en',
+  },
+  {
+    label: {
+      en: 'ingles',
+      es: 'español',
+    },
+    value: 'es',
+  },
+];
+
 //
 export const assets = {
   icons: {
@@ -117,15 +179,15 @@ export const assets = {
   },
 };
 
-
 const config = {
   assets,
-  defaultLang: 'en',
-  rootUrl: 'http://localhost:5000',
+  info,
+  langs,
   routes: {
     privates,
     publics,
   },
+  social,
 };
 
 

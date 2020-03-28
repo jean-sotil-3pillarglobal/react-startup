@@ -2,7 +2,7 @@
 const Messages = {
   check: {
     en: 'should agree with our policies to proceed',
-    es: 'debes de estar deacuerdo con nuestras policas para continuar',
+    es: 'debes aceptar nuestros terminos y condiciones',
   },
   date: {
     en: 'invalid date',
@@ -14,27 +14,27 @@ const Messages = {
   },
   empty: {
     en: 'select an option.',
-    es: 'selecciona una opción.',
+    es: 'selecciona una opción',
   },
   max: {
-    en: 'maximun $value digits.',
-    es: 'máximo $value dígitos.',
+    en: 'maximun $value digits',
+    es: 'máximo $value dígitos',
   },
   min: {
-    en: 'minimun $value digits.',
-    es: 'mínimo $value dígitos.',
+    en: 'minimun $value digits',
+    es: 'mínimo $value dígitos',
   },
   optional: {
     en: ' — is optional',
     es: ' — es opcional',
   },
   phone: {
-    en: 'invalid phone.',
-    es: 'telefono invalido.',
+    en: 'invalid phone',
+    es: 'telefono invalido',
   },
   required: {
-    en: 'required field.',
-    es: 'campo requerido.',
+    en: 'required field',
+    es: 'campo requerido',
   },
 };
 

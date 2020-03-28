@@ -227,7 +227,7 @@ class Services extends Component {
           />
         </SectionA>
         <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
-        <Footer />
+        <Footer proxy={proxy} />
         <ScrollToTopOnMount />
       </Fragment>) || <Loading />
     );
