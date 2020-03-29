@@ -1,6 +1,6 @@
 
 import { withRouter } from 'react-router-dom';
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 import {
   Grid,
@@ -49,62 +49,58 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'title',
 ]);
 
-class SectionA extends Component {
-  props: {
-    classes: Object,
-    proxy: Object,
-  }
+const SectionA = (props: {
+  classes: Object,
+  proxy: Object,
+}) => {
+  const {
+    classes,
+    proxy,
+  } = props;
 
-  render () {
-    const {
-      classes,
-      proxy,
-    } = this.props;
+  const {
+    verbiage,
+  } = proxy;
 
-    const {
-      verbiage,
-    } = proxy;
-
-    return (
-      verbiage &&
-      (
-        <Fragment>
-          <BannerA proxy={proxy} />
-          <SectionBlock className={classes.container} variant={variant} id={verbiage(copy.id)}>
+  return (
+    verbiage &&
+    (
+      <Fragment>
+        <BannerA proxy={proxy} />
+        <SectionBlock className={classes.container} variant={variant} id={verbiage(copy.id)}>
+          <Grid
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start"
+            spacing={6}>
             <Grid
-              container
-              direction="row"
-              justify="flex-start"
-              alignItems="flex-start"
-              spacing={6}>
-              <Grid
-                item
-                sm={12}
-                md={12}
-                lg={12}>
-                <Typography
-                  variant="h3"
-                  className={classes.title}
-                >
-                  <LangToggler id={copy.title} />
-                </Typography>
-              </Grid>
-              <Grid
-                item
-                sm={10}
-                md={6}
-                lg={6}>
-                <ContactFormLayout
-                  proxy={proxy}
-                  variant="primary"
-                />
-              </Grid>
+              item
+              sm={12}
+              md={12}
+              lg={12}>
+              <Typography
+                variant="h3"
+                className={classes.title}
+              >
+                <LangToggler id={copy.title} />
+              </Typography>
             </Grid>
-          </SectionBlock>
-        </Fragment>
-      )
-    );
-  }
-}
+            <Grid
+              item
+              sm={10}
+              md={6}
+              lg={6}>
+              <ContactFormLayout
+                proxy={proxy}
+                variant="primary"
+              />
+            </Grid>
+          </Grid>
+        </SectionBlock>
+      </Fragment>
+    )
+  );
+};
 
 export default withStyles(styles)(withRouter(SectionA));

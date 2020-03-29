@@ -170,6 +170,7 @@ const copy = LangGenerateTree([NODE, SLOT], [
 
 function ServicesLayout (props: {
   classes: Object,
+  history: Object,
   proxy: Object,
   setServiceCategory: Function,
   variant: String,
