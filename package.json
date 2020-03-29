@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "neutrino build --use @neutrinojs/airbnb @neutrinojs/react",
+    "server": "babel-node src/server/index.js",
     "start": "neutrino start --use @neutrinojs/airbnb @neutrinojs/react"
   },
   "engines": {
@@ -17,6 +18,7 @@
     "@material-ui/pickers": "^3.2.6",
     "@material-ui/styles": "^4.0.0",
     "axios": "^0.18.0",
+    "babel-node": "^0.0.1-security",
     "classnames": "^2.2.6",
     "color": "^3.1.1",
     "html-react-parser": "^0.7.0",
@@ -24,6 +26,7 @@
     "moment": "^2.24.0",
     "moment-timezone": "0.5.23",
     "node-sass": "^4.12.0",
+    "nodemailer": "^6.4.6",
     "packages": "^0.0.8",
     "postcss-loader": "^3.0.0",
     "prop-types": "^15.7.2",
