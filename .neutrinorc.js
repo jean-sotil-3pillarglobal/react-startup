@@ -58,6 +58,7 @@ module.exports = {
             'no-nested-ternary': 0,
             'no-restricted-syntax': 0,
             'no-undef': 0,
+            'no-underscore-dangle': 0,
             'object-curly-newline': 0,
             'object-shorthand': 0,
             'prefer-destructuring': 0,

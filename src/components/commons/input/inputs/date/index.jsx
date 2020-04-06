@@ -69,10 +69,12 @@ function DateField (props: {
     const date = moment(e);
     setValue(name, date, true);
 
+    date.mask = format;
+
     proxy.handleChange({
       target: {
         name,
-        value: (date.isValid() && date) || null,
+        value: date || null,
       },
     });
   };
@@ -98,10 +100,6 @@ function DateField (props: {
     };
   }
 
-  if (minDate) {
-    datePickerProps.minDate = minDate;
-  }
-
   return (
     <MuiPickersUtilsProvider utils={MomentUtils} moment={moment} locale={locale}>
       <Component
@@ -123,7 +121,10 @@ function DateField (props: {
         openTo={((isDate && (value === null && 'year')) || 'date') || 'hours'}
         autoOk
         animateYearScrolling={false}
-        {...datePickerProps}
+        {...{
+          minDate,
+          ...datePickerProps,
+        }}
       />
     </MuiPickersUtilsProvider>
   );

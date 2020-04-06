@@ -122,14 +122,38 @@ class ContactFormLayout extends Component {
 
   handleSubmit = (valid) => {
     const {
+      proxy: {
+        language,
+        // verbiage,
+      },
+    } = this.props;
+
+    const {
       document,
     } = this.state;
 
+    const cloneDocu = cloneDeep(document);
+
+    // formating dates
+    Object.keys(cloneDocu).forEach((key) => {
+      const value = cloneDocu[key];
+      if (value.mask) {
+        cloneDocu[key] = value.format(value.mask);
+      }
+    });
+
+    // Link on email:
+    cloneDocu.source = window.location.href;
+    // Current Lang:
+    cloneDocu.language = language;
+    // Copy for email:
+    // cloneDocu.categories = verbiage(copy.categories);
+
     return new Promise((resolve, reject) => {
       const request = {
-        data: document,
+        data: cloneDocu,
         method: 'post',
-        url: '',
+        url: 'http://localhost:3000/submit',
       };
 
       if (valid) {
