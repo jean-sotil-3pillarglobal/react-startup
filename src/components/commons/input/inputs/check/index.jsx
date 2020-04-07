@@ -20,6 +20,7 @@ const styles = () => ({
 });
 
 const ForwardCheckField = (props: {
+  document: Object,
   label: String,
   name: String,
   onBlur: Function,
@@ -28,6 +29,7 @@ const ForwardCheckField = (props: {
   required: Boolean,
 }) => {
   const {
+    document,
     label,
     name,
     onBlur,
@@ -41,7 +43,8 @@ const ForwardCheckField = (props: {
     setValue,
   } = useFormContext();
 
-  const [checkVal, setCheckVal] = useState(false);
+  const value = document && document[name];
+  const [checkVal, setCheckVal] = useState(value || false);
 
   const error = errors[name] !== undefined;
 
