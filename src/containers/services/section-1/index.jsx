@@ -8,12 +8,12 @@ import React, {
 } from 'react';
 
 import {
+  Breadcrumbs,
   Card,
   CardActions,
   CardContent,
   CardHeader,
   CardMedia,
-  Chip,
   Divider,
   Grid,
   Paper,
@@ -53,12 +53,6 @@ const styles = theme => ({
     padding: theme.spacing(4),
     width: '100%',
   }),
-  chip: () => ({
-    background: ThemeBackground({ variant }, theme, 'main'),
-    color: ThemeColor({ variant }, theme),
-    textTransform: 'capitalize',
-    width: '95%',
-  }),
   chipFocused: {
     border: `1px solid ${ThemeColor({ variant }, theme)}`,
   },
@@ -71,6 +65,10 @@ const styles = theme => ({
     textAlign: 'justify',
     width: '100%',
   },
+  crumb: () => ({
+    color: ThemeColor({ variant }, theme),
+    textTransform: 'capitalize',
+  }),
   description: {
     color: theme.palette.primary.contrastText,
     padding: theme.spacing(2),
@@ -140,8 +138,9 @@ const styles = theme => ({
   itemHeader: {},
   itemList: {},
   itemMedia: {
-    backgroundSize: 'cover',
-    height: 400,
+    backgroundSize: '100%',
+    border: `4px solid ${theme.palette.primary.main}`,
+    height: 500,
     marginTop: theme.spacing(2),
     position: 'relative',
   },
@@ -175,7 +174,7 @@ const styles = theme => ({
   titleHeader: {
     background: ThemeBackground({ variant }, theme, 'light'),
     display: 'inline-block',
-    margin: `${theme.spacing(12)}px auto`,
+    margin: `${theme.spacing(20)}px auto`,
     opacity: 0.8,
     padding: `${theme.spacing(1)}px ${theme.spacing(6)}px`,
     textTransform: 'capitalize',
@@ -334,31 +333,12 @@ function SectionA (props: {
           sm={12}
           md={6}
         >
-          <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-          >
-            <Grid
-              item
-              sm={12}
-              md={6}
-              lg={6}
-            >
-              <Chip className={classes.chip} icon={<Icon name="arrow_right" variant={variant} />} label={<LangToggler id={category.title} />} />
-            </Grid>
+          <Breadcrumbs aria-label="breadcrumb">
+            <Typography variant="caption" className={classes.crumb}><LangToggler id={category.title} /></Typography>
             {(service && service.id) && (
-              <Grid
-                item
-                sm={12}
-                md={6}
-                lg={6}
-              >
-                <Chip className={classnames(classes.chip, classes.chipFocused)} icon={<Icon name="arrow_right" variant={variant} />} label={<LangToggler id={service.title} />} />
-              </Grid>
+              <Typography variant="caption" className={classes.crumb}><LangToggler id={service.title} /></Typography>
             )}
-          </Grid>
+          </Breadcrumbs>
         </Grid>
       </Grid>
       <Parallax bgImage={category.background} strength={200} className={classes.background}>

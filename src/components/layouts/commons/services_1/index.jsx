@@ -235,6 +235,7 @@ function ServicesLayout (props: {
             className={classes.cardTitle}
             style={{
               backgroundImage: `url(${item.background})`,
+              minHeight: 140,
             }}
           />
           {filteredServices.length > 0 &&

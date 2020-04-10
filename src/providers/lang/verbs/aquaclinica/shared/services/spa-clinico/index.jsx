@@ -27,14 +27,14 @@ const {
 
 const Services = [
   {
-    background: `/static/images/${CATEGORY_3}/emsculpt.jpg`,
+    background: 'https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/85256415_3117063394970639_905862560400539648_o.jpg?_nc_cat=108&_nc_sid=2d5d41&_nc_oc=AQnlVnZD_pJxFkphrzCEHqkBU7UqIwdjcQ-Gde4Z1ST1U-5TPksZfzAjJjAka5USL7M&_nc_ht=scontent.fsyq2-1.fna&oh=d66b7308421338a2516fa128665322ec&oe=5EB59A94',
     categories: [
       CATEGORY_3,
     ],
     content: CONTENT_SERVICE_1,
     cta: {
       en: 'learn more',
-      es: 'conoce más',
+      es: 'me interesa',
     },
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_1}`,
@@ -57,14 +57,14 @@ const Services = [
     value: `${CATEGORY_3}-${SERVICE_1}`,
   },
   {
-    background: `/static/images/${CATEGORY_3}/venus-legacy.jpg`,
+    background: 'https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/p960x960/88374516_3135287593148219_8145759674226966528_o.jpg?_nc_cat=109&_nc_sid=2d5d41&_nc_oc=AQmijZ6cRvUJ5rKdI-Em3TYEMR61bZKGFwd9fGuOG6IpXgI5q2dJ4jdsac7MPQ0VK0Q&_nc_ht=scontent.fsyq2-1.fna&_nc_tp=6&oh=3717ecb7b6f2d31d412d217ba9c5aeb3&oe=5EB6F0DD',
     categories: [
       CATEGORY_3,
     ],
     content: CONTENT_SERVICE_2,
     cta: {
       en: 'learn more',
-      es: 'conoce más',
+      es: 'me interesa',
     },
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_2}`,
@@ -94,7 +94,7 @@ const Services = [
     content: CONTENT_SERVICE_3,
     cta: {
       en: 'learn more',
-      es: 'conoce más',
+      es: 'me interesa',
     },
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_3}`,
@@ -117,14 +117,14 @@ const Services = [
     value: `${CATEGORY_3}-${SERVICE_3}`,
   },
   {
-    background: `/static/images/${CATEGORY_3}/oxygeneo.jpg`,
+    background: 'https://scontent-lga3-1.cdninstagram.com/v/t51.2885-15/e35/82018340_1174937352710356_5549820483152426103_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=cmU4-Me5pkoAX-DFmvF&oh=a4401788d66e0fe9d64796cc0679f3cb&oe=5EBB7B33',
     categories: [
       CATEGORY_3,
     ],
     content: CONTENT_SERVICE_4,
     cta: {
       en: 'learn more',
-      es: 'conoce más',
+      es: 'me interesa',
     },
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_4}`,
@@ -154,7 +154,7 @@ const Services = [
     content: CONTENT_SERVICE_5,
     cta: {
       en: 'learn more',
-      es: 'conoce más',
+      es: 'me interesa',
     },
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_5}`,
@@ -184,7 +184,7 @@ const Services = [
     content: CONTENT_SERVICE_6,
     cta: {
       en: 'learn more',
-      es: 'conoce más',
+      es: 'me interesa',
     },
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_6}`,
@@ -207,14 +207,14 @@ const Services = [
     value: `${CATEGORY_3}-${SERVICE_6}`,
   },
   {
-    background: `/static/images/${CATEGORY_3}/carboxiterapia.jpg`,
+    background: 'https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/32130348_1944831762193814_8809183850597974016_o.jpg?_nc_cat=106&_nc_sid=2d5d41&_nc_oc=AQl3MZz6Zgx0wg1-66_bZ7dUdJQSl-8Qw0r2Hc5Qf-M_xgS1I36QuZqt5udQ36OOnN0&_nc_ht=scontent.fsyq2-1.fna&oh=8666d6357f3f10012c4627996e31b775&oe=5EB73DAA',
     categories: [
       CATEGORY_3,
     ],
     content: CONTENT_SERVICE_7,
     cta: {
       en: 'learn more',
-      es: 'conoce más',
+      es: 'me interesa',
     },
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_7}`,

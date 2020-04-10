@@ -35,8 +35,8 @@ const styles = theme => ({
   },
   title: {
     color: ThemeColor({ variant }, theme),
-    margin: `${theme.spacing(4)}px 0`,
-    textAlign: 'center',
+    margin: `0 0 ${theme.spacing(10)}px 0`,
+    textAlign: 'right',
     textTransform: 'capitalize',
   },
 });
@@ -76,25 +76,21 @@ const SectionA = (props: {
             spacing={6}>
             <Grid
               item
-              sm={12}
-              md={12}
-              lg={12}>
-              <Typography
-                variant="h3"
-                className={classes.title}
-              >
-                <LangToggler id={copy.title} />
-              </Typography>
-            </Grid>
-            <Grid
-              item
               sm={10}
               md={6}
               lg={6}>
-              <ContactFormLayout
-                proxy={proxy}
-                variant="primary"
-              />
+              <Fragment>
+                <Typography
+                  variant="body1"
+                  className={classes.title}
+                >
+                  <LangToggler id={copy.title} />
+                </Typography>
+                <ContactFormLayout
+                  proxy={proxy}
+                  variant="primary"
+                />
+              </Fragment>
             </Grid>
           </Grid>
         </SectionBlock>

@@ -249,8 +249,8 @@ const Verbiage = {
     section_4: {
       id: LINK_SECTION_4,
       title: {
-        en: 'we would love helping you to find the best attention <br/>and health threatments, make your free quote now.',
-        es: 'es 100% gratuito,<br/> te estamos esperando.',
+        en: 'Start your quote now. <br/>Start now.',
+        es: 'La valoración es gratuita.<br/> Llená nuestro formulario en linea.',
       },
     },
     section_5: {

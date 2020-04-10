@@ -28,14 +28,14 @@ export default [
     icon: icons.general,
     label: {
       en: 'Create quote',
-      es: 'Crear consulta',
+      es: 'Iniciar consulta ',
     },
     rows: [
       {
         fields: SERVICES_INFORMATION_1_2,
         label: {
-          en: 'Choose service, date and hour',
-          es: 'Elegir servicio, fecha y hora',
+          en: 'How can we help?',
+          es: '¿En qué te podemos ayudar?',
         },
         label_helper: {
           en: 'Let&#39; us know which service you feel instered and we will contact you inmediatly with more information.',
@@ -43,14 +43,6 @@ export default [
         },
       },
     ],
-    tip: {
-      en: 'Free Quote in Minutes.',
-      es: 'Consultas gratuitas en minutos.',
-    },
-    tipSub: {
-      en: 'Compare best rates available.',
-      es: 'Tenemos las mejores tarifas disponible.',
-    },
     value: [
       GENERAL,
     ],
@@ -63,8 +55,8 @@ export default [
     },
     icon: icons.service1,
     label: {
-      en: 'your information',
-      es: 'tú información',
+      en: 'Add information',
+      es: 'Agregar información',
     },
     rows: [
       {
@@ -79,14 +71,6 @@ export default [
         },
       },
     ],
-    tip: {
-      en: 'Free Quote in Minutes.',
-      es: 'Consultas gratuitas en minutos.',
-    },
-    tipSub: {
-      en: 'Compare best rates available.',
-      es: 'Tenemos las mejores tarifas disponible.',
-    },
     value: [
       GENERAL,
     ],
