@@ -34,9 +34,9 @@ const styles = theme => ({
     padding: 0,
   },
   title: {
-    // textAlign: 'center',
     color: ThemeColor({ variant }, theme),
     margin: `${theme.spacing(4)}px 0`,
+    textAlign: 'center',
     textTransform: 'capitalize',
   },
 });
@@ -71,8 +71,8 @@ const SectionA = (props: {
           <Grid
             container
             direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
+            justify="center"
+            alignItems="center"
             spacing={6}>
             <Grid
               item

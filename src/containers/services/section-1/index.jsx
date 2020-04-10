@@ -13,6 +13,7 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
+  Chip,
   Divider,
   Grid,
   Paper,
@@ -52,6 +53,15 @@ const styles = theme => ({
     padding: theme.spacing(4),
     width: '100%',
   }),
+  chip: () => ({
+    background: ThemeBackground({ variant }, theme, 'main'),
+    color: ThemeColor({ variant }, theme),
+    textTransform: 'capitalize',
+    width: '95%',
+  }),
+  chipFocused: {
+    border: `1px solid ${ThemeColor({ variant }, theme)}`,
+  },
   container: {
     background: 'transparent',
   },
@@ -102,7 +112,7 @@ const styles = theme => ({
   },
   item: {
     '&:hover': {
-      borderColor: ThemeColor({ variant }, theme),
+      borderColor: theme.palette.utils.highlight,
     },
     '&:hover .MuiCardMedia-root': {
       filter: 'grayscale(0%)',
@@ -157,15 +167,17 @@ const styles = theme => ({
   },
   titleContainer: {
     background: 'transparent',
-    padding: '400px 0 0',
+    padding: '0',
     position: 'relative',
     textAlign: 'center',
     zIndex: 1,
   },
   titleHeader: {
     background: ThemeBackground({ variant }, theme, 'light'),
+    display: 'inline-block',
+    margin: `${theme.spacing(12)}px auto`,
     opacity: 0.8,
-    padding: theme.spacing(1),
+    padding: `${theme.spacing(1)}px ${theme.spacing(6)}px`,
     textTransform: 'capitalize',
   },
 });
@@ -236,7 +248,7 @@ function SectionA (props: {
             <CardHeader
               title={
                 <Typography
-                  variant="h2"
+                  variant="h4"
                   className={classes.itemTitle}
                 >
                   <LangToggler id={service.title} />
@@ -317,36 +329,44 @@ function SectionA (props: {
             <Icon variant={variant} name="keyboard_arrow_left" />
           </LangButton>
         </Grid>
-        {(service && service.id) && (
+        <Grid
+          item
+          sm={12}
+          md={6}
+        >
           <Grid
-            item
-            sm={12}
-            md={6}
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start"
           >
-            <Typography
-              className={classes.title}
-              component="span"
-              variant="caption"
+            <Grid
+              item
+              sm={12}
+              md={6}
+              lg={6}
             >
-              <LangToggler id={category.title} />
-            </Typography>
-            <Icon className={classes.icon} name="arrow_right" />
-            <Typography
-              className={classes.title}
-              component="span"
-              variant="caption"
-            >
-              <LangToggler id={service.title} />
-            </Typography>
+              <Chip className={classes.chip} icon={<Icon name="arrow_right" variant={variant} />} label={<LangToggler id={category.title} />} />
+            </Grid>
+            {(service && service.id) && (
+              <Grid
+                item
+                sm={12}
+                md={6}
+                lg={6}
+              >
+                <Chip className={classnames(classes.chip, classes.chipFocused)} icon={<Icon name="arrow_right" variant={variant} />} label={<LangToggler id={service.title} />} />
+              </Grid>
+            )}
           </Grid>
-        )}
+        </Grid>
       </Grid>
       <Parallax bgImage={category.background} strength={200} className={classes.background}>
         <Opacity opacity={0.5} zIndex={0} variant="light" />
         <Paper className={classes.titleContainer} elevation={0}>
           <Typography
             className={classes.titleHeader}
-            variant="h3"
+            variant="h4"
           >
             <LangToggler id={category.title} />
           </Typography>
@@ -435,7 +455,7 @@ function SectionA (props: {
                       className={classes.itemHeader}
                       title={
                         <Typography
-                          variant="h5"
+                          variant="body1"
                           className={classnames(classes.itemTitle, seleted && classes.itemSelected)}
                         >
                           <LangToggler id={item.title} />

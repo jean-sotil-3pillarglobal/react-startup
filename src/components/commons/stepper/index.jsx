@@ -35,8 +35,7 @@ const styles = theme => ({
     background: ThemeBackground(props, theme, 'dark'),
   }),
   caption: {
-    display: 'inline-block',
-    margin: `${theme.spacing(6)}px 0`,
+    background: theme.palette.primary.light,
     textTransform: 'capitalize',
   },
   finished: {
@@ -223,7 +222,7 @@ function StepperForm (props: {
 
                         return (
                           <Step key={label}>
-                            <StepLabel className={classes.item}>
+                            <StepLabel className={classes.caption}>
                               {label}
                             </StepLabel>
                             <StepContent>

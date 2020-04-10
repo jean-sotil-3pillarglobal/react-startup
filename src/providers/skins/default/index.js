@@ -1,10 +1,10 @@
 import Color from 'color';
 
 const PRIMARY = {
-  contrastText: '#000000',
-  dark: '#d3d3d3',
-  light: '#ffffff',
-  main: '#f3f3f3',
+  contrastText: 'rgba(0,0,0,0.8)',
+  dark: 'rgb(151,153,154)',
+  light: 'rgba(255,255,255,0.9)',
+  main: 'rgba(245,245,245,1)',
 };
 
 const SECONDARY = {
@@ -74,7 +74,7 @@ const palette = {
     blur: 'rgba(255,255,255,0.3)',
     darker: Color(PRIMARY.dark).fade(0.5).string(),
     grey: '#e1e2e1',
-    highlight: '#4c9aff',
+    highlight: 'rgba(0,0,0,0.2)',
     input: '#f7f7f7',
     light: Color(PRIMARY.main).fade(0.2).string(),
     lighter: Color(PRIMARY.main).fade(0.35).toString(),
@@ -130,6 +130,13 @@ const overrides = {
       textTransform: 'capitalize',
     },
   },
+  MuiChip: {
+    root: {
+      borderRadius: '0 0 0 0',
+      margin: 0,
+      padding: 0,
+    },
+  },
   MuiDialogActions: {
     root: {
       '& *': {
@@ -177,7 +184,9 @@ const overrides = {
   },
   MuiFormLabel: {
     root: {
-      color: PRIMARY.contrastText,
+      '&$focused': {
+        color: palette.utils.highlight,
+      },
       fontSize: '.8em',
       fontWeight: 400,
     },
@@ -191,28 +200,29 @@ const overrides = {
   MuiInputBase: {
     input: {
       color: PRIMARY.contrastText,
-      fontWeight: 800,
+      fontSize: '1rem',
+      fontWeight: 400,
       height: '1.8em',
-      padding: '.6em',
+      padding: '8px',
     },
     multiline: {
-      padding: '.6em',
+      padding: '10px',
     },
     root: {
       '&.Mui-error.Mui-focused.MuiInput-root': {
-        border: `1px solid ${palette.error.main}`,
+        border: `1px solid ${PRIMARY.dark}`,
       },
       '&.Mui-error.MuiInput-root': {
         border: `1px solid ${palette.error.main}`,
       },
       '&.Mui-focused.MuiInput-root': {
-        border: `1px solid ${PRIMARY.contrastText}`,
+        border: `2px solid ${palette.utils.highlight}`,
       },
       '&:hover': {
-        border: `1px solid ${PRIMARY.dark}`,
+        borderColor: palette.utils.highlight,
       },
-      backgroundColor: palette.utils.input,
-      border: '1px solid transparent',
+      backgroundColor: `${PRIMARY.light}`,
+      border: `2px solid ${PRIMARY.main}`,
     },
   },
   MuiInputLabel: {
@@ -294,19 +304,29 @@ const overrides = {
     },
   },
   MuiStepIcon: {
-    root: {},
+    active: {
+      color: PRIMARY.light,
+      fill: PRIMARY.contrastText,
+    },
+    completed: {
+      fill: palette.success.main,
+    },
+    text: {
+      fill: PRIMARY.light,
+    },
   },
   MuiStepLabel: {
     active: {
       fontWeight: 700,
     },
     label: {
+      fontSize: '16px',
       fontWeight: 500,
       textTransform: 'capitalize',
     },
     root: {
       border: '1px solid transparent',
-      padding: 8,
+      padding: '16px',
     },
   },
   MuiStepper: {
@@ -330,7 +350,7 @@ const typography = {
   },
   caption: {
     display: 'inline-block',
-    fontSize: '1rem',
+    fontSize: '.9rem',
     fontWeight: 400,
     lineHeight: 'normal',
     textTransform: 'initial',
@@ -356,7 +376,7 @@ const typography = {
   },
   h5: {
     fontSize: '1.8rem',
-    fontWeight: 400,
+    fontWeight: 500,
     textTransform: 'initial',
   },
   h6: {

@@ -29,10 +29,10 @@ const styles = theme => ({
     overflow: 'visible',
   }),
   helper: props => ({
-    border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
+    border: `1px solid ${ThemeBackground(props, theme, 'main')}`,
     color: ThemeColor(props, theme),
     margin: `${theme.spacing(1)}px 0 ${theme.spacing(4)}px`,
-    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px`,
+    padding: theme.spacing(1),
     width: '100%',
   }),
   icon: props => ({
@@ -128,9 +128,11 @@ class FormBlock extends Component {
                     label,
                     mask,
                     minDate,
+                    multiline,
                     options,
                     placeholder,
                     required,
+                    rows,
                     rules,
                     type,
                   } = field;
@@ -145,11 +147,13 @@ class FormBlock extends Component {
                         lang={label}
                         mask={mask || ''}
                         minDate={minDate}
+                        multiline={multiline}
                         name={key}
                         options={options || []}
                         placeholder={placeholder}
                         proxy={proxy}
                         required={required}
+                        rows={rows}
                         rules={rules}
                         type={type}
                         value={document[key] || ''}

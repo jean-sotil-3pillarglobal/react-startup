@@ -49,7 +49,7 @@ const styles = theme => ({
   }),
   card: props => ({
     '&:hover': {
-      borderColor: ThemeColor(props, theme),
+      borderColor: theme.palette.utils.highlight,
     },
     backgroundColor: ThemeBackground(props, theme, 'main'),
     border: `2px solid ${ThemeBackground(props, theme, 'light')}`,

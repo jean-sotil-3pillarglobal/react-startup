@@ -24,8 +24,11 @@ const styles = () => ({
 });
 
 const customStyles = {
+  container: () => ({
+    background: 'transparent',
+  }),
   indicatorsContainer: () => ({
-    padding: '8px',
+    padding: '4px',
     position: 'absolute',
     right: 0,
     top: 0,
@@ -42,25 +45,24 @@ const customStyles = {
     return ({
       ...provided,
       '& div:first-of-type': {
-        width: '100%',
+        width: '90%',
       },
+      borderRadius: '0 0 0 0',
       fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-      fontSize: '1em',
-      padding: '4px',
+      fontSize: '.6rem',
+      padding: '0',
       textTransform: 'capitalize',
     });
   },
   option: () => ({
-    fontSize: '0.9em',
-    fontWeight: 500,
-    padding: '8px',
+    padding: '0',
     textTransform: 'capitalize',
   }),
   placeholder: () => ({
-    display: 'none',
     fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-    fontSize: '1.2em',
-    fontWeight: 800,
+    fontSize: '1rem',
+    fontWeight: 400,
+    opacity: 0.5,
   }),
 };
 
@@ -127,37 +129,48 @@ const ForwardTextField = React.forwardRef((props: {
 
   if (error) {
     customStyles.control = () => ({
-      background: '#f7f7f7',
-      border: '1px solid red',
+      background: `${theme.palette.primary.light}`,
+      border: `2px solid ${theme.palette.error.main}`,
       borderRadius: '0 0 0 0',
       fontSize: '16px',
       padding: '.6em 0',
       textTransform: 'capitalize',
     });
   } else {
-    customStyles.control = () => ({
-      background: '#f7f7f7',
-      border: '1px solid transparent',
+    customStyles.control = (style, { isFocused }) => ({
+      '&:hover': {
+        border: `2px solid ${theme.palette.utils.highlight}`,
+      },
+      background: `${theme.palette.primary.light}`,
+      border: `2px solid ${isFocused ? theme.palette.utils.highlight : theme.palette.primary.main}`,
       borderRadius: '0 0 0 0',
-      fontSize: '16px',
-      padding: '.6em 0',
+      fontSize: '1rem',
+      fontWeight: 400,
+      padding: '8px',
       textTransform: 'capitalize',
     });
   }
 
   customStyles.Control = () => ({
+    '&:hover': {
+      boxShadow: `0 0 4px ${theme.palette.utils.highlight}`,
+    },
     backgroundColor: ThemeBackground(props, theme, 'dark'),
     color: ThemeColor(props, theme),
   });
 
   customStyles.option = () => ({
     backgroundColor: ThemeBackground(props, theme, 'light'),
-    borderBottom: `2px solid '${ThemeBackground(props, theme, 'main')}'`,
-    fontSize: '18px',
-    fontWeight: 500,
+    borderBottom: `2px solid '${ThemeBackground(props, theme, 'dark')}'`,
+    fontSize: '12px',
+    fontWeight: 400,
     marginBottom: '2px',
-    padding: '10px 15% 10px 28px',
+    padding: '10px 20px',
     textTransform: 'capitalize',
+  });
+
+  customStyles.ValueContainer = () => ({
+    padding: '0 0',
   });
 
   return (

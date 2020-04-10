@@ -94,6 +94,7 @@ function DateField (props: {
     };
   } else {
     datePickerProps = {
+      ampm: true,
       format,
       keyboardIcon: <Icon name="access_time" color="rgba(0, 0, 0, 0.54)" />,
       variant: 'dialog',
@@ -104,6 +105,7 @@ function DateField (props: {
     <MuiPickersUtilsProvider utils={MomentUtils} moment={moment} locale={locale}>
       <Component
         className={name}
+        clearable
         error={error}
         helperText={errorMsg}
         format={format}

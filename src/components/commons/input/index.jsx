@@ -154,7 +154,7 @@ function InputLayout (props: {
   const field = {
     checkbox: <CheckField {...newProps} />,
     date: <DateField format="MM/DD/YYYY" locale={language} {...newProps} />,
-    datetime: <DateField format="HH:MM:ss" locale={language} {...newProps} />,
+    datetime: <DateField format="hh:mm A" locale={language} {...newProps} />,
     divider: <Divider variant="middle" />,
     id: <IdField {...newProps} />,
     input: <TextField {...newProps} />,

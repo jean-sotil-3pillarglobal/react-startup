@@ -165,6 +165,28 @@ export const SERVICES_INFORMATION_1_2 = [
     type: 'text',
   },
   {
+    input_type: 'input',
+    key: 'message',
+    label: {
+      en: 'Your message',
+      es: 'Tú mensaje',
+    },
+    multiline: true,
+    placeholder: {
+      en: 'Write your message here.',
+      es: 'Escribe tu mensaje aquí.',
+    },
+    required: false,
+    rows: 2,
+    rules: [
+      { type: 'required' },
+    ],
+    size_lg: 12,
+    size_md: 12,
+    size_sm: 12,
+    type: 'text',
+  },
+  {
     input_type: 'divider',
     key: 'divider_2',
     size_lg: 12,
