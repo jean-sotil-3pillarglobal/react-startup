@@ -14,6 +14,8 @@ const SECONDARY = {
   main: '#616161',
 };
 
+const fontFamily = 'Source Sans Pro!important';
+
 const palette = {
   background: {
     blackish: 'rgba(46,46,46,1)',
@@ -97,7 +99,7 @@ const overrides = {
       borderRadius: '0 0 0 0',
       boxShadow: 'none',
       fontSize: '.7em',
-      fontWeight: 500,
+      fontWeight: 800,
       textTransform: 'capitalize',
     },
     text: {
@@ -335,6 +337,12 @@ const overrides = {
       padding: 0,
     },
   },
+  MuiTypography: {
+    root: {
+      fontFamily,
+      lineHeight: 'normal!important',
+    },
+  },
 };
 
 const typography = {
@@ -357,30 +365,30 @@ const typography = {
   },
   h1: {
     fontSize: '2.8rem',
-    fontWeight: 500,
+    fontWeight: 600,
     textTransform: 'initial',
   },
   h2: {
     fontSize: '2.6rem',
-    fontWeight: 500,
+    fontWeight: 600,
     textTransform: 'initial',
   },
   h3: {
     fontSize: '2.4rem',
-    fontWeight: 400,
+    fontWeight: 500,
     textTransform: 'initial',
   },
   h4: {
     fontSize: '2.2rem',
-    fontWeight: 400,
+    fontWeight: 500,
   },
   h5: {
-    fontSize: '1.8rem',
+    fontSize: '1.6rem',
     fontWeight: 500,
     textTransform: 'initial',
   },
   h6: {
-    fontSize: '0.6rem',
+    fontSize: '1.2rem',
     fontWeight: 400,
   },
   overline: {

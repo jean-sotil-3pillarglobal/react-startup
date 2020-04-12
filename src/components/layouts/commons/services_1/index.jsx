@@ -19,6 +19,7 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  useTheme,
   withStyles,
 } from '@material-ui/core';
 
@@ -35,7 +36,6 @@ import {
 
 // components
 import Icon from './../../../commons/icon';
-import Opacity from './../../../commons/opacity';
 import SectionBlock from './../../section';
 
 import { LangButton, TYPES } from './../../../commons/button';
@@ -49,10 +49,10 @@ const styles = theme => ({
   }),
   card: props => ({
     '&:hover': {
-      borderColor: theme.palette.utils.highlight,
+      borderColor: ThemeBackground(props, theme, 'dark'),
     },
-    backgroundColor: ThemeBackground(props, theme, 'main'),
-    border: `2px solid ${ThemeBackground(props, theme, 'light')}`,
+    backgroundColor: ThemeBackground(props, theme, 'light'),
+    border: `${theme.spacing(0.5)}px solid ${ThemeBackground(props, theme, 'main')}`,
     borderRadius: '0 0 0 0',
     boxShadow: 'initial',
     flexShrink: 0,
@@ -80,24 +80,16 @@ const styles = theme => ({
     height: 60,
   },
   cardTitle: props => ({
+    color: ThemeColor(props, theme),
+    margin: `0 ${theme.spacing(2)}px`,
+    textTransform: 'capitalize',
+  }),
+  cardTitleImage: props => ({
     backgroundSize: 'cover',
-    border: `2px solid ${ThemeBackground(props, theme, 'dark')}`,
     color: ThemeColor(props, theme),
     cursor: 'default',
+    margin: '0 auto',
     padding: `0 ${theme.spacing(2)}px`,
-    position: 'relative',
-  }),
-  cardTitleOpacity: props => ({
-    background: ThemeBackground(props, theme, 'light'),
-    content: '',
-    display: 'block',
-    height: '100%',
-    left: 0,
-    opacity: 0.4,
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-    zIndex: 0,
   }),
   cta: {
     padding: `${theme.spacing(2)}px 0`,
@@ -129,7 +121,7 @@ const styles = theme => ({
     overflow: 'hidden',
   }),
   items: {
-    padding: 0,
+    padding: `${theme.spacing(6)}px 0`,
     textAlign: 'center',
   },
   link: {
@@ -153,7 +145,7 @@ const styles = theme => ({
   }),
   title: props => ({
     color: ThemeColor(props, theme),
-    marginBottom: `${theme.spacing(8)}px`,
+    marginBottom: theme.spacing(8),
   }),
 });
 
@@ -179,8 +171,8 @@ function ServicesLayout (props: {
     classes,
     history,
     proxy,
-    variant,
     setServiceCategory,
+    variant,
   } = props;
 
   const {
@@ -189,6 +181,7 @@ function ServicesLayout (props: {
   } = proxy;
 
   const [useHover, setHover] = useState(false);
+  const theme = useTheme();
 
   const handleHover = (payload) => {
     setHover(payload);
@@ -216,6 +209,11 @@ function ServicesLayout (props: {
           className={classnames(classes.card, isHover && classes.cardHover)}
           key={item.id}
         >
+          <CardContent>
+            <Typography variant="h5" className={classes.cardTitle}>
+              <LangToggler id={item.title} />
+            </Typography>
+          </CardContent>
           <CardHeader
             avatar={
               <Fragment>
@@ -228,14 +226,20 @@ function ServicesLayout (props: {
                     color={item.color}
                   />
                 </Fab>
-                <Opacity variant={variant} />
               </Fragment>
             }
-            title={<LangToggler id={item.title} />}
-            className={classes.cardTitle}
+            className={classes.cardTitleImage}
             style={{
               backgroundImage: `url(${item.background})`,
-              minHeight: 140,
+              borderRadius: '50%',
+              filter: !isHover ? 'grayscale(100%) blur(.4px) contrast(90%)' : '',
+              height: 220,
+              imageRendering: isHover ? 'pixelated' : '',
+              transition: theme.transitions.create(
+                ['filter'],
+                { duration: theme.transitions.duration.complex },
+              ),
+              width: 220,
             }}
           />
           {filteredServices.length > 0 &&

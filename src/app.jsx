@@ -12,9 +12,10 @@ import {
 } from 'react-router-dom';
 
 import {
-  CssBaseline,
   createMuiTheme,
+  CssBaseline,
   MuiThemeProvider,
+  responsiveFontSizes,
   withStyles,
 } from '@material-ui/core';
 
@@ -129,7 +130,8 @@ class App extends Component {
   render () {
     const { classes, language } = this.props;
 
-    const skin = createMuiTheme(SkinProvider('default'));
+    let skin = createMuiTheme(SkinProvider('default'));
+    skin = responsiveFontSizes(skin);
 
     return (
       <MuiThemeProvider theme={skin}>
