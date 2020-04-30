@@ -1,7 +1,6 @@
 
-
 import { withRouter } from 'react-router-dom';
-import React, { Component } from 'react';
+import React from 'react';
 
 import {
   Paper,
@@ -14,14 +13,14 @@ import { constants } from './../../../providers/config';
 
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 
-import { LangButton } from './../../../components/commons/button';
+import { TYPES } from './../../../components/commons/button';
 import Callout from './../../../components/commons/callout/';
-import Icon from './../../../components/commons/icon';
+import LangButtonAnimate from './../../../components/commons/button/animate';
 import Opacity from './../../../components/commons/opacity';
 import SmartImg from './../../../components/commons/img';
 import SVGComponent from './../../../components/commons/svg';
 
-const styles = theme => ({
+const styles = (theme) => ({
   background: {
     left: 0,
     position: 'absolute',
@@ -46,13 +45,13 @@ const styles = theme => ({
   hero: {
     background: theme.palette.primary.main,
     overflow: 'hidden',
-    padding: `${theme.spacing(12)}px 0 0 0`,
+    padding: `${theme.spacing(6)}px 0 0 0`,
     position: 'relative',
     textAlign: 'center',
     zIndex: 0,
   },
   icon: {
-    fontSize: '1rem',
+    lineHeight: 0,
   },
   image: {
     width: '100%',
@@ -89,18 +88,15 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'title',
 ]);
 
-class SectionA extends Component {
-  props: {
-    classes: Object,
-    proxy: Object,
-  }
+function SectionA (props: {
+  classes: Object,
+  proxy: Object,
+}) {
+  const { classes, proxy } = props;
+  const { verbiage } = proxy;
 
-  render () {
-    const { classes, proxy } = this.props;
-    const { verbiage } = proxy;
-
-    return (
-      verbiage &&
+  return (
+    verbiage && (
       <Paper
         container="true"
         className={classes.hero}
@@ -121,18 +117,21 @@ class SectionA extends Component {
             spy
             to={constants.LINK_SERVICES_1}
           >
-            <LangButton
-              className={classes.button}
+            <LangButtonAnimate
+              color="white"
+              iconClassName={classes.icon}
+              iconx="arrowDown"
+              icony="fwd"
               lang={copy.cta}
-              onClick={this.handleClick}
-              variant="dark2">
-              <Icon name="keyboard_arrow_right" className={classes.icon} />
-            </LangButton>
+              size={30}
+              typeButton={TYPES.BUTTON}
+              variant="dark2"
+            />
           </Link>
         </Callout>
       </Paper>
-    );
-  }
-}
+    )
+  );
+};
 
 export default withStyles(styles)(withRouter(SectionA));

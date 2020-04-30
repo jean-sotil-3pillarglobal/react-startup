@@ -72,7 +72,7 @@ const styles = theme => ({
     fontSize: '3.4em',
   },
   items: {
-    padding: 0,
+    padding: `${theme.spacing(20)}px 0`,
     textAlign: 'center',
   },
   slider: {
@@ -186,47 +186,7 @@ function SectionB (props: {
     });
   });
 
-  return (
-    verbiage &&
-    <SectionBlock
-      variant="light"
-    >
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.items}>
-        <Grid
-          item
-          sm={12}
-          md={12}>
-          <Typography
-            variant="h2"
-            className={classes.title}
-            color="primary">
-            <LangToggler id={copy.title} />
-          </Typography>
-          <Typography
-            variant="body2"
-            className={classes.subtitle}
-            color="primary">
-            <LangToggler id={copy.body} />
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          sm={12}
-          md={12}
-          className={classes.slider}>
-          <Slider
-            items={items}
-            onHover={handleHover}
-          />
-        </Grid>
-      </Grid>
-    </SectionBlock>
-  );
+  return;
 }
 
 export default withStyles(styles)(SectionB);

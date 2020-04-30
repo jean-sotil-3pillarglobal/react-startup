@@ -1,4 +1,7 @@
-import React, { Component, Fragment } from 'react';
+// @flow
+
+import React, { Fragment } from 'react';
+
 import {
   MorphIcon,
 } from 'react-svg-buttons';
@@ -9,42 +12,21 @@ import {
 
 const styles = () => ({});
 
-const defaultIcon = 'thunderbolt';
+function IconAnimate (props: {
+  className: string,
+  focused: Boolean,
+  onClick: Function,
+  iconx: string,
+  icony: string,
+}) {
+  const { onClick, className, ...rest } = props;
+  const { iconx, icony, focused } = props;
 
-class IconAnimate extends Component {
-  state = {
-    type: defaultIcon,
-  };
-
-  props: {
-    className: string,
-    onClick: Function,
-    type: string,
-  }
-
-  handleMouseOver = () => {
-    this.setState({
-      type: defaultIcon,
-    });
-  }
-
-  handleMouseLeave = () => {
-    this.setState({
-      type: this.props.type || defaultIcon,
-    });
-  }
-
-  render() {
-    const { onClick, className } = this.props;
-    const { type } = this.state;
-
-    return (
-      type &&
-      <Fragment>
-        <MorphIcon className={className} onMouseOver={this.handleMouseOver} onMouseLeave={this.handleMouseLeave} type={type} onClick={onClick} />
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <MorphIcon className={className} type={focused ? iconx : icony } onClick={onClick} {...rest} />
+    </Fragment>
+  );
 }
 
 export default withStyles(styles)(IconAnimate);

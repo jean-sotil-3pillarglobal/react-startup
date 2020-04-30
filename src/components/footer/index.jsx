@@ -83,7 +83,7 @@ function Footer (props: {
     variant,
   } = props;
 
-  const { verbiage } = proxy;
+  const { verbiage } = proxy || {};
 
   const history = useHistory();
 
@@ -186,11 +186,11 @@ function Footer (props: {
         <Typography
           variant="caption"
           className={classes.copyright}>
-          2020 | Ibudi Solutions
+          2020 | ibudi Solutions
         </Typography>
       </Grid>
     </SectionBlock>
-  );
+  ) || null;
 }
 
 // map state to props

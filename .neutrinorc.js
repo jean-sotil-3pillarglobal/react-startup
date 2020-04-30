@@ -1,28 +1,18 @@
+const airbnb = require('@neutrinojs/airbnb');
+const compileLoader = require('@neutrinojs/compile-loader');
+const htmlTemplate = require('@neutrinojs/html-template');
+const react = require('@neutrinojs/react');
+
+const path = require('path');
+
 module.exports = {
+  options: {
+    root: __dirname,
+  },
   use: [
-    [
-      '@neutrinojs/react',
-      {
-        minify: {
-          babel: true,
-        },
-        // Add additional Babel plugins, presets, or env options
-        babel: {
-          // Override options for babel-preset-env:
-          presets: [
-            ['babel-preset-env', {
-              modules: false,
-              useBuiltIns: true,
-              exclude: ['transform-regenerator', 'transform-async-to-generator'],
-            }]
-          ]
-        }
-      }
-    ],
-    [
-      '@neutrinojs/airbnb',
-      {
-        eslint: {
+    airbnb({
+      eslint: {
+        baseConfig: {
           env: {
             'es6': true,
             'browser': true,
@@ -32,21 +22,21 @@ module.exports = {
             'plugin:react/recommended',
           ],
           parser: 'babel-eslint',
-          "parserOptions": {
-              "ecmaFeatures": {
-                  "experimentalObjectRestSpread": true,
-                  "jsx": true
-              },
-              "sourceType": "module"
+          parserOptions: {
+            ecmaFeatures: {
+              legacyDecorators: true
+            }
           },
-          plugins: ['react'],
           rules: {
             'arrow-body-style': 0,
-            'babel/new-cap': false,
+            'arrow-parens': 0,
+            'babel/new-cap': 0,
+            'babel/semi': 0,
             'class-methods-use-this': 0,
             'dot-notation': 0,
             'id-length': 0,
             'import/no-named-as-default-member': 0,
+            'import/no-useless-path-segments': 0,
             'import/prefer-default-export': 0,
             'indent': [1, 2],
             'jsx-a11y/anchor-is-valid': 0,
@@ -54,73 +44,84 @@ module.exports = {
             'linebreak-style': 0,
             'max-len': 0,
             'no-console': 0,
+            'no-mixed-operators': 0,
             'no-multi-assign': 0,
             'no-nested-ternary': 0,
+            'no-restricted-globals': 0,
             'no-restricted-syntax': 0,
             'no-undef': 0,
             'no-underscore-dangle': 0,
             'object-curly-newline': 0,
             'object-shorthand': 0,
+            'operator-linebreak': 0,
             'prefer-destructuring': 0,
             'quote-props': 0,
+            'react/destructuring-assignment': 0,
+            'react/display-name': 0,
             'react/jsx-closing-bracket-location': 0,
-            'react/jsx-filename-extension': [1, { "extensions": [".js", ".jsx"] }],
+            'react/jsx-curly-newline': 0,
+            'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
+            'react/jsx-fragments': 0,
             'react/jsx-no-undef': 1,
+            'react/jsx-one-expression-per-line': 0,
+            'react/jsx-props-no-spreading': 0,
             'react/jsx-uses-react': 1,
+            'react/jsx-wrap-multilines': 0,
             'react/no-find-dom-node': 0,
-            'react/prop-types': [1, {'ignore': ['children']} ],
+            'react/prop-types': 0,
+            'react/react-in-jsx-scope': 0,
+            'react/sort-comp': 0,
+            'react/state-in-constructor': 0,
+            'react/static-property-placement': 0,
             'sort-keys': 1,
             'space-before-function-paren': 0,
-          }
-        }
-      }
-    ],
-    [
-      '@neutrinojs/html-template',
-      {
-        title: 'Clinica Aqua',
-        inject: false,
-        appMountId: 'root',
-        xhtml: true,
-        mobile: true,
-        minify: {
-          useShortDoctype: true,
-          keepClosingSlash: true,
-          collapseWhitespace: true,
-          preserveLineBreaks: true,
+          },
         },
-        pluginId: 'html',
-        headHtmlSnippet: `
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
-          <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-        `,
-      }
-    ],
-    [
-      '@neutrinojs/image-minify',
-      {
-        imagemin: {},
-        plugin: {
-          name: '[path][name].[ext]',
-          test: /\.(png|jpg|jpeg|gif|webp)$/
-        },
-        rules: ['svg', 'img'],
-        pluginId: 'imagemin'
-      }
-    ],
-    // custom config here (undefined)
-    (neutrino) => {
-      neutrino.config
-        // entry points
-        .entry('index')
-          .add('./src/index.jsx')
-          .end()
+      },
+    }),
+    react({
+      // Target specific browsers with @babel/preset-env
+      targets: {
+        browsers: ['last 1 Chrome versions', 'last 1 Firefox versions'],
+      },
 
-        // output settings
-        .output
-          .publicPath('/');
-    }
-  ]
+      // Example: disable Hot Module Replacement
+      hot: false,
+
+      // Example: disable image-loader, style-loader, font-loader
+      image: true,
+
+      // Disable javascript minification entirely
+      minify: {
+        source: true,
+      },
+
+      // Disable cleaning the output build directory
+      clean: false,
+    }),
+    compileLoader({
+      ruleId: 'babel-loader',
+      babel: {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        presets: [
+          [
+            "@babel/preset-env", {
+              "useBuiltIns" : "entry"
+            },
+          ],
+          ["@babel/preset-flow"],
+          ["@babel/preset-react"]
+        ],
+        plugins: [
+          "@babel/proposal-class-properties",
+          "@babel/proposal-object-rest-spread",
+          "@babel/plugin-transform-runtime",
+        ],
+      },
+    }),
+    htmlTemplate({
+      title: 'Clinica Aqua..',
+    }),
+  ],
 };

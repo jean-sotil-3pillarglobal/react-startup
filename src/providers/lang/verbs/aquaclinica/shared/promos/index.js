@@ -19,8 +19,8 @@ const Promos = [
     },
     id: PROMO_1,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: '/src/static/images/d-image-test.jpg',
+      mobile: '/src/static/images/m-image-test.jpg',
     },
     type: [GENERAL, SERVICE_1],
   },
@@ -31,8 +31,8 @@ const Promos = [
     },
     id: PROMO_2,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: '/src/static/images/d-image-test.jpg',
+      mobile: '/src/static/images/m-image-test.jpg',
     },
     type: [GENERAL, SERVICE_1],
   },
@@ -43,8 +43,8 @@ const Promos = [
     },
     id: PROMO_3,
     image: {
-      desktop: '/static/images/d-image-test.jpg',
-      mobile: '/static/images/m-image-test.jpg',
+      desktop: '/src/static/images/d-image-test.jpg',
+      mobile: '/src/static/images/m-image-test.jpg',
     },
     type: [GENERAL, SERVICE_1],
   },

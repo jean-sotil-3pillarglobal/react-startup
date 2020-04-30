@@ -91,7 +91,7 @@ function InputBase (props: {
         multiline={multiline}
         name={name}
         onBlur={onBlur}
-        onChange={e => handleChange(e)}
+        onChange={(e) => handleChange(e)}
         onFocus={onFocus}
         options={options}
         required={required}

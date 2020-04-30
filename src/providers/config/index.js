@@ -9,7 +9,9 @@ export const constants = {
 
   CLERK_1: 'clerk_1',
   CLERK_2: 'clerk_2',
-  CLERK_3: 'clerk_4',
+  CLERK_3: 'clerk_3',
+  CLERK_4: 'clerk_4',
+  CLERK_5: 'clerk_5',
 
   // general
   GENERAL: 'general',
@@ -26,8 +28,8 @@ export const constants = {
 
   PATHS: {
     SERVICES: {
-      en: 'services',
-      es: 'servicios',
+      en: 'specialities',
+      es: 'especialidades',
     },
     SERVICES_DETAILS: {
       en: 'free-quote',
@@ -109,43 +111,43 @@ export const privates = [];
 // social links
 export const social = [
   {
-    icon: '/static/svg/social/fb.svg',
+    icon: '/src/static/svg/social/fb.svg',
     isFab: true,
     label: 'facebook',
-    link: '#facebook',
+    link: 'https://www.facebook.com/AQUApz/',
   },
   {
-    icon: '/static/svg/social/ig.svg',
+    icon: '/src/static/svg/social/ig.svg',
     isFab: true,
     label: 'instagram',
-    link: '#instagram',
+    link: 'https://www.instagram.com/clinicaaquapz/',
   },
   {
-    icon: '/static/svg/social/email.svg',
+    icon: '/src/static/svg/social/email.svg',
     isFab: true,
     label: 'email',
-    link: '#email',
+    link: 'mailto:contacto@clinicaaqua.com',
   },
 ];
 
 export const info = [
   {
-    icon: '/static/svg/social/phone.svg',
+    icon: '/src/static/svg/social/phone.svg',
     isFab: false,
     label: '+506 2772-0960',
   },
   {
-    icon: '/static/svg/social/phone.svg',
+    icon: '/src/static/svg/social/phone.svg',
     isFab: false,
     label: '+506 8801-2626',
   },
   {
-    icon: '/static/svg/social/email.svg',
+    icon: '/src/static/svg/social/email.svg',
     isFab: false,
     label: 'contacto@clinicaaqua.com',
   },
   {
-    icon: '/static/svg/social/location.svg',
+    icon: '/src/static/svg/social/location.svg',
     isFab: false,
     label: 'Pérez Zeledón, Costa Rica',
   },
@@ -181,6 +183,7 @@ export const assets = {
 
 const config = {
   assets,
+  defaultLang: 'es',
   info,
   langs,
   routes: {

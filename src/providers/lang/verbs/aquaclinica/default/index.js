@@ -42,6 +42,12 @@ const Verbiage = {
       id: LINK_CONTACT_FORM_1,
       services,
     },
+    default: {
+      top: {
+        en: 'back to top',
+        es: 'ir al inicio',
+      },
+    },
     services_1: {
       body: {
         en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
@@ -51,8 +57,8 @@ const Verbiage = {
       id: LINK_SERVICES_1,
       services,
       title: {
-        en: 'explore our specialities',
-        es: 'explora nuestras especialidades',
+        en: 'Conozca Our Specialities',
+        es: 'Conozca Nuestras Especialidades',
       },
     },
   },
@@ -76,8 +82,8 @@ const Verbiage = {
       ],
       langs,
       logo: {
-        desktop: '/static/images/logo.jpg',
-        mobile: '/static/images/logo.jpg',
+        desktop: '/src/static/images/logo.jpg',
+        mobile: '/src/static/images/logo.jpg',
       },
     },
     header: {
@@ -90,8 +96,8 @@ const Verbiage = {
         },
       ],
       logo: {
-        desktop: '/static/images/logo.jpg',
-        mobile: '/static/images/logo.jpg',
+        desktop: '/src/static/images/logo.jpg',
+        mobile: '/src/static/images/logo.jpg',
       },
       publics,
       social,
@@ -148,63 +154,63 @@ const Verbiage = {
             en: 'dysport',
             es: 'dysport',
           },
-          logo: '/static/images/logos/dysport.png',
+          logo: '/src/static/images/logos/dysport.png',
         },
         {
           alt: {
             en: 'EMSCULPT',
             es: 'EMSCULPT',
           },
-          logo: '/static/images/logos/emsculpt.png',
+          logo: '/src/static/images/logos/emsculpt.png',
         },
         {
           alt: {
             en: 'fotona',
             es: 'fotona',
           },
-          logo: '/static/images/logos/fotona.png',
+          logo: '/src/static/images/logos/fotona.png',
         },
         {
           alt: {
             en: 'geneo',
             es: 'geneo',
           },
-          logo: '/static/images/logos/geneo.png',
+          logo: '/src/static/images/logos/geneo.png',
         },
         {
           alt: {
             en: 'lumenis',
             es: 'lumenis',
           },
-          logo: '/static/images/logos/lumenis.png',
+          logo: '/src/static/images/logos/lumenis.png',
         },
         {
           alt: {
             en: 'neauvia',
             es: 'neauvia',
           },
-          logo: '/static/images/logos/neauvia.png',
+          logo: '/src/static/images/logos/neauvia.png',
         },
         {
           alt: {
             en: 'tentrek',
             es: 'tentrek',
           },
-          logo: '/static/images/logos/tentrek.png',
+          logo: '/src/static/images/logos/tentrek.png',
         },
         {
           alt: {
             en: 'venus',
             es: 'venus',
           },
-          logo: '/static/images/logos/venus.png',
+          logo: '/src/static/images/logos/venus.png',
         },
       ],
     },
     section_1: {
       background: {
-        desktop: '/static/images/d-bg-1.png',
-        mobile: '/static/images/m-bg-1.jpg',
+        desktop: '/src/static/images/d-bg-1.png',
+        mobile: '/src/static/images/m-bg-1.jpg',
       },
       background_show: true,
       cta: {
@@ -213,24 +219,24 @@ const Verbiage = {
       },
       id: LINK_SECTION_1,
       logo: {
-        desktop: '/static/images/logo.jpg',
-        mobile: '/static/images/logo.jpg',
+        desktop: '/src/static/images/logo.jpg',
+        mobile: '/src/static/images/logo.jpg',
       },
       subtitle: {
         en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
-        es: '<span>health care finder. <br/>best affordable health  insurance in your area.</span>',
+        es: '<span>la mejor clínica de dermatologia, <br/>fisioestetica y nutrición en la zona sur.</span>',
       },
-      svg: '/static/svg/coming.svg',
+      svg: '/src/static/svg/coming.svg',
       svg_show: false,
       title: {
-        en: '<span>welcome, we are clínica aqua</span>',
-        es: '<span>bienvenido, somos clínica aqua</span>',
+        en: '<span>Welcome, we are Clínica Aqua.</span>',
+        es: '<span>Bienvenido, somos Clínica Aqua.</span>',
       },
     },
     section_2: {
       body: {
         en: 'with over 30 years of experience, we have helped tens of thousands of people get the right coverage to meet their needs. simply click the below button to get a no obligation quote.',
-        es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
+        es: 'Nuestra sede esta ubicada en san isidro de el general perez zeledon, brindamos una amplia gama de servicios dermatologicos, dermatoesteticos y fisioesteticos. Contamos con alta tecnologia y personal calificado.',
       },
       cta: {
         en: 'create your free quote',
@@ -239,7 +245,7 @@ const Verbiage = {
       id: LINK_SECTION_2,
       subtitle: {
         en: '<span>Get our health services</br> information, quick and free.</span>',
-        es: '<span>Obtén información sobre nuestros servicios</br> de salud, de manera fácil y gratuita.</span>',
+        es: '<span>Obtén información sobre nuestros servicios</br> de manera fácil y gratuita.</span>',
       },
       title: {
         en: 'We work with the best',
@@ -271,8 +277,8 @@ const Verbiage = {
           },
           ico: 'cloud-download',
           image: {
-            desktop: '/static/images/d-image-test.jpg',
-            mobile: '/static/images/m-image-test.jpg',
+            desktop: '/src/static/images/d-image-test.jpg',
+            mobile: '/src/static/images/m-image-test.jpg',
           },
           title: {
             en: 'item 1',
@@ -291,8 +297,8 @@ const Verbiage = {
           },
           ico: 'processor',
           image: {
-            desktop: '/static/images/d-image-test.jpg',
-            mobile: '/static/images/m-image-test.jpg',
+            desktop: '/src/static/images/d-image-test.jpg',
+            mobile: '/src/static/images/m-image-test.jpg',
           },
           title: {
             en: 'item 2',
@@ -311,8 +317,8 @@ const Verbiage = {
           },
           ico: 'cloud-download',
           image: {
-            desktop: '/static/images/d-image-test.jpg',
-            mobile: '/static/images/m-image-test.jpg',
+            desktop: '/src/static/images/d-image-test.jpg',
+            mobile: '/src/static/images/m-image-test.jpg',
           },
           title: {
             en: 'item 3',
@@ -331,8 +337,8 @@ const Verbiage = {
           },
           ico: 'print',
           image: {
-            desktop: '/static/images/d-image-test.jpg',
-            mobile: '/static/images/m-image-test.jpg',
+            desktop: '/src/static/images/d-image-test.jpg',
+            mobile: '/src/static/images/m-image-test.jpg',
           },
           title: {
             en: 'item 4',
@@ -350,11 +356,15 @@ const Verbiage = {
   services: {
     section_1: {
       back: {
-        en: 'Homepage',
-        es: 'Página Principal',
+        en: 'Back to Homepage',
+        es: 'Volver al Inicio',
       },
       categories,
       id: 'services_index',
+      logo: {
+        desktop: '/src/static/images/logo.jpg',
+        mobile: '/src/static/images/logo.jpg',
+      },
       promos,
       services,
     },

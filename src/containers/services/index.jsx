@@ -8,6 +8,9 @@ import {
 } from 'lodash';
 
 import {
+  AppBar,
+  Grid,
+  Toolbar,
   withStyles,
 } from '@material-ui/core';
 
@@ -30,10 +33,12 @@ import Footer from '../../components/footer';
 import SectionA from './section-1/index';
 
 // commons
+import { LangButton } from './../../components/commons/button';
 import ContactFormLayout from '../../components/layouts/commons/contact_1';
 import Loading from './../../components/commons/preloader';
 import ScrollToTopOnMount from '../../components/commons/scrollToTopOnMount';
 import ServicesLayout from '../../components/layouts/commons/services_1';
+import SmartImg from './../../components/commons/img';
 
 // provider
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
@@ -51,9 +56,17 @@ import {
   constants,
 } from './../../providers/config';
 
-const styles = () => ({
+const styles = (theme) => ({
   container: {
     margin: 0,
+  },
+  logo: {
+    display: 'block',
+    margin: 0,
+    width: '50%',
+  },
+  navigation: {
+    padding: theme.spacing(2),
   },
 });
 
@@ -68,8 +81,9 @@ const headers = LangGenerateTree(['headers', 'services'], [
 const copy = LangGenerateTree(['services', 'section_1'], [
   'back',
   'categories',
-  'services',
   'id',
+  'logo',
+  'services',
 ]);
 
 class Services extends Component {
@@ -104,7 +118,7 @@ class Services extends Component {
       match: {
         params: {
           locale,
-          serviceUrl,
+          url,
           type,
         },
       },
@@ -129,8 +143,8 @@ class Services extends Component {
         setServices(cloneServices);
       }
 
-      if (serviceUrl) {
-        setService(FindServiceByPath(serviceUrl, cloneServices, language) || false);
+      if (url) {
+        setService(FindServiceByPath(url, cloneServices, language) || false);
       } else {
         setService(null);
       }
@@ -147,18 +161,6 @@ class Services extends Component {
     setService(null);
     setServiceCategory(null);
     setServices(null);
-  }
-
-  props: {
-    device: string,
-    history: Object,
-    language: string,
-    match: History,
-    selectLanguage: Function,
-    selectVariantVerbiage: Function,
-    setService: Function,
-    setServiceCategory: Function,
-    verbiage: Function,
   }
 
   handleServiceCategory = (item, cb) => {
@@ -198,7 +200,9 @@ class Services extends Component {
   render () {
     const {
       category,
+      classes,
       device,
+      history,
       language,
       service,
       services,
@@ -213,27 +217,68 @@ class Services extends Component {
     };
 
     return (
-      ((verbiage && category && category.id) &&
-      <Fragment>
-        <Helmet proxy={proxy} copy={headers} />
-        <SectionA
-          data={{
-            category,
-            service,
-            services,
-          }}
-          onServiceListClick={this.handleServiceListClick}
-          proxy={proxy}
-        >
-          <ContactFormLayout
-            proxy={proxy}
-            variant="primary"
-          />
-        </SectionA>
-        <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
-        <Footer proxy={proxy} variant="light" />
-        <ScrollToTopOnMount />
-      </Fragment>) || <Loading />
+      verbiage &&
+        (
+          <Fragment>
+            <Helmet proxy={proxy} copy={headers} />
+            <AppBar position="fixed">
+              <Toolbar variant="dense">
+                <Grid
+                  container
+                  direction="row"
+                  justify="space-between"
+                  alignItems="center"
+                  className={classes.navigation}
+                >
+                  <Grid
+                    item
+                    sm={12}
+                    md={4}
+                  >
+                    <LangButton
+                      lang={copy.back}
+                      onClick={() => {
+                        history.push('/');
+                      }}
+                      pos="left"
+                      typeButton="link"
+                      variant="primary"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    sm={2}
+                    md={1}
+                    lg={1}>
+                    <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
+                  </Grid>
+                </Grid>
+              </Toolbar>
+            </AppBar>
+
+            {category && category.id && (
+              <SectionA
+                data={{
+                  category,
+                  service,
+                  services,
+                }}
+                onReset={this.reset}
+                onServiceListClick={this.handleServiceListClick}
+                proxy={proxy}
+              >
+                <ContactFormLayout
+                  proxy={proxy}
+                  variant="primary"
+                />
+              </SectionA>
+            )}
+
+            <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="dark2" />
+            <Footer proxy={proxy} variant="light" />
+            <ScrollToTopOnMount />
+          </Fragment>
+        ) || <Loading />
     );
   }
 }

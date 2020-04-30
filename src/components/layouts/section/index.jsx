@@ -16,7 +16,7 @@ const styles = theme => ({
     maxWidth: 1200,
     minHeight: '100vh',
     overflow: 'hidden',
-    padding: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
+    padding: `0 ${theme.spacing(4)}px`,
   },
   dark: {
     backgroundColor: theme.palette.primary.dark,

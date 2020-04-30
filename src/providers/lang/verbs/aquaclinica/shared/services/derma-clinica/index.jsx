@@ -36,8 +36,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_1}-${SERVICE_1}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/escleroterapia.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/escleroterapia.jpg`,
+      desktop: `/src/static/images/${CATEGORY_1}/escleroterapia.jpg`,
+      mobile: `/src/static/images/${CATEGORY_1}/escleroterapia.jpg`,
     },
     label: {
       en: 'escleroterapia',
@@ -66,8 +66,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_1}-${SERVICE_2}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'alergías',
@@ -96,8 +96,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_1}-${SERVICE_3}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'diagnóstico y tratramiento para cáncer de piel',
@@ -126,8 +126,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_1}-${SERVICE_4}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'dermatitis y enfermedades de la piel',
@@ -186,8 +186,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_1}-${SERVICE_6}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'caída de cabello y tratamiento capilar',
@@ -216,8 +216,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_1}-${SERVICE_7}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_1}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_1}/1.jpg`,
     },
     label: {
       en: 'vitiligo',
@@ -246,8 +246,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_1}-${SERVICE_8}`,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/tratamiento-para-hongos.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/tratamiento-para-hongos.jpg`,
+      desktop: `/src/static/images/${CATEGORY_1}/tratamiento-para-hongos.jpg`,
+      mobile: `/src/static/images/${CATEGORY_1}/tratamiento-para-hongos.jpg`,
     },
     label: {
       en: 'tratamiento para hongos en uñas',

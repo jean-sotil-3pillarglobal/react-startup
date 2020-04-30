@@ -24,7 +24,7 @@ const styles = theme => ({
 });
 
 function OpacityComponent (props: {
-  classes: object,
+classes: object,
 }) {
   const {
     classes,

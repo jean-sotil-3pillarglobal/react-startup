@@ -22,8 +22,8 @@ const styles = theme => ({
     '&:hover *': {
       color: ThemeColor(props, theme),
     },
-    background: ThemeBackground(props, theme),
-    borderColor: ThemeBackground(props, theme, 'dark'),
+    background: ThemeBackground(props, theme, 'main'),
+    borderColor: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
     opacity: props.disabled ? 0.3 : 1,
   }),
@@ -39,10 +39,9 @@ const styles = theme => ({
       boxShadow: 'none',
     },
     '&:hover span': {
-      textDecoration: 'underline',
+      borderColor: ThemeColor(props, theme),
     },
     background: theme.palette.background.transparent,
-    borderWidth: 0,
     color: ThemeColor(props, theme),
     cursor: 'pointer',
     padding: `0 ${theme.spacing(2)}px`,
@@ -65,6 +64,8 @@ function LayoutButton (props: {
   href: string,
   lang: Object,
   onClick: Function,
+  onMouseLeave: Function,
+  onMouseOver: Function,
   pos: string,
   type: string,
   typeButton: string,
@@ -76,6 +77,8 @@ function LayoutButton (props: {
     href,
     lang,
     onClick,
+    onMouseLeave,
+    onMouseOver,
     type,
     typeButton,
   } = props;
@@ -93,6 +96,8 @@ function LayoutButton (props: {
         href={href}
         target="_blank"
         onClick={onClick}
+        onMouseLeave={onMouseLeave}
+        onMouseOver={onMouseOver}
         variant="round">
         {props.children}
       </Fab>
@@ -107,9 +112,11 @@ function LayoutButton (props: {
         )}
         component="button"
         onClick={onClick}
+        onMouseLeave={onMouseLeave}
+        onMouseOver={onMouseOver}
       >
-        {props.children}
         <LangToggler id={lang} />
+        {props.children}
       </Link>
     );
   } else {
@@ -127,6 +134,8 @@ function LayoutButton (props: {
             size="medium"
             startIcon={(pos === 'left' && props.children) || null}
             endIcon={(pos === 'right' && props.children) || null}
+            onMouseLeave={onMouseLeave}
+            onMouseOver={onMouseOver}
           >
             <LangToggler id={lang} />
           </Button>

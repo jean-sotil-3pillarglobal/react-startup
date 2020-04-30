@@ -56,7 +56,7 @@ const SectionA = (props: {
   const {
     classes,
     proxy,
-  } = props;
+  } = props || {};
 
   const {
     verbiage,
@@ -71,8 +71,8 @@ const SectionA = (props: {
           <Grid
             container
             direction="row"
-            justify="center"
-            alignItems="center"
+            justify="flex-end"
+            alignItems="flex-end"
             spacing={6}>
             <Grid
               item

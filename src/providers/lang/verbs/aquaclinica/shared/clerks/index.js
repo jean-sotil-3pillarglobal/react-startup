@@ -14,83 +14,161 @@ const {
 const Clerks = [
   {
     description: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      en: `
+        El Dr.Tabush , es egresado como Médico y Cirujano de la Universidad de Ciencias Médicas UCIMED, donde recibió la distinción Cum Laude Probatus. Graduado en la Especialidad de Dermatología de uno de los Centros Hospitalarios más prestigiosos de Latinoamérica: El Instituto de Dermatología y Cirugía de piel INDERMA, ubicado en la Ciudad de Guatemala, posee 5 sedes a lo largo del país y se dedica exclusivamente a la Dermatología Médica y Quirúrgica.
+        Además se destacó por ser Jefe de Residentes durante el curso de todo su posgrado. Y obtuvo el Premio August C. Stiefel de la Academia Española de Dermatología y Venereología (AEDV). 2002.
+        El Dr. Tabush es pionero nacional y centroamericano en el uso de distintas técnicas de láser en Dermatología, y ha sido miembro por más de 10 años de la ASLMS (American Society for Laser Medicine and Surgery).
+
+        Gracias a su reconocida experiencia y conocimiento, es regularmente invitado como conferencista en congresos de dermatología tanto en territorio nacional como internacional.
+      `,
+      es: `
+        El Dr.Tabush , es egresado como Médico y Cirujano de la Universidad de Ciencias Médicas UCIMED, donde recibió la distinción Cum Laude Probatus. Graduado en la Especialidad de Dermatología de uno de los Centros Hospitalarios más prestigiosos de Latinoamérica: El Instituto de Dermatología y Cirugía de piel INDERMA, ubicado en la Ciudad de Guatemala, posee 5 sedes a lo largo del país y se dedica exclusivamente a la Dermatología Médica y Quirúrgica.
+        Además se destacó por ser Jefe de Residentes durante el curso de todo su posgrado. Y obtuvo el Premio August C. Stiefel de la Academia Española de Dermatología y Venereología (AEDV). 2002.
+        El Dr. Tabush es pionero nacional y centroamericano en el uso de distintas técnicas de láser en Dermatología, y ha sido miembro por más de 10 años de la ASLMS (American Society for Laser Medicine and Surgery).
+        <br /><br />
+        Gracias a su reconocida experiencia y conocimiento, es regularmente invitado como conferencista en congresos de dermatología tanto en territorio nacional como internacional.
+      `,
     },
     id: CLERK_1,
-    image: '/static/images/m-image-test.jpg',
+    image: 'https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/fr/e15/s1080x1080/66413513_2381985338537788_6121002787710143154_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=hTD2-1ooAPIAX8U7rp_&oh=5166c8225c122ff5047400594eca7312&oe=5EC7B136',
     label: {
-      en: 'web developer',
-      es: 'web developer',
+      en: 'Médico Cirujano Dermatólogo',
+      es: 'Médico Cirujano Dermatólogo',
     },
     name: {
-      en: 'jean paul sotil',
-      es: 'jean paul sotil',
+      en: 'Dr Jose Antonio Tabush Clare',
+      es: 'Dr Jose Antonio Tabush Clare',
     },
   },
   {
     description: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      en: `
+        El Dr.Tabush , es egresado como Médico y Cirujano de la Universidad de Ciencias Médicas UCIMED, donde recibió la distinción Cum Laude Probatus. Graduado en la Especialidad de Dermatología de uno de los Centros Hospitalarios más prestigiosos de Latinoamérica: El Instituto de Dermatología y Cirugía de piel INDERMA, ubicado en la Ciudad de Guatemala, posee 5 sedes a lo largo del país y se dedica exclusivamente a la Dermatología Médica y Quirúrgica.
+        Además se destacó por ser Jefe de Residentes durante el curso de todo su posgrado. Y obtuvo el Premio August C. Stiefel de la Academia Española de Dermatología y Venereología (AEDV). 2002.
+        El Dr. Tabush es pionero nacional y centroamericano en el uso de distintas técnicas de láser en Dermatología, y ha sido miembro por más de 10 años de la ASLMS (American Society for Laser Medicine and Surgery).
+
+        Gracias a su reconocida experiencia y conocimiento, es regularmente invitado como conferencista en congresos de dermatología tanto en territorio nacional como internacional.
+      `,
+      es: `
+        El Dr.Tabush , es egresado como Médico y Cirujano de la Universidad de Ciencias Médicas UCIMED, donde recibió la distinción Cum Laude Probatus. Graduado en la Especialidad de Dermatología de uno de los Centros Hospitalarios más prestigiosos de Latinoamérica: El Instituto de Dermatología y Cirugía de piel INDERMA, ubicado en la Ciudad de Guatemala, posee 5 sedes a lo largo del país y se dedica exclusivamente a la Dermatología Médica y Quirúrgica.
+        Además se destacó por ser Jefe de Residentes durante el curso de todo su posgrado. Y obtuvo el Premio August C. Stiefel de la Academia Española de Dermatología y Venereología (AEDV). 2002.
+        El Dr. Tabush es pionero nacional y centroamericano en el uso de distintas técnicas de láser en Dermatología, y ha sido miembro por más de 10 años de la ASLMS (American Society for Laser Medicine and Surgery).
+        <br /><br />
+        Gracias a su reconocida experiencia y conocimiento, es regularmente invitado como conferencista en congresos de dermatología tanto en territorio nacional como internacional.
+      `,
+    },
+    id: CLERK_1,
+    image: 'https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/fr/e15/s1080x1080/66413513_2381985338537788_6121002787710143154_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=hTD2-1ooAPIAX8U7rp_&oh=5166c8225c122ff5047400594eca7312&oe=5EC7B136',
+    label: {
+      en: 'Médico Cirujano Dermatólogo',
+      es: 'Médico Cirujano Dermatólogo',
+    },
+    name: {
+      en: 'Dr Jose Antonio Tabush Clare',
+      es: 'Dr Jose Antonio Tabush Clare',
+    },
+    size_md: 6,
+    size_sm: 6,
+  },
+  {
+    description: {
+      en: `
+        El Dr. Soto es un médico dermatólogo certificado por el Colegio de Médicos y Cirujanos de Costa Rica. Realizó sus estudios en medicina general en la Universidad de Ciencias Médicas (UCIMED) y posteriormente obtuvo su título de especialista en dermatología tras completar el programa de residencia de la Universidad de Costa Rica. Durante sus 4 años de formación como dermatólogo, el Dr. Soto se capacitó en los principales hospitales públicos de Costa Rica y posteriormente laboró en el Hospital Escalante Pradilla de Pérez Zeledón como parte de su servicio social. El Dr. Soto es miembro de la Academia Europea de Dermatología y Venereología (EADV), así como de la Asociación Americana de Láser en Medicina y Cirugía (ASLMS). El Dr. Soto ha participado en múltiples congresos internacionales y capacitaciones en temas de dermatología clínica y estética. En el año 2016 la revista médica PIEL (España) publicó un articulo cientifico suyo y como reconocimiento internacional el Dr. Soto ganó el premio a mejor caso de la EADV en la Universidad de Bologna, Italia.
+      `,
+      es: `
+        El Dr. Soto es un médico dermatólogo certificado por el Colegio de Médicos y Cirujanos de Costa Rica. Realizó sus estudios en medicina general en la Universidad de Ciencias Médicas (UCIMED) y posteriormente obtuvo su título de especialista en dermatología tras completar el programa de residencia de la Universidad de Costa Rica. Durante sus 4 años de formación como dermatólogo, el Dr. Soto se capacitó en los principales hospitales públicos de Costa Rica y posteriormente laboró en el Hospital Escalante Pradilla de Pérez Zeledón como parte de su servicio social. El Dr. Soto es miembro de la Academia Europea de Dermatología y Venereología (EADV), así como de la Asociación Americana de Láser en Medicina y Cirugía (ASLMS). El Dr. Soto ha participado en múltiples congresos internacionales y capacitaciones en temas de dermatología clínica y estética. En el año 2016 la revista médica PIEL (España) publicó un articulo cientifico suyo y como reconocimiento internacional el Dr. Soto ganó el premio a mejor caso de la EADV en la Universidad de Bologna, Italia.
+      `,
     },
     id: CLERK_2,
-    image: '/static/images/m-image-test.jpg',
+    image: 'https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/fr/e15/s1080x1080/93524502_216305392990177_4189325793411692840_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=101&_nc_ohc=wJu0PEBb4NcAX8yPBJ5&oh=6a940d2c1b9aa76b8a4148e04a7c620b&oe=5EC9BF5F',
     label: {
-      en: 'web developer',
-      es: 'web developer',
+      en: 'Médico Cirujano Dermatólogo',
+      es: 'Médico Cirujano Dermatólogo',
     },
     name: {
-      en: 'jean paul sotil',
-      es: 'jean paul sotil',
+      en: 'Dr. Arturo Soto Mora',
+      es: 'Dr. Arturo Soto Mora',
     },
+    size_md: 6,
+    size_sm: 6,
   },
   {
     description: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      en: `
+        Realizó sus estudios de medicina general en la Universidad Latina de Costa Rica en el 2010; posteriormente concluyó la especialidad en Homeopatía en Guadalajara, México en el 2015. Asistiendo durante todos los años de formación a diferentes congresos y capacitaciones en ambos países.
+        <br /><br />
+        Durante los años de formación de medicina y homeopatía realizó capacitaciones y cursos en áreas como Terapia reiki (nivel 2), Auriculoterapia, Mesoterapia.
+        <br /><br />
+        Estuvo a cargo de la Clinica de Uñas; y además ha recibido capacitaciones en laser Fotona, Thermi y Ultherapy.
+      `,
+      es: `
+        Realizó sus estudios de medicina general en la Universidad Latina de Costa Rica en el 2010; posteriormente concluyó la especialidad en Homeopatía en Guadalajara, México en el 2015. Asistiendo durante todos los años de formación a diferentes congresos y capacitaciones en ambos países.
+        <br /><br />
+        Durante los años de formación de medicina y homeopatía realizó capacitaciones y cursos en áreas como Terapia reiki (nivel 2), Auriculoterapia, Mesoterapia.
+        <br /><br />
+        Estuvo a cargo de la Clinica de Uñas; y además ha recibido capacitaciones en laser Fotona, Thermi y Ultherapy.
+      `,
     },
     id: CLERK_3,
-    image: '/static/images/m-image-test.jpg',
+    image: 'https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/fr/e15/s1080x1080/93524502_216305392990177_4189325793411692840_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=101&_nc_ohc=wJu0PEBb4NcAX8yPBJ5&oh=6a940d2c1b9aa76b8a4148e04a7c620b&oe=5EC9BF5F',
     label: {
-      en: 'web developer',
-      es: 'web developer',
+      en: 'Médica Cirujana Dermatóloga',
+      es: 'Médica Cirujana Dermatóloga',
     },
     name: {
-      en: 'jean paul sotil',
-      es: 'jean paul sotil',
+      en: 'Dra. Diana Ulate Ovares',
+      es: 'Dra. Diana Ulate Ovares',
     },
+    size_md: 6,
+    size_sm: 6,
   },
   {
     description: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      en: `
+        Realizo sus estudios en la Universidad Hispanoamericana.
+        <br /><br />
+        Enfocada y comprometida en ayudar a cambiar estilos de vida por medio de la alimentacion saludable, ajustadas a nuestra realidad.
+      `,
+      es: `
+        Realizo sus estudios en la Universidad Hispanoamericana.
+        <br /><br />
+        Enfocada y comprometida en ayudar a cambiar estilos de vida por medio de la alimentacion saludable, ajustadas a nuestra realidad.
+      `,
     },
     id: CLERK_4,
-    image: '/static/images/m-image-test.jpg',
+    image: 'https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/fr/e15/s1080x1080/93524502_216305392990177_4189325793411692840_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=101&_nc_ohc=wJu0PEBb4NcAX8yPBJ5&oh=6a940d2c1b9aa76b8a4148e04a7c620b&oe=5EC9BF5F',
     label: {
-      en: 'web developer',
-      es: 'web developer',
+      en: 'Nutricionista',
+      es: 'Nutricionista',
     },
     name: {
-      en: 'jean paul sotil',
-      es: 'jean paul sotil',
+      en: 'Dra. Katherine Arias Calderon',
+      es: 'Dra. Katherine Arias Calderon',
     },
+    size_md: 6,
+    size_sm: 6,
   },
   {
     description: {
-      en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+      en: `
+        Realizo sus estudios en la Universidad Latina de Costa Rica en el 2013.
+      `,
+      es: `
+        Realizo sus estudios en la Universidad Latina de Costa Rica en el 2013.
+      `,
     },
     id: CLERK_5,
-    image: '/static/images/m-image-test.jpg',
+    image: 'https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/fr/e15/s1080x1080/93524502_216305392990177_4189325793411692840_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=101&_nc_ohc=wJu0PEBb4NcAX8yPBJ5&oh=6a940d2c1b9aa76b8a4148e04a7c620b&oe=5EC9BF5F',
     label: {
-      en: 'web developer',
-      es: 'web developer',
+      en: 'Fisioterapeuta',
+      es: 'Fisioterapeuta',
     },
     name: {
-      en: 'jean paul sotil',
-      es: 'jean paul sotil',
+      en: 'Lic. Helyani Lopez Solano',
+      es: 'Lic. Helyani Lopez Solano',
     },
+    size_md: 6,
+    size_sm: 6,
   },
 ];
 

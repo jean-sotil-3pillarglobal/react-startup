@@ -1,6 +1,7 @@
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
 import React, { Component } from 'react';
 import UAParser from 'ua-parser-js';
 
@@ -92,7 +93,6 @@ const init = {
   device: null,
 };
 
-// main
 class App extends Component {
   constructor(props) {
     super(props);
@@ -120,13 +120,6 @@ class App extends Component {
     };
   }
 
-  props: {
-    classes: Object,
-    device: String,
-    language: String,
-    setDevice: () => void,
-  }
-
   render () {
     const { classes, language } = this.props;
 
@@ -135,34 +128,44 @@ class App extends Component {
 
     return (
       <MuiThemeProvider theme={skin}>
+        <Helmet>
+          <title>Clinica Aqua ...</title>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+          <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" />
+        </Helmet>
         <CssBaseline />
-        <div className={classes.container}>
-          <Router>
-            <TransitionGroup className={classes.transitions}>
-              <CSSTransition
-                key="transition"
-                timeout={{ enter: 300, exit: 300 }}
-                classNames={{
-                  enter: classes.appear,
-                  enterActive: classes.appearActive,
-                  exit: classes.exit,
-                  exitActive: classes.exitActive,
-                }}>
-                <div className={classes.switch}>
-                  <Switch>
-                    <Route exact path="/:locale" component={Home} />
-                    <Route exact path={`/:locale/${SERVICES[language]}/:type/:serviceUrl?`} component={Services} />
-                    <Route exact path="/blog" component={Blog} />
-                    <Route component={Four0Four} />
-                  </Switch>
+        <div className="App">
+          <div className={classes.container}>
+            <Router>
+              <TransitionGroup className={classes.transitions}>
+                <CSSTransition
+                  key="transition"
+                  timeout={{ enter: 300, exit: 300 }}
+                  classNames={{
+                    enter: classes.appear,
+                    enterActive: classes.appearActive,
+                    exit: classes.exit,
+                    exitActive: classes.exitActive,
+                  }}>
+                  <div className={classes.switch}>
+                    <Switch>
+                      <Route exact path="/:locale" component={Home} />
+                      <Route exact path={`/:locale/${SERVICES[language]}`} component={Services} />
+                      <Route exact path={`/:locale/${SERVICES[language]}/:type/:url?`} component={Services} />
+                      <Route exact path="/blog" component={Blog} />
+                      <Route component={Four0Four} />
+                    </Switch>
 
-                  <Route exact path="/">
-                    {language && <Redirect to={`/${language}`} />}
-                  </Route>
-                </div>
-              </CSSTransition>
-            </TransitionGroup>
-          </Router>
+                    <Route exact path="/">
+                      {language && <Redirect to={`/${language}`} />}
+                    </Route>
+                  </div>
+                </CSSTransition>
+              </TransitionGroup>
+            </Router>
+          </div>
         </div>
       </MuiThemeProvider>
     );

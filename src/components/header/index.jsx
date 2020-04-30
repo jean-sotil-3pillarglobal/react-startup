@@ -90,7 +90,10 @@ const styles = theme => ({
     width: drawerWidth,
   },
   fab: {
-    background: ThemeColor({ variant: 'secondary' }, theme),
+    '&:hover': {
+      background: ThemeColor({ variant: 'primary' }, theme, 'dark'),
+    },
+    background: ThemeColor({ variant: 'primary' }, theme, 'light'),
   },
   h3: {
     color: theme.palette.primary.contrastText,
@@ -147,8 +150,8 @@ const styles = theme => ({
   socialButtonsFixed: {
     display: 'block',
     position: 'fixed',
-    right: theme.spacing(1),
-    top: '33%',
+    right: theme.spacing(3),
+    top: theme.spacing(14),
     zIndex: 999,
   },
   topHeader: {
@@ -247,11 +250,11 @@ class Header extends Component {
           </Grid>
         </Grid>
         <AppBar
-          position="relative"
+          position="fixed"
           className={classnames(classes.appBar, {
             [classes.appBarShift]: open,
           })}>
-          <Toolbar disableGutters={!open}>
+          <Toolbar variant="dense" disableGutters={!open}>
             <Grid
               container
               direction="row"

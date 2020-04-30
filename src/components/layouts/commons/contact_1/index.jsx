@@ -68,7 +68,7 @@ class ContactFormLayout extends Component {
       proxy: {
         verbiage,
       },
-    } = this.props;
+    } = props || {};
 
     // init with forms
     init.forms = verbiage(copy.forms).map((form) => {

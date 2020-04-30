@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 
 import {
+  AppBar,
   Breadcrumbs,
   Card,
   CardActions,
@@ -17,9 +18,12 @@ import {
   Divider,
   Grid,
   Paper,
+  Toolbar,
   Typography,
   withStyles,
 } from '@material-ui/core';
+
+import { Link as A } from '@material-ui/core'
 
 import { Element, Link } from 'react-scroll';
 
@@ -33,7 +37,8 @@ import ThemeBackground from './../../../providers/utils/theme.background';
 import ThemeColor from './../../../providers/utils/theme.color';
 
 // components
-import { LangButton } from './../../../components/commons/button';
+import { TYPES } from './../../../components/commons/button';
+import LangButtonAnimate from './../../../components/commons/button/animate';
 import Icon from './../../../components/commons/icon';
 import Opacity from './../../../components/commons/opacity';
 import SectionBlock from './../../../components/layouts/section';
@@ -49,6 +54,9 @@ const {
 } = constants;
 
 const styles = theme => ({
+  back: {
+    lineHeight: '38px',
+  },
   button: {
     cursor: 'pointer',
     margin: '0 auto',
@@ -60,9 +68,6 @@ const styles = theme => ({
     padding: theme.spacing(4),
     width: '100%',
   }),
-  chipFocused: {
-    border: `1px solid ${ThemeColor({ variant }, theme)}`,
-  },
   container: {
     background: 'transparent',
   },
@@ -74,16 +79,15 @@ const styles = theme => ({
   },
   crumb: () => ({
     color: ThemeColor({ variant }, theme),
+    marginTop: theme.spacing(1),
     textTransform: 'capitalize',
   }),
   description: {
     color: theme.palette.primary.contrastText,
-    padding: theme.spacing(2),
     textAlign: 'center',
   },
   descriptionContainer: {
     background: ThemeBackground({ variant }, theme, 'light'),
-    marginTop: theme.spacing(8),
     maxWidth: 'initial',
     minHeight: 'initial',
     padding: `${theme.spacing(1)}px 0`,
@@ -106,10 +110,7 @@ const styles = theme => ({
     width: '100%',
   },
   icon: {
-    color: ThemeColor({ variant }, theme),
-    fontWeight: 200,
-    height: 18,
-    marginTop: theme.spacing(1),
+    lineHeight: 0,
   },
   images: {
     border: `1px solid ${ThemeBackground({ variant }, theme, 'light')}`,
@@ -161,8 +162,10 @@ const styles = theme => ({
     color: ThemeColor({ variant }, theme),
     textTransform: 'capitalize',
   },
-  navigation: {
-    padding: theme.spacing(2),
+  logo: {
+    display: 'block',
+    margin: 0,
+    width: '50%',
   },
   svg: {
     marginBottom: theme.spacing(2),
@@ -187,12 +190,41 @@ const styles = theme => ({
   },
 });
 
+function CustomLink (props: {
+  classes: Object,
+  history: Object,
+  onReset: Function,
+  path: String,
+  url: String,
+}) {
+  const {
+    classes,
+    history,
+    onReset,
+    path,
+    url,
+  } = props;
+
+  return url && (
+    <A onClick={(evt) => {
+      evt.preventDefault();
+      history.replace(url);
+      onReset();
+    }}>
+      <Typography variant="caption" className={classes.crumb}>{path}</Typography>
+    </A>
+  ) || (
+    <Typography variant="h6" className={classes.crumb}>{path}</Typography>
+  );
+};
+
 function SectionA (props: {
   children: any,
   classes: Object,
   data: Object,
   history: Object,
   match: Object,
+  onReset: Function,
   onServiceListClick: Function,
   proxy: Object,
 }) {
@@ -206,6 +238,7 @@ function SectionA (props: {
         serviceUrl,
       },
     },
+    onReset,
     onServiceListClick,
     proxy,
   } = props;
@@ -222,6 +255,7 @@ function SectionA (props: {
   const {
     copy,
     language,
+    verbiage,
   } = proxy;
 
   const servicePath = SERVICES[language];
@@ -301,13 +335,18 @@ function SectionA (props: {
                 spy
                 to={constants.LINK_CONTACT_FORM_2}
               >
-                <LangButton
+                <LangButtonAnimate
+                  color="white"
+                  iconClassName={classes.icon}
+                  iconx="arrowDown"
+                  icony="fwd"
                   lang={service.cta}
-                  pos="right"
                   onClick={() => setShowForm(true)}
-                  variant="dark2">
-                  <Icon variant="primary" name="left_arrow" />
-                </LangButton>
+                  pos="right"
+                  size={30}
+                  typeButton={TYPES.BUTTON}
+                  variant="dark2"
+                />
               </Link>
             </CardActions>
           </Card>
@@ -318,39 +357,6 @@ function SectionA (props: {
 
   return (
     <Paper className={classes.container} elevation={0}>
-      <Grid
-        container
-        className={classes.navigation}
-      >
-        <Grid
-          item
-          sm={12}
-          md={6}
-        >
-          <LangButton
-            lang={copy.back}
-            onClick={() => {
-              history.push('/');
-            }}
-            variant="light"
-            pos="left">
-            <Icon variant={variant} name="keyboard_arrow_left" />
-          </LangButton>
-        </Grid>
-        <Grid
-          item
-          sm={12}
-          md={6}
-        >
-          <Breadcrumbs aria-label="breadcrumb">
-            <Typography variant="caption" className={classes.crumb}>{servicePath}</Typography>
-            <Typography variant="caption" className={classes.crumb}><LangToggler id={category.title} /></Typography>
-            {(service && service.id) && (
-              <Typography variant="caption" className={classes.crumb}><LangToggler id={service.title} /></Typography>
-            )}
-          </Breadcrumbs>
-        </Grid>
-      </Grid>
       <Parallax bgImage={category.background} strength={200} className={classes.background}>
         <Opacity opacity={0.5} zIndex={0} variant="light" />
         <Paper className={classes.titleContainer} elevation={0}>
@@ -370,7 +376,40 @@ function SectionA (props: {
             direction="row"
             justify="center"
             alignItems="center"
-            spacing={1}>
+            spacing={8}>
+            <Grid
+              item
+              sm={12}
+              md={10}
+              lg={10}
+            >
+              <Breadcrumbs aria-label="breadcrumb">
+                <CustomLink
+                  onReset={onReset}
+                  history={history}
+                  url={`/${language}/${servicePath}`}
+                  path={servicePath}
+                  classes={classes}
+                />
+
+                <CustomLink
+                  onReset={onReset}
+                  history={history}
+                  url={(service && service.id) && `/${language}${category.url[language]}` || false}
+                  path={<LangToggler id={category.title} />}
+                  classes={classes}
+                />
+
+                {(service && service.id) && (
+                  <CustomLink
+                    onReset={onReset}
+                    history={history}
+                    path={<LangToggler id={service.title} />}
+                    classes={classes}
+                  />
+                )}
+              </Breadcrumbs>
+            </Grid>
             <Grid
               item
               sm={12}
@@ -391,7 +430,7 @@ function SectionA (props: {
                     lg={6}
                   >
                     <Typography
-                      variant="body1"
+                      variant="body2"
                       className={classes.description}
                     >
                       <LangToggler id={category.description} />
@@ -457,17 +496,22 @@ function SectionA (props: {
                       className={classes.itemActions}
                       disableSpacing
                     >
-                      <LangButton
+                      <LangButtonAnimate
                         className={classnames(classes.button, seleted && classes.itemSelected)}
+                        color="black"
+                        iconClassName={classes.icon}
+                        iconx="arrowDown"
+                        icony="fwd"
                         lang={category.cta}
                         onClick={() => {
                           setShowForm(false);
                           onServiceListClick(category, item);
                         }}
+                        pos="right"
+                        size={30}
+                        typeButton={TYPES.BUTTON}
                         variant="light"
-                        pos="right">
-                        <Icon variant="light" className={classnames(seleted && classes.itemSelected)} name="keyboard_arrow_right" />
-                      </LangButton>
+                      />
                     </CardActions>
                   </Card>
                 );

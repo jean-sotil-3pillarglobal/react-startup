@@ -3,21 +3,21 @@ import { SET_LEAD_TYPE } from '../global';
 
 export const FETCH_LEAD = 'FETCH_LEAD';
 
-const setLead = (data: Object) => {
+const setLead = (data) => {
   return {
     payload: data,
     type: FETCH_LEAD,
   };
 };
 
-const setLeadType = (data: Object) => {
+const setLeadType = (data) => {
   return {
     payload: data,
     type: SET_LEAD_TYPE,
   };
 };
 
-export const fetchLeadAction = (uuid: string) => {
+export const fetchLeadAction = (uuid) => {
   const url = `hub/${uuid}`;
 
   const defaultValues = {

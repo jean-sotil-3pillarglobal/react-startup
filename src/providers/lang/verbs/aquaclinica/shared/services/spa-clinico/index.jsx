@@ -39,8 +39,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_1}`,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/emsculpt.jpg`,
-      mobile: `/static/images/${CATEGORY_3}/emsculpt.jpg`,
+      desktop: `/src/static/images/${CATEGORY_3}/emsculpt.jpg`,
+      mobile: `/src/static/images/${CATEGORY_3}/emsculpt.jpg`,
     },
     label: {
       en: 'EMSCULPT',
@@ -69,8 +69,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_2}`,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/venus-legacy.jpg`,
-      mobile: `/static/images/${CATEGORY_3}/venus-legacy.jpg`,
+      desktop: `/src/static/images/${CATEGORY_3}/venus-legacy.jpg`,
+      mobile: `/src/static/images/${CATEGORY_3}/venus-legacy.jpg`,
     },
     label: {
       en: 'venus legacy',
@@ -87,7 +87,7 @@ const Services = [
     value: `${CATEGORY_3}-${SERVICE_2}`,
   },
   {
-    background: `/static/images/${CATEGORY_3}/ondas-de-choque.jpg`,
+    background: `/src/static/images/${CATEGORY_3}/ondas-de-choque.jpg`,
     categories: [
       CATEGORY_3,
     ],
@@ -99,8 +99,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_3}`,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/ondas-de-choque.jpg`,
-      mobile: `/static/images/${CATEGORY_3}/ondas-de-choque.jpg`,
+      desktop: `/src/static/images/${CATEGORY_3}/ondas-de-choque.jpg`,
+      mobile: `/src/static/images/${CATEGORY_3}/ondas-de-choque.jpg`,
     },
     label: {
       en: 'ondas de choque',
@@ -129,8 +129,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_4}`,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/oxygeneo.jpg`,
-      mobile: `/static/images/${CATEGORY_3}/oxygeneo.jpg`,
+      desktop: `/src/static/images/${CATEGORY_3}/oxygeneo.jpg`,
+      mobile: `/src/static/images/${CATEGORY_3}/oxygeneo.jpg`,
     },
     label: {
       en: 'oxygeneo',
@@ -147,7 +147,7 @@ const Services = [
     value: `${CATEGORY_3}-${SERVICE_4}`,
   },
   {
-    background: `/static/images/${CATEGORY_3}/preso-terapia.jpg`,
+    background: `/src/static/images/${CATEGORY_3}/preso-terapia.jpg`,
     categories: [
       CATEGORY_3,
     ],
@@ -159,8 +159,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_5}`,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/preso-terapia.jpg`,
-      mobile: `/static/images/${CATEGORY_3}/preso-terapia.jpg`,
+      desktop: `/src/static/images/${CATEGORY_3}/preso-terapia.jpg`,
+      mobile: `/src/static/images/${CATEGORY_3}/preso-terapia.jpg`,
     },
     label: {
       en: 'preso-terapia',
@@ -177,7 +177,7 @@ const Services = [
     value: `${CATEGORY_3}-${SERVICE_5}`,
   },
   {
-    background: `/static/images/${CATEGORY_3}/meso-terapia.jpg`,
+    background: `/src/static/images/${CATEGORY_3}/meso-terapia.jpg`,
     categories: [
       CATEGORY_3,
     ],
@@ -189,8 +189,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_6}`,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/meso-terapia.jpg`,
-      mobile: `/static/images/${CATEGORY_3}/meso-terapia.jpg`,
+      desktop: `/src/static/images/${CATEGORY_3}/meso-terapia.jpg`,
+      mobile: `/src/static/images/${CATEGORY_3}/meso-terapia.jpg`,
     },
     label: {
       en: 'meso-terapia',
@@ -219,8 +219,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_3}-${SERVICE_7}`,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/carboxiterapia.jpg`,
-      mobile: `/static/images/${CATEGORY_3}/carboxiterapia.jpg`,
+      desktop: `/src/static/images/${CATEGORY_3}/carboxiterapia.jpg`,
+      mobile: `/src/static/images/${CATEGORY_3}/carboxiterapia.jpg`,
     },
     label: {
       en: 'carboxiterapia',

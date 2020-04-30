@@ -42,8 +42,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_1}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'rellenos de ácido hialurónico',
@@ -77,8 +77,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_2}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/toxina-botulinica.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/toxina-botulinica.jpg`,
+      desktop: `/src/static/images/${CATEGORY_2}/toxina-botulinica.jpg`,
+      mobile: `/src/static/images/${CATEGORY_2}/toxina-botulinica.jpg`,
     },
     label: {
       en: 'toxina botulinica',
@@ -107,8 +107,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_3}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/rejuvenecimiento-laser.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/rejuvenecimiento-laser.jpg`,
+      desktop: `/src/static/images/${CATEGORY_2}/rejuvenecimiento-laser.jpg`,
+      mobile: `/src/static/images/${CATEGORY_2}/rejuvenecimiento-laser.jpg`,
     },
     label: {
       en: 'rejuvenecimiento láser',
@@ -137,8 +137,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_4}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'tratamiento láser para manchas e hiperpigmentación',
@@ -167,8 +167,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_5}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'toxina contra hiperhidrosis',
@@ -197,8 +197,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_6}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/eliminacion-tatuajes.jpeg`,
-      mobile: `/static/images/${CATEGORY_2}/eliminacion-tatuajes.jpeg`,
+      desktop: `/src/static/images/${CATEGORY_2}/eliminacion-tatuajes.jpeg`,
+      mobile: `/src/static/images/${CATEGORY_2}/eliminacion-tatuajes.jpeg`,
     },
     label: {
       en: 'eliminación de tatuajes',
@@ -227,8 +227,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_7}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'dermapen',
@@ -257,8 +257,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_8}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'radio frecuencia con agujas',
@@ -287,8 +287,8 @@ const Services = [
     ico: 'cloud-download',
     id: `${CATEGORY_2}-${SERVICE_9}`,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/1.jpg`,
-      mobile: `/static/images/${CATEGORY_2}/1.jpg`,
+      desktop: `/src/static/images/${CATEGORY_2}/1.jpg`,
+      mobile: `/src/static/images/${CATEGORY_2}/1.jpg`,
     },
     label: {
       en: 'plex air, blefaroplatia sin cirugía',

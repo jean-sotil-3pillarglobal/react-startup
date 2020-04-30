@@ -96,10 +96,11 @@ const overrides = {
     root: {
       border: '1px solid',
       borderColor: 'transparent',
-      borderRadius: '0 0 0 0',
       boxShadow: 'none',
+      fontFamily,
       fontSize: '.7em',
-      fontWeight: 800,
+      fontWeight: 500,
+      padding: '10px',
       textTransform: 'capitalize',
     },
     text: {
@@ -237,9 +238,15 @@ const overrides = {
   },
   MuiLink: {
     root: {
-      fontSize: '.7em',
-      fontWeight: 400,
+      borderBottom: '0 solid transparent',
+      fontSize: '.6em',
+      fontWeight: 200,
       textTransform: 'capitalize',
+    },
+    underlineHover: {
+      '&:hover *, &:hover': {
+        fontWeight: 600,
+      },
     },
   },
   MuiMobileStepper: {
@@ -347,19 +354,19 @@ const overrides = {
 
 const typography = {
   body1: {
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
     fontWeight: 400,
     textTransform: 'initial',
   },
   body2: {
-    fontSize: '1.6rem',
+    fontSize: '1.2rem',
     fontWeight: 500,
     textTransform: 'initial',
   },
   caption: {
     display: 'inline-block',
     fontSize: '.9rem',
-    fontWeight: 400,
+    fontWeight: 500,
     lineHeight: 'normal',
     textTransform: 'initial',
   },
@@ -369,26 +376,26 @@ const typography = {
     textTransform: 'initial',
   },
   h2: {
-    fontSize: '2.6rem',
+    fontSize: '2.5rem',
     fontWeight: 600,
     textTransform: 'initial',
   },
   h3: {
-    fontSize: '2.4rem',
-    fontWeight: 500,
+    fontSize: '1.6rem',
+    fontWeight: 400,
     textTransform: 'initial',
   },
   h4: {
-    fontSize: '2.2rem',
-    fontWeight: 500,
+    fontSize: '1.4rem',
+    fontWeight: 400,
   },
   h5: {
     fontSize: '1.6rem',
-    fontWeight: 500,
+    fontWeight: 400,
     textTransform: 'initial',
   },
   h6: {
-    fontSize: '1.2rem',
+    fontSize: '.9rem',
     fontWeight: 400,
   },
   overline: {

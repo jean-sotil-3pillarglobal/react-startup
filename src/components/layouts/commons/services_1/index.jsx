@@ -49,14 +49,14 @@ const styles = theme => ({
   }),
   card: props => ({
     '&:hover': {
-      borderColor: ThemeBackground(props, theme, 'dark'),
+      borderColor: ThemeBackground(props, theme, 'main'),
     },
     backgroundColor: ThemeBackground(props, theme, 'light'),
-    border: `${theme.spacing(0.5)}px solid ${ThemeBackground(props, theme, 'main')}`,
+    border: `${theme.spacing(0.5)}px solid ${ThemeBackground(props, theme, 'light')}`,
     borderRadius: '0 0 0 0',
     boxShadow: 'initial',
     flexShrink: 0,
-    padding: theme.spacing(1),
+    padding: 0,
     position: 'relative',
     textAlign: 'center',
     transition: theme.transitions.create(
@@ -65,14 +65,15 @@ const styles = theme => ({
     ),
   }),
   cardContent: props => ({
-    background: ThemeBackground(props, theme, 'light'),
-    marginTop: theme.spacing(1),
+    background: ThemeBackground(props, theme, 'main'),
     padding: theme.spacing(0),
   }),
   cardHover: {},
   cardList: props => ({
     color: ThemeColor(props, theme),
     cursor: 'default',
+    maxHeight: 250,
+    overflow: 'scroll',
     padding: theme.spacing(1),
     textAlign: 'right',
   }),
@@ -82,30 +83,33 @@ const styles = theme => ({
   cardTitle: props => ({
     color: ThemeColor(props, theme),
     margin: `0 ${theme.spacing(2)}px`,
+    padding: `${theme.spacing(2)}px 5%`,
     textTransform: 'capitalize',
   }),
   cardTitleImage: props => ({
     backgroundSize: 'cover',
+    borderBottom: `${theme.spacing(2)}px solid ${ThemeBackground(props, theme, 'dark')}`,
     color: ThemeColor(props, theme),
     cursor: 'default',
-    margin: '0 auto',
-    padding: `0 ${theme.spacing(2)}px`,
+    display: 'block',
   }),
   cta: {
     padding: `${theme.spacing(2)}px 0`,
   },
   fab: props => ({
-    backgroundColor: ThemeBackground(props, theme, 'light'),
-    zIndex: 2,
+    backgroundColor: ThemeBackground(props, theme, 'dark'),
+    color: ThemeBackground(props, theme, 'dark'),
+    float: 'left',
+    margin: theme.spacing(2),
   }),
   fabHover: props => ({
-    backgroundColor: `${ThemeBackground(props, theme, 'dark')}!important`,
+    backgroundColor: `${ThemeBackground(props, theme, 'light')}!important`,
     color: ThemeColor(props, theme),
   }),
   featuredText: props => ({
     background: ThemeBackground(props, theme, 'dark'),
+    color: ThemeColor(props, theme),
     display: 'inline-block',
-    fontSize: '.8em',
     padding: theme.spacing(0.5),
     textTransform: 'capitalize',
   }),
@@ -117,7 +121,7 @@ const styles = theme => ({
   }),
   item: props => ({
     border: `0 solid ${ThemeColor(props, theme)}`,
-    marginBottom: theme.spacing(6),
+    marginBottom: theme.spacing(1),
     overflow: 'hidden',
   }),
   items: {
@@ -134,6 +138,7 @@ const styles = theme => ({
   }),
   serviceTitle: props => ({
     color: ThemeColor(props, theme),
+    display: 'block',
     fontWeight: 500,
     marginBottom: 0,
     marginTop: 0,
@@ -209,11 +214,6 @@ function ServicesLayout (props: {
           className={classnames(classes.card, isHover && classes.cardHover)}
           key={item.id}
         >
-          <CardContent>
-            <Typography variant="h5" className={classes.cardTitle}>
-              <LangToggler id={item.title} />
-            </Typography>
-          </CardContent>
           <CardHeader
             avatar={
               <Fragment>
@@ -231,17 +231,20 @@ function ServicesLayout (props: {
             className={classes.cardTitleImage}
             style={{
               backgroundImage: `url(${item.background})`,
-              borderRadius: '50%',
+              backgroundPosition: 'center',
               filter: !isHover ? 'grayscale(100%) blur(.4px) contrast(90%)' : '',
-              height: 220,
+              height: 300,
               imageRendering: isHover ? 'pixelated' : '',
               transition: theme.transitions.create(
                 ['filter'],
                 { duration: theme.transitions.duration.complex },
               ),
-              width: 220,
+              width: '100%',
             }}
           />
+          <Typography variant="h4" className={classes.cardTitle}>
+            <LangToggler id={item.title} />
+          </Typography>
           {filteredServices.length > 0 &&
             <CardContent className={classes.cardContent}>
               <Grid
@@ -334,8 +337,8 @@ function ServicesLayout (props: {
       <Grid
         container
         direction="row"
-        justify="flex-start"
-        alignItems="flex-start"
+        justify="center"
+        alignItems="center"
         className={classes.items}
         spacing={2}>
         <Grid

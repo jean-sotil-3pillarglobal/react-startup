@@ -40,20 +40,20 @@ const Services = [
     ico: 'info_outlined',
     id: CATEGORY_1,
     image: {
-      desktop: `/static/images/${CATEGORY_1}/derma-clinica.jpg`,
-      mobile: `/static/images/${CATEGORY_1}/derma-clinica.jpg`,
+      desktop: `/src/static/images/${CATEGORY_1}/derma-clinica.jpg`,
+      mobile: `/src/static/images/${CATEGORY_1}/derma-clinica.jpg`,
     },
     images: [
       {
-        desktop: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
-        mobile: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
+        desktop: `/src/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
+        mobile: `/src/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
       },
       {
-        desktop: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
-        mobile: `/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
+        desktop: `/src/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
+        mobile: `/src/static/images/${CATEGORY_1}/derma-clinica-1.jpg`,
       },
     ],
-    svg: '/static/svg/team_work.svg',
+    svg: '/src/static/svg/team_work.svg',
     title: {
       en: 'clinic dermatology',
       es: 'dermatología clinica',
@@ -85,8 +85,8 @@ const Services = [
     ico: 'info_outlined',
     id: CATEGORY_2,
     image: {
-      desktop: `/static/images/${CATEGORY_2}/3.png`,
-      mobile: `/static/images/${CATEGORY_2}/3.png`,
+      desktop: `/src/static/images/${CATEGORY_2}/3.png`,
+      mobile: `/src/static/images/${CATEGORY_2}/3.png`,
     },
     images: [
       {
@@ -98,7 +98,7 @@ const Services = [
         mobile: 'https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/90985031_3187027017974276_7358354085671600128_o.jpg?_nc_cat=111&_nc_sid=2d5d41&_nc_oc=AQnV2fBTKN5GGlBW_KxH0tA6IYy-i-qdPIhijmEio8FB91S6eYbfPrqez7kUJESkBGo&_nc_ht=scontent.fsyq2-1.fna&oh=a3b546be40ead4bcde9d17f510aec2ed&oe=5EB5FFEB',
       },
     ],
-    svg: '/static/svg/team_work.svg',
+    svg: '/src/static/svg/team_work.svg',
     title: {
       en: 'estetic dermatology',
       es: 'dermatología estética',
@@ -126,17 +126,17 @@ const Services = [
     ico: 'info_outlined',
     id: CATEGORY_3,
     image: {
-      desktop: `/static/images/${CATEGORY_3}/spa-clinico.jpg`,
-      mobile: `/static/images/${CATEGORY_3}/spa-clinico.jpg`,
+      desktop: `/src/static/images/${CATEGORY_3}/spa-clinico.jpg`,
+      mobile: `/src/static/images/${CATEGORY_3}/spa-clinico.jpg`,
     },
     images: [
       {
-        desktop: `/static/images/${CATEGORY_3}/spa-clinico-1.jpg`,
-        mobile: `/static/images/${CATEGORY_3}/spa-clinico-1.jpg`,
+        desktop: `/src/static/images/${CATEGORY_3}/spa-clinico-1.jpg`,
+        mobile: `/src/static/images/${CATEGORY_3}/spa-clinico-1.jpg`,
       },
       {
-        desktop: `/static/images/${CATEGORY_3}/spa-clinico-2.jpg`,
-        mobile: `/static/images/${CATEGORY_3}/spa-clinico-2.jpg`,
+        desktop: `/src/static/images/${CATEGORY_3}/spa-clinico-2.jpg`,
+        mobile: `/src/static/images/${CATEGORY_3}/spa-clinico-2.jpg`,
       },
     ],
     title: {
@@ -153,7 +153,7 @@ const Services = [
     },
   },
   {
-    background: `/static/images/${CATEGORY_4}/nutricion.jpg`,
+    background: `/src/static/images/${CATEGORY_4}/nutricion.jpg`,
     body: {
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
@@ -166,8 +166,8 @@ const Services = [
     ico: 'info_outlined',
     id: CATEGORY_4,
     image: {
-      desktop: `/static/images/${CATEGORY_4}/3.jpg`,
-      mobile: `/static/images/${CATEGORY_4}/3.jpg`,
+      desktop: `/src/static/images/${CATEGORY_4}/3.jpg`,
+      mobile: `/src/static/images/${CATEGORY_4}/3.jpg`,
     },
     title: {
       en: 'nutricion',
@@ -196,8 +196,8 @@ const Services = [
     ico: 'info_outlined',
     id: CATEGORY_5,
     image: {
-      desktop: `/static/images/${CATEGORY_5}/3.jpg`,
-      mobile: `/static/images/${CATEGORY_5}/3.jpg`,
+      desktop: `/src/static/images/${CATEGORY_5}/3.jpg`,
+      mobile: `/src/static/images/${CATEGORY_5}/3.jpg`,
     },
     title: {
       en: 'terapia fisica',
