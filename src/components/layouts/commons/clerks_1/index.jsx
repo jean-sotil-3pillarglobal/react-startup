@@ -20,7 +20,6 @@ import SectionBlock from './../../section';
 
 const styles = theme => ({
   card: props => ({
-    background: ThemeBackground(props, theme, 'dark'),
     borderRadius: '0 0 0 0',
     display: 'flex',
   }),
@@ -46,6 +45,10 @@ const styles = theme => ({
     padding: theme.spacing(1),
   },
   item: props => ({
+    '&:hover': {
+      background: ThemeBackground(props, theme, 'dark'),
+    },
+    background: ThemeBackground(props, theme, 'light'),
     border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
   }),
   label: props => ({
@@ -62,9 +65,10 @@ const styles = theme => ({
     width: '100%',
   },
   title: props => ({
-    display: 'block',
     color: ThemeColor(props, theme),
+    display: 'block',
     marginTop: theme.spacing(2),
+    textAlign: 'center',
   }),
 });
 
@@ -167,16 +171,18 @@ function ClerksLayout (props: {
 
   return (
     <SectionBlock variant={variant} className={classes.container}>
-      <Typography
-        variant="h2"
-        className={classes.title}
-      >
-        <LangToggler id={copy.title} />
-      </Typography>
       <Grid
         container
         spacing={8}
       >
+        <Grid item sm={12} md={12}>
+          <Typography
+            variant="h2"
+            className={classes.title}
+          >
+            <LangToggler id={copy.title} />
+          </Typography>
+        </Grid>
         {items.map((item, i) => item.render())}
       </Grid>
     </SectionBlock>

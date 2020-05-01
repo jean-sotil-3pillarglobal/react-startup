@@ -44,7 +44,7 @@ import Opacity from './../../../components/commons/opacity';
 import SectionBlock from './../../../components/layouts/section';
 import SmartImg from './../../../components/commons/img';
 
-const variant = 'light';
+const variant = 'primary';
 
 // paths
 const {

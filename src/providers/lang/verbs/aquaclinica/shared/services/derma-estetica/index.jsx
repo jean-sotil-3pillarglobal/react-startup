@@ -69,7 +69,7 @@ const Services = [
       en: 'learn more',
       es: 'me interesa',
     },
-    featured: true,
+    featured: false,
     featuredText: {
       en: '5% discount',
       es: '5% descuento',

@@ -48,11 +48,7 @@ const styles = theme => ({
     backgroundColor: ThemeBackground(props, theme, 'light'),
   }),
   card: props => ({
-    '&:hover': {
-      borderColor: ThemeBackground(props, theme, 'main'),
-    },
-    backgroundColor: ThemeBackground(props, theme, 'light'),
-    border: `${theme.spacing(0.5)}px solid ${ThemeBackground(props, theme, 'light')}`,
+    border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
     borderRadius: '0 0 0 0',
     boxShadow: 'initial',
     flexShrink: 0,
@@ -70,37 +66,41 @@ const styles = theme => ({
   }),
   cardHover: {},
   cardList: props => ({
+    backgroundColor: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
     cursor: 'default',
-    maxHeight: 250,
+    maxHeight: 300,
     overflow: 'scroll',
     padding: theme.spacing(1),
     textAlign: 'right',
   }),
-  cardMedia: {
-    height: 60,
-  },
   cardTitle: props => ({
     color: ThemeColor(props, theme),
+    cursor: 'pointer',
     margin: `0 ${theme.spacing(2)}px`,
     padding: `${theme.spacing(2)}px 5%`,
     textTransform: 'capitalize',
   }),
+  cardTitleHover: () => ({
+    fontWeight: 600,
+    textDecoration: 'underline',
+  }),
   cardTitleImage: props => ({
     backgroundSize: 'cover',
-    borderBottom: `${theme.spacing(2)}px solid ${ThemeBackground(props, theme, 'dark')}`,
+    border: `${theme.spacing(1)}px solid ${ThemeBackground(props, theme, 'light')}`,
     color: ThemeColor(props, theme),
     cursor: 'default',
     display: 'block',
+    padding: theme.spacing(1),
   }),
   cta: {
     padding: `${theme.spacing(2)}px 0`,
   },
   fab: props => ({
-    backgroundColor: ThemeBackground(props, theme, 'dark'),
-    color: ThemeBackground(props, theme, 'dark'),
+    backgroundColor: `${ThemeBackground(props, theme, 'light')}!important`,
+    color: `${ThemeBackground(props, theme, 'main')}!important`,
     float: 'left',
-    margin: theme.spacing(2),
+    margin: theme.spacing(3),
   }),
   fabHover: props => ({
     backgroundColor: `${ThemeBackground(props, theme, 'light')}!important`,
@@ -110,6 +110,7 @@ const styles = theme => ({
     background: ThemeBackground(props, theme, 'dark'),
     color: ThemeColor(props, theme),
     display: 'inline-block',
+    fontSize: '.6em',
     padding: theme.spacing(0.5),
     textTransform: 'capitalize',
   }),
@@ -242,7 +243,11 @@ function ServicesLayout (props: {
               width: '100%',
             }}
           />
-          <Typography variant="h4" className={classes.cardTitle}>
+          <Typography
+            className={classnames(classes.cardTitle, isHover && classes.cardTitleHover)}
+            onClick={evt => handleServiceCategoryClick(evt, item)}
+            variant="h4"
+          >
             <LangToggler id={item.title} />
           </Typography>
           {filteredServices.length > 0 &&

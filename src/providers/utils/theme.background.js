@@ -5,18 +5,18 @@ export default function ThemeBackground (props, theme, variation) {
 
   const refs = {
     dark: {
-      dark: theme.palette.primary.light,
+      dark: theme.palette.primary.primary,
       light: theme.palette.primary.light,
       main: theme.palette.primary.dark,
     },
     dark2: {
-      dark: theme.palette.secondary.light,
+      dark: theme.palette.secondary.primary,
       light: theme.palette.secondary.light,
       main: theme.palette.secondary.dark,
     },
     light: {
       dark: theme.palette.primary.dark,
-      light: theme.palette.primary.light,
+      light: theme.palette.primary.primary,
       main: theme.palette.primary.primary,
     },
     light2: {

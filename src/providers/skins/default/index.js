@@ -127,7 +127,7 @@ const overrides = {
     },
     title: {
       fontSize: '1em',
-      fontWeight: 600,
+      fontWeight: 500,
       margin: '6px 10px',
       textAlign: 'left',
       textTransform: 'capitalize',
@@ -191,7 +191,7 @@ const overrides = {
         color: palette.utils.highlight,
       },
       fontSize: '.8em',
-      fontWeight: 400,
+      fontWeight: 300,
     },
   },
   MuiInputAdornment: {
@@ -245,7 +245,7 @@ const overrides = {
     },
     underlineHover: {
       '&:hover *, &:hover': {
-        fontWeight: 600,
+        fontWeight: 500,
       },
     },
   },
@@ -365,51 +365,51 @@ const typography = {
   },
   caption: {
     display: 'inline-block',
-    fontSize: '.9rem',
+    fontSize: '1rem',
     fontWeight: 500,
     lineHeight: 'normal',
     textTransform: 'initial',
   },
   h1: {
     fontSize: '2.8rem',
-    fontWeight: 600,
+    fontWeight: 400,
     textTransform: 'initial',
   },
   h2: {
-    fontSize: '2.5rem',
-    fontWeight: 600,
+    fontSize: '2.6rem',
+    fontWeight: 300,
     textTransform: 'initial',
   },
   h3: {
-    fontSize: '1.6rem',
-    fontWeight: 400,
+    fontSize: '2rem',
+    fontWeight: 300,
     textTransform: 'initial',
   },
   h4: {
     fontSize: '1.4rem',
-    fontWeight: 400,
+    fontWeight: 300,
   },
   h5: {
-    fontSize: '1.6rem',
-    fontWeight: 400,
+    fontSize: '1rem',
+    fontWeight: 300,
     textTransform: 'initial',
   },
   h6: {
     fontSize: '.9rem',
-    fontWeight: 400,
+    fontWeight: 300,
   },
   overline: {
     fontSize: '1rem',
-    fontWeight: 400,
+    fontWeight: 300,
   },
   subtitle1: {
     fontSize: '1.4rem',
-    fontWeight: 400,
+    fontWeight: 300,
     textTransform: 'initial',
   },
   subtitle2: {
     fontSize: '1.2rem',
-    fontWeight: 400,
+    fontWeight: 300,
   },
   useNextVariants: true,
 };

@@ -14,6 +14,7 @@ import { constants } from './../../../providers/config';
 // provider
 import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import LangToggler from './../../../providers/lang/toggler';
+import ThemeColor from './../../../providers/utils/theme.color';
 
 // components
 import { LangButton } from './../../../components/commons/button';
@@ -21,11 +22,12 @@ import Icon from './../../../components/commons/icon';
 import SectionBlock from './../../../components/layouts/section';
 
 const variant = {
-  variant: 'light',
+  variant: 'dark2',
 };
 
 const styles = theme => ({
   body: {
+    color: ThemeColor(variant, theme),
     margin: '0 auto',
   },
   body2: {
@@ -51,18 +53,18 @@ const styles = theme => ({
     textAlign: 'center',
   },
   subtitle: {
-    color: theme.palette.primary.contrastText,
+    color: ThemeColor(variant, theme),
     marginBottom: `${theme.spacing(6)}px`,
   },
   subtitle2: {
-    color: theme.palette.primary.contrastText,
+    color: ThemeColor(variant, theme),
     marginBottom: `${theme.spacing(2)}px`,
   },
   svg: {
     margin: `${theme.spacing(12)}px 0`,
   },
   title: {
-    color: theme.palette.primary.contrastText,
+    color: ThemeColor(variant, theme),
     marginBottom: `${theme.spacing(6)}px`,
     marginTop: `${theme.spacing(6)}px`,
   },

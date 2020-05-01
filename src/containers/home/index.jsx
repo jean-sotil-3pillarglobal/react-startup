@@ -134,7 +134,7 @@ class Home extends Component {
         <BannerA proxy={proxy} />
 
         <Element name={constants.LINK_SERVICES_1}>
-          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="primary" />
+          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light" />
         </Element>
 
         <Element name={constants.LINK_SECTION_2}>
@@ -142,7 +142,7 @@ class Home extends Component {
         </Element>
 
         <Element name={constants.LINK_SECTION_3}>
-          <ClerksLayout proxy={proxy} variant="dark" />
+          <ClerksLayout proxy={proxy} variant="primary" />
         </Element>
 
         <Element name={constants.LINK_SECTION_4}>
