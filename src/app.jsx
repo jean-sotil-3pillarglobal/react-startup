@@ -16,6 +16,7 @@ import {
   createMuiTheme,
   CssBaseline,
   MuiThemeProvider,
+  Paper,
   responsiveFontSizes,
   withStyles,
 } from '@material-ui/core';
@@ -32,6 +33,7 @@ import {
 
 // providers
 import SkinProvider from './providers/skins';
+import ThemeBackground from './providers/utils/theme.background';
 
 // async component
 import Async from './containers/async-component';
@@ -52,7 +54,10 @@ const styles = theme => ({
       { duration: theme.transitions.duration.complex },
     ),
   },
-  container: {},
+  container: () => ({
+    margin: '0 auto',
+    maxWidth: 1240,
+  }),
   exit: {
     opacity: 1,
   },
@@ -63,6 +68,9 @@ const styles = theme => ({
       { duration: theme.transitions.duration.complex },
     ),
   },
+  root: () => ({
+    backgroundColor: ThemeBackground({ variant: 'primary' }, theme, 'main'),
+  }),
   switch: {
     left: 0,
     overflow: 'hidden',
@@ -136,8 +144,8 @@ class App extends Component {
           <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" />
         </Helmet>
         <CssBaseline />
-        <div className="App">
-          <div className={classes.container}>
+        <Paper className={classes.root}>
+          <Paper className={classes.container}>
             <Router>
               <TransitionGroup className={classes.transitions}>
                 <CSSTransition
@@ -149,7 +157,7 @@ class App extends Component {
                     exit: classes.exit,
                     exitActive: classes.exitActive,
                   }}>
-                  <div className={classes.switch}>
+                  <Paper className={classes.switch}>
                     <Switch>
                       <Route exact path="/:locale" component={Home} />
                       <Route exact path={`/:locale/${SERVICES[language]}`} component={Services} />
@@ -161,12 +169,12 @@ class App extends Component {
                     <Route exact path="/">
                       {language && <Redirect to={`/${language}`} />}
                     </Route>
-                  </div>
+                  </Paper>
                 </CSSTransition>
               </TransitionGroup>
             </Router>
-          </div>
-        </div>
+          </Paper>
+        </Paper>
       </MuiThemeProvider>
     );
   }

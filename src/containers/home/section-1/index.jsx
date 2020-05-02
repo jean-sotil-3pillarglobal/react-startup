@@ -1,4 +1,5 @@
 
+import { Parallax } from 'react-parallax';
 import { withRouter } from 'react-router-dom';
 import React from 'react';
 
@@ -23,6 +24,7 @@ import SVGComponent from './../../../components/commons/svg';
 const styles = (theme) => ({
   background: {
     left: 0,
+    paddingTop: theme.spacing(12),
     position: 'absolute',
     top: 0,
     width: '100%',
@@ -35,7 +37,7 @@ const styles = (theme) => ({
     background: 'transparent',
     display: 'inline-block',
     textAlign: 'center',
-    width: '60%',
+    width: '70%',
     zIndex: 999,
   },
   content: {
@@ -45,7 +47,7 @@ const styles = (theme) => ({
   hero: {
     background: theme.palette.primary.main,
     overflow: 'hidden',
-    padding: `${theme.spacing(6)}px 0 0 0`,
+    padding: 0,
     position: 'relative',
     textAlign: 'center',
     zIndex: 0,
@@ -53,14 +55,10 @@ const styles = (theme) => ({
   icon: {
     lineHeight: 0,
   },
-  image: {
-    width: '100%',
-    zIndex: -1,
-  },
   logo: {
     display: 'block',
     margin: '0 auto',
-    width: 320,
+    width: 300,
     zIndex: 999,
   },
   svg: {
@@ -101,34 +99,37 @@ function SectionA (props: {
         container="true"
         className={classes.hero}
         elevation={0}>
-        <Opacity opacity={0} variant="primary" />
         {verbiage(copy.svg_show) && <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="primary" />}
-        {verbiage(copy.background_show) && <SmartImg proxy={proxy} src={verbiage(copy.background)} className={classes.background} />}
-        <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
-        <Callout
-          align="center"
-          title={copy.title}
-          subtitle={copy.subtitle}
-          variant="light"
-          className={classes.callout}>
-          <Link
-            activeClass="active"
-            smooth
-            spy
-            to={constants.LINK_SERVICES_1}
-          >
-            <LangButtonAnimate
-              color="white"
-              iconClassName={classes.icon}
-              iconx="arrowDown"
-              icony="fwd"
-              lang={copy.cta}
-              size={30}
-              typeButton={TYPES.BUTTON}
-              variant="dark2"
-            />
-          </Link>
-        </Callout>
+        {verbiage(copy.background_show) && (
+          <Parallax bgImage={verbiage(copy.background)} strength={200} className={classes.background}>
+            <Opacity opacity={0.2} zIndex={0} variant="light" />
+            <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
+            <Callout
+              align="center"
+              title={copy.title}
+              subtitle={copy.subtitle}
+              variant="light"
+              className={classes.callout}>
+              <Link
+                activeClass="active"
+                smooth
+                spy
+                to={constants.LINK_SERVICES_1}
+              >
+                <LangButtonAnimate
+                  color="white"
+                  iconClassName={classes.icon}
+                  iconx="arrowDown"
+                  icony="fwd"
+                  lang={copy.cta}
+                  size={30}
+                  typeButton={TYPES.BUTTON}
+                  variant="dark2"
+                />
+              </Link>
+            </Callout>
+          </Parallax>
+        )}
       </Paper>
     )
   );

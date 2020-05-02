@@ -134,7 +134,7 @@ class Home extends Component {
         <BannerA proxy={proxy} />
 
         <Element name={constants.LINK_SERVICES_1}>
-          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="light" />
+          <ServicesLayout setServiceCategory={this.handleServiceCategory} proxy={proxy} variant="primary" />
         </Element>
 
         <Element name={constants.LINK_SECTION_2}>

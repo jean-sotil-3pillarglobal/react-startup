@@ -8,13 +8,13 @@ const PRIMARY = {
 };
 
 const SECONDARY = {
-  contrastText: '#fafafa',
-  dark: '#000000',
-  light: '#424242',
-  main: '#616161',
+  contrastText: 'rgba(255,255,255,1)',
+  dark: 'rgba(0,0,0,1)',
+  light: 'rgba(72,72,72,1)',
+  main: 'rgba(33,33,33,1)',
 };
 
-const fontFamily = 'Source Sans Pro!important';
+const fontFamily = 'Source Sans Pro';
 
 const palette = {
   background: {
@@ -96,12 +96,13 @@ const overrides = {
     root: {
       border: '1px solid',
       borderColor: 'transparent',
+      borderRadius: '0 0 0 0',
       boxShadow: 'none',
       fontFamily,
-      fontSize: '.7em',
-      fontWeight: 500,
-      padding: '10px',
-      textTransform: 'capitalize',
+      fontSize: '1rem',
+      fontWeight: 600,
+      padding: '38px 20px',
+      textTransform: 'uppercase',
     },
     text: {
       padding: '6px 14px',
@@ -239,8 +240,8 @@ const overrides = {
   MuiLink: {
     root: {
       borderBottom: '0 solid transparent',
-      fontSize: '.6em',
-      fontWeight: 200,
+      fontSize: '1.1rem',
+      fontWeight: 400,
       textTransform: 'capitalize',
     },
     underlineHover: {
@@ -354,7 +355,7 @@ const overrides = {
 
 const typography = {
   body1: {
-    fontSize: '1.2rem',
+    fontSize: '1rem',
     fontWeight: 400,
     textTransform: 'initial',
   },
@@ -371,13 +372,13 @@ const typography = {
     textTransform: 'initial',
   },
   h1: {
-    fontSize: '2.8rem',
+    fontSize: '3.2rem',
     fontWeight: 400,
     textTransform: 'initial',
   },
   h2: {
-    fontSize: '2.6rem',
-    fontWeight: 300,
+    fontSize: '3rem',
+    fontWeight: 400,
     textTransform: 'initial',
   },
   h3: {

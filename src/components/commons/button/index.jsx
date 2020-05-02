@@ -115,8 +115,8 @@ function LayoutButton (props: {
         onMouseLeave={onMouseLeave}
         onMouseOver={onMouseOver}
       >
-        <LangToggler id={lang} />
         {props.children}
+        {lang && <LangToggler id={lang} />}
       </Link>
     );
   } else {

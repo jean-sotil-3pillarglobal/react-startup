@@ -75,14 +75,15 @@ const styles = theme => ({
     textAlign: 'right',
   }),
   cardTitle: props => ({
+    background: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
     cursor: 'pointer',
-    margin: `0 ${theme.spacing(2)}px`,
-    padding: `${theme.spacing(2)}px 5%`,
+    fontWeight: 400,
+    border: `${theme.spacing(1)}px solid ${ThemeBackground(props, theme, 'main')}`,
+    padding: `${theme.spacing(2)}px 20%`,
     textTransform: 'capitalize',
   }),
   cardTitleHover: () => ({
-    fontWeight: 600,
     textDecoration: 'underline',
   }),
   cardTitleImage: props => ({
@@ -140,7 +141,7 @@ const styles = theme => ({
   serviceTitle: props => ({
     color: ThemeColor(props, theme),
     display: 'block',
-    fontWeight: 500,
+    fontWeight: 400,
     marginBottom: 0,
     marginTop: 0,
     textTransform: 'capitalize',
@@ -215,6 +216,13 @@ function ServicesLayout (props: {
           className={classnames(classes.card, isHover && classes.cardHover)}
           key={item.id}
         >
+          <Typography
+            className={classnames(classes.cardTitle, isHover && classes.cardTitleHover)}
+            onClick={evt => handleServiceCategoryClick(evt, item)}
+            variant="h4"
+          >
+            <LangToggler id={item.title} />
+          </Typography>
           <CardHeader
             avatar={
               <Fragment>
@@ -243,13 +251,6 @@ function ServicesLayout (props: {
               width: '100%',
             }}
           />
-          <Typography
-            className={classnames(classes.cardTitle, isHover && classes.cardTitleHover)}
-            onClick={evt => handleServiceCategoryClick(evt, item)}
-            variant="h4"
-          >
-            <LangToggler id={item.title} />
-          </Typography>
           {filteredServices.length > 0 &&
             <CardContent className={classes.cardContent}>
               <Grid

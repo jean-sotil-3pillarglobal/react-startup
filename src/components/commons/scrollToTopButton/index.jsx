@@ -1,5 +1,6 @@
 import React from 'react';
 import ScrollToTop from 'react-scroll-up';
+import { useTheme } from '@material-ui/core/styles';
 
 import { TYPES } from '../button/';
 import LangButtonAnimate from '../button/animate';
@@ -9,10 +10,9 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-const styles = () => ({
+const styles = (theme) => ({
   icon: {
     display: 'block',
-    // rotate
   },
 });
 
@@ -25,18 +25,19 @@ function scrollToTopButton (props: {
     label,
   } = props;
 
+  const theme = useTheme();
+
   return (
     <ScrollToTop style={{
-      bottom: 200,
-      right: 0,
+      bottom: 30,
+      right: 20,
     }} showUnder={1000} duration={1000}>
       <LangButtonAnimate
-        color="black"
+        color={theme.palette.primary.dark}
         iconClassName={classes.icon}
         iconx="arrowUp"
         icony="home"
-        lang={label}
-        size={30}
+        size={40}
         typeButton={TYPES.LINK}
         variant="primary"
       />

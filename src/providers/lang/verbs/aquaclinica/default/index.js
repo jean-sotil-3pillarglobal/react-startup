@@ -42,12 +42,7 @@ const Verbiage = {
       id: LINK_CONTACT_FORM_1,
       services,
     },
-    default: {
-      top: {
-        en: 'back to top',
-        es: 'ir al inicio',
-      },
-    },
+    default: {},
     services_1: {
       body: {
         en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
@@ -208,10 +203,7 @@ const Verbiage = {
       ],
     },
     section_1: {
-      background: {
-        desktop: '/src/static/images/d-bg-1.png',
-        mobile: '/src/static/images/m-bg-1.jpg',
-      },
+      background: '/src/static/images/d-bg-1.png',
       background_show: true,
       cta: {
         en: 'check available services',
