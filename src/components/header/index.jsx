@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import {
   AppBar,
@@ -99,17 +99,8 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText,
     marginBottom: 0,
   },
-  headroom: {
-    height: 'auto!important',
-    overflow: 'hidden',
-    width: '100%',
-  },
   hide: {
     display: 'none',
-  },
-  icon: {
-    color: theme.palette.secondary.contrastText,
-    fontSize: '1rem',
   },
   iconFab: {
     color: ThemeColor({ variant: 'primary' }, theme),
@@ -117,8 +108,8 @@ const styles = theme => ({
   },
   logo: {
     display: 'block',
-    margin: 0,
-    width: '50%',
+    margin: '0 0 0 auto',
+    width: 48,
   },
   menuButton: {
     marginLeft: 12,
@@ -132,18 +123,13 @@ const styles = theme => ({
   },
   navbar: {
     background: 'transparent',
-    float: 'right',
     padding: 0,
   },
   phone: () => ({
-    color: ThemeColor({ variant: 'secondary' }, theme),
+    color: theme.palette.utils.hightlight,
     marginRight: theme.spacing(1),
   }),
-  root: () => ({
-    '& div[class*="headroom-wrapper"] > div': {
-      zIndex: '10!important',
-    },
-  }),
+  root: () => ({}),
   socialButtons: {
     padding: 0,
   },
@@ -153,6 +139,11 @@ const styles = theme => ({
     right: theme.spacing(3),
     top: theme.spacing(14),
     zIndex: 999,
+  },
+  toolbar: {
+    margin: '0 auto',
+    maxWidth: 1240,
+    width: '100%',
   },
   topHeader: {
     padding: `0 ${theme.spacing(8)}px`,
@@ -167,14 +158,15 @@ const NODE_ROOT = 'components';
 const NODE_TYPE = 'header';
 // copy:
 const copy = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
+  'featured-1-id',
+  'featured-1-label',
+  'featured-1-route',
   'logo',
   'phone_icon',
   'phone',
-  'publics-4-featured_icon',
-  'publics-4-featured',
-  'publics-4-id',
-  'publics-4-label',
-  'publics-4-route',
+  'publics-3-id',
+  'publics-3-label',
+  'publics-3-route',
   'social-3-icon',
   'social-3-label',
   'social-3-link',
@@ -221,9 +213,9 @@ class Header extends Component {
         <CssBaseline />
         <Grid
           container
-          alignItems="center"
+          alignItems="flex-start"
           direction="row"
-          justify="center"
+          justify="flex-start"
           className={classes.topHeader}>
           <Grid
             item
@@ -234,7 +226,7 @@ class Header extends Component {
           >
             <Box display="flex" flexDirection="row" justifyContent="flex-end" p={1} m={1} className={classnames(classes.topHeaderSocial, classes.socialButtonsFixed)}>
               {copy.social.map(item => (
-                <Box key={item.label} p={1}>
+                <Box key={item.label} p={2}>
                   <LangButton
                     href={verbiage(item.link)}
                     key={item.label}
@@ -254,15 +246,15 @@ class Header extends Component {
           className={classnames(classes.appBar, {
             [classes.appBarShift]: open,
           })}>
-          <Toolbar variant="dense" disableGutters={!open}>
+          <Toolbar variant="dense" disableGutters={!open} className={classes.toolbar}>
             <Grid
               container
               direction="row"
-              justify="center"
+              justify="flex-end"
               alignItems="center">
               <Grid
                 item
-                sm={2}
+                sm={10}
                 md={1}
                 lg={1}>
                 {isMobile ?
@@ -278,41 +270,78 @@ class Header extends Component {
               <Grid
                 item
                 sm={12}
-                md={10}
-                lg={10}>
+                md={8}
+                lg={8}
+              >
                 {(!open && !isMobile) &&
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  p={1}
+                  m={1}
+                  className={classes.navbar}>
+                  {copy.publics.map((item) => {
+                    return (
+                      <Link
+                        activeClass="active"
+                        key={item.id}
+                        smooth
+                        spy
+                        to={verbiage(item.id)}
+                      >
+                        <Box p={1} className={classes.navbarItem} key={item.id}>
+                          <LangButton
+                            key={item.label}
+                            lang={item.label}
+                            pos="right"
+                            typeButton={TYPES.LINK}
+                            variant="light"
+                          />
+                        </Box>
+                      </Link>
+                    );
+                  })}
+                </Box>
+              }
+              </Grid>
+              <Grid
+                item
+                sm={10}
+                md={3}
+                lg={3}
+              >
+                {(!open && !isMobile) && (
                   <Box
                     display="flex"
                     flexDirection="row"
+                    justifyContent="flex-end"
                     p={1}
                     m={1}
-                    alignItems="center"
                     className={classes.navbar}>
-                    {copy.publics.map((item) => {
-                      const featured = verbiage(item.featured);
-
+                    {copy.featured.map((featured) => {
                       return (
                         <Link
                           activeClass="active"
-                          key={item.id}
+                          key={featured.id}
                           smooth
                           spy
-                          to={verbiage(item.id)}
+                          to={verbiage(featured.id)}
                         >
-                          <Box p={1} className={classes.navbarItem} key={item.id}>
+                          <Box p={1} className={classes.navbarItem} key={featured.id}>
                             <LangButton
-                              key={item.label}
-                              lang={item.label}
+                              key={featured.label}
+                              lang={featured.label}
                               pos="right"
-                              typeButton={(featured && TYPES.CONTAINED) || TYPES.LINK}
-                              variant="light"
+                              typeButton={TYPES.CONTAINED}
+                              variant="dark"
                             />
                           </Box>
                         </Link>
                       );
                     })}
                   </Box>
-                }
+                )}
               </Grid>
             </Grid>
           </Toolbar>

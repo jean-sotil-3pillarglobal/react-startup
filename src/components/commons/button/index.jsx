@@ -13,6 +13,8 @@ import LangToggler from '../../../providers/lang/toggler';
 import ThemeBackground from './../../../providers/utils/theme.background';
 import ThemeColor from './../../../providers/utils/theme.color';
 
+import Icon from './../icon';
+
 const styles = theme => ({
   button: props => ({
     '&:hover': {
@@ -33,6 +35,9 @@ const styles = theme => ({
     },
     background: 'transparent',
     color: 'transparent',
+  }),
+  icon: props => ({
+    color: ThemeColor(props, theme),
   }),
   link: props => ({
     '&:active': {
@@ -138,6 +143,7 @@ function LayoutButton (props: {
             onMouseOver={onMouseOver}
           >
             <LangToggler id={lang} />
+            {!props.children && <Icon className={classes.icon} name="keyboard_arrow_right" />}
           </Button>
         }
       </Fragment>

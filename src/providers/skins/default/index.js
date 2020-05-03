@@ -14,7 +14,7 @@ const SECONDARY = {
   main: 'rgba(33,33,33,1)',
 };
 
-const fontFamily = 'Source Sans Pro';
+const fontFamily = 'Poppins!important';
 
 const palette = {
   background: {
@@ -99,13 +99,12 @@ const overrides = {
       borderRadius: '0 0 0 0',
       boxShadow: 'none',
       fontFamily,
-      fontSize: '1rem',
+      fontSize: '.7em',
       fontWeight: 600,
-      padding: '38px 20px',
       textTransform: 'uppercase',
     },
     text: {
-      padding: '6px 14px',
+      padding: '8px 16px',
     },
   },
   MuiCard: {
@@ -240,7 +239,7 @@ const overrides = {
   MuiLink: {
     root: {
       borderBottom: '0 solid transparent',
-      fontSize: '1.1rem',
+      fontSize: '1rem',
       fontWeight: 400,
       textTransform: 'capitalize',
     },
@@ -372,13 +371,13 @@ const typography = {
     textTransform: 'initial',
   },
   h1: {
-    fontSize: '3.2rem',
-    fontWeight: 400,
+    fontSize: '2.2rem',
+    fontWeight: 500,
     textTransform: 'initial',
   },
   h2: {
-    fontSize: '3rem',
-    fontWeight: 400,
+    fontSize: '2.2rem',
+    fontWeight: 500,
     textTransform: 'initial',
   },
   h3: {

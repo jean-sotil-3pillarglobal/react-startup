@@ -135,7 +135,6 @@ function SectionC (props: {
                 className={classes.cta}
                 lang={copy.cta}
                 variant="dark">
-                <Icon name="keyboard_arrow_right" className={classes.icon} />
               </LangButton>
             </Box>
           </Link>

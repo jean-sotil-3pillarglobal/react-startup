@@ -61,7 +61,7 @@ function Callout (props: {
             <LangToggler id={title} />
           </Typography>
         </Fade>
-        <Typography variant="caption" component="p" className={classes.subtitle}>
+        <Typography variant="body1" component="p" className={classes.subtitle}>
           <LangToggler id={subtitle} />
         </Typography>
         {children}

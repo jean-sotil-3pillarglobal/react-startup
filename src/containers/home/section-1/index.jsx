@@ -17,7 +17,6 @@ import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 import { TYPES } from './../../../components/commons/button';
 import Callout from './../../../components/commons/callout/';
 import LangButtonAnimate from './../../../components/commons/button/animate';
-import Opacity from './../../../components/commons/opacity';
 import SmartImg from './../../../components/commons/img';
 import SVGComponent from './../../../components/commons/svg';
 
@@ -102,7 +101,6 @@ function SectionA (props: {
         {verbiage(copy.svg_show) && <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="primary" />}
         {verbiage(copy.background_show) && (
           <Parallax bgImage={verbiage(copy.background)} strength={200} className={classes.background}>
-            <Opacity opacity={0.2} zIndex={0} variant="light" />
             <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
             <Callout
               align="center"

@@ -10,8 +10,10 @@ import LangGenerateTree from './../../../providers/utils/lang.generate.tree';
 // provider
 import Slider from './../../../components/commons/slider';
 
-const styles = () => ({
-  container: {},
+const styles = theme => ({
+  container: {
+    margin: `${theme.spacing(4)}px 0`,
+  },
   image: {
     width: '100%',
   },
@@ -45,7 +47,7 @@ function BannerA (props: {
   }
 
   return (
-    <Paper elevation={0}>
+    <Paper elevation={0} className={classes.container}>
       <Slider sm={12} md={10} lg={10} items={items} slidesToShow={7} />
     </Paper>
   );

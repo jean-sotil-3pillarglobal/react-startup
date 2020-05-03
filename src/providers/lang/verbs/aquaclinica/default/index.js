@@ -2,6 +2,7 @@ import LangProxy from '../../../../utils/lang.proxy';
 
 import {
   constants,
+  featured,
   info,
   langs,
   publics,
@@ -82,14 +83,7 @@ const Verbiage = {
       },
     },
     header: {
-      cta: [
-        {
-          name: {
-            en: 'get a quote',
-            es: 'aprender más',
-          },
-        },
-      ],
+      featured,
       logo: {
         desktop: '/src/static/images/logo.jpg',
         mobile: '/src/static/images/logo.jpg',
@@ -215,14 +209,14 @@ const Verbiage = {
         mobile: '/src/static/images/logo.jpg',
       },
       subtitle: {
-        en: '<span>we have the best plan for your health care needs and budget. <br/>get a free online quote for affordable health insurance</span>',
-        es: '<span>la mejor clínica de dermatologia, <br/>fisioestetica y nutrición en la zona sur.</span>',
+        en: '<span>Brindamos servicios especializados de dermatologia, <br/>fisioestetica y nutrición en la zona sur.</span>',
+        es: '<span>Brindamos servicios especializados de dermatologia, <br/>fisioestetica y nutrición en la zona sur.</span>',
       },
       svg: '/src/static/svg/coming.svg',
       svg_show: false,
       title: {
-        en: '<span>Welcome, we are Clínica Aqua.</span>',
-        es: '<span>Bienvenido, somos Clínica Aqua.</span>',
+        en: '<span>La Mejor Clínica en Pérez Zeledón</span>',
+        es: '<span>La Mejor Clínica en Pérez Zeledón</span>',
       },
     },
     section_2: {
@@ -231,8 +225,8 @@ const Verbiage = {
         es: 'Nuestra sede esta ubicada en san isidro de el general perez zeledon, brindamos una amplia gama de servicios dermatologicos, dermatoesteticos y fisioesteticos. Contamos con alta tecnologia y personal calificado.',
       },
       cta: {
-        en: 'create your free quote',
-        es: 'consultar ahora',
+        en: 'cita gratuita online',
+        es: 'cita gratuita online',
       },
       id: LINK_SECTION_2,
       subtitle: {

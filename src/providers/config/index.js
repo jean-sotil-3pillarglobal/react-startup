@@ -90,20 +90,19 @@ export const publics = [
       es: '/nuestro-equipo',
     },
   },
-  {
-    featured: true,
-    featured_icon: 'info',
-    id: constants.LINK_SECTION_4,
-    label: {
-      en: 'reach us now',
-      es: 'consulta ahora',
-    },
-    route: {
-      en: '/contact',
-      es: '/contacto',
-    },
-  },
 ];
+
+export const featured = [{
+  id: constants.LINK_SECTION_4,
+  label: {
+    en: 'cita gratuita online',
+    es: 'cita gratuita online',
+  },
+  route: {
+    en: '/contact',
+    es: '/contacto',
+  },
+}];
 
 // private routes
 export const privates = [];
@@ -187,6 +186,7 @@ const config = {
   info,
   langs,
   routes: {
+    featured,
     privates,
     publics,
   },
