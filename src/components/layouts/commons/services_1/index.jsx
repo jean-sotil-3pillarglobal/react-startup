@@ -78,7 +78,6 @@ const styles = theme => ({
     background: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
     cursor: 'pointer',
-    fontWeight: 400,
     border: `${theme.spacing(1)}px solid ${ThemeBackground(props, theme, 'main')}`,
     padding: `${theme.spacing(2)}px 20%`,
     textTransform: 'capitalize',
@@ -115,9 +114,7 @@ const styles = theme => ({
     padding: theme.spacing(0.5),
     textTransform: 'capitalize',
   }),
-  icon: () => ({
-    fontSize: '1.8em',
-  }),
+  icon: () => ({}),
   iconHover: props => ({
     color: ThemeColor(props, theme),
   }),
@@ -136,7 +133,7 @@ const styles = theme => ({
   },
   serviceIcon: props => ({
     color: ThemeColor(props, theme),
-    fontSize: '.5em',
+    fontSize: '10px',
   }),
   serviceTitle: props => ({
     color: ThemeColor(props, theme),

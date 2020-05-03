@@ -372,12 +372,12 @@ const typography = {
   },
   h1: {
     fontSize: '2.2rem',
-    fontWeight: 500,
+    fontWeight: 600,
     textTransform: 'initial',
   },
   h2: {
     fontSize: '2.2rem',
-    fontWeight: 500,
+    fontWeight: 600,
     textTransform: 'initial',
   },
   h3: {
@@ -386,12 +386,12 @@ const typography = {
     textTransform: 'initial',
   },
   h4: {
-    fontSize: '1.4rem',
-    fontWeight: 300,
+    fontSize: '1.2rem',
+    fontWeight: 600,
   },
   h5: {
     fontSize: '1rem',
-    fontWeight: 300,
+    fontWeight: 600,
     textTransform: 'initial',
   },
   h6: {

@@ -91,9 +91,9 @@ const styles = theme => ({
   },
   fab: {
     '&:hover': {
-      background: ThemeColor({ variant: 'primary' }, theme, 'dark'),
+      background: ThemeBackground({ variant: 'primary' }, theme, 'dark'),
     },
-    background: ThemeColor({ variant: 'primary' }, theme, 'light'),
+    background: ThemeBackground({ variant: 'primary' }, theme),
   },
   h3: {
     color: theme.palette.primary.contrastText,
