@@ -24,7 +24,7 @@ function IconAnimate (props: {
 
   return (
     <Fragment>
-      <MorphIcon className={className} type={focused ? iconx : icony } onClick={onClick} {...rest} />
+      <MorphIcon className={className} thickness={2} type={focused ? iconx : icony } onClick={onClick} {...rest} />
     </Fragment>
   );
 }

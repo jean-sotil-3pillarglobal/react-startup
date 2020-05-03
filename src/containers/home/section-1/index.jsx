@@ -120,7 +120,7 @@ function SectionA (props: {
                   iconx="arrowDown"
                   icony="fwd"
                   lang={copy.cta}
-                  size={30}
+                  size={20}
                   typeButton={TYPES.BUTTON}
                   variant="dark2"
                 />

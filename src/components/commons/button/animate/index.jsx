@@ -55,7 +55,7 @@ function LangButtonAnimate (props: {
         focused={focused}
         iconx={iconx}
         icony={icony}
-        size={size || 20}
+        size={size || 10}
       />
     </LangButton>
   );

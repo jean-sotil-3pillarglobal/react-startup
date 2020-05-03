@@ -249,6 +249,7 @@ const overrides = {
       },
     },
   },
+  MuiListItem: {},
   MuiMobileStepper: {
     dotActive: {
       backgroundColor: PRIMARY.contrastText,
@@ -354,18 +355,18 @@ const overrides = {
 
 const typography = {
   body1: {
-    fontSize: '1rem',
+    fontSize: '1.2em',
     fontWeight: 400,
     textTransform: 'initial',
   },
   body2: {
-    fontSize: '1.2rem',
+    fontSize: '1.2em',
     fontWeight: 500,
     textTransform: 'initial',
   },
   caption: {
     display: 'inline-block',
-    fontSize: '1rem',
+    fontSize: '.7em',
     fontWeight: 500,
     lineHeight: 'normal',
     textTransform: 'initial',

@@ -135,6 +135,12 @@ const styles = theme => ({
     color: ThemeColor(props, theme),
     fontSize: '10px',
   }),
+  serviceItem: props => ({
+    '&:hover': {
+      boxShadow: `1px 1px 10px ${ThemeColor(props, theme)} inset`,
+    },
+    borderTop: `2px solid ${ThemeBackground(props, theme, 'main')}`,
+  }),
   serviceTitle: props => ({
     color: ThemeColor(props, theme),
     display: 'block',
@@ -266,6 +272,7 @@ function ServicesLayout (props: {
                         <ListItem
                           button
                           key={key}
+                          className={classes.serviceItem}
                         >
                           <ListItemIcon>
                             <Icon
