@@ -39,9 +39,9 @@ const styles = theme => ({
     marginBottom: theme.spacing(2),
   }),
   svg: {
+    bottom: 0,
     position: 'absolute',
     right: 0,
-    bottom: 0,
     width: '100%',
     zIndex: -1,
   },

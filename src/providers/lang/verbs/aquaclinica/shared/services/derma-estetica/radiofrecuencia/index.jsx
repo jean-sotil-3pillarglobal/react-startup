@@ -7,7 +7,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: '¿cuantas sesiones son necesarias?',
       es: '¿cuantas sesiones son necesarias?',
@@ -21,7 +21,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'costo',
       es: 'costo',
@@ -35,7 +35,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'áreas en las cuales puede ser aplicado',
       es: 'áreas en las cuales puede ser aplicado',
@@ -49,7 +49,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: '¿cuáles son los cuidados post-tratamiento?',
       es: '¿cuáles son los cuidados post-tratamiento?',

@@ -7,7 +7,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'cantidad de sesiones',
       es: 'cantidad de sesiones',
@@ -21,7 +21,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'costos',
       es: 'costos',

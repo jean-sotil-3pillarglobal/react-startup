@@ -7,7 +7,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Número de sesiones:',
       es: 'Número de sesiones:',
@@ -21,7 +21,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Duración de la sesión:',
       es: 'Duración de la sesión:',
@@ -35,7 +35,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Costo:',
       es: 'Costo:',

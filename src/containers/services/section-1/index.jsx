@@ -38,8 +38,9 @@ import ThemeColor from './../../../providers/utils/theme.color';
 
 // components
 import { TYPES } from './../../../components/commons/button';
-import LangButtonAnimate from './../../../components/commons/button/animate';
+import Callout from './../../../components/commons/callout/';
 import Icon from './../../../components/commons/icon';
+import LangButtonAnimate from './../../../components/commons/button/animate';
 import Opacity from './../../../components/commons/opacity';
 import SectionBlock from './../../../components/layouts/section';
 import SmartImg from './../../../components/commons/img';
@@ -57,6 +58,13 @@ const styles = theme => ({
   back: {
     lineHeight: '38px',
   },
+  body1: {
+    padding: theme.spacing(1),
+  },
+  body2: {
+    background: ThemeBackground({ variant }, theme, 'main'),
+    padding: theme.spacing(2),
+  },
   button: {
     cursor: 'pointer',
     margin: '0 auto',
@@ -71,14 +79,13 @@ const styles = theme => ({
     background: 'transparent',
   },
   copy: {
-    margin: `${theme.spacing(3)}px 0 0 0`,
+    margin: `${theme.spacing(2)}px 0 0 0`,
     textAlign: 'justify',
-    width: '100%',
   },
   crumb: () => ({
     color: ThemeColor({ variant }, theme),
     cursor: 'default',
-    textTransform: 'capitalize',
+    textTransform: 'lowercase',
   }),
   crumbLink: {
     '&:hover': {
@@ -86,6 +93,7 @@ const styles = theme => ({
     },
     color: ThemeColor({ variant }, theme),
     cursor: 'pointer',
+    textTransform: 'lowercase',
   },
   description: {
     color: theme.palette.primary.contrastText,
@@ -98,25 +106,33 @@ const styles = theme => ({
     padding: `${theme.spacing(1)}px 0`,
   },
   details: {
-    padding: `${theme.spacing(4)}px 0 0 0`,
+    padding: `${theme.spacing(10)}px 0 0 0`,
   },
   divider: {
     margin: `${theme.spacing(4)}px 0`,
   },
-  h4: {
-    marginTop: theme.spacing(6),
-    textDecoration: 'underline',
-  },
-  headroom: {
-    padding: `${theme.spacing(2)}px 0`,
-    width: '100%',
+  h3: {
+    background: ThemeBackground({ variant }, theme, 'dark'),
+    display: 'inline-block',
+    padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
   },
   icon: {
     lineHeight: 0,
   },
+
   images: {
+    '&:hover': {
+      filter: 'initial',
+      imageRendering: 'initial',
+    },
     border: `1px solid ${ThemeBackground({ variant }, theme, 'light')}`,
+    filter: 'grayscale(100%) blur(.4px) contrast(90%)',
+    imageRendering: 'pixelated',
     marginTop: theme.spacing(2),
+    transition: theme.transitions.create(
+      ['filter'],
+      { duration: theme.transitions.duration.complex },
+    ),
   },
   item: {
     '&:hover': {
@@ -213,10 +229,10 @@ function CustomLink (props: {
       history.replace(url);
       onReset();
     }}>
-      <Typography variant="body2" className={classes.crumbLink}>{path}</Typography>
+      <Typography variant="h5" className={classes.crumbLink}>{path}</Typography>
     </A>
   ) || (
-    <Typography variant="body1" className={classes.crumb}>{path}</Typography>
+    <Typography variant="h5" className={classes.crumb}>{path}</Typography>
   );
 };
 
@@ -275,12 +291,13 @@ function SectionA (props: {
       if (!service && serviceUrl) {
         view = (
           <Fragment>
-            <Typography
-              variant="caption"
+            <Callout
+              align="center"
               className={classes.caption}
-            >
-              <LangToggler id={category.unknown} />
-            </Typography>
+              title={copy.unknown}
+              transparent
+              variant={variant}
+            />
             {view}
           </Fragment>
         );
@@ -292,7 +309,7 @@ function SectionA (props: {
             <CardHeader
               title={
                 <Typography
-                  variant="h3"
+                  variant="h2"
                   className={classes.itemTitle}
                 >
                   <LangToggler id={service.title} />
@@ -321,6 +338,7 @@ function SectionA (props: {
                       >
                         <LangToggler id={item.copy} />
                       </Typography>
+
                     );
                   })}
                   <Divider className={classes.divider} />
@@ -340,7 +358,7 @@ function SectionA (props: {
                 <LangButtonAnimate
                   color="white"
                   iconClassName={classes.icon}
-                  iconx="arrowDown"
+                  iconx="arrowUp"
                   icony="fwd"
                   lang={service.cta}
                   onClick={() => setShowForm(true)}
@@ -358,20 +376,20 @@ function SectionA (props: {
   }
 
   return (
-    <Paper className={classes.container} elevation={0}>
-      <Parallax bgImage={category.background} strength={200} className={classes.background}>
-        <Opacity opacity={0.5} zIndex={0} variant="light" />
-        <Paper className={classes.titleContainer} elevation={0}>
-          <Typography
-            className={classes.titleHeader}
-            variant="h2"
-          >
-            <LangToggler id={category.title} />
-          </Typography>
-        </Paper>
-      </Parallax>
-      <Divider />
-      <Element name={constants.LINK_CONTACT_FORM_2}>
+    <Element name={constants.LINK_CONTACT_FORM_2}>
+      <Paper className={classes.container} elevation={0}>
+        <Parallax bgImage={category.background} strength={200} className={classes.background}>
+          <Opacity opacity={0.5} zIndex={0} variant="light" />
+          <Paper className={classes.titleContainer} elevation={0}>
+            <Typography
+              className={classes.titleHeader}
+              variant="h1"
+            >
+              <LangToggler id={category.title} />
+            </Typography>
+          </Paper>
+        </Parallax>
+        <Divider />
         <SectionBlock className={classes.descriptionContainer}>
           <Grid
             container
@@ -431,12 +449,12 @@ function SectionA (props: {
                     md={6}
                     lg={6}
                   >
-                    <Typography
-                      variant="body2"
-                      className={classes.description}
-                    >
-                      <LangToggler id={category.description} />
-                    </Typography>
+                    <Callout
+                      align="left"
+                      title={category.description}
+                      variant={variant}
+                      transparent
+                    />
                   </Grid>)
                 }
                 {showForm && (
@@ -446,12 +464,12 @@ function SectionA (props: {
                     md={(!service || showForm) ? 6 : 12}
                     lg={(!service || showForm) ? 6 : 12}
                   >
-                    <Typography
-                      variant="body1"
-                      className={classes.description}
-                    >
-                      <LangToggler id={category.description} />
-                    </Typography>
+                    <Callout
+                      align="left"
+                      title={category.description}
+                      variant={variant}
+                      transparent
+                    />
                   </Grid>
                 )}
                 <Grid
@@ -502,7 +520,7 @@ function SectionA (props: {
                         className={classnames(classes.button, seleted && classes.itemSelected)}
                         color="black"
                         iconClassName={classes.icon}
-                        iconx="arrowDown"
+                        iconx="arrowUp"
                         icony="fwd"
                         lang={category.cta}
                         onClick={() => {
@@ -521,8 +539,8 @@ function SectionA (props: {
             </Grid>
           </Grid>
         </SectionBlock>
-      </Element>
-    </Paper>
+      </Paper>
+    </Element>
   );
 }
 

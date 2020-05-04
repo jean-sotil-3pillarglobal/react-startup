@@ -7,14 +7,14 @@ export default [
     },
   },
   {
-    component: 'body1',
+    component: 'body2',
     copy: {
       en: 'Una vez establecido un diagnostico o posibilidades diagnosticas se diseñara un plan de trabajo individualizado y personalizado de acuerdo a sus necesidades y características.',
       es: 'Una vez establecido un diagnostico o posibilidades diagnosticas se diseñara un plan de trabajo individualizado y personalizado de acuerdo a sus necesidades y características.',
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'costos',
       es: 'costos',

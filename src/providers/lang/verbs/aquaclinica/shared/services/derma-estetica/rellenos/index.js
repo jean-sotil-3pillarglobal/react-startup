@@ -7,7 +7,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'zonas en las cuales puede ser aplicado',
       es: 'zonas en las cuales puede ser aplicado',
@@ -21,7 +21,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'marcas utilizadas en la clínica',
       es: 'marcas utilizadas en la clínica',
@@ -42,7 +42,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'costo',
       es: 'costo',

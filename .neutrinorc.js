@@ -73,7 +73,7 @@ module.exports = {
             'react/sort-comp': 0,
             'react/state-in-constructor': 0,
             'react/static-property-placement': 0,
-            'sort-keys': 1,
+            'sort-keys': 0,
             'space-before-function-paren': 0,
           },
         },

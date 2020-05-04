@@ -7,14 +7,14 @@ export default [
     },
   },
   {
-    component: 'body1',
+    component: 'body2',
     copy: {
       en: 'change',
       es: 'La vena colapsada es absorbida por el tejido local y con el tiempo desaparece. Por lo general se la considera el tratamiento de elección para las venas varicosas pequeñas',
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'change',
       es: 'Cantidad de sesiones',
@@ -28,7 +28,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Benefits',
       es: 'costos',
@@ -42,7 +42,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Benefits',
       es: 'Cuidados post tratamiento',

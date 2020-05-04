@@ -7,7 +7,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Numero de sesiones:',
       es: 'Numero de sesiones:',
@@ -21,7 +21,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Duración de la sesión:',
       es: 'Duración de la sesión:',
@@ -35,7 +35,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Áreas que se pueden trabajar:',
       es: 'Áreas que se pueden trabajar:',
@@ -49,7 +49,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Costo:',
       es: 'Costo:',
@@ -63,7 +63,7 @@ export default [
     },
   },
   {
-    component: 'h4',
+    component: 'h3',
     copy: {
       en: 'Indicaciones después del tratamiento:',
       es: 'Indicaciones después del tratamiento:',

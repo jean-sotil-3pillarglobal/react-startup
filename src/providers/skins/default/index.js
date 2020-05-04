@@ -387,17 +387,17 @@ const typography = {
     textTransform: 'initial',
   },
   h3: {
-    fontSize: '2rem',
-    fontWeight: 300,
-    textTransform: 'initial',
+    fontSize: '1.8rem',
+    fontWeight: 600,
+    textTransform: 'capitalize',
   },
   h4: {
     fontSize: '1.2rem',
-    fontWeight: 600,
+    fontWeight: 300,
   },
   h5: {
     fontSize: '1rem',
-    fontWeight: 600,
+    fontWeight: 300,
     textTransform: 'initial',
   },
   h6: {
