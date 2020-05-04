@@ -18,7 +18,6 @@ import {
 } from './../../store/actions/components/footer';
 
 import Helmet from '../../components/commons/helmet';
-import Header from '../../components/header';
 import Footer from '../../components/footer';
 
 // commons
@@ -129,7 +128,6 @@ class Home extends Component {
     return (
       <Fragment>
         <Helmet proxy={proxy} copy={copy} />
-        <Header proxy={proxy} />
         <SectionA proxy={proxy} />
         <BannerA proxy={proxy} />
 

@@ -8,9 +8,6 @@ import {
 } from 'lodash';
 
 import {
-  AppBar,
-  Grid,
-  Toolbar,
   withStyles,
 } from '@material-ui/core';
 
@@ -33,12 +30,10 @@ import Footer from '../../components/footer';
 import SectionA from './section-1/index';
 
 // commons
-import { LangButton } from './../../components/commons/button';
 import ContactFormLayout from '../../components/layouts/commons/contact_1';
 import Loading from './../../components/commons/preloader';
 import ScrollToTopOnMount from '../../components/commons/scrollToTopOnMount';
 import ServicesLayout from '../../components/layouts/commons/services_1';
-import SmartImg from './../../components/commons/img';
 
 // provider
 import LangGenerateTree from './../../providers/utils/lang.generate.tree';
@@ -79,7 +74,6 @@ const headers = LangGenerateTree(['headers', 'services'], [
 
 // copy:
 const copy = LangGenerateTree(['services', 'section_1'], [
-  'back',
   'categories',
   'id',
   'logo',
@@ -200,9 +194,7 @@ class Services extends Component {
   render () {
     const {
       category,
-      classes,
       device,
-      history,
       language,
       service,
       services,
@@ -221,41 +213,6 @@ class Services extends Component {
         (
           <Fragment>
             <Helmet proxy={proxy} copy={headers} />
-            <AppBar position="fixed">
-              <Toolbar variant="dense">
-                <Grid
-                  container
-                  direction="row"
-                  justify="space-between"
-                  alignItems="center"
-                  className={classes.navigation}
-                >
-                  <Grid
-                    item
-                    sm={12}
-                    md={4}
-                  >
-                    <LangButton
-                      lang={copy.back}
-                      onClick={() => {
-                        history.push('/');
-                      }}
-                      pos="left"
-                      typeButton="link"
-                      variant="primary"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    sm={2}
-                    md={1}
-                    lg={1}>
-                    <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
-                  </Grid>
-                </Grid>
-              </Toolbar>
-            </AppBar>
-
             {category && category.id && (
               <SectionA
                 data={{

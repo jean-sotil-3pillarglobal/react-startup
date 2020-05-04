@@ -89,6 +89,10 @@ const Verbiage = {
       },
     },
     header: {
+      back: {
+        en: 'Página Principal',
+        es: 'Página Principal',
+      },
       featured,
       logo: {
         desktop: '/src/static/images/logo.jpg',
@@ -347,10 +351,6 @@ const Verbiage = {
   },
   services: {
     section_1: {
-      back: {
-        en: 'Back to Homepage',
-        es: 'Volver al Inicio',
-      },
       categories,
       id: 'services_index',
       logo: {

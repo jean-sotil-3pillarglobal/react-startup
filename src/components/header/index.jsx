@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import {
   AppBar,
@@ -55,6 +55,9 @@ const styles = theme => ({
       easing: theme.transitions.easing.easeOut,
     }),
     width: `calc(100% - ${drawerWidth}px)`,
+  },
+  back: {
+    background: ThemeBackground({ variant: 'primary' }, theme, 'light'),
   },
   burger: {
     color: theme.palette.secondary.contrastText,
@@ -158,6 +161,7 @@ const NODE_ROOT = 'components';
 const NODE_TYPE = 'header';
 // copy:
 const copy = LangGenerateTree([NODE_ROOT, NODE_TYPE], [
+  'back',
   'featured-1-id',
   'featured-1-label',
   'featured-1-route',
@@ -191,19 +195,28 @@ class Header extends Component {
   };
 
   props: {
+    category: Object,
     classes: Object,
-    proxy: Object,
+    device: String,
     theme: Object,
+    verbiage: Object,
   };
 
   render() {
     const {
+      category,
       classes,
-      proxy,
+      device,
+      verbiage,
       theme,
     } = this.props;
 
-    const { device, verbiage } = proxy;
+    const proxy = {
+      category,
+      device,
+      verbiage,
+    };
+
     const { open } = this.state;
     const isMobile = device === 'mobile';
 
@@ -267,82 +280,106 @@ class Header extends Component {
                 }
                 <SmartImg proxy={proxy} src={verbiage(copy.logo)} className={classes.logo} />
               </Grid>
-              <Grid
-                item
-                sm={12}
-                md={8}
-                lg={8}
-              >
-                {(!open && !isMobile) &&
-                  <Box
-                    display="flex"
-                    flexDirection="row"
-                    justifyContent="flex-start"
-                    p={1}
-                    m={1}
-                    className={classes.navbar}>
-                    {copy.publics.map((item) => {
-                      return (
-                        <Link
-                          activeClass="active"
-                          key={item.id}
-                          smooth
-                          spy
-                          to={verbiage(item.id)}
-                        >
-                          <Box p={1} className={classes.navbarItem} key={item.id}>
-                            <LangButton
-                              key={item.label}
-                              lang={item.label}
-                              pos="right"
-                              typeButton={TYPES.LINK}
-                              variant="light"
-                            />
-                          </Box>
-                        </Link>
-                      );
-                    })}
+              {!category && (
+                <Fragment>
+                  <Grid
+                    item
+                    sm={12}
+                    md={8}
+                    lg={8}
+                  >
+                    {(!open && !isMobile) &&
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="flex-start"
+                        p={1}
+                        m={1}
+                        className={classes.navbar}>
+                        {copy.publics.map((item) => {
+                          return (
+                            <Link
+                              activeClass="active"
+                              key={item.id}
+                              smooth
+                              spy
+                              to={verbiage(item.id)}
+                            >
+                              <Box p={1} className={classes.navbarItem} key={item.id}>
+                                <LangButton
+                                  key={item.label}
+                                  lang={item.label}
+                                  pos="right"
+                                  typeButton={TYPES.LINK}
+                                  variant="light"
+                                />
+                              </Box>
+                            </Link>
+                          );
+                        })}
+                      </Box>
+                    }
+                  </Grid>
+                  <Grid
+                    item
+                    sm={10}
+                    md={3}
+                    lg={3}
+                  >
+                    {(!open && !isMobile) && (
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="flex-end"
+                        p={1}
+                        m={1}
+                        className={classes.navbar}>
+                        {copy.featured.map((featured) => {
+                          return (
+                            <Link
+                              activeClass="active"
+                              key={featured.id}
+                              smooth
+                              spy
+                              to={verbiage(featured.id)}
+                            >
+                              <Box p={1} className={classes.navbarItem} key={featured.id}>
+                                <LangButton
+                                  key={featured.label}
+                                  lang={featured.label}
+                                  pos="right"
+                                  typeButton={TYPES.CONTAINED}
+                                  variant="dark"
+                                />
+                              </Box>
+                            </Link>
+                          );
+                        })}
+                      </Box>
+                    )}
+                  </Grid>
+                </Fragment>
+              )}
+              {category && (
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  p={1}
+                  m={1}
+                  className={classes.navbar}>
+                  <Box p={1} className={classes.navbarItem} key={copy.back}>
+                    <LangButton
+                      className={classes.back}
+                      key={copy.back}
+                      lang={copy.back}
+                      pos="left"
+                      typeButton={TYPES.BUTTON}
+                      variant="light"
+                    />
                   </Box>
-                }
-              </Grid>
-              <Grid
-                item
-                sm={10}
-                md={3}
-                lg={3}
-              >
-                {(!open && !isMobile) && (
-                  <Box
-                    display="flex"
-                    flexDirection="row"
-                    justifyContent="flex-end"
-                    p={1}
-                    m={1}
-                    className={classes.navbar}>
-                    {copy.featured.map((featured) => {
-                      return (
-                        <Link
-                          activeClass="active"
-                          key={featured.id}
-                          smooth
-                          spy
-                          to={verbiage(featured.id)}
-                        >
-                          <Box p={1} className={classes.navbarItem} key={featured.id}>
-                            <LangButton
-                              key={featured.label}
-                              lang={featured.label}
-                              pos="right"
-                              typeButton={TYPES.CONTAINED}
-                              variant="dark"
-                            />
-                          </Box>
-                        </Link>
-                      );
-                    })}
-                  </Box>
-                )}
-              </Grid>
+                </Box>
+              )}
             </Grid>
           </Toolbar>
         </AppBar>
@@ -378,4 +415,14 @@ class Header extends Component {
   }
 }
 
-export default connect(null, null)(withStyles(styles, { withTheme: true })(Header));
+
+// map state to props
+function mapStateToProps (state) {
+  return {
+    category: state.category,
+    device: state.device,
+    verbiage: state.verbiage,
+  };
+}
+
+export default connect(mapStateToProps, null)(withStyles(styles, { withTheme: true })(Header));

@@ -142,8 +142,18 @@ function LayoutButton (props: {
             onMouseLeave={onMouseLeave}
             onMouseOver={onMouseOver}
           >
-            <LangToggler id={lang} />
-            {!props.children && <Icon className={classes.icon} name="keyboard_arrow_right" />}
+            {pos === 'right' && (
+              <Fragment>
+                <LangToggler id={lang} />
+                {!props.children && <Icon className={classes.icon} name="keyboard_arrow_right" />}
+              </Fragment>
+            )}
+            {pos === 'left' && (
+              <Fragment>
+                {!props.children && <Icon className={classes.icon} name="keyboard_arrow_left" />}
+                <LangToggler id={lang} />
+              </Fragment>
+            )}
           </Button>
         }
       </Fragment>
