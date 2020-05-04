@@ -28,7 +28,7 @@ const styles = theme => ({
   }),
   container: {
     minHeight: 'initial',
-    padding: `${theme.spacing(2)}px 0`,
+    padding: `${theme.spacing(10)}px 0`,
   },
   copyright: props => ({
     color: ThemeColor(props, theme),
@@ -115,19 +115,19 @@ function Footer (props: {
             key={column.title}
           >
             <Typography
-              variant="body2"
+              variant="h3"
               className={classes.body}>
               <LangToggler id={column.title} />
             </Typography>
             <Grid
-              alignItems="center"
+              alignItems="flex-start"
               className={classes.items}
               container
               direction="row"
-              justify="center"
+              justify="flex-start"
             >
               {verbiage(column.items).map(item => (
-                <Grid item key={item.label} sm={12} md={item.isFab ? 3 : 12}>
+                <Grid item key={item.label} sm={12} md={item.isFab ? 2 : 12}>
                   {item.isFab && (
                     <LangButton
                       href={item.link}

@@ -56,7 +56,7 @@ export default [
     },
   },
   {
-    component: 'caption',
+    component: 'body1',
     copy: {
       en: 'no masajear la zona tratada hasta 6 horas después del tratamiento y luego puede hacer vida normal.',
       es: 'no masajear la zona tratada hasta 6 horas después del tratamiento y luego puede hacer vida normal.',

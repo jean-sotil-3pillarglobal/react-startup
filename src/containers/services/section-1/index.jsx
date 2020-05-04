@@ -64,7 +64,6 @@ const styles = theme => ({
   caption: () => ({
     background: ThemeBackground({ variant }, theme, 'dark'),
     color: ThemeColor({ variant }, theme),
-    fontSize: '.5em',
     padding: theme.spacing(4),
     width: '100%',
   }),
@@ -72,16 +71,22 @@ const styles = theme => ({
     background: 'transparent',
   },
   copy: {
-    fontSize: '.7em',
     margin: `${theme.spacing(3)}px 0 0 0`,
     textAlign: 'justify',
     width: '100%',
   },
   crumb: () => ({
     color: ThemeColor({ variant }, theme),
-    marginTop: theme.spacing(1),
+    cursor: 'default',
     textTransform: 'capitalize',
   }),
+  crumbLink: {
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+    color: ThemeColor({ variant }, theme),
+    cursor: 'pointer',
+  },
   description: {
     color: theme.palette.primary.contrastText,
     textAlign: 'center',
@@ -97,9 +102,6 @@ const styles = theme => ({
   },
   divider: {
     margin: `${theme.spacing(4)}px 0`,
-  },
-  h3: {
-    fontSize: '1em',
   },
   h4: {
     marginTop: theme.spacing(6),
@@ -211,10 +213,10 @@ function CustomLink (props: {
       history.replace(url);
       onReset();
     }}>
-      <Typography variant="caption" className={classes.crumb}>{path}</Typography>
+      <Typography variant="body2" className={classes.crumbLink}>{path}</Typography>
     </A>
   ) || (
-    <Typography variant="h6" className={classes.crumb}>{path}</Typography>
+    <Typography variant="body1" className={classes.crumb}>{path}</Typography>
   );
 };
 
@@ -290,7 +292,7 @@ function SectionA (props: {
             <CardHeader
               title={
                 <Typography
-                  variant="h4"
+                  variant="h3"
                   className={classes.itemTitle}
                 >
                   <LangToggler id={service.title} />
@@ -362,7 +364,7 @@ function SectionA (props: {
         <Paper className={classes.titleContainer} elevation={0}>
           <Typography
             className={classes.titleHeader}
-            variant="h4"
+            variant="h2"
           >
             <LangToggler id={category.title} />
           </Typography>

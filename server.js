@@ -18,7 +18,7 @@ const mailer = ({ email, name, text }) => {
     host: 'smtp.gmail.com',
     auth: {
       user: 'jean.sotil@gmail.com',
-      pass: 'oshan2000'
+      pass: ''
     }
   }));
 

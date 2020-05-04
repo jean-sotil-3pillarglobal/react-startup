@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ShowMoreText from 'react-show-more-text';
+import classnames from 'classnames';
 
 import {
   Card,
@@ -18,13 +19,14 @@ import ThemeColor from './../../../../providers/utils/theme.color';
 // provider
 import SectionBlock from './../../section';
 
+import Callout from './../../../commons/callout/';
+
 const styles = theme => ({
   card: props => ({
     borderRadius: '0 0 0 0',
     display: 'flex',
   }),
   container: {
-    padding: `${theme.spacing(12)}px 0`,
     textAlign: 'center',
   },
   description: props => ({
@@ -41,6 +43,12 @@ const styles = theme => ({
   details: {
     overflowY: 'scroll',
   },
+  expand: props => ({
+    color: ThemeColor(props, theme),
+    fontSize: '1em',
+    fontWeight: 800,
+    margin: '0 auto',
+  }),
   image: {
     padding: theme.spacing(1),
   },
@@ -51,18 +59,30 @@ const styles = theme => ({
     background: ThemeBackground(props, theme, 'light'),
     border: `1px solid ${ThemeBackground(props, theme, 'light')}`,
   }),
+  itemHover: props => ({
+    border: `1px solid ${ThemeBackground(props, theme, 'main')}`,
+  }),
   label: props => ({
     background: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
-    display: 'block',
     padding: theme.spacing(1),
     margin: `${theme.spacing(4)}px 0`,
   }),
   media: {
-    filter: 'grayscale(100%)',
+    backgroundPosition: 'center',
+    filter: 'grayscale(100%) blur(.4px) contrast(90%)',
     height: 400,
+    imageRendering: 'pixelated',
     padding: `${theme.spacing(2)}px`,
+    transition: theme.transitions.create(
+      ['filter'],
+      { duration: theme.transitions.duration.complex },
+    ),
     width: '100%',
+  },
+  mediaHover: {
+    filter: 'initial',
+    imageRendering: 'initial',
   },
   title: props => ({
     color: ThemeColor(props, theme),
@@ -78,6 +98,7 @@ const SLOT = 'clerks_1';
 const copy = LangGenerateTree([NODE, SLOT], [
   'clerks',
   'title',
+  'body',
 ]);
 
 function ClerksLayout (props: {
@@ -85,6 +106,8 @@ function ClerksLayout (props: {
   proxy: Object,
   variant: String,
 }) {
+  const [isHover, setHover] = useState(false);
+
   const {
     classes,
     proxy,
@@ -101,9 +124,12 @@ function ClerksLayout (props: {
         render: () => (
           <Grid
             item
-            sm={item.size_sm || 12}
+            className={classnames(classes.item, isHover && classes.itemHover)}
+            key={item.id}
             md={item.size_md || 12}
-            className={classes.item}
+            sm={item.size_sm || 12}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
           >
             <Grid
               container
@@ -118,7 +144,7 @@ function ClerksLayout (props: {
               >
                 <Card key={item.id} dense="true" elevation={0} className={classes.card}>
                   <CardMedia
-                    className={classes.media}
+                    className={classnames(classes.media, isHover && classes.mediaHover)}
                     image={item.image}
                   />
                 </Card>
@@ -138,7 +164,7 @@ function ClerksLayout (props: {
                       <LangToggler id={item.name} />
                     </Typography>
                     <Typography
-                      variant="body1"
+                      variant="caption"
                       className={classes.label}
                     >
                       <LangToggler id={item.label} />
@@ -149,11 +175,11 @@ function ClerksLayout (props: {
                       className={classes.description}
                     >
                       <ShowMoreText
-                          lines={3}
-                          more='Show more'
-                          less='Show less'
-                          anchorClass=''
+                          anchorClass={classes.expand}
                           expanded={false}
+                          less={verbiage(item.less)[language]}
+                          lines={3}
+                          more={verbiage(item.more)[language]}
                           width={"100%"}
                       >
                         <LangToggler id={item.description} />
@@ -176,12 +202,13 @@ function ClerksLayout (props: {
         spacing={8}
       >
         <Grid item sm={12} md={12}>
-          <Typography
-            variant="h2"
-            className={classes.title}
-          >
-            <LangToggler id={copy.title} />
-          </Typography>
+          <Callout
+            align="center"
+            title={copy.title}
+            subtitle={copy.body}
+            variant={variant}
+            transparent
+          />
         </Grid>
         {items.map((item, i) => item.render())}
       </Grid>

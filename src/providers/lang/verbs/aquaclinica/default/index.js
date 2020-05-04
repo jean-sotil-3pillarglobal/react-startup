@@ -27,10 +27,14 @@ const {
 const Verbiage = {
   commons: {
     clerks_1: {
+      body: {
+        en: 'Somos un equipo de profesionales altamente calificado<br/>Trabajando con la tecnología más moderna de la zona sur.',
+        es: 'Somos un equipo de profesionales altamente calificado<br/>Trabajando con la tecnología más moderna de la zona sur.',
+      },
       clerks,
       title: {
-        en: 'our specialists',
-        es: 'nuestros especialistas',
+        en: 'Nuestros Profesionales a Cargo<br/>De tu Salud y Bienestar',
+        es: 'Nuestros Profesionales a Cargo<br/>De tu Salud y Bienestar',
       },
     },
     contact_1: {
@@ -42,19 +46,21 @@ const Verbiage = {
       forms,
       id: LINK_CONTACT_FORM_1,
       services,
+      svg_show: true,
+      svg: '/src/static/svg/coming.svg',
     },
     default: {},
     services_1: {
       body: {
-        en: 'special enrollment: even though open enrollment is closed, you may still be able to get a health plan if you had a certain life changing event. continue to shop and your eligibility will be determined when you complete your marketplace application. if you have questions at any point, please feel free to chat or call us.',
-        es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit. aenean commodo ligula eget dolor. aenean massa. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. donec quam felis,',
+        en: 'Nuestros tratamientos están diseñados para maximizar los beneficios. Contamos con productos dermatológicos de uso profesional, tecnología de punta, personal altamente calificado e identificado con sus necesidades y tratamientos comprobados.',
+        es: 'Nuestros tratamientos están diseñados para maximizar los beneficios. Contamos con productos dermatológicos de uso profesional, tecnología de punta, personal altamente calificado e identificado con sus necesidades y tratamientos comprobados.',
       },
       categories,
       id: LINK_SERVICES_1,
       services,
       title: {
-        en: 'Conozca Our Specialities',
-        es: 'Conozca Nuestras Especialidades',
+        en: 'Nuestros Tratamientos y Especialidades',
+        es: 'Nuestros Tratamientos y Especialidades',
       },
     },
   },
@@ -200,8 +206,8 @@ const Verbiage = {
       background: '/src/static/images/d-bg-1.png',
       background_show: true,
       cta: {
-        en: 'check available services',
-        es: 'ver servicios disponibles',
+        en: 'ver todas las especialidades',
+        es: 'ver todas las especialidades',
       },
       id: LINK_SECTION_1,
       logo: {
@@ -215,14 +221,14 @@ const Verbiage = {
       svg: '/src/static/svg/coming.svg',
       svg_show: false,
       title: {
-        en: '<span>La Mejor Clínica en Pérez Zeledón</span>',
-        es: '<span>La Mejor Clínica en Pérez Zeledón</span>',
+        en: '<span>La Mejor Clínica Privada de <br/>Pérez Zeledón</span>',
+        es: '<span>La Mejor Clínica Privada de <br/>Pérez Zeledón</span>',
       },
     },
     section_2: {
       body: {
-        en: 'with over 30 years of experience, we have helped tens of thousands of people get the right coverage to meet their needs. simply click the below button to get a no obligation quote.',
-        es: 'Nuestra sede esta ubicada en san isidro de el general perez zeledon, brindamos una amplia gama de servicios dermatologicos, dermatoesteticos y fisioesteticos. Contamos con alta tecnologia y personal calificado.',
+        en: 'Nuestra sede está ubicada en San Isidro de El General Pérez Zeledón. <br/>Brindamos una amplia gama de servicios dermatologicos, dermatoesteticos y fisioesteticos. Además de trabajar con la más alta tecnologia y personal 100% calificado.',
+        es: 'Nuestra sede está ubicada en San Isidro de El General Pérez Zeledón. <br/>Brindamos una amplia gama de servicios dermatologicos, dermatoesteticos y fisioesteticos. Además de trabajar con la más alta tecnologia y personal 100% calificado.',
       },
       cta: {
         en: 'cita gratuita online',
@@ -234,8 +240,8 @@ const Verbiage = {
         es: '<span>Obtén información sobre nuestros servicios</br> de manera fácil y gratuita.</span>',
       },
       title: {
-        en: 'We work with the best',
-        es: 'Trabajamos con los mejores',
+        en: 'Contamos con el Mejor Equipo<br/> para Cuidar de tu Salud',
+        es: 'Contamos con el Mejor Equipo<br/> para Cuidar de tu Salud',
       },
     },
     section_4: {

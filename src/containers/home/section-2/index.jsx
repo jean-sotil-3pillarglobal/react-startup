@@ -18,20 +18,18 @@ import ThemeColor from './../../../providers/utils/theme.color';
 
 // components
 import { LangButton } from './../../../components/commons/button';
+import Callout from './../../../components/commons/callout/';
 import Icon from './../../../components/commons/icon';
 import SectionBlock from './../../../components/layouts/section';
 
 const variant = {
-  variant: 'dark2',
+  variant: 'light2',
 };
 
 const styles = theme => ({
   body: {
     color: ThemeColor(variant, theme),
     margin: '0 auto',
-  },
-  body2: {
-    marginBottom: `${theme.spacing(6)}px`,
   },
   card: {
     background: theme.palette.background.transparent,
@@ -101,43 +99,32 @@ function SectionC (props: {
           item
           sm={12}
           md={12}>
-          <Typography
-            variant="h2"
-            className={classes.title}>
-            <LangToggler id={copy.title} />
-          </Typography>
-          <Typography
-            variant="h3"
-            className={classes.subtitle}>
-            <LangToggler id={copy.subtitle} />
-          </Typography>
-          <Typography
-            variant="body1"
-            className={classes.body}>
-            <LangToggler id={copy.body} />
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item>
-          <Link
-            smooth
-            spy
-            to={constants.LINK_SECTION_4}
+          <Callout
+            align="center"
+            title={copy.title}
+            subtitle={copy.subtitle}
+            variant={variant.variant}
+            transparent
           >
-            <Box p={1} key={copy.label}>
-              <LangButton
-                className={classes.cta}
-                lang={copy.cta}
-                variant="dark">
-              </LangButton>
-            </Box>
-          </Link>
+            <Typography
+              variant="body1"
+              className={classes.body}>
+              <LangToggler id={copy.body} />
+            </Typography>
+            <Link
+              smooth
+              spy
+              to={constants.LINK_SECTION_4}
+            >
+              <Box p={1} key={copy.label}>
+                <LangButton
+                  className={classes.cta}
+                  lang={copy.cta}
+                  variant="dark">
+                </LangButton>
+              </Box>
+            </Link>
+          </Callout>
         </Grid>
       </Grid>
     </SectionBlock>

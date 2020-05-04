@@ -269,7 +269,7 @@ class Services extends Component {
               >
                 <ContactFormLayout
                   proxy={proxy}
-                  variant="primary"
+                  variant="dark"
                 />
               </SectionA>
             )}

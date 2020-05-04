@@ -35,6 +35,7 @@ import {
 } from './../../../../providers/utils/url.formatter';
 
 // components
+import Callout from './../../../commons/callout/';
 import Icon from './../../../commons/icon';
 import SectionBlock from './../../section';
 
@@ -64,7 +65,9 @@ const styles = theme => ({
     background: ThemeBackground(props, theme, 'main'),
     padding: theme.spacing(0),
   }),
-  cardHover: {},
+  cardHover: {
+    boxShadow: '1px 1px 2px #000',
+  },
   cardList: props => ({
     backgroundColor: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
@@ -97,13 +100,12 @@ const styles = theme => ({
     padding: `${theme.spacing(2)}px 0`,
   },
   fab: props => ({
-    backgroundColor: `${ThemeBackground(props, theme, 'light')}!important`,
+    backgroundColor: `transparent!important`,
     color: `${ThemeBackground(props, theme, 'main')}!important`,
     float: 'left',
     margin: theme.spacing(3),
   }),
   fabHover: props => ({
-    backgroundColor: `${ThemeBackground(props, theme, 'light')}!important`,
     color: ThemeColor(props, theme),
   }),
   featuredText: props => ({
@@ -137,9 +139,10 @@ const styles = theme => ({
   }),
   serviceItem: props => ({
     '&:hover': {
-      boxShadow: `1px 1px 10px ${ThemeColor(props, theme)} inset`,
+      background: ThemeBackground(props, theme, 'dark'),
     },
-    borderTop: `2px solid ${ThemeBackground(props, theme, 'main')}`,
+    border: `0 solid ${ThemeBackground(props, theme, 'main')}`,
+    borderBottomWidth: '2px',
   }),
   serviceTitle: props => ({
     color: ThemeColor(props, theme),
@@ -148,14 +151,6 @@ const styles = theme => ({
     marginBottom: 0,
     marginTop: 0,
     textTransform: 'capitalize',
-  }),
-  subtitle: props => ({
-    color: ThemeColor(props, theme),
-    marginBottom: `${theme.spacing(8)}px`,
-  }),
-  title: props => ({
-    color: ThemeColor(props, theme),
-    marginBottom: theme.spacing(8),
   }),
 });
 
@@ -355,18 +350,13 @@ function ServicesLayout (props: {
           item
           sm={12}
           md={12}>
-          <Typography
-            variant="h2"
-            className={classes.title}
-          >
-            <LangToggler id={copy.title} />
-          </Typography>
-          <Typography
-            variant="body1"
-            className={classes.subtitle}
-          >
-            <LangToggler id={copy.body} />
-          </Typography>
+          <Callout
+            align="center"
+            title={copy.title}
+            subtitle={copy.body}
+            variant={variant}
+            transparent
+          />
         </Grid>
         {categories.map(item => (
           <Grid

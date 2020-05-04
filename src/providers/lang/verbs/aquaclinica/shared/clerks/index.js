@@ -35,6 +35,14 @@ const Clerks = [
       en: 'Médico Cirujano Dermatólogo',
       es: 'Médico Cirujano Dermatólogo',
     },
+    less: {
+      en: 'Cerrar',
+      es: 'Cerrar',
+    },
+    more: {
+      en: 'Conocer más',
+      es: 'Conocer más',
+    },
     name: {
       en: 'Dr Jose Antonio Tabush Clare',
       es: 'Dr Jose Antonio Tabush Clare',
@@ -63,6 +71,14 @@ const Clerks = [
       en: 'Médico Cirujano Dermatólogo',
       es: 'Médico Cirujano Dermatólogo',
     },
+    less: {
+      en: 'Cerrar',
+      es: 'Cerrar',
+    },
+    more: {
+      en: 'Conocer más',
+      es: 'Conocer más',
+    },
     name: {
       en: 'Dr Jose Antonio Tabush Clare',
       es: 'Dr Jose Antonio Tabush Clare',
@@ -84,6 +100,14 @@ const Clerks = [
     label: {
       en: 'Médico Cirujano Dermatólogo',
       es: 'Médico Cirujano Dermatólogo',
+    },
+    less: {
+      en: 'Cerrar',
+      es: 'Cerrar',
+    },
+    more: {
+      en: 'Conocer más',
+      es: 'Conocer más',
     },
     name: {
       en: 'Dr. Arturo Soto Mora',
@@ -115,6 +139,14 @@ const Clerks = [
       en: 'Médica Cirujana Dermatóloga',
       es: 'Médica Cirujana Dermatóloga',
     },
+    less: {
+      en: 'Cerrar',
+      es: 'Cerrar',
+    },
+    more: {
+      en: 'Conocer más',
+      es: 'Conocer más',
+    },
     name: {
       en: 'Dra. Diana Ulate Ovares',
       es: 'Dra. Diana Ulate Ovares',
@@ -140,6 +172,14 @@ const Clerks = [
     label: {
       en: 'Nutricionista',
       es: 'Nutricionista',
+    },
+    less: {
+      en: 'Cerrar',
+      es: 'Cerrar',
+    },
+    more: {
+      en: 'Conocer más',
+      es: 'Conocer más',
     },
     name: {
       en: 'Dra. Katherine Arias Calderon',

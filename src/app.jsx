@@ -33,7 +33,6 @@ import {
 
 // providers
 import SkinProvider from './providers/skins';
-import ThemeBackground from './providers/utils/theme.background';
 
 // async component
 import Async from './containers/async-component';
@@ -55,6 +54,7 @@ const styles = theme => ({
     ),
   },
   container: () => ({
+    backgroundColor: 'url("https://www.toptal.com/designers/subtlepatterns/patterns/y-so-serious-white.png")',
     margin: '0 auto',
     maxWidth: 1240,
   }),
@@ -68,9 +68,7 @@ const styles = theme => ({
       { duration: theme.transitions.duration.complex },
     ),
   },
-  root: () => ({
-    backgroundColor: ThemeBackground({ variant: 'primary' }, theme, 'main'),
-  }),
+  root: () => ({}),
   switch: {
     left: 0,
     overflow: 'hidden',

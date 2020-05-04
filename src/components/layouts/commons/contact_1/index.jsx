@@ -6,6 +6,7 @@ import Fade from 'react-reveal/Fade';
 import React, { Component } from 'react';
 
 import {
+  Paper,
   withStyles,
 } from '@material-ui/core';
 
@@ -16,6 +17,7 @@ import ThemeColor from './../../../../providers/utils/theme.color';
 
 // components
 import Stepper from './../../../commons/stepper';
+import SVGComponent from './../../../commons/svg';
 
 const styles = theme => ({
   callout: props => ({
@@ -24,7 +26,10 @@ const styles = theme => ({
     position: 'relative',
     zIndex: 1,
   }),
-  container: props => ({
+  container: {
+    background: 'transparent',
+  },
+  stepper: props => ({
     background: ThemeBackground(props, theme, 'main'),
     borderRadius: '0 0 0 0',
   }),
@@ -33,6 +38,13 @@ const styles = theme => ({
     fontWeight: 400,
     marginBottom: theme.spacing(2),
   }),
+  svg: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    zIndex: -1,
+  },
   title: props => ({
     borderColor: ThemeBackground(props, theme, 'light'),
     color: ThemeColor(props, theme),
@@ -51,6 +63,8 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'forms',
   'id',
   'services',
+  'svg_show',
+  'svg',
   'title',
 ]);
 
@@ -207,20 +221,23 @@ class ContactFormLayout extends Component {
 
     return (
       verbiage &&
-      <Fade left>
-        <Stepper
-          className={classes.container}
-          copy={copy}
-          document={document}
-          forms={forms}
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          onSubmit={this.handleSubmit}
-          proxy={proxy}
-          variant={variant}
-          valid={valid}
-        />
-      </Fade>
+      <Paper className={classes.container}>
+        {verbiage(copy.svg_show) && <SVGComponent src={verbiage(copy.svg)} className={classes.svg} variant="primary" />}
+        <Fade left>
+          <Stepper
+            className={classes.container}
+            copy={copy}
+            document={document}
+            forms={forms}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
+            onSubmit={this.handleSubmit}
+            proxy={proxy}
+            variant={variant}
+            valid={valid}
+          />
+        </Fade>
+      </Paper>
     );
   }
 }

@@ -14,6 +14,7 @@ import LangToggler from './../../../providers/lang/toggler';
 import ThemeColor from './../../../providers/utils/theme.color';
 
 // commons
+import Callout from './../../../components/commons/callout/';
 import ContactFormLayout from './../../../components/layouts/commons/contact_1';
 
 import BannerA from './../banner-1';
@@ -30,8 +31,8 @@ const styles = theme => ({
     width: '100%',
   },
   container: {
-    marginBottom: theme.spacing(20),
     padding: 0,
+    position: 'relative',
   },
   title: {
     color: ThemeColor({ variant }, theme),
@@ -49,7 +50,7 @@ const copy = LangGenerateTree([NODE, SLOT], [
   'title',
 ]);
 
-const SectionA = (props: {
+const SectionD = (props: {
   classes: Object,
   proxy: Object,
 }) => {
@@ -80,12 +81,13 @@ const SectionA = (props: {
               md={6}
               lg={6}>
               <Fragment>
-                <Typography
-                  variant="body1"
+                <Callout
+                  align="left"
+                  title={copy.title}
+                  variant={variant}
+                  transparent
                   className={classes.title}
-                >
-                  <LangToggler id={copy.title} />
-                </Typography>
+                />
                 <ContactFormLayout
                   proxy={proxy}
                   variant="primary"
@@ -99,4 +101,4 @@ const SectionA = (props: {
   );
 };
 
-export default withStyles(styles)(withRouter(SectionA));
+export default withStyles(styles)(withRouter(SectionD));

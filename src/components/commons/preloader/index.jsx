@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import ThemeBackground from './../../../providers/utils/theme.background';
 
@@ -17,9 +17,11 @@ const styles = theme => ({
     paddingLeft: '10%',
     paddingRight: '10%',
     paddingTop: '50vh',
+    textAlign: 'center',
   },
   loading: {
     margin: '0 auto',
+    width: '100%',
   },
 });
 
@@ -32,7 +34,7 @@ const Loading = (props: {
 
   return (
     <div className={props.classes.container}>
-      <LinearProgress className={classes.loading} color="secondary" />
+      <CircularProgress className={classes.loading} color="secondary" />
     </div>
   );
 };

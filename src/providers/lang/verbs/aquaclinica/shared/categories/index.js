@@ -37,7 +37,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    ico: 'info_outlined',
+    ico: 'keyboard_arrow_right',
     id: CATEGORY_1,
     image: {
       desktop: `/src/static/images/${CATEGORY_1}/derma-clinica.jpg`,
@@ -82,7 +82,7 @@ const Services = [
       en: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
       es: 'lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
-    ico: 'info_outlined',
+    ico: 'keyboard_arrow_right',
     id: CATEGORY_2,
     image: {
       desktop: `/src/static/images/${CATEGORY_2}/3.png`,
@@ -123,7 +123,7 @@ const Services = [
       en: 'learn more',
       es: 'conoce más',
     },
-    ico: 'info_outlined',
+    ico: 'keyboard_arrow_right',
     id: CATEGORY_3,
     image: {
       desktop: `/src/static/images/${CATEGORY_3}/spa-clinico.jpg`,
@@ -163,7 +163,7 @@ const Services = [
       en: 'learn more',
       es: 'conoce más',
     },
-    ico: 'info_outlined',
+    ico: 'keyboard_arrow_right',
     id: CATEGORY_4,
     image: {
       desktop: `/src/static/images/${CATEGORY_4}/3.jpg`,
@@ -193,7 +193,7 @@ const Services = [
       en: 'learn more',
       es: 'conoce más',
     },
-    ico: 'info_outlined',
+    ico: 'keyboard_arrow_right',
     id: CATEGORY_5,
     image: {
       desktop: `/src/static/images/${CATEGORY_5}/3.jpg`,

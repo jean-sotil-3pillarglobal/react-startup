@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import {
   AppBar,
@@ -274,36 +274,36 @@ class Header extends Component {
                 lg={8}
               >
                 {(!open && !isMobile) &&
-                <Box
-                  display="flex"
-                  flexDirection="row"
-                  justifyContent="flex-start"
-                  p={1}
-                  m={1}
-                  className={classes.navbar}>
-                  {copy.publics.map((item) => {
-                    return (
-                      <Link
-                        activeClass="active"
-                        key={item.id}
-                        smooth
-                        spy
-                        to={verbiage(item.id)}
-                      >
-                        <Box p={1} className={classes.navbarItem} key={item.id}>
-                          <LangButton
-                            key={item.label}
-                            lang={item.label}
-                            pos="right"
-                            typeButton={TYPES.LINK}
-                            variant="light"
-                          />
-                        </Box>
-                      </Link>
-                    );
-                  })}
-                </Box>
-              }
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="flex-start"
+                    p={1}
+                    m={1}
+                    className={classes.navbar}>
+                    {copy.publics.map((item) => {
+                      return (
+                        <Link
+                          activeClass="active"
+                          key={item.id}
+                          smooth
+                          spy
+                          to={verbiage(item.id)}
+                        >
+                          <Box p={1} className={classes.navbarItem} key={item.id}>
+                            <LangButton
+                              key={item.label}
+                              lang={item.label}
+                              pos="right"
+                              typeButton={TYPES.LINK}
+                              variant="light"
+                            />
+                          </Box>
+                        </Link>
+                      );
+                    })}
+                  </Box>
+                }
               </Grid>
               <Grid
                 item

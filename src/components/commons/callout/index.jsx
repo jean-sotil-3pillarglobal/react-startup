@@ -16,23 +16,20 @@ import ThemeColor from './../../../providers/utils/theme.color';
 
 const styles = theme => ({
   card: props => ({
-    background: ThemeBackground(props, theme),
+    background: !props.transparent && ThemeBackground(props, theme),
     border: `0 solid ${ThemeBackground(props, theme, 'light')}`,
     borderRadius: '0 0 0 0',
-    margin: theme.spacing(3),
     overflow: 'visible',
   }),
-  container: {
-    padding: theme.spacing(3),
-  },
+  container: {},
   subtitle: props => ({
     color: ThemeColor(props, theme),
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(3),
     width: '100%',
   }),
   title: props => ({
     color: ThemeColor(props, theme),
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     textAlign: props.align || 'left',
     textTransform: 'initial',
   }),
@@ -44,6 +41,7 @@ function Callout (props: {
   className: Object,
   subtitle: Object,
   title: Object,
+  transparent: Boolean,
 }) {
   const {
     children,
@@ -56,14 +54,16 @@ function Callout (props: {
   return (
     <Card className={classnames(classes.card, className)} elevation={0}>
       <CardContent className={classes.container}>
-        <Fade>
+        <Fade top>
           <Typography variant="h1" component="p" className={classes.title}>
             <LangToggler id={title} />
           </Typography>
         </Fade>
-        <Typography variant="body1" component="p" className={classes.subtitle}>
-          <LangToggler id={subtitle} />
-        </Typography>
+        {subtitle && (
+          <Typography variant="body1" component="p" className={classes.subtitle}>
+            <LangToggler id={subtitle} />
+          </Typography>
+        )}
         {children}
       </CardContent>
     </Card>

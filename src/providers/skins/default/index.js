@@ -1,17 +1,17 @@
 import Color from 'color';
 
 const PRIMARY = {
-  contrastText: 'rgba(0,0,0,0.8)',
-  dark: 'rgb(151,153,154)',
+  contrastText: 'rgba(0,0,0,1)',
+  dark: 'rgba(151,153,154,0.9)',
   light: 'rgba(255,255,255,0.9)',
-  main: 'rgba(245,245,245,1)',
+  main: 'rgba(245,245,245,0.9)',
 };
 
 const SECONDARY = {
   contrastText: 'rgba(255,255,255,1)',
-  dark: 'rgba(0,0,0,1)',
-  light: 'rgba(72,72,72,1)',
-  main: 'rgba(33,33,33,1)',
+  dark: 'rgba(0,0,0,0.9)',
+  light: 'rgba(72,72,72,0.9)',
+  main: 'rgba(33,33,33,0.9)',
 };
 
 const fontFamily = 'Poppins!important';
@@ -192,6 +192,11 @@ const overrides = {
       },
       fontSize: '.8em',
       fontWeight: 300,
+    },
+  },
+  MuiIconButton: {
+    root: {
+      padding: '0',
     },
   },
   MuiInputAdornment: {
