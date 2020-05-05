@@ -12,6 +12,8 @@ export const constants = {
   CLERK_3: 'clerk_3',
   CLERK_4: 'clerk_4',
   CLERK_5: 'clerk_5',
+  CLERK_6: 'clerk_6',
+  CLERK_7: 'clerk_7',
 
   // general
   GENERAL: 'general',
