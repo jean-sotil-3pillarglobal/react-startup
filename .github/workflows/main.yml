@@ -1,0 +1,30 @@
+name: build & deploy clinica aqua
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build and Deploy to GCP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        uses: nuxt/actions-yarn@master
+        with: 
+          args: install
+      - name: build static files
+        uses: nuxt/actions-yarn@master
+        with:
+          args: build
+      - name: Google Cloud Platform (GCP) CLI - gcloud
+        uses: actions-hub/gcloud@289.0.0
+        env:
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        with:
+          args: app deploy
