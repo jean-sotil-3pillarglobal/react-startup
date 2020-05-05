@@ -15,8 +15,18 @@ const {
 const Clerks = [
   {
     description: {
-      en: '',
-      es: '',
+      en: `
+              Terapeuta Físico de la Universidad Santa Paula
+        Dedicado Exclusivamente a la Fisioestetica desde el año 2012
+        Master en Administración de Servicios de Salud Sostenibles UNED
+        Generente y Administrador de Clínica Aqua.
+      `,
+      es: `
+              Terapeuta Físico de la Universidad Santa Paula
+        Dedicado Exclusivamente a la Fisioestetica desde el año 2012
+        Master en Administración de Servicios de Salud Sostenibles UNED
+        Generente y Administrador de Clínica Aqua.
+      `,
     },
     id: CLERK_1,
     image: './src/static/images/clerks/_MG_6998.jpg',
